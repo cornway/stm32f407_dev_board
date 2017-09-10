@@ -1,0 +1,11 @@
+.\objects\wave_sample.o: device\src\wave_sample.cpp
+.\objects\wave_sample.o: .\device\inc\wave_sample.h
+.\objects\wave_sample.o: .\device\inc\wave.h
+.\objects\wave_sample.o: .\FatFs\src\ff.h
+.\objects\wave_sample.o: .\FatFs\src\integer.h
+.\objects\wave_sample.o: .\FatFs\src\ffconf.h
+.\objects\wave_sample.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\wave_sample.o: .\device\inc\device_conf.h
+.\objects\wave_sample.o: .\device\inc\device_gui_conf.h
+.\objects\wave_sample.o: .\misc\inc\iterable.h
+.\objects\wave_sample.o: .\misc\inc\ArrayListStatic.h

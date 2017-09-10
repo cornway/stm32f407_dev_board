@@ -1,0 +1,14 @@
+.\objects\vm.o: misc\context\src\VM.cpp
+.\objects\vm.o: .\misc\context\inc\VM.h
+.\objects\vm.o: .\misc\depend\Arm\CortexM4\inc\machM4.h
+.\objects\vm.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\vm.o: .\misc\context\inc\vm_conf.h
+.\objects\vm.o: .\misc\depend\Arm\CortexM4\inc\thread.h
+.\objects\vm.o: .\misc\context\inc\mail.h
+.\objects\vm.o: .\misc\context\inc\timer.h
+.\objects\vm.o: .\misc\inc\iterable.h
+.\objects\vm.o: .\misc\inc\ArrayListStatic.h
+.\objects\vm.o: .\misc\context\inc\driver.h
+.\objects\vm.o: .\misc\context\inc\mutex.h
+.\objects\vm.o: .\misc\context\inc\vmapi_call.h
+.\objects\vm.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h

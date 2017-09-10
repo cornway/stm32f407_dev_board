@@ -1,0 +1,11 @@
+.\objects\ethernetif.o: lwip-1.4.1\src\netif\ethernetif.c
+.\objects\ethernetif.o: .\lwip-1.4.1\src\include\lwip/opt.h
+.\objects\ethernetif.o: .\tcp_app\inc\lwipopts.h
+.\objects\ethernetif.o: .\lwip-1.4.1\src\include\lwip/debug.h
+.\objects\ethernetif.o: .\lwip-1.4.1\src\include\lwip/arch.h
+.\objects\ethernetif.o: .\tcp_app\inc\cc.h
+.\objects\ethernetif.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\ethernetif.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\ethernetif.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\ethernetif.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\time.h
+.\objects\ethernetif.o: .\lwip-1.4.1\src\include\lwip/opt.h

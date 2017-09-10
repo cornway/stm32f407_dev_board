@@ -1,0 +1,10 @@
+.\objects\gif.o: device\src\gif.cpp
+.\objects\gif.o: .\device\inc\gif.h
+.\objects\gif.o: .\misc\inc\abstract.h
+.\objects\gif.o: .\misc\inc\iterable.h
+.\objects\gif.o: .\misc\inc\ArrayListStatic.h
+.\objects\gif.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\gif.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\gif.o: .\FatFs\src\ff.h
+.\objects\gif.o: .\FatFs\src\integer.h
+.\objects\gif.o: .\FatFs\src\ffconf.h

@@ -1,0 +1,10 @@
+.\objects\adv7180.o: adv7180\src\ADV7180.cpp
+.\objects\adv7180.o: .\adv7180\inc\ADV7180.h
+.\objects\adv7180.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\adv7180.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\errno.h
+.\objects\adv7180.o: .\FatFs\src\ff.h
+.\objects\adv7180.o: .\FatFs\src\integer.h
+.\objects\adv7180.o: .\FatFs\src\ffconf.h
+.\objects\adv7180.o: .\misc\inc\pp.h
+.\objects\adv7180.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\adv7180.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\ctype.h

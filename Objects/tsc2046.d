@@ -1,0 +1,16 @@
+.\objects\tsc2046.o: device\src\tsc2046.cpp
+.\objects\tsc2046.o: .\device\inc\tsc2046.h
+.\objects\tsc2046.o: .\device\inc\tsc2046_conf.h
+.\objects\tsc2046.o: .\device\inc\device_conf.h
+.\objects\tsc2046.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\tsc2046.o: .\device\inc\device_gui_conf.h
+.\objects\tsc2046.o: .\misc\inc\abstract.h
+.\objects\tsc2046.o: .\misc\inc\iterable.h
+.\objects\tsc2046.o: .\misc\inc\ArrayListStatic.h
+.\objects\tsc2046.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\tsc2046.o: .\device\inc\touch.h
+.\objects\tsc2046.o: .\misc\inc\dimensions.h
+.\objects\tsc2046.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
+.\objects\tsc2046.o: .\FatFs\src\ff.h
+.\objects\tsc2046.o: .\FatFs\src\integer.h
+.\objects\tsc2046.o: .\FatFs\src\ffconf.h

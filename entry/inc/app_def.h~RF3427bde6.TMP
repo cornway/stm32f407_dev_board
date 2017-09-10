@@ -1,0 +1,18 @@
+#ifndef APP_DEF_H
+#define APP_DEF_H
+
+void render (void *argv);
+void main_app (void *argv);
+void camera (void *argv);
+void repaint (void *argv);
+
+#define     FRAME_RENDER_LOCK_ID    (0x00000001U)
+#define     FILE_SYSTEM_LOCK_ID     (0x00000002U)
+#define     MEMORY_ALLOC_LOCK_ID    (0x00000003U)
+#define     SENSOR_LOCK_ID          (0x00000004U)
+#define     USB_LOCK_ID             (0x00000005U)
+
+
+
+#endif /*APP_DEF_H*/
+

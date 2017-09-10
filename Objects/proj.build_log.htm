@@ -1,0 +1,596 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Tool Versions:</h2>
+IDE-Version: µVision V5.24.2.0
+Copyright (C) 2017 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: Roman Microsoft, Microsoft, LIC=----
+ 
+Tool Versions:
+Toolchain:       MDK-ARM Professional  Version: 5.24.1
+Toolchain Path:  C:\Keil_v5\ARM\ARMCC\Bin
+C Compiler:      Armcc.exe V5.06 update 5 (build 528)
+Assembler:       Armasm.exe V5.06 update 5 (build 528)
+Linker/Locator:  ArmLink.exe V5.06 update 5 (build 528)
+Library Manager: ArmAr.exe V5.06 update 5 (build 528)
+Hex Converter:   FromElf.exe V5.06 update 5 (build 528)
+CPU DLL:         SARMCM3.DLL V5.24.1
+Dialog DLL:      DCM.DLL V1.16.0.0
+Target DLL:      STLink\ST-LINKIII-KEIL_SWO.dll V3.0.1.0
+Dialog DLL:      TCM.DLL V1.32.0.0
+ 
+<h2>Project:</h2>
+D:\Work\v\video_stm32_master\proj.uvprojx
+Project File Date:  09/10/2017
+
+<h2>Output:</h2>
+*** Using Compiler 'V5.06 update 5 (build 528)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
+Build target 'stm32f417iet6'
+compiling device.cpp...
+.\misc\context\inc\driver.h(34): warning:  #375-D: declaration requires a typedef name
+  };
+.\misc\context\inc\driver.h(53): warning:  #1-D: last line of file ends without a newline
+  #endif /*VM_DRV_H*/
+device\src\device.cpp: 2 warnings, 0 errors
+compiling pnesx_app.cpp...
+.\misc\context\inc\driver.h(34): warning:  #375-D: declaration requires a typedef name
+  };
+.\misc\context\inc\driver.h(53): warning:  #1-D: last line of file ends without a newline
+  #endif /*VM_DRV_H*/
+.\gui\inc\graphic.h(30): warning:  #1299-D: members and base-classes will be initialized in declaration order, not in member initialisation list order
+                                                    GCircle           <Color, Range>           (f, d),
+.\gui\inc\graphic.h(31): warning:  #1299-D: members and base-classes will be initialized in declaration order, not in member initialisation list order
+                                                    Line_Class        <Color, Range>           (f, d),
+.\gui\inc\graphic.h(32): warning:  #1299-D: members and base-classes will be initialized in declaration order, not in member initialisation list order
+                                                    GRectangle        <Color, Range>           (f, d),
+.\gui\inc\GLabel.h(19): warning:  #1299-D: members and base-classes will be initialized in declaration order, not in member initialisation list order
+                                                                      std_printer::Printer<char, '\0', '\n', '0', '-'> (textSize)
+.\gui\inc\textField.h(24): warning:  #1299-D: members and base-classes will be initialized in declaration order, not in member initialisation list order
+                                                           std_printer::Printer<char, '\0', '\n', '0', '-'> (textSize)
+.\gui\inc\GProgressBar.h(25): warning:  #1299-D: members and base-classes will be initialized in declaration order, not in member initialisation list order
+                                                                 std_printer::Printer<char, '\0', '\n', '0', '-'> (textSize)
+.\gui\inc\GBrowser.h(67): warning:  #1299-D: members and base-classes will be initialized in declaration order, not in member initialisation list order
+                                                                           std_printer::Printer<char, '\0', '\n', '0', '-'> (textSize)
+.\gui\inc\ContentPane.h(654): warning:  #997-D: function "GComponent<Color, Range, white>::repaint() [with Color=color_t, Range=range_t, white=(color_t)65535U]"  is hidden by "GContentPane<Color, Range, white>::repaint [with Color=color_t, Range=range_t, white=(color_t)65535U]"  -- virtual function override intended?
+                void repaint (ViewPort<Range> &w)
+          detected during:
+            instantiation of class "GContentPane<Color, Range, white> [with Color=color_t, Range=range_t, white=(color_t)65535U]"  at line 75 of ".\gui\inc\guiEngine.h"
+            instantiation of "GContentPane<Color, Range, white> *GuiEngine<Color, Range, white>::newContentPane(Dimension<Range>) [with Color=color_t, Range=range_t, white=(color_t)65535U]"  at line 85 of ".\gui\inc\guiEngine.h"
+            instantiation of "GContentPane<Color, Range, white> *GuiEngine<Color, Range, white>::newContentPane(Range, Range, Range, Range) [with Color=color_t, Range=range_t, white=(color_t)65535U]"  at line 45 of "entry\src\pnesx_app.cpp"
+entry\src\pnesx_app.cpp(253): warning:  #174-D: expression has no effect
+          dest[i] == 0;
+.\gui\inc\GBrowser.h(178): warning:  #3630-D: invalid narrowing conversion from "int" to "signed short"
+              Box<Range> headerBox = {this->x, this->y + this->h - hstep, this->w, hstep};
+          detected during instantiation of "void GBrowser<Color, Range, white>::repaint() [with Color=color_t, Range=range_t, white=(color_t)65535U]"  
+.\gui\inc\GBrowser.h(186): warning:  #3630-D: invalid narrowing conversion from "int" to "signed short"
+              Box<Range> nodeBox = {this->x, headerBox.y - hstep, this->w, hstep};
+          detected during instantiation of "void GBrowser<Color, Range, white>::repaint() [with Color=color_t, Range=range_t, white=(color_t)65535U]"  
+entry\src\pnesx_app.cpp: 13 warnings, 0 errors
+compiling VM.cpp...
+.\misc\context\inc\driver.h(34): warning:  #375-D: declaration requires a typedef name
+  };
+.\misc\context\inc\driver.h(53): warning:  #1-D: last line of file ends without a newline
+  #endif /*VM_DRV_H*/
+misc\context\src\VM.cpp(434): warning:  #186-D: pointless comparison of unsigned integer with zero
+                                      if (res < 0) {
+misc\context\src\VM.cpp(440): warning:  #186-D: pointless comparison of unsigned integer with zero
+                                      if (res < 0) {
+misc\context\src\VM.cpp(236): warning:  #546-D: transfer of control bypasses initialization of:
+            variable "mutex_res"  (declared at line 292)
+            variable "owner"  (declared at line 308)
+            variable "recv"  (declared at line 319)
+            variable "syn"  (declared at line 330)
+            variable "recv__"  (declared at line 342)
+            variable "recvm"  (declared at line 405)
+          switch (reason) {
+          ^
+misc\context\src\VM.cpp: 5 warnings, 0 errors
+compiling vmapi.cpp...
+.\misc\context\inc\driver.h(34): warning:  #375-D: declaration requires a typedef name
+  };
+.\misc\context\inc\driver.h(53): warning:  #1-D: last line of file ends without a newline
+  #endif /*VM_DRV_H*/
+misc\context\src\vmapi.cpp: 2 warnings, 0 errors
+compiling driver.cpp...
+.\misc\context\inc\driver.h(34): warning:  #375-D: declaration requires a typedef name
+  };
+.\misc\context\inc\driver.h(53): warning:  #1-D: last line of file ends without a newline
+  #endif /*VM_DRV_H*/
+.\misc\context\inc\mach.h(6): warning:  #1-D: last line of file ends without a newline
+  #endif /*MACH_H*/
+misc\context\src\driver.cpp(141): warning:  #1-D: last line of file ends without a newline
+  }
+misc\context\src\driver.cpp: 4 warnings, 0 errors
+compiling startup_app.cpp...
+.\misc\context\inc\driver.h(34): warning:  #375-D: declaration requires a typedef name
+  };
+.\misc\context\inc\driver.h(53): warning:  #1-D: last line of file ends without a newline
+  #endif /*VM_DRV_H*/
+.\gui\inc\graphic.h(30): warning:  #1299-D: members and base-classes will be initialized in declaration order, not in member initialisation list order
+                                                    GCircle           <Color, Range>           (f, d),
+.\gui\inc\graphic.h(31): warning:  #1299-D: members and base-classes will be initialized in declaration order, not in member initialisation list order
+                                                    Line_Class        <Color, Range>           (f, d),
+.\gui\inc\graphic.h(32): warning:  #1299-D: members and base-classes will be initialized in declaration order, not in member initialisation list order
+                                                    GRectangle        <Color, Range>           (f, d),
+.\gui\inc\GLabel.h(19): warning:  #1299-D: members and base-classes will be initialized in declaration order, not in member initialisation list order
+                                                                      std_printer::Printer<char, '\0', '\n', '0', '-'> (textSize)
+.\gui\inc\textField.h(24): warning:  #1299-D: members and base-classes will be initialized in declaration order, not in member initialisation list order
+                                                           std_printer::Printer<char, '\0', '\n', '0', '-'> (textSize)
+.\gui\inc\GProgressBar.h(25): warning:  #1299-D: members and base-classes will be initialized in declaration order, not in member initialisation list order
+                                                                 std_printer::Printer<char, '\0', '\n', '0', '-'> (textSize)
+.\gui\inc\GBrowser.h(67): warning:  #1299-D: members and base-classes will be initialized in declaration order, not in member initialisation list order
+                                                                           std_printer::Printer<char, '\0', '\n', '0', '-'> (textSize)
+.\entry\inc\startup_app.h(48): warning:  #1-D: last line of file ends without a newline
+  #endif  /*STARTUP_APP_H*/
+device\src\startup_app.cpp: 10 warnings, 0 errors
+compiling render_app.cpp...
+.\misc\context\inc\driver.h(34): warning:  #375-D: declaration requires a typedef name
+  };
+.\misc\context\inc\driver.h(53): warning:  #1-D: last line of file ends without a newline
+  #endif /*VM_DRV_H*/
+entry\src\render_app.cpp: 2 warnings, 0 errors
+compiling main_app.cpp...
+.\misc\context\inc\driver.h(34): warning:  #375-D: declaration requires a typedef name
+  };
+.\misc\context\inc\driver.h(53): warning:  #1-D: last line of file ends without a newline
+  #endif /*VM_DRV_H*/
+.\gui\inc\graphic.h(30): warning:  #1299-D: members and base-classes will be initialized in declaration order, not in member initialisation list order
+                                                    GCircle           <Color, Range>           (f, d),
+.\gui\inc\graphic.h(31): warning:  #1299-D: members and base-classes will be initialized in declaration order, not in member initialisation list order
+                                                    Line_Class        <Color, Range>           (f, d),
+.\gui\inc\graphic.h(32): warning:  #1299-D: members and base-classes will be initialized in declaration order, not in member initialisation list order
+                                                    GRectangle        <Color, Range>           (f, d),
+.\gui\inc\GLabel.h(19): warning:  #1299-D: members and base-classes will be initialized in declaration order, not in member initialisation list order
+                                                                      std_printer::Printer<char, '\0', '\n', '0', '-'> (textSize)
+.\gui\inc\textField.h(24): warning:  #1299-D: members and base-classes will be initialized in declaration order, not in member initialisation list order
+                                                           std_printer::Printer<char, '\0', '\n', '0', '-'> (textSize)
+.\gui\inc\GProgressBar.h(25): warning:  #1299-D: members and base-classes will be initialized in declaration order, not in member initialisation list order
+                                                                 std_printer::Printer<char, '\0', '\n', '0', '-'> (textSize)
+.\gui\inc\GBrowser.h(67): warning:  #1299-D: members and base-classes will be initialized in declaration order, not in member initialisation list order
+                                                                           std_printer::Printer<char, '\0', '\n', '0', '-'> (textSize)
+.\gui\inc\ContentPane.h(654): warning:  #997-D: function "GComponent<Color, Range, white>::repaint() [with Color=color_t, Range=range_t, white=(color_t)65535U]"  is hidden by "GContentPane<Color, Range, white>::repaint [with Color=color_t, Range=range_t, white=(color_t)65535U]"  -- virtual function override intended?
+                void repaint (ViewPort<Range> &w)
+          detected during:
+            instantiation of class "GContentPane<Color, Range, white> [with Color=color_t, Range=range_t, white=(color_t)65535U]"  at line 75 of ".\gui\inc\guiEngine.h"
+            instantiation of "GContentPane<Color, Range, white> *GuiEngine<Color, Range, white>::newContentPane(Dimension<Range>) [with Color=color_t, Range=range_t, white=(color_t)65535U]"  at line 85 of ".\gui\inc\guiEngine.h"
+            instantiation of "GContentPane<Color, Range, white> *GuiEngine<Color, Range, white>::newContentPane(Range, Range, Range, Range) [with Color=color_t, Range=range_t, white=(color_t)65535U]"  at line 66 of "entry\src\main_app.cpp"
+entry\src\main_app.cpp(174): warning:  #550-D: variable "ret"  was set but never used
+              _XCALL(ret, expl_app, EXPLORER_APP_USE_FILTER, (void *)"NES");
+entry\src\main_app.cpp(183): warning:  #550-D: variable "ret"  was set but never used
+              _XCALL(ret, snake_app, 0, nullptr);
+entry\src\main_app.cpp(192): warning:  #550-D: variable "ret"  was set but never used
+              _XCALL(ret, exec_app, EXEC_APP_EXECUTE_REQUEST, nullptr);
+entry\src\main_app.cpp(201): warning:  #550-D: variable "ret"  was set but never used
+              _XCALL(ret, analog_app, 0, nullptr);
+entry\src\main_app.cpp(210): warning:  #550-D: variable "ret"  was set but never used
+              _XCALL(ret, cam_app, 0, nullptr);
+entry\src\main_app.cpp(220): warning:  #550-D: variable "ret"  was set but never used
+              _XCALL(ret, expl_app, EXPLORER_APP_NO_FILTER, (void *)filePath);
+entry\src\main_app.cpp(229): warning:  #550-D: variable "ret"  was set but never used
+              _XCALL(ret, settings_app, 0, nullptr);
+entry\src\main_app.cpp(238): warning:  #550-D: variable "ret"  was set but never used
+              _XCALL(ret, info_app, 0, nullptr);
+entry\src\main_app.cpp(251): warning:  #550-D: variable "ret"  was set but never used
+              _XCALL(ret, touch_app, 0, (void *)"tsc2046.cal");
+entry\src\main_app.cpp(264): warning:  #177-D: variable "clockData"  was declared but never referenced
+      static char clockData[16];
+entry\src\main_app.cpp: 20 warnings, 0 errors
+compiling explorer_app.cpp...
+.\misc\context\inc\driver.h(34): warning:  #375-D: declaration requires a typedef name
+  };
+.\misc\context\inc\driver.h(53): warning:  #1-D: last line of file ends without a newline
+  #endif /*VM_DRV_H*/
+.\gui\inc\graphic.h(30): warning:  #1299-D: members and base-classes will be initialized in declaration order, not in member initialisation list order
+                                                    GCircle           <Color, Range>           (f, d),
+.\gui\inc\graphic.h(31): warning:  #1299-D: members and base-classes will be initialized in declaration order, not in member initialisation list order
+                                                    Line_Class        <Color, Range>           (f, d),
+.\gui\inc\graphic.h(32): warning:  #1299-D: members and base-classes will be initialized in declaration order, not in member initialisation list order
+                                                    GRectangle        <Color, Range>           (f, d),
+.\gui\inc\GLabel.h(19): warning:  #1299-D: members and base-classes will be initialized in declaration order, not in member initialisation list order
+                                                                      std_printer::Printer<char, '\0', '\n', '0', '-'> (textSize)
+.\gui\inc\textField.h(24): warning:  #1299-D: members and base-classes will be initialized in declaration order, not in member initialisation list order
+                                                           std_printer::Printer<char, '\0', '\n', '0', '-'> (textSize)
+.\gui\inc\GProgressBar.h(25): warning:  #1299-D: members and base-classes will be initialized in declaration order, not in member initialisation list order
+                                                                 std_printer::Printer<char, '\0', '\n', '0', '-'> (textSize)
+.\gui\inc\GBrowser.h(67): warning:  #1299-D: members and base-classes will be initialized in declaration order, not in member initialisation list order
+                                                                           std_printer::Printer<char, '\0', '\n', '0', '-'> (textSize)
+.\entry\inc\exec_app.h(18): warning:  #1-D: last line of file ends without a newline
+  #endif  /*EXEC_APP_H*/
+.\gui\inc\ContentPane.h(654): warning:  #997-D: function "GComponent<Color, Range, white>::repaint() [with Color=color_t, Range=range_t, white=(color_t)65535U]"  is hidden by "GContentPane<Color, Range, white>::repaint [with Color=color_t, Range=range_t, white=(color_t)65535U]"  -- virtual function override intended?
+                void repaint (ViewPort<Range> &w)
+          detected during:
+            instantiation of class "GContentPane<Color, Range, white> [with Color=color_t, Range=range_t, white=(color_t)65535U]"  at line 75 of ".\gui\inc\guiEngine.h"
+            instantiation of "GContentPane<Color, Range, white> *GuiEngine<Color, Range, white>::newContentPane(Dimension<Range>) [with Color=color_t, Range=range_t, white=(color_t)65535U]"  at line 85 of ".\gui\inc\guiEngine.h"
+            instantiation of "GContentPane<Color, Range, white> *GuiEngine<Color, Range, white>::newContentPane(Range, Range, Range, Range) [with Color=color_t, Range=range_t, white=(color_t)65535U]"  at line 35 of "entry\src\explorer_app.cpp"
+.\gui\inc\GBrowser.h(178): warning:  #3630-D: invalid narrowing conversion from "int" to "signed short"
+              Box<Range> headerBox = {this->x, this->y + this->h - hstep, this->w, hstep};
+          detected during instantiation of "void GBrowser<Color, Range, white>::repaint() [with Color=color_t, Range=range_t, white=(color_t)65535U]"  
+.\gui\inc\GBrowser.h(186): warning:  #3630-D: invalid narrowing conversion from "int" to "signed short"
+              Box<Range> nodeBox = {this->x, headerBox.y - hstep, this->w, hstep};
+          detected during instantiation of "void GBrowser<Color, Range, white>::repaint() [with Color=color_t, Range=range_t, white=(color_t)65535U]"  
+entry\src\explorer_app.cpp(409): warning:  #177-D: function "getFileInfo"  was declared but never referenced
+  static void getFileInfo (char *path)
+entry\src\explorer_app.cpp: 14 warnings, 0 errors
+compiling info_app.cpp...
+.\misc\context\inc\driver.h(34): warning:  #375-D: declaration requires a typedef name
+  };
+.\misc\context\inc\driver.h(53): warning:  #1-D: last line of file ends without a newline
+  #endif /*VM_DRV_H*/
+.\gui\inc\graphic.h(30): warning:  #1299-D: members and base-classes will be initialized in declaration order, not in member initialisation list order
+                                                    GCircle           <Color, Range>           (f, d),
+.\gui\inc\graphic.h(31): warning:  #1299-D: members and base-classes will be initialized in declaration order, not in member initialisation list order
+                                                    Line_Class        <Color, Range>           (f, d),
+.\gui\inc\graphic.h(32): warning:  #1299-D: members and base-classes will be initialized in declaration order, not in member initialisation list order
+                                                    GRectangle        <Color, Range>           (f, d),
+.\gui\inc\GLabel.h(19): warning:  #1299-D: members and base-classes will be initialized in declaration order, not in member initialisation list order
+                                                                      std_printer::Printer<char, '\0', '\n', '0', '-'> (textSize)
+.\gui\inc\textField.h(24): warning:  #1299-D: members and base-classes will be initialized in declaration order, not in member initialisation list order
+                                                           std_printer::Printer<char, '\0', '\n', '0', '-'> (textSize)
+.\gui\inc\GProgressBar.h(25): warning:  #1299-D: members and base-classes will be initialized in declaration order, not in member initialisation list order
+                                                                 std_printer::Printer<char, '\0', '\n', '0', '-'> (textSize)
+.\gui\inc\GBrowser.h(67): warning:  #1299-D: members and base-classes will be initialized in declaration order, not in member initialisation list order
+                                                                           std_printer::Printer<char, '\0', '\n', '0', '-'> (textSize)
+.\gui\inc\ContentPane.h(654): warning:  #997-D: function "GComponent<Color, Range, white>::repaint() [with Color=color_t, Range=range_t, white=(color_t)65535U]"  is hidden by "GContentPane<Color, Range, white>::repaint [with Color=color_t, Range=range_t, white=(color_t)65535U]"  -- virtual function override intended?
+                void repaint (ViewPort<Range> &w)
+          detected during:
+            instantiation of class "GContentPane<Color, Range, white> [with Color=color_t, Range=range_t, white=(color_t)65535U]"  at line 75 of ".\gui\inc\guiEngine.h"
+            instantiation of "GContentPane<Color, Range, white> *GuiEngine<Color, Range, white>::newContentPane(Dimension<Range>) [with Color=color_t, Range=range_t, white=(color_t)65535U]"  at line 85 of ".\gui\inc\guiEngine.h"
+            instantiation of "GContentPane<Color, Range, white> *GuiEngine<Color, Range, white>::newContentPane(Range, Range, Range, Range) [with Color=color_t, Range=range_t, white=(color_t)65535U]"  at line 18 of "entry\src\info_app.cpp"
+.\gui\inc\GBrowser.h(178): warning:  #3630-D: invalid narrowing conversion from "int" to "signed short"
+              Box<Range> headerBox = {this->x, this->y + this->h - hstep, this->w, hstep};
+          detected during instantiation of "void GBrowser<Color, Range, white>::repaint() [with Color=color_t, Range=range_t, white=(color_t)65535U]"  
+.\gui\inc\GBrowser.h(186): warning:  #3630-D: invalid narrowing conversion from "int" to "signed short"
+              Box<Range> nodeBox = {this->x, headerBox.y - hstep, this->w, hstep};
+          detected during instantiation of "void GBrowser<Color, Range, white>::repaint() [with Color=color_t, Range=range_t, white=(color_t)65535U]"  
+entry\src\info_app.cpp: 12 warnings, 0 errors
+compiling file_app.cpp...
+.\misc\context\inc\driver.h(34): warning:  #375-D: declaration requires a typedef name
+  };
+.\misc\context\inc\driver.h(53): warning:  #1-D: last line of file ends without a newline
+  #endif /*VM_DRV_H*/
+.\gui\inc\graphic.h(30): warning:  #1299-D: members and base-classes will be initialized in declaration order, not in member initialisation list order
+                                                    GCircle           <Color, Range>           (f, d),
+.\gui\inc\graphic.h(31): warning:  #1299-D: members and base-classes will be initialized in declaration order, not in member initialisation list order
+                                                    Line_Class        <Color, Range>           (f, d),
+.\gui\inc\graphic.h(32): warning:  #1299-D: members and base-classes will be initialized in declaration order, not in member initialisation list order
+                                                    GRectangle        <Color, Range>           (f, d),
+.\gui\inc\GLabel.h(19): warning:  #1299-D: members and base-classes will be initialized in declaration order, not in member initialisation list order
+                                                                      std_printer::Printer<char, '\0', '\n', '0', '-'> (textSize)
+.\gui\inc\textField.h(24): warning:  #1299-D: members and base-classes will be initialized in declaration order, not in member initialisation list order
+                                                           std_printer::Printer<char, '\0', '\n', '0', '-'> (textSize)
+.\gui\inc\GProgressBar.h(25): warning:  #1299-D: members and base-classes will be initialized in declaration order, not in member initialisation list order
+                                                                 std_printer::Printer<char, '\0', '\n', '0', '-'> (textSize)
+.\gui\inc\GBrowser.h(67): warning:  #1299-D: members and base-classes will be initialized in declaration order, not in member initialisation list order
+                                                                           std_printer::Printer<char, '\0', '\n', '0', '-'> (textSize)
+entry\src\file_app.cpp(39): warning:  #111-D: statement is unreachable
+      return 0;
+entry\src\file_app.cpp: 10 warnings, 0 errors
+compiling exec_app.cpp...
+.\misc\context\inc\driver.h(34): warning:  #375-D: declaration requires a typedef name
+  };
+.\misc\context\inc\driver.h(53): warning:  #1-D: last line of file ends without a newline
+  #endif /*VM_DRV_H*/
+.\gui\inc\graphic.h(30): warning:  #1299-D: members and base-classes will be initialized in declaration order, not in member initialisation list order
+                                                    GCircle           <Color, Range>           (f, d),
+.\gui\inc\graphic.h(31): warning:  #1299-D: members and base-classes will be initialized in declaration order, not in member initialisation list order
+                                                    Line_Class        <Color, Range>           (f, d),
+.\gui\inc\graphic.h(32): warning:  #1299-D: members and base-classes will be initialized in declaration order, not in member initialisation list order
+                                                    GRectangle        <Color, Range>           (f, d),
+.\gui\inc\GLabel.h(19): warning:  #1299-D: members and base-classes will be initialized in declaration order, not in member initialisation list order
+                                                                      std_printer::Printer<char, '\0', '\n', '0', '-'> (textSize)
+.\gui\inc\textField.h(24): warning:  #1299-D: members and base-classes will be initialized in declaration order, not in member initialisation list order
+                                                           std_printer::Printer<char, '\0', '\n', '0', '-'> (textSize)
+.\gui\inc\GProgressBar.h(25): warning:  #1299-D: members and base-classes will be initialized in declaration order, not in member initialisation list order
+                                                                 std_printer::Printer<char, '\0', '\n', '0', '-'> (textSize)
+.\gui\inc\GBrowser.h(67): warning:  #1299-D: members and base-classes will be initialized in declaration order, not in member initialisation list order
+                                                                           std_printer::Printer<char, '\0', '\n', '0', '-'> (textSize)
+.\entry\inc\exec_app.h(18): warning:  #1-D: last line of file ends without a newline
+  #endif  /*EXEC_APP_H*/
+.\gui\inc\ContentPane.h(654): warning:  #997-D: function "GComponent<Color, Range, white>::repaint() [with Color=color_t, Range=range_t, white=(color_t)65535U]"  is hidden by "GContentPane<Color, Range, white>::repaint [with Color=color_t, Range=range_t, white=(color_t)65535U]"  -- virtual function override intended?
+                void repaint (ViewPort<Range> &w)
+          detected during:
+            instantiation of class "GContentPane<Color, Range, white> [with Color=color_t, Range=range_t, white=(color_t)65535U]"  at line 75 of ".\gui\inc\guiEngine.h"
+            instantiation of "GContentPane<Color, Range, white> *GuiEngine<Color, Range, white>::newContentPane(Dimension<Range>) [with Color=color_t, Range=range_t, white=(color_t)65535U]"  at line 85 of ".\gui\inc\guiEngine.h"
+            instantiation of "GContentPane<Color, Range, white> *GuiEngine<Color, Range, white>::newContentPane(Range, Range, Range, Range) [with Color=color_t, Range=range_t, white=(color_t)65535U]"  at line 30 of "entry\src\exec_app.cpp"
+entry\src\exec_app.cpp(23): warning:  #177-D: variable "text_size"  was declared but never referenced
+      static uint32_t usage_request, text_size;
+.\gui\inc\GBrowser.h(178): warning:  #3630-D: invalid narrowing conversion from "int" to "signed short"
+              Box<Range> headerBox = {this->x, this->y + this->h - hstep, this->w, hstep};
+          detected during instantiation of "void GBrowser<Color, Range, white>::repaint() [with Color=color_t, Range=range_t, white=(color_t)65535U]"  
+.\gui\inc\GBrowser.h(186): warning:  #3630-D: invalid narrowing conversion from "int" to "signed short"
+              Box<Range> nodeBox = {this->x, headerBox.y - hstep, this->w, hstep};
+          detected during instantiation of "void GBrowser<Color, Range, white>::repaint() [with Color=color_t, Range=range_t, white=(color_t)65535U]"  
+entry\src\exec_app.cpp: 14 warnings, 0 errors
+compiling execute.cpp...
+.\misc\context\inc\driver.h(34): warning:  #375-D: declaration requires a typedef name
+  };
+.\misc\context\inc\driver.h(53): warning:  #1-D: last line of file ends without a newline
+  #endif /*VM_DRV_H*/
+.\gui\inc\graphic.h(30): warning:  #1299-D: members and base-classes will be initialized in declaration order, not in member initialisation list order
+                                                    GCircle           <Color, Range>           (f, d),
+.\gui\inc\graphic.h(31): warning:  #1299-D: members and base-classes will be initialized in declaration order, not in member initialisation list order
+                                                    Line_Class        <Color, Range>           (f, d),
+.\gui\inc\graphic.h(32): warning:  #1299-D: members and base-classes will be initialized in declaration order, not in member initialisation list order
+                                                    GRectangle        <Color, Range>           (f, d),
+.\gui\inc\GLabel.h(19): warning:  #1299-D: members and base-classes will be initialized in declaration order, not in member initialisation list order
+                                                                      std_printer::Printer<char, '\0', '\n', '0', '-'> (textSize)
+.\gui\inc\textField.h(24): warning:  #1299-D: members and base-classes will be initialized in declaration order, not in member initialisation list order
+                                                           std_printer::Printer<char, '\0', '\n', '0', '-'> (textSize)
+.\gui\inc\GProgressBar.h(25): warning:  #1299-D: members and base-classes will be initialized in declaration order, not in member initialisation list order
+                                                                 std_printer::Printer<char, '\0', '\n', '0', '-'> (textSize)
+.\gui\inc\GBrowser.h(67): warning:  #1299-D: members and base-classes will be initialized in declaration order, not in member initialisation list order
+                                                                           std_printer::Printer<char, '\0', '\n', '0', '-'> (textSize)
+entry\src\execute.cpp(89): warning:  #550-D: variable "xret"  was set but never used
+                          _XCALL(xret, expl_app, EXPLORER_APP_USE_FILTER, cmdBuffer + 2);
+entry\src\execute.cpp(91): warning:  #550-D: variable "xret"  was set but never used
+                          _XCALL(xret, expl_app, EXPLORER_APP_USE_FILTER, cmdBuffer + 1);
+entry\src\execute.cpp(129): warning:  #111-D: statement is unreachable
+              break;
+entry\src\execute.cpp(144): warning:  #550-D: variable "__xret"  was set but never used
+                                      _XCALL(__xret, cam_app, 1, (void *)(cmdOption + 3));
+entry\src\execute.cpp(71): warning:  #177-D: variable "option"  was declared but never referenced
+      WORD_T option = 0;
+entry\src\execute.cpp(48): warning:  #177-D: variable "cmdString"  was declared but never referenced
+  static char cmdString[8];
+entry\src\execute.cpp(49): warning:  #177-D: variable "cmdOptionString"  was declared but never referenced
+  static char cmdOptionString[24];
+entry\src\execute.cpp: 16 warnings, 0 errors
+compiling exec_interface.cpp...
+.\misc\context\inc\driver.h(34): warning:  #375-D: declaration requires a typedef name
+  };
+.\misc\context\inc\driver.h(53): warning:  #1-D: last line of file ends without a newline
+  #endif /*VM_DRV_H*/
+.\gui\inc\graphic.h(30): warning:  #1299-D: members and base-classes will be initialized in declaration order, not in member initialisation list order
+                                                    GCircle           <Color, Range>           (f, d),
+.\gui\inc\graphic.h(31): warning:  #1299-D: members and base-classes will be initialized in declaration order, not in member initialisation list order
+                                                    Line_Class        <Color, Range>           (f, d),
+.\gui\inc\graphic.h(32): warning:  #1299-D: members and base-classes will be initialized in declaration order, not in member initialisation list order
+                                                    GRectangle        <Color, Range>           (f, d),
+.\gui\inc\GLabel.h(19): warning:  #1299-D: members and base-classes will be initialized in declaration order, not in member initialisation list order
+                                                                      std_printer::Printer<char, '\0', '\n', '0', '-'> (textSize)
+.\gui\inc\textField.h(24): warning:  #1299-D: members and base-classes will be initialized in declaration order, not in member initialisation list order
+                                                           std_printer::Printer<char, '\0', '\n', '0', '-'> (textSize)
+.\gui\inc\GProgressBar.h(25): warning:  #1299-D: members and base-classes will be initialized in declaration order, not in member initialisation list order
+                                                                 std_printer::Printer<char, '\0', '\n', '0', '-'> (textSize)
+.\gui\inc\GBrowser.h(67): warning:  #1299-D: members and base-classes will be initialized in declaration order, not in member initialisation list order
+                                                                           std_printer::Printer<char, '\0', '\n', '0', '-'> (textSize)
+entry\src\exec_interface.cpp: 9 warnings, 0 errors
+compiling touch_app.cpp...
+.\misc\context\inc\driver.h(34): warning:  #375-D: declaration requires a typedef name
+  };
+.\misc\context\inc\driver.h(53): warning:  #1-D: last line of file ends without a newline
+  #endif /*VM_DRV_H*/
+.\entry\inc\touch_app.h(15): warning:  #1-D: last line of file ends without a newline
+  #endif  /*EXEC_APP_H*/
+entry\src\touch_app.cpp: 3 warnings, 0 errors
+compiling settings_app.cpp...
+.\misc\context\inc\driver.h(34): warning:  #375-D: declaration requires a typedef name
+  };
+.\misc\context\inc\driver.h(53): warning:  #1-D: last line of file ends without a newline
+  #endif /*VM_DRV_H*/
+.\gui\inc\graphic.h(30): warning:  #1299-D: members and base-classes will be initialized in declaration order, not in member initialisation list order
+                                                    GCircle           <Color, Range>           (f, d),
+.\gui\inc\graphic.h(31): warning:  #1299-D: members and base-classes will be initialized in declaration order, not in member initialisation list order
+                                                    Line_Class        <Color, Range>           (f, d),
+.\gui\inc\graphic.h(32): warning:  #1299-D: members and base-classes will be initialized in declaration order, not in member initialisation list order
+                                                    GRectangle        <Color, Range>           (f, d),
+.\gui\inc\GLabel.h(19): warning:  #1299-D: members and base-classes will be initialized in declaration order, not in member initialisation list order
+                                                                      std_printer::Printer<char, '\0', '\n', '0', '-'> (textSize)
+.\gui\inc\textField.h(24): warning:  #1299-D: members and base-classes will be initialized in declaration order, not in member initialisation list order
+                                                           std_printer::Printer<char, '\0', '\n', '0', '-'> (textSize)
+.\gui\inc\GProgressBar.h(25): warning:  #1299-D: members and base-classes will be initialized in declaration order, not in member initialisation list order
+                                                                 std_printer::Printer<char, '\0', '\n', '0', '-'> (textSize)
+.\gui\inc\GBrowser.h(67): warning:  #1299-D: members and base-classes will be initialized in declaration order, not in member initialisation list order
+                                                                           std_printer::Printer<char, '\0', '\n', '0', '-'> (textSize)
+.\entry\inc\settings_app.h(45): warning:  #1-D: last line of file ends without a newline
+  #endif  /*SETTINGS_APP_H*/
+.\entry\inc\exec_app.h(18): warning:  #1-D: last line of file ends without a newline
+  #endif  /*EXEC_APP_H*/
+.\gui\inc\ContentPane.h(654): warning:  #997-D: function "GComponent<Color, Range, white>::repaint() [with Color=color_t, Range=range_t, white=(color_t)65535U]"  is hidden by "GContentPane<Color, Range, white>::repaint [with Color=color_t, Range=range_t, white=(color_t)65535U]"  -- virtual function override intended?
+                void repaint (ViewPort<Range> &w)
+          detected during:
+            instantiation of class "GContentPane<Color, Range, white> [with Color=color_t, Range=range_t, white=(color_t)65535U]"  at line 75 of ".\gui\inc\guiEngine.h"
+            instantiation of "GContentPane<Color, Range, white> *GuiEngine<Color, Range, white>::newContentPane(Dimension<Range>) [with Color=color_t, Range=range_t, white=(color_t)65535U]"  at line 85 of ".\gui\inc\guiEngine.h"
+            instantiation of "GContentPane<Color, Range, white> *GuiEngine<Color, Range, white>::newContentPane(Range, Range, Range, Range) [with Color=color_t, Range=range_t, white=(color_t)65535U]"  at line 48 of "entry\src\settings_app.cpp"
+.\gui\inc\GBrowser.h(178): warning:  #3630-D: invalid narrowing conversion from "int" to "signed short"
+              Box<Range> headerBox = {this->x, this->y + this->h - hstep, this->w, hstep};
+          detected during instantiation of "void GBrowser<Color, Range, white>::repaint() [with Color=color_t, Range=range_t, white=(color_t)65535U]"  
+.\gui\inc\GBrowser.h(186): warning:  #3630-D: invalid narrowing conversion from "int" to "signed short"
+              Box<Range> nodeBox = {this->x, headerBox.y - hstep, this->w, hstep};
+          detected during instantiation of "void GBrowser<Color, Range, white>::repaint() [with Color=color_t, Range=range_t, white=(color_t)65535U]"  
+entry\src\settings_app.cpp(324): warning:  #177-D: function "clear_sprites"  was declared but never referenced
+  static void clear_sprites ()
+entry\src\settings_app.cpp: 15 warnings, 0 errors
+compiling snake_app.cpp...
+.\misc\context\inc\driver.h(34): warning:  #375-D: declaration requires a typedef name
+  };
+.\misc\context\inc\driver.h(53): warning:  #1-D: last line of file ends without a newline
+  #endif /*VM_DRV_H*/
+.\gui\inc\graphic.h(30): warning:  #1299-D: members and base-classes will be initialized in declaration order, not in member initialisation list order
+                                                    GCircle           <Color, Range>           (f, d),
+.\gui\inc\graphic.h(31): warning:  #1299-D: members and base-classes will be initialized in declaration order, not in member initialisation list order
+                                                    Line_Class        <Color, Range>           (f, d),
+.\gui\inc\graphic.h(32): warning:  #1299-D: members and base-classes will be initialized in declaration order, not in member initialisation list order
+                                                    GRectangle        <Color, Range>           (f, d),
+.\gui\inc\GLabel.h(19): warning:  #1299-D: members and base-classes will be initialized in declaration order, not in member initialisation list order
+                                                                      std_printer::Printer<char, '\0', '\n', '0', '-'> (textSize)
+.\gui\inc\textField.h(24): warning:  #1299-D: members and base-classes will be initialized in declaration order, not in member initialisation list order
+                                                           std_printer::Printer<char, '\0', '\n', '0', '-'> (textSize)
+.\gui\inc\GProgressBar.h(25): warning:  #1299-D: members and base-classes will be initialized in declaration order, not in member initialisation list order
+                                                                 std_printer::Printer<char, '\0', '\n', '0', '-'> (textSize)
+.\gui\inc\GBrowser.h(67): warning:  #1299-D: members and base-classes will be initialized in declaration order, not in member initialisation list order
+                                                                           std_printer::Printer<char, '\0', '\n', '0', '-'> (textSize)
+.\entry\inc\snake_app.h(163): warning:  #940-D: missing return statement at end of non-void function "Snake::step" 
+          }
+.\entry\inc\snake_app.h(349): warning:  #3630-D: invalid narrowing conversion from "unsigned short" to "signed short"
+              Box<range_t> box = {_x, _y, image->W, image->W};
+.\entry\inc\snake_app.h(349): warning:  #3630-D: invalid narrowing conversion from "unsigned short" to "signed short"
+              Box<range_t> box = {_x, _y, image->W, image->W};
+.\entry\inc\snake_app.h(382): warning:  #1-D: last line of file ends without a newline
+  #endif  /*SNAKE_APP_H*/
+.\gui\inc\ContentPane.h(654): warning:  #997-D: function "GComponent<Color, Range, white>::repaint() [with Color=color_t, Range=range_t, white=(color_t)65535U]"  is hidden by "GContentPane<Color, Range, white>::repaint [with Color=color_t, Range=range_t, white=(color_t)65535U]"  -- virtual function override intended?
+                void repaint (ViewPort<Range> &w)
+          detected during:
+            instantiation of class "GContentPane<Color, Range, white> [with Color=color_t, Range=range_t, white=(color_t)65535U]"  at line 75 of ".\gui\inc\guiEngine.h"
+            instantiation of "GContentPane<Color, Range, white> *GuiEngine<Color, Range, white>::newContentPane(Dimension<Range>) [with Color=color_t, Range=range_t, white=(color_t)65535U]"  at line 85 of ".\gui\inc\guiEngine.h"
+            instantiation of "GContentPane<Color, Range, white> *GuiEngine<Color, Range, white>::newContentPane(Range, Range, Range, Range) [with Color=color_t, Range=range_t, white=(color_t)65535U]"  at line 42 of "entry\src\snake_app.cpp"
+.\gui\inc\GBrowser.h(178): warning:  #3630-D: invalid narrowing conversion from "int" to "signed short"
+              Box<Range> headerBox = {this->x, this->y + this->h - hstep, this->w, hstep};
+          detected during instantiation of "void GBrowser<Color, Range, white>::repaint() [with Color=color_t, Range=range_t, white=(color_t)65535U]"  
+.\gui\inc\GBrowser.h(186): warning:  #3630-D: invalid narrowing conversion from "int" to "signed short"
+              Box<Range> nodeBox = {this->x, headerBox.y - hstep, this->w, hstep};
+          detected during instantiation of "void GBrowser<Color, Range, white>::repaint() [with Color=color_t, Range=range_t, white=(color_t)65535U]"  
+entry\src\snake_app.cpp: 16 warnings, 0 errors
+compiling analog_app.cpp...
+.\misc\context\inc\driver.h(34): warning:  #375-D: declaration requires a typedef name
+  };
+.\misc\context\inc\driver.h(53): warning:  #1-D: last line of file ends without a newline
+  #endif /*VM_DRV_H*/
+.\gui\inc\graphic.h(30): warning:  #1299-D: members and base-classes will be initialized in declaration order, not in member initialisation list order
+                                                    GCircle           <Color, Range>           (f, d),
+.\gui\inc\graphic.h(31): warning:  #1299-D: members and base-classes will be initialized in declaration order, not in member initialisation list order
+                                                    Line_Class        <Color, Range>           (f, d),
+.\gui\inc\graphic.h(32): warning:  #1299-D: members and base-classes will be initialized in declaration order, not in member initialisation list order
+                                                    GRectangle        <Color, Range>           (f, d),
+.\gui\inc\GLabel.h(19): warning:  #1299-D: members and base-classes will be initialized in declaration order, not in member initialisation list order
+                                                                      std_printer::Printer<char, '\0', '\n', '0', '-'> (textSize)
+.\gui\inc\textField.h(24): warning:  #1299-D: members and base-classes will be initialized in declaration order, not in member initialisation list order
+                                                           std_printer::Printer<char, '\0', '\n', '0', '-'> (textSize)
+.\gui\inc\GProgressBar.h(25): warning:  #1299-D: members and base-classes will be initialized in declaration order, not in member initialisation list order
+                                                                 std_printer::Printer<char, '\0', '\n', '0', '-'> (textSize)
+.\gui\inc\GBrowser.h(67): warning:  #1299-D: members and base-classes will be initialized in declaration order, not in member initialisation list order
+                                                                           std_printer::Printer<char, '\0', '\n', '0', '-'> (textSize)
+.\gui\inc\ContentPane.h(654): warning:  #997-D: function "GComponent<Color, Range, white>::repaint() [with Color=color_t, Range=range_t, white=(color_t)65535U]"  is hidden by "GContentPane<Color, Range, white>::repaint [with Color=color_t, Range=range_t, white=(color_t)65535U]"  -- virtual function override intended?
+                void repaint (ViewPort<Range> &w)
+          detected during:
+            instantiation of class "GContentPane<Color, Range, white> [with Color=color_t, Range=range_t, white=(color_t)65535U]"  at line 75 of ".\gui\inc\guiEngine.h"
+            instantiation of "GContentPane<Color, Range, white> *GuiEngine<Color, Range, white>::newContentPane(Dimension<Range>) [with Color=color_t, Range=range_t, white=(color_t)65535U]"  at line 85 of ".\gui\inc\guiEngine.h"
+            instantiation of "GContentPane<Color, Range, white> *GuiEngine<Color, Range, white>::newContentPane(Range, Range, Range, Range) [with Color=color_t, Range=range_t, white=(color_t)65535U]"  at line 57 of "entry\src\analog_app.cpp"
+entry\src\analog_app.cpp(1123): warning:  #3630-D: invalid narrowing conversion from "int" to "signed short"
+      Box<range_t> b = {zero_x, zero_y, max_x * 2, max_y * 2};
+entry\src\analog_app.cpp(1123): warning:  #3630-D: invalid narrowing conversion from "int" to "signed short"
+      Box<range_t> b = {zero_x, zero_y, max_x * 2, max_y * 2};
+.\gui\inc\GBrowser.h(178): warning:  #3630-D: invalid narrowing conversion from "int" to "signed short"
+              Box<Range> headerBox = {this->x, this->y + this->h - hstep, this->w, hstep};
+          detected during instantiation of "void GBrowser<Color, Range, white>::repaint() [with Color=color_t, Range=range_t, white=(color_t)65535U]"  
+.\gui\inc\GBrowser.h(186): warning:  #3630-D: invalid narrowing conversion from "int" to "signed short"
+              Box<Range> nodeBox = {this->x, headerBox.y - hstep, this->w, hstep};
+          detected during instantiation of "void GBrowser<Color, Range, white>::repaint() [with Color=color_t, Range=range_t, white=(color_t)65535U]"  
+entry\src\analog_app.cpp(1237): warning:  #177-D: function "random"  was declared but never referenced
+  static int random (int seed)
+entry\src\analog_app.cpp: 15 warnings, 0 errors
+compiling analog_app_inv.cpp...
+.\misc\context\inc\driver.h(34): warning:  #375-D: declaration requires a typedef name
+  };
+.\misc\context\inc\driver.h(53): warning:  #1-D: last line of file ends without a newline
+  #endif /*VM_DRV_H*/
+.\gui\inc\graphic.h(30): warning:  #1299-D: members and base-classes will be initialized in declaration order, not in member initialisation list order
+                                                    GCircle           <Color, Range>           (f, d),
+.\gui\inc\graphic.h(31): warning:  #1299-D: members and base-classes will be initialized in declaration order, not in member initialisation list order
+                                                    Line_Class        <Color, Range>           (f, d),
+.\gui\inc\graphic.h(32): warning:  #1299-D: members and base-classes will be initialized in declaration order, not in member initialisation list order
+                                                    GRectangle        <Color, Range>           (f, d),
+.\gui\inc\GLabel.h(19): warning:  #1299-D: members and base-classes will be initialized in declaration order, not in member initialisation list order
+                                                                      std_printer::Printer<char, '\0', '\n', '0', '-'> (textSize)
+.\gui\inc\textField.h(24): warning:  #1299-D: members and base-classes will be initialized in declaration order, not in member initialisation list order
+                                                           std_printer::Printer<char, '\0', '\n', '0', '-'> (textSize)
+.\gui\inc\GProgressBar.h(25): warning:  #1299-D: members and base-classes will be initialized in declaration order, not in member initialisation list order
+                                                                 std_printer::Printer<char, '\0', '\n', '0', '-'> (textSize)
+.\gui\inc\GBrowser.h(67): warning:  #1299-D: members and base-classes will be initialized in declaration order, not in member initialisation list order
+                                                                           std_printer::Printer<char, '\0', '\n', '0', '-'> (textSize)
+entry\src\analog_app_inv.cpp: 9 warnings, 0 errors
+compiling cam_app.cpp...
+.\misc\context\inc\driver.h(34): warning:  #375-D: declaration requires a typedef name
+  };
+.\misc\context\inc\driver.h(53): warning:  #1-D: last line of file ends without a newline
+  #endif /*VM_DRV_H*/
+.\gui\inc\graphic.h(30): warning:  #1299-D: members and base-classes will be initialized in declaration order, not in member initialisation list order
+                                                    GCircle           <Color, Range>           (f, d),
+.\gui\inc\graphic.h(31): warning:  #1299-D: members and base-classes will be initialized in declaration order, not in member initialisation list order
+                                                    Line_Class        <Color, Range>           (f, d),
+.\gui\inc\graphic.h(32): warning:  #1299-D: members and base-classes will be initialized in declaration order, not in member initialisation list order
+                                                    GRectangle        <Color, Range>           (f, d),
+.\gui\inc\GLabel.h(19): warning:  #1299-D: members and base-classes will be initialized in declaration order, not in member initialisation list order
+                                                                      std_printer::Printer<char, '\0', '\n', '0', '-'> (textSize)
+.\gui\inc\textField.h(24): warning:  #1299-D: members and base-classes will be initialized in declaration order, not in member initialisation list order
+                                                           std_printer::Printer<char, '\0', '\n', '0', '-'> (textSize)
+.\gui\inc\GProgressBar.h(25): warning:  #1299-D: members and base-classes will be initialized in declaration order, not in member initialisation list order
+                                                                 std_printer::Printer<char, '\0', '\n', '0', '-'> (textSize)
+.\gui\inc\GBrowser.h(67): warning:  #1299-D: members and base-classes will be initialized in declaration order, not in member initialisation list order
+                                                                           std_printer::Printer<char, '\0', '\n', '0', '-'> (textSize)
+.\gui\inc\ContentPane.h(654): warning:  #997-D: function "GComponent<Color, Range, white>::repaint() [with Color=color_t, Range=range_t, white=(color_t)65535U]"  is hidden by "GContentPane<Color, Range, white>::repaint [with Color=color_t, Range=range_t, white=(color_t)65535U]"  -- virtual function override intended?
+                void repaint (ViewPort<Range> &w)
+          detected during:
+            instantiation of class "GContentPane<Color, Range, white> [with Color=color_t, Range=range_t, white=(color_t)65535U]"  at line 75 of ".\gui\inc\guiEngine.h"
+            instantiation of "GContentPane<Color, Range, white> *GuiEngine<Color, Range, white>::newContentPane(Dimension<Range>) [with Color=color_t, Range=range_t, white=(color_t)65535U]"  at line 85 of ".\gui\inc\guiEngine.h"
+            instantiation of "GContentPane<Color, Range, white> *GuiEngine<Color, Range, white>::newContentPane(Range, Range, Range, Range) [with Color=color_t, Range=range_t, white=(color_t)65535U]"  at line 60 of "entry\src\cam_app.cpp"
+entry\src\cam_app.cpp(493): warning:  #111-D: statement is unreachable
+                  break;               
+entry\src\cam_app.cpp(496): warning:  #111-D: statement is unreachable
+      return cam_cfg;
+.\gui\inc\GBrowser.h(178): warning:  #3630-D: invalid narrowing conversion from "int" to "signed short"
+              Box<Range> headerBox = {this->x, this->y + this->h - hstep, this->w, hstep};
+          detected during instantiation of "void GBrowser<Color, Range, white>::repaint() [with Color=color_t, Range=range_t, white=(color_t)65535U]"  
+.\gui\inc\GBrowser.h(186): warning:  #3630-D: invalid narrowing conversion from "int" to "signed short"
+              Box<Range> nodeBox = {this->x, headerBox.y - hstep, this->w, hstep};
+          detected during instantiation of "void GBrowser<Color, Range, white>::repaint() [with Color=color_t, Range=range_t, white=(color_t)65535U]"  
+entry\src\cam_app.cpp: 14 warnings, 0 errors
+compiling tcp_app.cpp...
+.\misc\context\inc\driver.h(34): warning:  #375-D: declaration requires a typedef name
+  };
+.\misc\context\inc\driver.h(53): warning:  #1-D: last line of file ends without a newline
+  #endif /*VM_DRV_H*/
+.\gui\inc\graphic.h(30): warning:  #1299-D: members and base-classes will be initialized in declaration order, not in member initialisation list order
+                                                    GCircle           <Color, Range>           (f, d),
+.\gui\inc\graphic.h(31): warning:  #1299-D: members and base-classes will be initialized in declaration order, not in member initialisation list order
+                                                    Line_Class        <Color, Range>           (f, d),
+.\gui\inc\graphic.h(32): warning:  #1299-D: members and base-classes will be initialized in declaration order, not in member initialisation list order
+                                                    GRectangle        <Color, Range>           (f, d),
+.\gui\inc\GLabel.h(19): warning:  #1299-D: members and base-classes will be initialized in declaration order, not in member initialisation list order
+                                                                      std_printer::Printer<char, '\0', '\n', '0', '-'> (textSize)
+.\gui\inc\textField.h(24): warning:  #1299-D: members and base-classes will be initialized in declaration order, not in member initialisation list order
+                                                           std_printer::Printer<char, '\0', '\n', '0', '-'> (textSize)
+.\gui\inc\GProgressBar.h(25): warning:  #1299-D: members and base-classes will be initialized in declaration order, not in member initialisation list order
+                                                                 std_printer::Printer<char, '\0', '\n', '0', '-'> (textSize)
+.\gui\inc\GBrowser.h(67): warning:  #1299-D: members and base-classes will be initialized in declaration order, not in member initialisation list order
+                                                                           std_printer::Printer<char, '\0', '\n', '0', '-'> (textSize)
+entry\src\tcp_app.cpp: 9 warnings, 0 errors
+linking...
+Program Size: Code=234640 RO-data=136580 RW-data=2620 ZI-data=184268  
+FromELF: creating hex file...
+".\Objects\proj.axf" - 0 Error(s), 214 Warning(s).
+
+<h2>Software Packages used:</h2>
+
+Package Vendor: ARM
+                http://www.keil.com/pack/ARM.CMSIS.5.0.1.pack
+                ARM.CMSIS.5.0.1
+                CMSIS (Cortex Microcontroller Software Interface Standard)
+   * Component: CORE Version: 5.0.1
+
+Package Vendor: Keil
+                http://www.keil.com/pack/Keil.STM32F4xx_DFP.2.11.0.pack
+                Keil.STM32F4xx_DFP.2.11.0
+                STMicroelectronics STM32F4 Series Device Support, Drivers and Examples
+   * Component: Startup Version: 2.6.0
+
+<h2>Collection of Component include folders:</h2>
+  .\RTE\_stm32f417iet6
+  C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include
+  C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include
+
+<h2>Collection of Component Files used:</h2>
+
+   * Component: Keil::Device:Startup:2.6.0
+      Source file:   MDK\Device\Source\ARM\STM32F40xxx_41xxx_OPT.s
+      Source file:   MDK\Device\Source\ARM\STM32F4xx_OTP.s
+      Include file:  Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h
+      Source file:   Drivers\CMSIS\Device\ST\STM32F4xx\Source\Templates\arm\startup_stm32f417xx.s
+      Source file:   Drivers\CMSIS\Device\ST\STM32F4xx\Source\Templates\system_stm32f4xx.c
+
+   * Component: ARM::CMSIS:CORE:5.0.1
+Build Time Elapsed:  00:00:35
+</pre>
+</body>
+</html>

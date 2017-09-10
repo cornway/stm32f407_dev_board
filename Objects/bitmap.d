@@ -1,0 +1,12 @@
+.\objects\bitmap.o: device\src\bitmap.cpp
+.\objects\bitmap.o: .\device\inc\bitmap.h
+.\objects\bitmap.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\bitmap.o: .\gui\inc\gui_defs.h
+.\objects\bitmap.o: .\misc\inc\iterable.h
+.\objects\bitmap.o: .\misc\inc\ArrayListStatic.h
+.\objects\bitmap.o: .\misc\inc\dimensions.h
+.\objects\bitmap.o: .\FatFs\src\ff.h
+.\objects\bitmap.o: .\FatFs\src\integer.h
+.\objects\bitmap.o: .\FatFs\src\ffconf.h
+.\objects\bitmap.o: .\misc\inc\abstract.h
+.\objects\bitmap.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h

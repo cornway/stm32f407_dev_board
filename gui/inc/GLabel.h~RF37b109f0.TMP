@@ -1,0 +1,99 @@
+#ifndef GLABEL_OBJECT
+#define GLABEL_OBJECT
+#include "graphic.h"
+#include "printer.h"
+#include "gSelectable.h"
+
+
+#define DefaulLabelCharCapacity 24
+
+template <typename Color, typename Range, Color white>
+class GLabel : public GSelectable<Color, Range, white>,
+               public Link<GLabel<Color, Range, white> >,
+               public std_printer::Printer      {
+private :
+    char text[DefaulLabelCharCapacity];
+    int textAllignLeft;
+    
+public:
+    GLabel (Graphic<Color, Range, white> *graphic) : GSelectable<Color, Range, white> (graphic), 
+                                                     Link<GLabel<Color, Range, white> > ()
+    {
+        this->setSelectBorderWidth(2);
+		opaqueLevel = 100;
+		textAllignLeft = 6;
+        this->glowLevel = 0;
+    }
+		
+	int opaqueLevel;
+		
+    /*printer interface*/
+    void putChar (char c, int pos) final
+    {
+        if (pos < DefaulLabelCharCapacity) {
+            text[pos] = c;
+        }
+    }
+        
+    void setAll (char c) final
+    {
+        for (int i = 0; i < DefaulLabelCharCapacity; i++) {
+            text[i] = c;
+        }
+    }
+    /*printer interface*/
+
+    ~GLabel ()
+    {
+        //delete(this);
+    }
+    
+    void setText (char *str) 
+    {
+		this->clear();
+        (*this) << str;
+    }
+    void appendText (char *str) 
+    {
+        (*this) << str;
+    }
+    
+    
+    
+    virtual void repaint () final
+    {
+        Dimension<Range> box = {this->x, this->y, this->w, this->h};
+		if (this->opaqueLevel > 0) {
+			this->graphic->fill(box, this->background);
+            this->drawSelection();
+		}
+		box.x = box.x + this->textAllignLeft;
+        this->graphic->drawString(box, this->text, this->foreground);
+        if (this->icon.Image != nullptr) {
+            Dimension<Range> imgBox = {0, 0, this->icon.W, this->icon.H};
+            imgBox.setOrigins(box.getOrigins());
+            this->graphic->fill(imgBox, &this->icon, white, this->glowLevel);
+        }
+    }
+		
+    void setOpaque (int level)
+    {
+        this->opaqueLevel = level;
+    }
+    
+		
+    void setTextAllignLeft (int allign)
+    {
+        this->textAllignLeft = allign;
+    }
+		
+    
+};
+
+#endif
+
+/*End of file*/
+
+/**/
+
+

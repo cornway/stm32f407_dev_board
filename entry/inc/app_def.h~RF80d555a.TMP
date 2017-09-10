@@ -1,0 +1,183 @@
+#ifndef APP_DEF_H
+#define APP_DEF_H
+
+#include "VM.h"
+#include "vmapi.h"
+#include "device_conf.h"
+
+INT_T render_app (WORD_T size, void *argv);
+INT_T main_app (WORD_T size, void *argv);
+INT_T cam_app (WORD_T size, void *argv);
+INT_T expl_app (WORD_T size, void *argv);
+INT_T info_app (WORD_T size, void *argv);
+INT_T file_app (WORD_T size, void *argv);
+INT_T exec_app (WORD_T size, void *argv);
+INT_T touch_app (WORD_T size, void *argv);
+INT_T analog_app (WORD_T size, void *argv);
+INT_T settings_app (WORD_T size, void *argv);
+INT_T tcp_app (WORD_T size, void *argv);
+
+#define ALERT_TEXT_COLOR    (RGB24_TO_RGB16(0,0,0))
+#define ALERT_BACK_COLOR    (RGB24_TO_RGB16(173,216,230))
+#define ALERT_KEY_COLOR     (RGB24_TO_RGB16(65,105,225))
+
+#define PRIVILEGE_USER      (0U)
+#define PRIVILEGE_ADMIN     (1U)
+
+#define EXEC_APP_PASSWORD_REQUEST   (0U)
+#define EXEC_APP_EXECUTE_REQUEST    (1U)
+#define EXEC_APP_EDIT_REQUEST       (2U)
+
+#define EXPLORER_APP_USE_FILTER     (1U)
+#define EXPLORER_APP_NO_FILTER      (0U)
+
+#define PASSWORD_MAX_SIZE           24
+#define DEFAULT_ADMIN_PASSWORD      ("112")
+#define CONF_DATA_FILE_SIZE         (128)
+
+#define ACCOUNT_ACCESS_FAILURE          (-1)
+#define ACCOUNT_ACCESS_GRANTED_ONCE     (0)
+#define ACCOUNT_ACCESS_GRANTED_FOREVER  (1U)
+
+
+#pragma anon_unions
+
+typedef struct {
+    uint8_t privilege;
+    char password[PASSWORD_MAX_SIZE];
+} ACCESS_CONTROL;
+
+char *execute (char *);
+
+
+#define     FRAME_RENDER_LOCK_ID    (0x00000001U)
+#define     FILE_SYSTEM_LOCK_ID     (0x00000002U)
+#define     MEMORY_ALLOC_LOCK_ID    (0x00000003U)
+#define     SENSOR_LOCK_ID          (0x00000004U)
+#define     USB_LOCK_ID             (0x00000005U)
+
+#define     UNSUPPORTED_FILE_TYPE      (1U)
+#define     ADV_CONF_OK                (2U)
+#define     ADV_CONF_FAILED            (3U)
+
+
+typedef _PACKED struct {
+    
+} ANALOG_CONTROL;
+
+#define GRAPHIC_QUALITY_BEST    (2U)
+#define GRAPHIC_QUALITY_GOOD    (1U)
+#define GRAPHIC_QUALITY_FAST    (0U)
+
+#define GRAPHIC_ACCELERATION_ON  (1U)
+#define GRAPHIC_ACCELERATION_OFF (0U)
+
+typedef _PACKED struct {
+    unsigned quality : 2;
+    unsigned acceleration : 1;
+} GRAPHIC_CONTROL;
+
+typedef _PACKED struct {
+    
+} VIDEO_CONTROL;
+
+
+#define SOUND_ON     (1U)
+#define SOUND_OFF    (0U)
+
+typedef _PACKED struct {
+    unsigned soundOn : 1;
+} AUDIO_CONTROL;
+
+#define POWER_CONSUMPTION_REDUCED   (1U)
+#define POWER_CONSUMPTION_FULL      (0U)
+#define POWER_CONSUMPTION_SLEEP     (2U)
+
+typedef _PACKED struct {
+    unsigned powerConsumption : 2;
+} POWER_CONTROL;
+
+#define TFT_BACKLIGHT_ON    (1U)
+#define TFT_BACKLIGHT_OFF   (0U)
+
+typedef _PACKED struct {
+    unsigned backlight : 1;
+    unsigned backlightValue : 7;
+} TFT_CONTROL;
+
+
+typedef _PACKED struct {
+    char ipv4Str[17];
+    _PACKED struct {
+        uint8_t ipv4_ip0;
+        uint8_t ipv4_ip1;
+        uint8_t ipv4_ip2;
+        uint8_t ipv4_ip3;
+    };
+    
+    _PACKED struct {
+        uint8_t mac0;
+        uint8_t mac1;
+        uint8_t mac2;
+        uint8_t mac3;
+        uint8_t mac4;
+        uint8_t mac5;
+    };
+} NETWORK_CONTROL;
+
+typedef _PACKED struct {
+    ANALOG_CONTROL analogControl;
+    GRAPHIC_CONTROL graphicControl;
+    VIDEO_CONTROL videoControl;
+    AUDIO_CONTROL audioControl;
+    POWER_CONTROL powerControl;
+    TFT_CONTROL tftControl;
+    NETWORK_CONTROL networkControl;
+    uint32_t sleepTimeout;
+} APPLICATION_CONTROL;
+
+#define     GET_SPRITE(label, s, b, path, name) \
+do { \
+    tImage<color_t> image; \
+    uint32_t w, h; \
+    b = bmp.open(path, file); \
+    if (b != nullptr) { \
+        w = b->getWidth(); \
+        h = b->getHeight(); \
+        s = spriteRAM.allocSprite(w, h, name); \
+        b->draw(s->ram, 2, 0); \
+        bmp.close(b); \
+        image.W = w; \
+        image.H = h; \
+        image.Image = s->ram; \
+        label->setIcon(&image); \
+    } \
+} while (0) \
+
+#define     SET_SPRITE(label, s) \
+do { \
+    tImage<color_t> image; \
+    image.W = s->w; \
+    image.H = s->h; \
+    image.Image = s->ram; \
+    label->setIcon(&image); \
+} while (0) \
+
+
+#define     APP_CLEANUP(obj, sensor) \
+do { \
+    vm::lock(MEMORY_ALLOC_LOCK_ID); \
+    delete obj; \
+    sensor.removeAllListeners(); \
+    vm::unlock(MEMORY_ALLOC_LOCK_ID); \
+} while (0)
+
+    
+extern void usbdStart (void);
+extern void usbdStop (void);
+
+
+int logon_once ();
+
+#endif /*APP_DEF_H*/
+

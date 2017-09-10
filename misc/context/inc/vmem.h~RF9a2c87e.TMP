@@ -1,0 +1,44 @@
+
+#ifndef VMEM_H
+#define VMEM_H
+
+#include "iterable.h"
+
+
+#ifndef MEMORY_ALLIGN
+#define MEMORY_ALLIGN (sizeof(uint32_t))
+#endif
+
+class Memory;
+
+class MemoChunk : public Link<MemoChunk> {
+    private :
+            uint32_t size;
+    
+            MemoChunk ();
+            ~MemoChunk ();
+    
+            friend class Memory;
+    public :
+            
+};
+
+
+class Memory {
+    private :
+        vector::Vector<MemoChunk> freeList, allocList;
+        uint32_t memStart;
+        uint32_t memSize;
+    
+        void sanitize ();
+    public :
+        Memory ();
+        ~Memory ();
+    
+        void init (uint32_t start, uint32_t size);
+        void *alloc (uint32_t size);
+        void free (void *p);
+};
+
+
+#endif /*VMEM_H*/

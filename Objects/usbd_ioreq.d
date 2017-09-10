@@ -1,0 +1,11 @@
+.\objects\usbd_ioreq.o: STM32_USB_Device_Library\Core\Src\usbd_ioreq.c
+.\objects\usbd_ioreq.o: .\STM32_USB_Device_Library\Core\Inc\usbd_ioreq.h
+.\objects\usbd_ioreq.o: .\STM32_USB_Device_Library\Core\Inc\usbd_def.h
+.\objects\usbd_ioreq.o: .\device\inc\usbd_conf.h
+.\objects\usbd_ioreq.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\usbd_ioreq.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\usbd_ioreq.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\usbd_ioreq.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\usbd_ioreq.o: .\STM32_USB_Device_Library\Core\Inc\usbd_core.h
+.\objects\usbd_ioreq.o: .\STM32_USB_Device_Library\Core\Inc\usbd_ioreq.h
+.\objects\usbd_ioreq.o: .\STM32_USB_Device_Library\Core\Inc\usbd_ctlreq.h

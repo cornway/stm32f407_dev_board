@@ -1,0 +1,169 @@
+#ifndef CONTEXT_SWITCHING
+#define CONTEXT_SWITCHING
+
+#include <stdint.h>
+
+#ifdef __cplusplus
+    extern "C" {
+#endif
+
+#define WORD_T      uint32_t
+#define HWORD_T     uint16_t
+#define BYTE_T      uint8_t
+
+#define UINT_T      uint32_t
+#define INT_T       int32_t
+
+#define _PACKED             __packed
+#define _VALUES_IN_REGS     __value_in_regs
+
+#pragma import VMTick   
+#pragma import StackSwitchPSV   
+#pragma import VMSvc
+#pragma import VMInit
+#pragma import VMStart
+
+#define CPU_PRIV_ACCESS 0
+#define CPU_UNPRIV_ACCESS 1
+
+#define CPU_USE_MSP 0
+#define CPU_USE_PSP 2
+
+#define HANDLE_NOFPU_MSP    (0xF1U)
+#define THREAD_NOFPU_MSP    (0xF9U)
+#define THREAD_NOFPU_PSP    (0xFDU)
+#define HANDLER_FPU_MSP     (0xE1U)
+#define THREAD_FPU_MSP      (0xE9U)
+#define THREAD_FPU_PSP      (0xEDU)
+
+#define EXC_RETURN(exc)     (0xFFFFFF00U | exc)
+
+#define EXC_RETURN_USE_FPU_BM   (0x10U)
+#define EXC_RETURN_HANDLER_GM   (0xfU)
+#define EXC_RETURN_HANDLER_VAL  (0x1)
+
+#define FPU_STACK_SIZE      (33 * sizeof(WORD_T))
+#define CPU_STACK_SIZE      (16 * sizeof(WORD_T))
+
+#define CPU_ACCESS_LEVEL_0 (CPU_USE_PSP | CPU_UNPRIV_ACCESS)
+#define CPU_ACCESS_LEVEL_1 (CPU_USE_PSP | CPU_PRIV_ACCESS)
+#define CPU_ACCESS_LEVEL_2 (CPU_USE_MSP | CPU_UNPRIV_ACCESS)
+#define CPU_ACCESS_LEVEL_3 (CPU_USE_MSP | CPU_PRIV_ACCESS)
+
+
+typedef void (*_CALLBACK) (void *);
+
+typedef _PACKED struct {
+    WORD_T EXC_RET;
+    WORD_T R11; /*user top*/
+    WORD_T R10;
+    WORD_T R9;
+    WORD_T R8;
+    WORD_T R7;
+    WORD_T R6;
+    WORD_T R5;
+    WORD_T R4; /*irq top*/
+    WORD_T R0; 
+    WORD_T R1;
+    WORD_T R2;
+    WORD_T R3;
+    WORD_T R12;
+    WORD_T LR;
+    WORD_T PC;
+    WORD_T XPSR; /*pre irq top*/
+} CPU_STACK; /*stack frame implementation for no fpu context store*/
+
+typedef _PACKED struct {
+    WORD_T S16[16];
+    WORD_T EXC_RET;
+    WORD_T R11;
+    WORD_T R10;
+    WORD_T R9;
+    WORD_T R8;
+    WORD_T R7;
+    WORD_T R6;
+    WORD_T R5;
+    WORD_T R4;
+    WORD_T R0;
+    WORD_T R1;
+    WORD_T R2;
+    WORD_T R3;
+    WORD_T R12;
+    WORD_T LR;
+    WORD_T PC;
+    WORD_T XPSR;
+    WORD_T S[16];
+    WORD_T FPSCR;
+} CPU_STACK_FPUL; /*stack frame implementation for lazy fpu context store*/
+
+typedef _PACKED struct {
+    WORD_T S[32];
+    WORD_T FPSCR;
+    WORD_T EXC_RET;
+    WORD_T R11;
+    WORD_T R10;
+    WORD_T R9;
+    WORD_T R8;
+    WORD_T R7;
+    WORD_T R6;
+    WORD_T R5;
+    WORD_T R4;
+    WORD_T R0;
+    WORD_T R1;
+    WORD_T R2;
+    WORD_T R3;
+    WORD_T R12;
+    WORD_T LR;
+    WORD_T PC;
+} CPU_STACK_FPU; /*stack frame implementation for user fpu context store*/
+
+
+#pragma anon_unions
+
+typedef _PACKED struct {
+  _PACKED union {
+        CPU_STACK       cpuStack;
+        CPU_STACK_FPUL  cpuStackFpul;
+        CPU_STACK_FPU   cpuStackFpu;
+    };
+} CPU_STACK_FRAME;
+
+   
+    
+typedef _PACKED struct {
+   WORD_T R0;
+   WORD_T R1;
+   WORD_T R2;
+   WORD_T R3; /*!*/
+} SVC_HANDLE_ARG;
+
+
+typedef _PACKED struct {
+   WORD_T R0; /*stack frame address*/
+   WORD_T R1; /*link register - exc_return value*/
+   WORD_T R2; /*FPCAR*/
+   WORD_T R3; /*FPCCR*/
+} SYS_HANDLE_ARG;
+
+typedef _PACKED struct {
+   WORD_T R0;
+   WORD_T R1; 
+} DWORD_RET;
+
+typedef _PACKED struct {
+   WORD_T R0;
+   WORD_T R1; 
+   WORD_T R2;
+   WORD_T R3;
+} QWORD_RET;
+
+
+#ifdef __cplusplus
+    }
+#endif
+
+#endif
+
+
+/*End of file*/
+

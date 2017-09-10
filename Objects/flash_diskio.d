@@ -1,0 +1,17 @@
+.\objects\flash_diskio.o: FatFs\src\drivers\flash_diskio.c
+.\objects\flash_diskio.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\flash_diskio.o: .\FatFs\src\ff_gen_drv.h
+.\objects\flash_diskio.o: .\FatFs\src\diskio.h
+.\objects\flash_diskio.o: .\FatFs\src\integer.h
+.\objects\flash_diskio.o: .\FatFs\src\ff.h
+.\objects\flash_diskio.o: .\FatFs\src\ffconf.h
+.\objects\flash_diskio.o: C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h
+.\objects\flash_diskio.o: C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f417xx.h
+.\objects\flash_diskio.o: C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include\core_cm4.h
+.\objects\flash_diskio.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\flash_diskio.o: C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include\cmsis_compiler.h
+.\objects\flash_diskio.o: C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include\cmsis_armcc.h
+.\objects\flash_diskio.o: C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include\system_stm32f4xx.h
+.\objects\flash_diskio.o: .\device\inc\device_conf.h
+.\objects\flash_diskio.o: .\device\inc\device_gui_conf.h
+.\objects\flash_diskio.o: FatFs\src\drivers\flash_diskio.h

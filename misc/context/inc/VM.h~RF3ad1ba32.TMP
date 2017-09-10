@@ -1,0 +1,34 @@
+#ifndef VM_CLASS
+#define VM_CLASS
+
+#ifndef __cplusplus
+    extern "C" {
+#endif
+
+#include "machM4.h"
+    
+void VM_SYS_THREAD (void *);
+        
+enum {
+    VM_OK,
+    VM_SMALL_CORE,
+    VM_CREATE_ERR,
+    VM_DEPRECATED_CALL,
+};
+        
+_VALUES_IN_REGS DWORD_RET vminit ();
+
+extern void CMSIS_Tick();    
+
+        
+        
+#ifndef __cplusplus
+    }
+#endif        
+        
+        
+#endif
+
+
+/*End of file*/
+

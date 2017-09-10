@@ -1,0 +1,22 @@
+#ifndef VMAPI_CALL_H
+#define VMAPI_CALL_H
+
+#ifdef __cplusplus
+    extern "C" {
+#endif
+
+enum {
+    VMAPI_RESTART       = 0,
+    VMAPI_SLEEP         = 1,
+    VMAPI_YIELD         = 2,
+    VMAPI_CREATE        = 3,
+    VMAPI_CREATE_DRV    = 4,
+    VMAPI_MUTEX         = 5,
+};    
+        
+        
+#ifdef __cplusplus
+    }
+#endif
+        
+#endif /*VMAPI_CALL_H*/
