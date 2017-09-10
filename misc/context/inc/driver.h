@@ -5,11 +5,15 @@
 #include <stdint.h>
 #include "iterable.h"
 
+#ifdef NEXT 
+#undef NEXT
+#define NEXT(x) ((x) - 1)
+
 enum {
-    IOCTL_START = 0,
-    IOCTL_IRQ,
-    IOCTL_DMA,
-    IOCTL_END,
+    IOCTL_START = NEXT(0),
+    IOCTL_IRQ = NEXT(IOCTL_START),
+    IOCTL_DMA = NEXT(IOCTL_IRQ),
+    IOCTL_END = NEXT(IOCTL_DMA),
 };
 
 typedef int32_t drv_sword_t;
@@ -49,5 +53,6 @@ int32_t drv_detach (uint32_t id);
 int32_t drv_detach (char *name);
 int32_t drv_irq (int32_t id);
 int32_t drv_dma (int32_t id);
+int32_t drv_get_id (const char *name);
 
 #endif /*VM_DRV_H*/

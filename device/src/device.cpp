@@ -26,7 +26,6 @@ extern "C" void vmfree (void *p)
 #include "adv7180_conf.h"
 
 ADV7180_VIDEO_DECODER adv7180;
-tsc2046Drv tsc2046;
 Fpga fpga;
 
 Device::Device ()
@@ -58,8 +57,6 @@ void Device::init ()
     init::usb();
     init::i2c1();
     adv7180.init(ADV_I2C_ADDRESS);
-    tsc2046.init(false);
-    
     
     fpga.init(0);
     uint16_t psram_lat =    (0 << CCPU_PSRAM_ADLAT_GP) 	| 
@@ -95,7 +92,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 	
 	switch ((uint32_t)htim->Instance) {
 		case (uint32_t)TIM3: 
-			         tsc2046.tim_it_handle();
+			         
 		break;
 		case (uint32_t)TIM2:
                      sys_time_milis++;

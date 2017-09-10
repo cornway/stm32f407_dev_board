@@ -139,3 +139,15 @@ static int32_t drv_init (char *name, int32_t irq, int32_t dma)
     drv->dma[0] = dma;
     return id;
 }
+
+int32_t drv_get_id (const char *name)
+{
+    for (uint8_t i = 0; i < VM_MAX_DRIVERS; i++) {
+        if(drivers[i] != NULL) {
+            if (strcmp(drivers[i]->name, name) {
+                return i;
+            } 
+        }
+    }
+    return -ERANGE;
+}

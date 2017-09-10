@@ -459,10 +459,14 @@ _VALUES_IN_REGS ARG_STRUCT_T DISPATCH_SVC (ARG_STRUCT_T arg)
                                         break;
                                     } 
                                     if (driver_handler->handle.io != NULL) {
-                                        res = driver_handler->handle.io(driver_handler, call_struct.R2, (drv_data_t *)call_struct.R3);
+                                        res = driver_handler->handle.ctl(driver_handler, call_struct.R2, (void *)call_struct.R3);
                                     }
                                     CPU_SET_REG(frame, arg.LINK, ERROR, res);
-                break;                        
+                break;   
+            case VMAPI_DRV_PROBE:   res = drv_get_id((const char *)call_struct.R1);
+                                    CPU_SET_REG(frame, arg.LINK, ERROR, res);
+                                    break;
+                break;
             case VMAPI_FAULT :  CUR_THREAD->fault = 1;
                                 CUR_THREAD->faultMessage = (char *)call_struct.R1;
                                 t_unlink_ready(CUR_THREAD);

@@ -38,18 +38,18 @@ INT_T VM_SYS_THREAD (WORD_T size, void *arg)
     th.Arg = 0;
     th.argSize = 0;
     th.Callback = render_app;
-    th.Name = "render\0";
+    th.Name = "render";
     th.Priority = 2;
     th.StackSize = 512;
     ARG_STRUCT_T ret = vm::create(&th);
     th.Callback = main_app;
-    th.Name = "main\0";
+    th.Name = "main";
     th.Priority = 5;
     th.StackSize = 8196;
     ret = vm::create(&th);
     th.Arg = &tsc2046;
     th.Callback = SENSOR_THREAD;
-    th.Name = "sensor\0";
+    th.Name = "sensor";
     th.Priority = 3;
     th.StackSize = 512;
     ret = vm::create(&th);
@@ -95,9 +95,6 @@ static INT_T SENSOR_THREAD (WORD_T size, void *argv)
             
     });
     for (;;) {
-        vm::lock(SENSOR_LOCK_ID);
-        sensor->invoke(&sp, TFT_WIDTH, TFT_HEIGHT);
-        vm::unlock(SENSOR_LOCK_ID);
         vm::sleep(1);
         if (sleepTimeout < applicationControl.sleepTimeout) {
             sleepTimeout++;

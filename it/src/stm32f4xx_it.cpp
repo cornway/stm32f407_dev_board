@@ -40,6 +40,7 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "stm32f4xx_it.h"
+#include "vm.h"
 
 
 /** @addtogroup STM32F4xx_HAL_Examples
@@ -157,11 +158,13 @@ extern TIM_HandleTypeDef             TimHandle_tscUpdate;
 void TIM3_IRQHandler(void)
 {
   HAL_TIM_IRQHandler(&TimHandle_tscUpdate);
+  
 }
 
 extern TIM_HandleTypeDef             TimHandle_milis;
 void TIM2_IRQHandler(void)
 {
+  drv_irq(TSC_TIM_IRQn);
   HAL_TIM_IRQHandler(&TimHandle_milis);
 }
 

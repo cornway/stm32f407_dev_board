@@ -30,6 +30,7 @@ _VALUES_IN_REGS ARG_STRUCT_T drv_link (drv_handle_t *handler, uint32_t irq, uint
 _VALUES_IN_REGS ARG_STRUCT_T drv_unlink (uint32_t id);
 _VALUES_IN_REGS ARG_STRUCT_T drv_ctl (uint32_t id, uint32_t ctl0, uint32_t ctl1);
 _VALUES_IN_REGS ARG_STRUCT_T drv_io (uint32_t id, drv_data_t *data);
+_VALUES_IN_REGS ARG_STRUCT_T drv_probe (const char *name);
 _VALUES_IN_REGS ARG_STRUCT_T lock (UINT_T id);   
 _VALUES_IN_REGS ARG_STRUCT_T unlock (UINT_T id);      
 _VALUES_IN_REGS ARG_STRUCT_T notify (const char *name);   

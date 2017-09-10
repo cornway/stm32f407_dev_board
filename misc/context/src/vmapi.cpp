@@ -83,6 +83,12 @@ _VALUES_IN_REGS ARG_STRUCT_T drv_io (uint32_t id, drv_data_t *data)
     return upcall(arg);
 }
 
+_VALUES_IN_REGS ARG_STRUCT_T drv_probe (const char *name)
+{
+    ARG_STRUCT_T arg = {VMAPI_DRV_PROBE, (WORD_T)name, 0, 0};
+    return upcall(arg);
+}
+
 _VALUES_IN_REGS ARG_STRUCT_T vm::lock (UINT_T id)
 {
     ARG_STRUCT_T arg = {VMAPI_LOCK, id, 0, 0};

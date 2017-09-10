@@ -10,6 +10,8 @@ extern "C" {
 #include "device_gui_conf.h"
    
 
+#define SENSOR_MAX_LISTENERS 20
+    
 #define BATTERY_CORRECTION_CONSTANT (2.0F)
 
 #define BATTERY_MAX_VOLTAGE			(3.300F)
