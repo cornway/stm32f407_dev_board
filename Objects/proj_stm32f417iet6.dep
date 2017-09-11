@@ -2,9 +2,9 @@ Dependencies for Project 'proj', Target 'stm32f417iet6': (DO NOT MODIFY !)
 F (.\entry\src\main.cpp)(0x58CE6492)(--cpp -c --cpu Cortex-M4.fp -g -O0 -Otime --apcs=interwork -I .\adv7180\inc -I .\device\inc -I .\drivers\inc -I .\entry\inc -I .\gui\inc -I .\init\inc -I .\it\inc -I .\misc\inc -I .\tft\inc -I .\FatFs\src -I .\FatFs\src\drivers -I .\FatFs\src\option -I .\STM32_USB_Device_Library\Class\MSC\Inc -I .\STM32_USB_Device_Library\Core\Inc -I .\pnesx\inc -I .\misc\context\inc -I .\misc\depend\Arm\CortexM4\inc -I .\lwip-enc28j60-master\enc28j60driver -I .\lwip-1.4.1\src\include -I .\lwip-1.4.1\src\netif -I .\lwip-1.4.1\src\api -I .\lwip-1.4.1\src\core -I .\lwip-1.4.1\src\include\ipv4 -I .\tcp_app\inc -I .\analog\inc --cpp11 --exceptions-I.\RTE\_stm32f417iet6-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F417xx-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
 I (.\device\inc\device.h)(0x58B42DDF)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x588BC994)
-F (.\device\src\device.cpp)(0x59B50AA6)(--cpp -c --cpu Cortex-M4.fp -g -O0 -Otime --apcs=interwork -I .\adv7180\inc -I .\device\inc -I .\drivers\inc -I .\entry\inc -I .\gui\inc -I .\init\inc -I .\it\inc -I .\misc\inc -I .\tft\inc -I .\FatFs\src -I .\FatFs\src\drivers -I .\FatFs\src\option -I .\STM32_USB_Device_Library\Class\MSC\Inc -I .\STM32_USB_Device_Library\Core\Inc -I .\pnesx\inc -I .\misc\context\inc -I .\misc\depend\Arm\CortexM4\inc -I .\lwip-enc28j60-master\enc28j60driver -I .\lwip-1.4.1\src\include -I .\lwip-1.4.1\src\netif -I .\lwip-1.4.1\src\api -I .\lwip-1.4.1\src\core -I .\lwip-1.4.1\src\include\ipv4 -I .\tcp_app\inc -I .\analog\inc --cpp11 --exceptions-I.\RTE\_stm32f417iet6-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F417xx-o .\objects\device.o --omf_browse .\objects\device.crf --depend .\objects\device.d)
+F (.\device\src\device.cpp)(0x59B6DC94)(--cpp -c --cpu Cortex-M4.fp -g -O0 -Otime --apcs=interwork -I .\adv7180\inc -I .\device\inc -I .\drivers\inc -I .\entry\inc -I .\gui\inc -I .\init\inc -I .\it\inc -I .\misc\inc -I .\tft\inc -I .\FatFs\src -I .\FatFs\src\drivers -I .\FatFs\src\option -I .\STM32_USB_Device_Library\Class\MSC\Inc -I .\STM32_USB_Device_Library\Core\Inc -I .\pnesx\inc -I .\misc\context\inc -I .\misc\depend\Arm\CortexM4\inc -I .\lwip-enc28j60-master\enc28j60driver -I .\lwip-1.4.1\src\include -I .\lwip-1.4.1\src\netif -I .\lwip-1.4.1\src\api -I .\lwip-1.4.1\src\core -I .\lwip-1.4.1\src\include\ipv4 -I .\tcp_app\inc -I .\analog\inc --cpp11 --exceptions-I.\RTE\_stm32f417iet6-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F417xx-o .\objects\device.o --omf_browse .\objects\device.crf --depend .\objects\device.d)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x588BC994)
-I (.\entry\inc\main.h)(0x58D7B46C)
+I (.\entry\inc\main.h)(0x59B6DC55)
 I (.\STM32_USB_Device_Library\Core\Inc\usbd_core.h)(0x58233002)
 I (.\device\inc\usbd_conf.h)(0x589B3381)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x588BC994)
@@ -59,20 +59,21 @@ I (.\drivers\inc\stm32f4xx_hal_pcd.h)(0x5730B7C0)
 I (.\drivers\inc\stm32f4xx_ll_usb.h)(0x5730B7C0)
 I (.\drivers\inc\stm32f4xx_hal_pcd_ex.h)(0x5730B7BE)
 I (.\drivers\inc\stm32f4xx_hal_hcd.h)(0x5730B7BE)
+I (.\device\inc\it_vect.h)(0x59B6DC55)
 I (.\device\inc\gpio.h)(0x58D52789)
 I (.\device\inc\device.h)(0x58B42DDF)
-I (.\device\inc\device_conf.h)(0x58DF4EEB)
+I (.\device\inc\device_conf.h)(0x59B55744)
 I (.\device\inc\device_gui_conf.h)(0x58D2BAB0)
 I (.\misc\context\inc\VM.h)(0x59B5175B)
-I (.\misc\depend\Arm\CortexM4\inc\machM4.h)(0x58D7E9EC)
+I (.\misc\depend\Arm\CortexM4\inc\machM4.h)(0x59B59271)
 I (.\misc\context\inc\vm_conf.h)(0x59B2C688)
-I (.\misc\context\inc\vmapi.h)(0x59B52613)
+I (.\misc\context\inc\vmapi.h)(0x59B566BA)
 I (.\misc\depend\Arm\CortexM4\inc\thread.h)(0x58D7E5B2)
 I (.\misc\context\inc\mail.h)(0x58C66DB1)
-I (.\misc\context\inc\driver.h)(0x59B5290C)
+I (.\misc\context\inc\driver.h)(0x59B58FA0)
 I (.\misc\inc\iterable.h)(0x58C2BDC2)
 I (.\misc\inc\ArrayListStatic.h)(0x58E2A11F)
-I (.\misc\context\inc\vmapi_call.h)(0x59B52858)
+I (.\misc\context\inc\vmapi_call.h)(0x59B6DD56)
 I (.\misc\context\inc\vmem.h)(0x58B94297)
 I (.\init\inc\init.h)(0x58DF4953)
 I (.\device\inc\fpga.h)(0x58D7AEFF)
@@ -80,7 +81,7 @@ I (.\device\inc\ccpu.h)(0x58D7B6BA)
 I (.\device\inc\tsc2046.h)(0x58D1629F)
 I (.\device\inc\tsc2046_conf.h)(0x58F0A3AF)
 I (.\misc\inc\abstract.h)(0x58CB9BC6)
-I (.\device\inc\touch.h)(0x58E2552A)
+I (.\device\inc\touch.h)(0x59B61846)
 I (.\misc\inc\dimensions.h)(0x58E7DA51)
 I (.\adv7180\inc\adv7180.h)(0x58E20D8A)
 I (C:\Keil_v5\ARM\ARMCC\include\errno.h)(0x588BC994)
@@ -95,7 +96,7 @@ I (.\gui\inc\gui_defs.h)(0x58EB8B0B)
 I (.\device\inc\fgpu.h)(0x58E08CE7)
 I (.\device\inc\wave_sample.h)(0x58DFE22B)
 I (.\device\inc\wave.h)(0x58C818E2)
-I (.\device\inc\time.h)(0x56F3ED44)
+I (.\device\inc\time.h)(0x59B6DCAA)
 F (.\device\src\gpio.cpp)(0x57CD3720)(--cpp -c --cpu Cortex-M4.fp -g -O0 -Otime --apcs=interwork -I .\adv7180\inc -I .\device\inc -I .\drivers\inc -I .\entry\inc -I .\gui\inc -I .\init\inc -I .\it\inc -I .\misc\inc -I .\tft\inc -I .\FatFs\src -I .\FatFs\src\drivers -I .\FatFs\src\option -I .\STM32_USB_Device_Library\Class\MSC\Inc -I .\STM32_USB_Device_Library\Core\Inc -I .\pnesx\inc -I .\misc\context\inc -I .\misc\depend\Arm\CortexM4\inc -I .\lwip-enc28j60-master\enc28j60driver -I .\lwip-1.4.1\src\include -I .\lwip-1.4.1\src\netif -I .\lwip-1.4.1\src\api -I .\lwip-1.4.1\src\core -I .\lwip-1.4.1\src\include\ipv4 -I .\tcp_app\inc -I .\analog\inc --cpp11 --exceptions-I.\RTE\_stm32f417iet6-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F417xx-o .\objects\gpio.o --omf_browse .\objects\gpio.crf --depend .\objects\gpio.d)
 I (.\device\inc\gpio.h)(0x58D52789)
 I (.\drivers\inc\stm32f4xx_hal.h)(0x5730B7BE)
@@ -143,9 +144,9 @@ I (.\drivers\inc\stm32f4xx_hal_pcd_ex.h)(0x5730B7BE)
 I (.\drivers\inc\stm32f4xx_hal_hcd.h)(0x5730B7BE)
 I (.\init\inc\init.h)(0x58DF4953)
 F (.\device\src\time.cpp)(0x56F3EDBC)(--cpp -c --cpu Cortex-M4.fp -g -O0 -Otime --apcs=interwork -I .\adv7180\inc -I .\device\inc -I .\drivers\inc -I .\entry\inc -I .\gui\inc -I .\init\inc -I .\it\inc -I .\misc\inc -I .\tft\inc -I .\FatFs\src -I .\FatFs\src\drivers -I .\FatFs\src\option -I .\STM32_USB_Device_Library\Class\MSC\Inc -I .\STM32_USB_Device_Library\Core\Inc -I .\pnesx\inc -I .\misc\context\inc -I .\misc\depend\Arm\CortexM4\inc -I .\lwip-enc28j60-master\enc28j60driver -I .\lwip-1.4.1\src\include -I .\lwip-1.4.1\src\netif -I .\lwip-1.4.1\src\api -I .\lwip-1.4.1\src\core -I .\lwip-1.4.1\src\include\ipv4 -I .\tcp_app\inc -I .\analog\inc --cpp11 --exceptions-I.\RTE\_stm32f417iet6-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F417xx-o .\objects\time.o --omf_browse .\objects\time.crf --depend .\objects\time.d)
-I (.\device\inc\time.h)(0x56F3ED44)
+I (.\device\inc\time.h)(0x59B6DCAA)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x588BC994)
-I (.\entry\inc\main.h)(0x58D7B46C)
+I (.\entry\inc\main.h)(0x59B6DC55)
 I (.\STM32_USB_Device_Library\Core\Inc\usbd_core.h)(0x58233002)
 I (.\device\inc\usbd_conf.h)(0x589B3381)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x588BC994)
@@ -224,7 +225,7 @@ I (.\gui\inc\GLabel.h)(0x58E0A173)
 I (.\misc\inc\printer.h)(0x58EA4431)
 I (.\gui\inc\gComponent.h)(0x58EF3221)
 I (.\misc\inc\abstract.h)(0x58CB9BC6)
-I (.\device\inc\touch.h)(0x58E2552A)
+I (.\device\inc\touch.h)(0x59B61846)
 I (.\gui\inc\GSlide.h)(0x58DBE043)
 I (.\gui\inc\GKeypad.h)(0x58EA62CB)
 I (.\gui\inc\textField.h)(0x58DBE125)
@@ -236,7 +237,7 @@ I (.\gui\inc\GAlert.h)(0x58E7D819)
 I (.\gui\inc\FontFactory.h)(0x58D2A245)
 I (.\gui\inc\font_array.h)(0x58D2BDA0)
 I (.\gui\inc\font_mono.h)(0x58D2DEE5)
-I (.\device\inc\device_conf.h)(0x58DF4EEB)
+I (.\device\inc\device_conf.h)(0x59B55744)
 I (.\device\inc\device_gui_conf.h)(0x58D2BAB0)
 F (.\device\src\adv7180_interface.cpp)(0x586E6EAE)(--cpp -c --cpu Cortex-M4.fp -g -O0 -Otime --apcs=interwork -I .\adv7180\inc -I .\device\inc -I .\drivers\inc -I .\entry\inc -I .\gui\inc -I .\init\inc -I .\it\inc -I .\misc\inc -I .\tft\inc -I .\FatFs\src -I .\FatFs\src\drivers -I .\FatFs\src\option -I .\STM32_USB_Device_Library\Class\MSC\Inc -I .\STM32_USB_Device_Library\Core\Inc -I .\pnesx\inc -I .\misc\context\inc -I .\misc\depend\Arm\CortexM4\inc -I .\lwip-enc28j60-master\enc28j60driver -I .\lwip-1.4.1\src\include -I .\lwip-1.4.1\src\netif -I .\lwip-1.4.1\src\api -I .\lwip-1.4.1\src\core -I .\lwip-1.4.1\src\include\ipv4 -I .\tcp_app\inc -I .\analog\inc --cpp11 --exceptions-I.\RTE\_stm32f417iet6-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F417xx-o .\objects\adv7180_interface.o --omf_browse .\objects\adv7180_interface.crf --depend .\objects\adv7180_interface.d)
 I (.\device\inc\gpio.h)(0x58D52789)
@@ -283,14 +284,14 @@ I (.\drivers\inc\stm32f4xx_hal_pcd.h)(0x5730B7C0)
 I (.\drivers\inc\stm32f4xx_ll_usb.h)(0x5730B7C0)
 I (.\drivers\inc\stm32f4xx_hal_pcd_ex.h)(0x5730B7BE)
 I (.\drivers\inc\stm32f4xx_hal_hcd.h)(0x5730B7BE)
-I (.\device\inc\time.h)(0x56F3ED44)
+I (.\device\inc\time.h)(0x59B6DCAA)
 I (.\adv7180\inc\adv7180.h)(0x58E20D8A)
 I (C:\Keil_v5\ARM\ARMCC\include\errno.h)(0x588BC994)
 F (.\tft\src\TFTili9486.cpp)(0x58EE2680)(--cpp -c --cpu Cortex-M4.fp -g -O0 -Otime --apcs=interwork -I .\adv7180\inc -I .\device\inc -I .\drivers\inc -I .\entry\inc -I .\gui\inc -I .\init\inc -I .\it\inc -I .\misc\inc -I .\tft\inc -I .\FatFs\src -I .\FatFs\src\drivers -I .\FatFs\src\option -I .\STM32_USB_Device_Library\Class\MSC\Inc -I .\STM32_USB_Device_Library\Core\Inc -I .\pnesx\inc -I .\misc\context\inc -I .\misc\depend\Arm\CortexM4\inc -I .\lwip-enc28j60-master\enc28j60driver -I .\lwip-1.4.1\src\include -I .\lwip-1.4.1\src\netif -I .\lwip-1.4.1\src\api -I .\lwip-1.4.1\src\core -I .\lwip-1.4.1\src\include\ipv4 -I .\tcp_app\inc -I .\analog\inc --cpp11 --exceptions-I.\RTE\_stm32f417iet6-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F417xx-o .\objects\tftili9486.o --omf_browse .\objects\tftili9486.crf --depend .\objects\tftili9486.d)
 I (.\tft\inc\TFTili9486.h)(0x58DB2EE7)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x588BC994)
 F (.\device\src\tft_interface.cpp)(0x58DB2FDD)(--cpp -c --cpu Cortex-M4.fp -g -O0 -Otime --apcs=interwork -I .\adv7180\inc -I .\device\inc -I .\drivers\inc -I .\entry\inc -I .\gui\inc -I .\init\inc -I .\it\inc -I .\misc\inc -I .\tft\inc -I .\FatFs\src -I .\FatFs\src\drivers -I .\FatFs\src\option -I .\STM32_USB_Device_Library\Class\MSC\Inc -I .\STM32_USB_Device_Library\Core\Inc -I .\pnesx\inc -I .\misc\context\inc -I .\misc\depend\Arm\CortexM4\inc -I .\lwip-enc28j60-master\enc28j60driver -I .\lwip-1.4.1\src\include -I .\lwip-1.4.1\src\netif -I .\lwip-1.4.1\src\api -I .\lwip-1.4.1\src\core -I .\lwip-1.4.1\src\include\ipv4 -I .\tcp_app\inc -I .\analog\inc --cpp11 --exceptions-I.\RTE\_stm32f417iet6-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F417xx-o .\objects\tft_interface.o --omf_browse .\objects\tft_interface.crf --depend .\objects\tft_interface.d)
-I (.\device\inc\time.h)(0x56F3ED44)
+I (.\device\inc\time.h)(0x59B6DCAA)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x588BC994)
 I (.\device\inc\gpio.h)(0x58D52789)
 I (.\drivers\inc\stm32f4xx_hal.h)(0x5730B7BE)
@@ -337,11 +338,11 @@ I (.\drivers\inc\stm32f4xx_hal_pcd_ex.h)(0x5730B7BE)
 I (.\drivers\inc\stm32f4xx_hal_hcd.h)(0x5730B7BE)
 I (.\tft\inc\TFTili9486.h)(0x58DB2EE7)
 I (.\device\inc\ccpu.h)(0x58D7B6BA)
-I (.\device\inc\device_conf.h)(0x58DF4EEB)
+I (.\device\inc\device_conf.h)(0x59B55744)
 I (.\device\inc\device_gui_conf.h)(0x58D2BAB0)
 I (.\device\inc\device.h)(0x58B42DDF)
 F (.\device\src\usbd_conf.c)(0x589B37FB)(-c --cpu Cortex-M4.fp -g -O0 -Otime --apcs=interwork -I .\adv7180\inc -I .\device\inc -I .\drivers\inc -I .\entry\inc -I .\gui\inc -I .\init\inc -I .\it\inc -I .\misc\inc -I .\tft\inc -I .\FatFs\src -I .\FatFs\src\drivers -I .\FatFs\src\option -I .\STM32_USB_Device_Library\Class\MSC\Inc -I .\STM32_USB_Device_Library\Core\Inc -I .\pnesx\inc -I .\misc\context\inc -I .\misc\depend\Arm\CortexM4\inc -I .\lwip-enc28j60-master\enc28j60driver -I .\lwip-1.4.1\src\include -I .\lwip-1.4.1\src\netif -I .\lwip-1.4.1\src\api -I .\lwip-1.4.1\src\core -I .\lwip-1.4.1\src\include\ipv4 -I .\tcp_app\inc -I .\analog\inc --cpp11 --exceptions-I.\RTE\_stm32f417iet6-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F417xx --C99-o .\objects\usbd_conf.o --omf_browse .\objects\usbd_conf.crf --depend .\objects\usbd_conf.d)
-I (.\entry\inc\main.h)(0x58D7B46C)
+I (.\entry\inc\main.h)(0x59B6DC55)
 I (.\STM32_USB_Device_Library\Core\Inc\usbd_core.h)(0x58233002)
 I (.\device\inc\usbd_conf.h)(0x589B3381)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x588BC994)
@@ -425,7 +426,7 @@ I (.\STM32_USB_Device_Library\Class\MSC\Inc\usbd_msc_scsi.h)(0x58233002)
 I (.\FatFs\src\drivers\flash_diskio.h)(0x58A5F987)
 I (.\FatFs\src\diskio.h)(0x5823300C)
 I (.\FatFs\src\integer.h)(0x5823300C)
-I (.\device\inc\device_conf.h)(0x58DF4EEB)
+I (.\device\inc\device_conf.h)(0x59B55744)
 I (.\device\inc\device_gui_conf.h)(0x58D2BAB0)
 F (.\device\src\flash_disk_int.c)(0x58B50E8F)(-c --cpu Cortex-M4.fp -g -O0 -Otime --apcs=interwork -I .\adv7180\inc -I .\device\inc -I .\drivers\inc -I .\entry\inc -I .\gui\inc -I .\init\inc -I .\it\inc -I .\misc\inc -I .\tft\inc -I .\FatFs\src -I .\FatFs\src\drivers -I .\FatFs\src\option -I .\STM32_USB_Device_Library\Class\MSC\Inc -I .\STM32_USB_Device_Library\Core\Inc -I .\pnesx\inc -I .\misc\context\inc -I .\misc\depend\Arm\CortexM4\inc -I .\lwip-enc28j60-master\enc28j60driver -I .\lwip-1.4.1\src\include -I .\lwip-1.4.1\src\netif -I .\lwip-1.4.1\src\api -I .\lwip-1.4.1\src\core -I .\lwip-1.4.1\src\include\ipv4 -I .\tcp_app\inc -I .\analog\inc --cpp11 --exceptions-I.\RTE\_stm32f417iet6-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F417xx --C99-o .\objects\flash_disk_int.o --omf_browse .\objects\flash_disk_int.crf --depend .\objects\flash_disk_int.d)
 I (.\FatFs\src\drivers\flash_diskio.h)(0x58A5F987)
@@ -434,7 +435,7 @@ I (.\FatFs\src\diskio.h)(0x5823300C)
 I (.\FatFs\src\integer.h)(0x5823300C)
 I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x588BC994)
 F (.\device\src\flash_interface.cpp)(0x58BAE459)(--cpp -c --cpu Cortex-M4.fp -g -O0 -Otime --apcs=interwork -I .\adv7180\inc -I .\device\inc -I .\drivers\inc -I .\entry\inc -I .\gui\inc -I .\init\inc -I .\it\inc -I .\misc\inc -I .\tft\inc -I .\FatFs\src -I .\FatFs\src\drivers -I .\FatFs\src\option -I .\STM32_USB_Device_Library\Class\MSC\Inc -I .\STM32_USB_Device_Library\Core\Inc -I .\pnesx\inc -I .\misc\context\inc -I .\misc\depend\Arm\CortexM4\inc -I .\lwip-enc28j60-master\enc28j60driver -I .\lwip-1.4.1\src\include -I .\lwip-1.4.1\src\netif -I .\lwip-1.4.1\src\api -I .\lwip-1.4.1\src\core -I .\lwip-1.4.1\src\include\ipv4 -I .\tcp_app\inc -I .\analog\inc --cpp11 --exceptions-I.\RTE\_stm32f417iet6-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F417xx-o .\objects\flash_interface.o --omf_browse .\objects\flash_interface.crf --depend .\objects\flash_interface.d)
-I (.\entry\inc\main.h)(0x58D7B46C)
+I (.\entry\inc\main.h)(0x59B6DC55)
 I (.\STM32_USB_Device_Library\Core\Inc\usbd_core.h)(0x58233002)
 I (.\device\inc\usbd_conf.h)(0x589B3381)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x588BC994)
@@ -496,20 +497,20 @@ I (.\FatFs\src\integer.h)(0x5823300C)
 F (.\device\src\fgpu.c)(0x58DFEB4B)(-c --cpu Cortex-M4.fp -g -O0 -Otime --apcs=interwork -I .\adv7180\inc -I .\device\inc -I .\drivers\inc -I .\entry\inc -I .\gui\inc -I .\init\inc -I .\it\inc -I .\misc\inc -I .\tft\inc -I .\FatFs\src -I .\FatFs\src\drivers -I .\FatFs\src\option -I .\STM32_USB_Device_Library\Class\MSC\Inc -I .\STM32_USB_Device_Library\Core\Inc -I .\pnesx\inc -I .\misc\context\inc -I .\misc\depend\Arm\CortexM4\inc -I .\lwip-enc28j60-master\enc28j60driver -I .\lwip-1.4.1\src\include -I .\lwip-1.4.1\src\netif -I .\lwip-1.4.1\src\api -I .\lwip-1.4.1\src\core -I .\lwip-1.4.1\src\include\ipv4 -I .\tcp_app\inc -I .\analog\inc --cpp11 --exceptions-I.\RTE\_stm32f417iet6-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F417xx --C99-o .\objects\fgpu.o --omf_browse .\objects\fgpu.crf --depend .\objects\fgpu.d)
 I (.\device\inc\fgpu.h)(0x58E08CE7)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x588BC994)
-I (.\device\inc\device_conf.h)(0x58DF4EEB)
+I (.\device\inc\device_conf.h)(0x59B55744)
 I (.\device\inc\device_gui_conf.h)(0x58D2BAB0)
 I (.\device\inc\ccpu.h)(0x58D7B6BA)
 F (.\device\src\tsc2046.cpp)(0x58E610C6)(--cpp -c --cpu Cortex-M4.fp -g -O0 -Otime --apcs=interwork -I .\adv7180\inc -I .\device\inc -I .\drivers\inc -I .\entry\inc -I .\gui\inc -I .\init\inc -I .\it\inc -I .\misc\inc -I .\tft\inc -I .\FatFs\src -I .\FatFs\src\drivers -I .\FatFs\src\option -I .\STM32_USB_Device_Library\Class\MSC\Inc -I .\STM32_USB_Device_Library\Core\Inc -I .\pnesx\inc -I .\misc\context\inc -I .\misc\depend\Arm\CortexM4\inc -I .\lwip-enc28j60-master\enc28j60driver -I .\lwip-1.4.1\src\include -I .\lwip-1.4.1\src\netif -I .\lwip-1.4.1\src\api -I .\lwip-1.4.1\src\core -I .\lwip-1.4.1\src\include\ipv4 -I .\tcp_app\inc -I .\analog\inc --cpp11 --exceptions-I.\RTE\_stm32f417iet6-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F417xx-o .\objects\tsc2046.o --omf_browse .\objects\tsc2046.crf --depend .\objects\tsc2046.d)
 I (.\device\inc\tsc2046.h)(0x58D1629F)
 I (.\device\inc\tsc2046_conf.h)(0x58F0A3AF)
-I (.\device\inc\device_conf.h)(0x58DF4EEB)
+I (.\device\inc\device_conf.h)(0x59B55744)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x588BC994)
 I (.\device\inc\device_gui_conf.h)(0x58D2BAB0)
 I (.\misc\inc\abstract.h)(0x58CB9BC6)
 I (.\misc\inc\iterable.h)(0x58C2BDC2)
 I (.\misc\inc\ArrayListStatic.h)(0x58E2A11F)
 I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x588BC994)
-I (.\device\inc\touch.h)(0x58E2552A)
+I (.\device\inc\touch.h)(0x59B61846)
 I (.\misc\inc\dimensions.h)(0x58E7DA51)
 I (C:\Keil_v5\ARM\ARMCC\include\math.h)(0x588BC994)
 I (.\FatFs\src\ff.h)(0x5823300A)
@@ -518,16 +519,16 @@ I (.\FatFs\src\ffconf.h)(0x58DD8DB4)
 F (.\device\src\tsc2046_interface.cpp)(0x58DCD245)(--cpp -c --cpu Cortex-M4.fp -g -O0 -Otime --apcs=interwork -I .\adv7180\inc -I .\device\inc -I .\drivers\inc -I .\entry\inc -I .\gui\inc -I .\init\inc -I .\it\inc -I .\misc\inc -I .\tft\inc -I .\FatFs\src -I .\FatFs\src\drivers -I .\FatFs\src\option -I .\STM32_USB_Device_Library\Class\MSC\Inc -I .\STM32_USB_Device_Library\Core\Inc -I .\pnesx\inc -I .\misc\context\inc -I .\misc\depend\Arm\CortexM4\inc -I .\lwip-enc28j60-master\enc28j60driver -I .\lwip-1.4.1\src\include -I .\lwip-1.4.1\src\netif -I .\lwip-1.4.1\src\api -I .\lwip-1.4.1\src\core -I .\lwip-1.4.1\src\include\ipv4 -I .\tcp_app\inc -I .\analog\inc --cpp11 --exceptions-I.\RTE\_stm32f417iet6-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F417xx-o .\objects\tsc2046_interface.o --omf_browse .\objects\tsc2046_interface.crf --depend .\objects\tsc2046_interface.d)
 I (.\device\inc\tsc2046.h)(0x58D1629F)
 I (.\device\inc\tsc2046_conf.h)(0x58F0A3AF)
-I (.\device\inc\device_conf.h)(0x58DF4EEB)
+I (.\device\inc\device_conf.h)(0x59B55744)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x588BC994)
 I (.\device\inc\device_gui_conf.h)(0x58D2BAB0)
 I (.\misc\inc\abstract.h)(0x58CB9BC6)
 I (.\misc\inc\iterable.h)(0x58C2BDC2)
 I (.\misc\inc\ArrayListStatic.h)(0x58E2A11F)
 I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x588BC994)
-I (.\device\inc\touch.h)(0x58E2552A)
+I (.\device\inc\touch.h)(0x59B61846)
 I (.\misc\inc\dimensions.h)(0x58E7DA51)
-I (.\entry\inc\main.h)(0x58D7B46C)
+I (.\entry\inc\main.h)(0x59B6DC55)
 I (.\STM32_USB_Device_Library\Core\Inc\usbd_core.h)(0x58233002)
 I (.\device\inc\usbd_conf.h)(0x589B3381)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x588BC994)
@@ -617,11 +618,11 @@ I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x588BC994)
 I (.\misc\inc\iterable.h)(0x58C2BDC2)
 I (.\misc\inc\ArrayListStatic.h)(0x58E2A11F)
 I (.\misc\inc\dimensions.h)(0x58E7DA51)
-I (.\device\inc\device_conf.h)(0x58DF4EEB)
+I (.\device\inc\device_conf.h)(0x59B55744)
 I (.\device\inc\device_gui_conf.h)(0x58D2BAB0)
 I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x588BC994)
-F (.\device\src\touch.cpp)(0x58DFECE4)(--cpp -c --cpu Cortex-M4.fp -g -O0 -Otime --apcs=interwork -I .\adv7180\inc -I .\device\inc -I .\drivers\inc -I .\entry\inc -I .\gui\inc -I .\init\inc -I .\it\inc -I .\misc\inc -I .\tft\inc -I .\FatFs\src -I .\FatFs\src\drivers -I .\FatFs\src\option -I .\STM32_USB_Device_Library\Class\MSC\Inc -I .\STM32_USB_Device_Library\Core\Inc -I .\pnesx\inc -I .\misc\context\inc -I .\misc\depend\Arm\CortexM4\inc -I .\lwip-enc28j60-master\enc28j60driver -I .\lwip-1.4.1\src\include -I .\lwip-1.4.1\src\netif -I .\lwip-1.4.1\src\api -I .\lwip-1.4.1\src\core -I .\lwip-1.4.1\src\include\ipv4 -I .\tcp_app\inc -I .\analog\inc --cpp11 --exceptions-I.\RTE\_stm32f417iet6-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F417xx-o .\objects\touch.o --omf_browse .\objects\touch.crf --depend .\objects\touch.d)
-I (.\device\inc\touch.h)(0x58E2552A)
+F (.\device\src\touch.cpp)(0x59B61836)(--cpp -c --cpu Cortex-M4.fp -g -O0 -Otime --apcs=interwork -I .\adv7180\inc -I .\device\inc -I .\drivers\inc -I .\entry\inc -I .\gui\inc -I .\init\inc -I .\it\inc -I .\misc\inc -I .\tft\inc -I .\FatFs\src -I .\FatFs\src\drivers -I .\FatFs\src\option -I .\STM32_USB_Device_Library\Class\MSC\Inc -I .\STM32_USB_Device_Library\Core\Inc -I .\pnesx\inc -I .\misc\context\inc -I .\misc\depend\Arm\CortexM4\inc -I .\lwip-enc28j60-master\enc28j60driver -I .\lwip-1.4.1\src\include -I .\lwip-1.4.1\src\netif -I .\lwip-1.4.1\src\api -I .\lwip-1.4.1\src\core -I .\lwip-1.4.1\src\include\ipv4 -I .\tcp_app\inc -I .\analog\inc --cpp11 --exceptions-I.\RTE\_stm32f417iet6-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F417xx-o .\objects\touch.o --omf_browse .\objects\touch.crf --depend .\objects\touch.d)
+I (.\device\inc\touch.h)(0x59B61846)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x588BC994)
 I (.\misc\inc\abstract.h)(0x58CB9BC6)
 I (.\misc\inc\iterable.h)(0x58C2BDC2)
@@ -687,7 +688,7 @@ F (.\device\src\fpga.cpp)(0x59B50A25)(--cpp -c --cpu Cortex-M4.fp -g -O0 -Otime 
 I (.\device\inc\fpga.h)(0x58D7AEFF)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x588BC994)
 I (.\device\inc\ccpu.h)(0x58D7B6BA)
-I (.\device\inc\device_conf.h)(0x58DF4EEB)
+I (.\device\inc\device_conf.h)(0x59B55744)
 I (.\device\inc\device_gui_conf.h)(0x58D2BAB0)
 F (.\device\src\fpgamch.cpp)(0x58D7B686)(--cpp -c --cpu Cortex-M4.fp -g -O0 -Otime --apcs=interwork -I .\adv7180\inc -I .\device\inc -I .\drivers\inc -I .\entry\inc -I .\gui\inc -I .\init\inc -I .\it\inc -I .\misc\inc -I .\tft\inc -I .\FatFs\src -I .\FatFs\src\drivers -I .\FatFs\src\option -I .\STM32_USB_Device_Library\Class\MSC\Inc -I .\STM32_USB_Device_Library\Core\Inc -I .\pnesx\inc -I .\misc\context\inc -I .\misc\depend\Arm\CortexM4\inc -I .\lwip-enc28j60-master\enc28j60driver -I .\lwip-1.4.1\src\include -I .\lwip-1.4.1\src\netif -I .\lwip-1.4.1\src\api -I .\lwip-1.4.1\src\core -I .\lwip-1.4.1\src\include\ipv4 -I .\tcp_app\inc -I .\analog\inc --cpp11 --exceptions-I.\RTE\_stm32f417iet6-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F417xx-o .\objects\fpgamch.o --omf_browse .\objects\fpgamch.crf --depend .\objects\fpgamch.d)
 I (.\device\inc\gpio.h)(0x58D52789)
@@ -740,7 +741,27 @@ I (.\misc\inc\pp.h)(0x58EF5049)
 I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x588BC994)
 I (C:\Keil_v5\ARM\ARMCC\include\ctype.h)(0x588BC994)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x588BC994)
-F (.\misc\context\inc\mach.h)(0x59B2C911)()
+F (.\device\src\sensor_drv.cpp)(0x59B6DEBD)(--cpp -c --cpu Cortex-M4.fp -g -O0 -Otime --apcs=interwork -I .\adv7180\inc -I .\device\inc -I .\drivers\inc -I .\entry\inc -I .\gui\inc -I .\init\inc -I .\it\inc -I .\misc\inc -I .\tft\inc -I .\FatFs\src -I .\FatFs\src\drivers -I .\FatFs\src\option -I .\STM32_USB_Device_Library\Class\MSC\Inc -I .\STM32_USB_Device_Library\Core\Inc -I .\pnesx\inc -I .\misc\context\inc -I .\misc\depend\Arm\CortexM4\inc -I .\lwip-enc28j60-master\enc28j60driver -I .\lwip-1.4.1\src\include -I .\lwip-1.4.1\src\netif -I .\lwip-1.4.1\src\api -I .\lwip-1.4.1\src\core -I .\lwip-1.4.1\src\include\ipv4 -I .\tcp_app\inc -I .\analog\inc --cpp11 --exceptions-I.\RTE\_stm32f417iet6-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F417xx-o .\objects\sensor_drv.o --omf_browse .\objects\sensor_drv.crf --depend .\objects\sensor_drv.d)
+I (.\device\inc\sensor_drv.h)(0x59B6DEC8)
+I (.\misc\context\inc\vmapi.h)(0x59B566BA)
+I (.\misc\depend\Arm\CortexM4\inc\machM4.h)(0x59B59271)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x588BC994)
+I (.\misc\depend\Arm\CortexM4\inc\thread.h)(0x58D7E5B2)
+I (.\misc\context\inc\vm_conf.h)(0x59B2C688)
+I (.\misc\context\inc\mail.h)(0x58C66DB1)
+I (.\misc\context\inc\driver.h)(0x59B58FA0)
+I (.\misc\inc\iterable.h)(0x58C2BDC2)
+I (.\misc\inc\ArrayListStatic.h)(0x58E2A11F)
+I (.\misc\context\inc\vmapi_call.h)(0x59B6DD56)
+I (.\device\inc\tsc2046.h)(0x58D1629F)
+I (.\device\inc\tsc2046_conf.h)(0x58F0A3AF)
+I (.\device\inc\device_conf.h)(0x59B55744)
+I (.\device\inc\device_gui_conf.h)(0x58D2BAB0)
+I (.\misc\inc\abstract.h)(0x58CB9BC6)
+I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x588BC994)
+I (.\device\inc\touch.h)(0x59B61846)
+I (.\misc\inc\dimensions.h)(0x58E7DA51)
+F (.\device\inc\it_vect.h)(0x59B6DC55)()
 F (.\drivers\src\stm32f4xx_hal.c)(0x58B2FDD8)(-c --cpu Cortex-M4.fp -g -O0 -Otime --apcs=interwork -I .\adv7180\inc -I .\device\inc -I .\drivers\inc -I .\entry\inc -I .\gui\inc -I .\init\inc -I .\it\inc -I .\misc\inc -I .\tft\inc -I .\FatFs\src -I .\FatFs\src\drivers -I .\FatFs\src\option -I .\STM32_USB_Device_Library\Class\MSC\Inc -I .\STM32_USB_Device_Library\Core\Inc -I .\pnesx\inc -I .\misc\context\inc -I .\misc\depend\Arm\CortexM4\inc -I .\lwip-enc28j60-master\enc28j60driver -I .\lwip-1.4.1\src\include -I .\lwip-1.4.1\src\netif -I .\lwip-1.4.1\src\api -I .\lwip-1.4.1\src\core -I .\lwip-1.4.1\src\include\ipv4 -I .\tcp_app\inc -I .\analog\inc --cpp11 --exceptions-I.\RTE\_stm32f417iet6-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F417xx --C99-o .\objects\stm32f4xx_hal.o --omf_browse .\objects\stm32f4xx_hal.crf --depend .\objects\stm32f4xx_hal.d)
 I (.\drivers\inc\stm32f4xx_hal.h)(0x5730B7BE)
 I (.\entry\inc\stm32f4xx_hal_conf.h)(0x58C0E551)
@@ -2061,8 +2082,8 @@ I (.\drivers\inc\stm32f4xx_hal_pcd.h)(0x5730B7C0)
 I (.\drivers\inc\stm32f4xx_ll_usb.h)(0x5730B7C0)
 I (.\drivers\inc\stm32f4xx_hal_pcd_ex.h)(0x5730B7BE)
 I (.\drivers\inc\stm32f4xx_hal_hcd.h)(0x5730B7BE)
-F (.\it\src\stm32f4xx_it.cpp)(0x58EDFC05)(--cpp -c --cpu Cortex-M4.fp -g -O0 -Otime --apcs=interwork -I .\adv7180\inc -I .\device\inc -I .\drivers\inc -I .\entry\inc -I .\gui\inc -I .\init\inc -I .\it\inc -I .\misc\inc -I .\tft\inc -I .\FatFs\src -I .\FatFs\src\drivers -I .\FatFs\src\option -I .\STM32_USB_Device_Library\Class\MSC\Inc -I .\STM32_USB_Device_Library\Core\Inc -I .\pnesx\inc -I .\misc\context\inc -I .\misc\depend\Arm\CortexM4\inc -I .\lwip-enc28j60-master\enc28j60driver -I .\lwip-1.4.1\src\include -I .\lwip-1.4.1\src\netif -I .\lwip-1.4.1\src\api -I .\lwip-1.4.1\src\core -I .\lwip-1.4.1\src\include\ipv4 -I .\tcp_app\inc -I .\analog\inc --cpp11 --exceptions-I.\RTE\_stm32f417iet6-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F417xx-o .\objects\stm32f4xx_it.o --omf_browse .\objects\stm32f4xx_it.crf --depend .\objects\stm32f4xx_it.d)
-I (.\entry\inc\main.h)(0x58D7B46C)
+F (.\it\src\stm32f4xx_it.cpp)(0x59B6DC8A)(--cpp -c --cpu Cortex-M4.fp -g -O0 -Otime --apcs=interwork -I .\adv7180\inc -I .\device\inc -I .\drivers\inc -I .\entry\inc -I .\gui\inc -I .\init\inc -I .\it\inc -I .\misc\inc -I .\tft\inc -I .\FatFs\src -I .\FatFs\src\drivers -I .\FatFs\src\option -I .\STM32_USB_Device_Library\Class\MSC\Inc -I .\STM32_USB_Device_Library\Core\Inc -I .\pnesx\inc -I .\misc\context\inc -I .\misc\depend\Arm\CortexM4\inc -I .\lwip-enc28j60-master\enc28j60driver -I .\lwip-1.4.1\src\include -I .\lwip-1.4.1\src\netif -I .\lwip-1.4.1\src\api -I .\lwip-1.4.1\src\core -I .\lwip-1.4.1\src\include\ipv4 -I .\tcp_app\inc -I .\analog\inc --cpp11 --exceptions-I.\RTE\_stm32f417iet6-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F417xx-o .\objects\stm32f4xx_it.o --omf_browse .\objects\stm32f4xx_it.crf --depend .\objects\stm32f4xx_it.d)
+I (.\entry\inc\main.h)(0x59B6DC55)
 I (.\STM32_USB_Device_Library\Core\Inc\usbd_core.h)(0x58233002)
 I (.\device\inc\usbd_conf.h)(0x589B3381)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x588BC994)
@@ -2118,10 +2139,17 @@ I (.\drivers\inc\stm32f4xx_hal_pcd.h)(0x5730B7C0)
 I (.\drivers\inc\stm32f4xx_ll_usb.h)(0x5730B7C0)
 I (.\drivers\inc\stm32f4xx_hal_pcd_ex.h)(0x5730B7BE)
 I (.\drivers\inc\stm32f4xx_hal_hcd.h)(0x5730B7BE)
+I (.\device\inc\it_vect.h)(0x59B6DC55)
 I (.\it\inc\stm32f4xx_it.h)(0x58D7B391)
+I (.\misc\context\inc\vm.h)(0x59B5175B)
+I (.\misc\depend\Arm\CortexM4\inc\machM4.h)(0x59B59271)
+I (.\misc\context\inc\vm_conf.h)(0x59B2C688)
+I (.\misc\context\inc\driver.h)(0x59B58FA0)
+I (.\misc\inc\iterable.h)(0x58C2BDC2)
+I (.\misc\inc\ArrayListStatic.h)(0x58E2A11F)
 I (.\device\inc\camera.h)(0x58E24ED2)
-F (.\init\src\init.cpp)(0x58F0A5A6)(--cpp -c --cpu Cortex-M4.fp -g -O0 -Otime --apcs=interwork -I .\adv7180\inc -I .\device\inc -I .\drivers\inc -I .\entry\inc -I .\gui\inc -I .\init\inc -I .\it\inc -I .\misc\inc -I .\tft\inc -I .\FatFs\src -I .\FatFs\src\drivers -I .\FatFs\src\option -I .\STM32_USB_Device_Library\Class\MSC\Inc -I .\STM32_USB_Device_Library\Core\Inc -I .\pnesx\inc -I .\misc\context\inc -I .\misc\depend\Arm\CortexM4\inc -I .\lwip-enc28j60-master\enc28j60driver -I .\lwip-1.4.1\src\include -I .\lwip-1.4.1\src\netif -I .\lwip-1.4.1\src\api -I .\lwip-1.4.1\src\core -I .\lwip-1.4.1\src\include\ipv4 -I .\tcp_app\inc -I .\analog\inc --cpp11 --exceptions-I.\RTE\_stm32f417iet6-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F417xx-o .\objects\init.o --omf_browse .\objects\init.crf --depend .\objects\init.d)
-I (.\entry\inc\main.h)(0x58D7B46C)
+F (.\init\src\init.cpp)(0x59B6DDBE)(--cpp -c --cpu Cortex-M4.fp -g -O0 -Otime --apcs=interwork -I .\adv7180\inc -I .\device\inc -I .\drivers\inc -I .\entry\inc -I .\gui\inc -I .\init\inc -I .\it\inc -I .\misc\inc -I .\tft\inc -I .\FatFs\src -I .\FatFs\src\drivers -I .\FatFs\src\option -I .\STM32_USB_Device_Library\Class\MSC\Inc -I .\STM32_USB_Device_Library\Core\Inc -I .\pnesx\inc -I .\misc\context\inc -I .\misc\depend\Arm\CortexM4\inc -I .\lwip-enc28j60-master\enc28j60driver -I .\lwip-1.4.1\src\include -I .\lwip-1.4.1\src\netif -I .\lwip-1.4.1\src\api -I .\lwip-1.4.1\src\core -I .\lwip-1.4.1\src\include\ipv4 -I .\tcp_app\inc -I .\analog\inc --cpp11 --exceptions-I.\RTE\_stm32f417iet6-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F417xx-o .\objects\init.o --omf_browse .\objects\init.crf --depend .\objects\init.d)
+I (.\entry\inc\main.h)(0x59B6DC55)
 I (.\STM32_USB_Device_Library\Core\Inc\usbd_core.h)(0x58233002)
 I (.\device\inc\usbd_conf.h)(0x589B3381)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x588BC994)
@@ -2179,7 +2207,8 @@ I (.\drivers\inc\stm32f4xx_hal_pcd_ex.h)(0x5730B7BE)
 I (.\drivers\inc\stm32f4xx_hal_hcd.h)(0x5730B7BE)
 I (.\init\inc\init.h)(0x58DF4953)
 I (.\device\inc\gpio.h)(0x58D52789)
-I (.\device\inc\time.h)(0x56F3ED44)
+I (.\device\inc\time.h)(0x59B6DCAA)
+I (.\device\inc\it_vect.h)(0x59B6DC55)
 F (.\misc\src\dma_chain.cpp)(0x58A55BD8)(--cpp -c --cpu Cortex-M4.fp -g -O0 -Otime --apcs=interwork -I .\adv7180\inc -I .\device\inc -I .\drivers\inc -I .\entry\inc -I .\gui\inc -I .\init\inc -I .\it\inc -I .\misc\inc -I .\tft\inc -I .\FatFs\src -I .\FatFs\src\drivers -I .\FatFs\src\option -I .\STM32_USB_Device_Library\Class\MSC\Inc -I .\STM32_USB_Device_Library\Core\Inc -I .\pnesx\inc -I .\misc\context\inc -I .\misc\depend\Arm\CortexM4\inc -I .\lwip-enc28j60-master\enc28j60driver -I .\lwip-1.4.1\src\include -I .\lwip-1.4.1\src\netif -I .\lwip-1.4.1\src\api -I .\lwip-1.4.1\src\core -I .\lwip-1.4.1\src\include\ipv4 -I .\tcp_app\inc -I .\analog\inc --cpp11 --exceptions-I.\RTE\_stm32f417iet6-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F417xx-o .\objects\dma_chain.o --omf_browse .\objects\dma_chain.crf --depend .\objects\dma_chain.d)
 I (.\misc\inc\dma_chain.h)(0x58A55BD8)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x588BC994)
@@ -2323,7 +2352,7 @@ I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x588BC994)
 I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include\cmsis_compiler.h)(0x58988FDA)
 I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include\cmsis_armcc.h)(0x58988FDA)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include\system_stm32f4xx.h)(0x582313BA)
-I (.\device\inc\device_conf.h)(0x58DF4EEB)
+I (.\device\inc\device_conf.h)(0x59B55744)
 I (.\device\inc\device_gui_conf.h)(0x58D2BAB0)
 I (FatFs\src\drivers\flash_diskio.h)(0x58A5F987)
 F (.\pnesx\src\K6502.cpp)(0x57009FE8)(--cpp -c --cpu Cortex-M4.fp -g -O0 -Otime --apcs=interwork -I .\adv7180\inc -I .\device\inc -I .\drivers\inc -I .\entry\inc -I .\gui\inc -I .\init\inc -I .\it\inc -I .\misc\inc -I .\tft\inc -I .\FatFs\src -I .\FatFs\src\drivers -I .\FatFs\src\option -I .\STM32_USB_Device_Library\Class\MSC\Inc -I .\STM32_USB_Device_Library\Core\Inc -I .\pnesx\inc -I .\misc\context\inc -I .\misc\depend\Arm\CortexM4\inc -I .\lwip-enc28j60-master\enc28j60driver -I .\lwip-1.4.1\src\include -I .\lwip-1.4.1\src\netif -I .\lwip-1.4.1\src\api -I .\lwip-1.4.1\src\core -I .\lwip-1.4.1\src\include\ipv4 -I .\tcp_app\inc -I .\analog\inc --cpp11 --exceptions-I.\RTE\_stm32f417iet6-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F417xx-o .\objects\k6502.o --omf_browse .\objects\k6502.crf --depend .\objects\k6502.d)
@@ -2360,15 +2389,15 @@ I (.\pnesx\inc\pNesX_Types.h)(0x57009FE8)
 I (.\pnesx\inc\pNesX_System.h)(0x57009FE8)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x588BC994)
 I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x588BC994)
-I (.\device\inc\device_conf.h)(0x58DF4EEB)
+I (.\device\inc\device_conf.h)(0x59B55744)
 I (.\device\inc\device_gui_conf.h)(0x58D2BAB0)
 I (.\device\inc\fgpu.h)(0x58E08CE7)
-I (.\device\inc\touch.h)(0x58E2552A)
+I (.\device\inc\touch.h)(0x59B61846)
 I (.\misc\inc\abstract.h)(0x58CB9BC6)
 I (.\misc\inc\iterable.h)(0x58C2BDC2)
 I (.\misc\inc\ArrayListStatic.h)(0x58E2A11F)
 I (.\misc\inc\dimensions.h)(0x58E7DA51)
-I (.\entry\inc\main.h)(0x58D7B46C)
+I (.\entry\inc\main.h)(0x59B6DC55)
 I (.\STM32_USB_Device_Library\Core\Inc\usbd_core.h)(0x58233002)
 I (.\device\inc\usbd_conf.h)(0x589B3381)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x588BC994)
@@ -2430,16 +2459,16 @@ I (.\entry\inc\app_def.h)(0x58F09C35)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x588BC994)
 I (.\entry\inc\app_macro.h)(0x58EFCB12)
 I (.\misc\context\inc\vm.h)(0x59B5175B)
-I (.\misc\depend\Arm\CortexM4\inc\machM4.h)(0x58D7E9EC)
+I (.\misc\depend\Arm\CortexM4\inc\machM4.h)(0x59B59271)
 I (.\misc\context\inc\vm_conf.h)(0x59B2C688)
-I (.\misc\context\inc\vmapi.h)(0x59B52613)
+I (.\misc\context\inc\vmapi.h)(0x59B566BA)
 I (.\misc\depend\Arm\CortexM4\inc\thread.h)(0x58D7E5B2)
 I (.\misc\context\inc\mail.h)(0x58C66DB1)
-I (.\misc\context\inc\driver.h)(0x59B5290C)
+I (.\misc\context\inc\driver.h)(0x59B58FA0)
 I (.\misc\inc\iterable.h)(0x58C2BDC2)
 I (.\misc\inc\ArrayListStatic.h)(0x58E2A11F)
-I (.\misc\context\inc\vmapi_call.h)(0x59B52858)
-I (.\device\inc\device_conf.h)(0x58DF4EEB)
+I (.\misc\context\inc\vmapi_call.h)(0x59B6DD56)
+I (.\device\inc\device_conf.h)(0x59B55744)
 I (.\device\inc\device_gui_conf.h)(0x58D2BAB0)
 I (.\device\inc\gui.h)(0x58D9083E)
 I (.\gui\inc\guiEngine.h)(0x58E9DBBA)
@@ -2461,7 +2490,7 @@ I (.\gui\inc\GLabel.h)(0x58E0A173)
 I (.\misc\inc\printer.h)(0x58EA4431)
 I (.\gui\inc\gComponent.h)(0x58EF3221)
 I (.\misc\inc\abstract.h)(0x58CB9BC6)
-I (.\device\inc\touch.h)(0x58E2552A)
+I (.\device\inc\touch.h)(0x59B61846)
 I (.\gui\inc\GSlide.h)(0x58DBE043)
 I (.\gui\inc\GKeypad.h)(0x58EA62CB)
 I (.\gui\inc\textField.h)(0x58DBE125)
@@ -2479,7 +2508,7 @@ I (.\FatFs\src\integer.h)(0x5823300C)
 I (.\FatFs\src\ffconf.h)(0x58DD8DB4)
 I (.\pnesx\inc\pnesx.h)(0x58DFD872)
 I (.\pnesx\inc\pNesX_Types.h)(0x57009FE8)
-I (.\device\inc\time.h)(0x56F3ED44)
+I (.\device\inc\time.h)(0x59B6DCAA)
 I (.\misc\inc\pp.h)(0x58EF5049)
 I (C:\Keil_v5\ARM\ARMCC\include\ctype.h)(0x588BC994)
 I (.\drivers\inc\stm32f4xx_hal.h)(0x5730B7BE)
@@ -2548,9 +2577,9 @@ I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x588BC994)
 I (.\FatFs\src\ff.h)(0x5823300A)
 I (.\FatFs\src\integer.h)(0x5823300C)
 I (.\FatFs\src\ffconf.h)(0x58DD8DB4)
-F (.\misc\context\src\VM.cpp)(0x59B528E3)(--cpp -c --cpu Cortex-M4.fp -g -O0 -Otime --apcs=interwork -I .\adv7180\inc -I .\device\inc -I .\drivers\inc -I .\entry\inc -I .\gui\inc -I .\init\inc -I .\it\inc -I .\misc\inc -I .\tft\inc -I .\FatFs\src -I .\FatFs\src\drivers -I .\FatFs\src\option -I .\STM32_USB_Device_Library\Class\MSC\Inc -I .\STM32_USB_Device_Library\Core\Inc -I .\pnesx\inc -I .\misc\context\inc -I .\misc\depend\Arm\CortexM4\inc -I .\lwip-enc28j60-master\enc28j60driver -I .\lwip-1.4.1\src\include -I .\lwip-1.4.1\src\netif -I .\lwip-1.4.1\src\api -I .\lwip-1.4.1\src\core -I .\lwip-1.4.1\src\include\ipv4 -I .\tcp_app\inc -I .\analog\inc --cpp11 --exceptions-I.\RTE\_stm32f417iet6-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F417xx-o .\objects\vm.o --omf_browse .\objects\vm.crf --depend .\objects\vm.d)
+F (.\misc\context\src\VM.cpp)(0x59B61716)(--cpp -c --cpu Cortex-M4.fp -g -O0 -Otime --apcs=interwork -I .\adv7180\inc -I .\device\inc -I .\drivers\inc -I .\entry\inc -I .\gui\inc -I .\init\inc -I .\it\inc -I .\misc\inc -I .\tft\inc -I .\FatFs\src -I .\FatFs\src\drivers -I .\FatFs\src\option -I .\STM32_USB_Device_Library\Class\MSC\Inc -I .\STM32_USB_Device_Library\Core\Inc -I .\pnesx\inc -I .\misc\context\inc -I .\misc\depend\Arm\CortexM4\inc -I .\lwip-enc28j60-master\enc28j60driver -I .\lwip-1.4.1\src\include -I .\lwip-1.4.1\src\netif -I .\lwip-1.4.1\src\api -I .\lwip-1.4.1\src\core -I .\lwip-1.4.1\src\include\ipv4 -I .\tcp_app\inc -I .\analog\inc --cpp11 --exceptions-I.\RTE\_stm32f417iet6-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F417xx-o .\objects\vm.o --omf_browse .\objects\vm.crf --depend .\objects\vm.d)
 I (.\misc\context\inc\VM.h)(0x59B5175B)
-I (.\misc\depend\Arm\CortexM4\inc\machM4.h)(0x58D7E9EC)
+I (.\misc\depend\Arm\CortexM4\inc\machM4.h)(0x59B59271)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x588BC994)
 I (.\misc\context\inc\vm_conf.h)(0x59B2C688)
 I (.\misc\depend\Arm\CortexM4\inc\thread.h)(0x58D7E5B2)
@@ -2558,39 +2587,39 @@ I (.\misc\context\inc\mail.h)(0x58C66DB1)
 I (.\misc\context\inc\timer.h)(0x58CBB3D5)
 I (.\misc\inc\iterable.h)(0x58C2BDC2)
 I (.\misc\inc\ArrayListStatic.h)(0x58E2A11F)
-I (.\misc\context\inc\driver.h)(0x59B5290C)
+I (.\misc\context\inc\driver.h)(0x59B58FA0)
 I (.\misc\context\inc\mutex.h)(0x58B98759)
-I (.\misc\context\inc\vmapi_call.h)(0x59B52858)
+I (.\misc\context\inc\vmapi_call.h)(0x59B6DD56)
 I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x588BC994)
-F (.\misc\context\src\vmapi.cpp)(0x59B5283E)(--cpp -c --cpu Cortex-M4.fp -g -O0 -Otime --apcs=interwork -I .\adv7180\inc -I .\device\inc -I .\drivers\inc -I .\entry\inc -I .\gui\inc -I .\init\inc -I .\it\inc -I .\misc\inc -I .\tft\inc -I .\FatFs\src -I .\FatFs\src\drivers -I .\FatFs\src\option -I .\STM32_USB_Device_Library\Class\MSC\Inc -I .\STM32_USB_Device_Library\Core\Inc -I .\pnesx\inc -I .\misc\context\inc -I .\misc\depend\Arm\CortexM4\inc -I .\lwip-enc28j60-master\enc28j60driver -I .\lwip-1.4.1\src\include -I .\lwip-1.4.1\src\netif -I .\lwip-1.4.1\src\api -I .\lwip-1.4.1\src\core -I .\lwip-1.4.1\src\include\ipv4 -I .\tcp_app\inc -I .\analog\inc --cpp11 --exceptions-I.\RTE\_stm32f417iet6-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F417xx-o .\objects\vmapi.o --omf_browse .\objects\vmapi.crf --depend .\objects\vmapi.d)
-I (.\misc\context\inc\vmapi.h)(0x59B52613)
-I (.\misc\depend\Arm\CortexM4\inc\machM4.h)(0x58D7E9EC)
+F (.\misc\context\src\vmapi.cpp)(0x59B6DE80)(--cpp -c --cpu Cortex-M4.fp -g -O0 -Otime --apcs=interwork -I .\adv7180\inc -I .\device\inc -I .\drivers\inc -I .\entry\inc -I .\gui\inc -I .\init\inc -I .\it\inc -I .\misc\inc -I .\tft\inc -I .\FatFs\src -I .\FatFs\src\drivers -I .\FatFs\src\option -I .\STM32_USB_Device_Library\Class\MSC\Inc -I .\STM32_USB_Device_Library\Core\Inc -I .\pnesx\inc -I .\misc\context\inc -I .\misc\depend\Arm\CortexM4\inc -I .\lwip-enc28j60-master\enc28j60driver -I .\lwip-1.4.1\src\include -I .\lwip-1.4.1\src\netif -I .\lwip-1.4.1\src\api -I .\lwip-1.4.1\src\core -I .\lwip-1.4.1\src\include\ipv4 -I .\tcp_app\inc -I .\analog\inc --cpp11 --exceptions-I.\RTE\_stm32f417iet6-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F417xx-o .\objects\vmapi.o --omf_browse .\objects\vmapi.crf --depend .\objects\vmapi.d)
+I (.\misc\context\inc\vmapi.h)(0x59B566BA)
+I (.\misc\depend\Arm\CortexM4\inc\machM4.h)(0x59B59271)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x588BC994)
 I (.\misc\depend\Arm\CortexM4\inc\thread.h)(0x58D7E5B2)
 I (.\misc\context\inc\vm_conf.h)(0x59B2C688)
 I (.\misc\context\inc\mail.h)(0x58C66DB1)
-I (.\misc\context\inc\driver.h)(0x59B5290C)
+I (.\misc\context\inc\driver.h)(0x59B58FA0)
 I (.\misc\inc\iterable.h)(0x58C2BDC2)
 I (.\misc\inc\ArrayListStatic.h)(0x58E2A11F)
-I (.\misc\context\inc\vmapi_call.h)(0x59B52858)
+I (.\misc\context\inc\vmapi_call.h)(0x59B6DD56)
 F (.\misc\depend\Arm\CortexM4\src\machM4.s)(0x58CD6C95)(--cpu Cortex-M4.fp -g --apcs=interwork -I.\RTE\_stm32f417iet6-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include--pd "__UVISION_VERSION SETA 524" --pd "_RTE_ SETA 1" --pd "STM32F417xx SETA 1"-o .\objects\machm4.o --depend .\objects\machm4.d)
 F (.\misc\depend\Arm\CortexM4\src\Thread.c)(0x58EB29AB)(-c --cpu Cortex-M4.fp -g -O0 -Otime --apcs=interwork -I .\adv7180\inc -I .\device\inc -I .\drivers\inc -I .\entry\inc -I .\gui\inc -I .\init\inc -I .\it\inc -I .\misc\inc -I .\tft\inc -I .\FatFs\src -I .\FatFs\src\drivers -I .\FatFs\src\option -I .\STM32_USB_Device_Library\Class\MSC\Inc -I .\STM32_USB_Device_Library\Core\Inc -I .\pnesx\inc -I .\misc\context\inc -I .\misc\depend\Arm\CortexM4\inc -I .\lwip-enc28j60-master\enc28j60driver -I .\lwip-1.4.1\src\include -I .\lwip-1.4.1\src\netif -I .\lwip-1.4.1\src\api -I .\lwip-1.4.1\src\core -I .\lwip-1.4.1\src\include\ipv4 -I .\tcp_app\inc -I .\analog\inc --cpp11 --exceptions-I.\RTE\_stm32f417iet6-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F417xx --C99-o .\objects\thread.o --omf_browse .\objects\thread.crf --depend .\objects\thread.d)
 I (.\misc\depend\Arm\CortexM4\inc\Thread.h)(0x58D7E5B2)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x588BC994)
 I (.\misc\context\inc\vm_conf.h)(0x59B2C688)
-I (.\misc\depend\Arm\CortexM4\inc\machM4.h)(0x58D7E9EC)
+I (.\misc\depend\Arm\CortexM4\inc\machM4.h)(0x59B59271)
 I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x588BC994)
 F (.\misc\context\src\vmem.cpp)(0x58B9428F)(--cpp -c --cpu Cortex-M4.fp -g -O0 -Otime --apcs=interwork -I .\adv7180\inc -I .\device\inc -I .\drivers\inc -I .\entry\inc -I .\gui\inc -I .\init\inc -I .\it\inc -I .\misc\inc -I .\tft\inc -I .\FatFs\src -I .\FatFs\src\drivers -I .\FatFs\src\option -I .\STM32_USB_Device_Library\Class\MSC\Inc -I .\STM32_USB_Device_Library\Core\Inc -I .\pnesx\inc -I .\misc\context\inc -I .\misc\depend\Arm\CortexM4\inc -I .\lwip-enc28j60-master\enc28j60driver -I .\lwip-1.4.1\src\include -I .\lwip-1.4.1\src\netif -I .\lwip-1.4.1\src\api -I .\lwip-1.4.1\src\core -I .\lwip-1.4.1\src\include\ipv4 -I .\tcp_app\inc -I .\analog\inc --cpp11 --exceptions-I.\RTE\_stm32f417iet6-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F417xx-o .\objects\vmem.o --omf_browse .\objects\vmem.crf --depend .\objects\vmem.d)
 F (.\misc\context\inc\mutex.cpp)(0x58B94440)(--cpp -c --cpu Cortex-M4.fp -g -O0 -Otime --apcs=interwork -I .\adv7180\inc -I .\device\inc -I .\drivers\inc -I .\entry\inc -I .\gui\inc -I .\init\inc -I .\it\inc -I .\misc\inc -I .\tft\inc -I .\FatFs\src -I .\FatFs\src\drivers -I .\FatFs\src\option -I .\STM32_USB_Device_Library\Class\MSC\Inc -I .\STM32_USB_Device_Library\Core\Inc -I .\pnesx\inc -I .\misc\context\inc -I .\misc\depend\Arm\CortexM4\inc -I .\lwip-enc28j60-master\enc28j60driver -I .\lwip-1.4.1\src\include -I .\lwip-1.4.1\src\netif -I .\lwip-1.4.1\src\api -I .\lwip-1.4.1\src\core -I .\lwip-1.4.1\src\include\ipv4 -I .\tcp_app\inc -I .\analog\inc --cpp11 --exceptions-I.\RTE\_stm32f417iet6-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F417xx-o .\objects\mutex.o --omf_browse .\objects\mutex.crf --depend .\objects\mutex.d)
 I (misc\context\inc\mutex.h)(0x58B98759)
 I (misc\context\inc\vm_conf.h)(0x59B2C688)
-I (.\misc\depend\Arm\CortexM4\inc\machM4.h)(0x58D7E9EC)
+I (.\misc\depend\Arm\CortexM4\inc\machM4.h)(0x59B59271)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x588BC994)
 I (.\misc\depend\Arm\CortexM4\inc\thread.h)(0x58D7E5B2)
 I (.\misc\inc\iterable.h)(0x58C2BDC2)
 I (.\misc\inc\ArrayListStatic.h)(0x58E2A11F)
 F (.\misc\depend\Arm\CortexM4\src\machM4.c)(0x58E8D36D)(-c --cpu Cortex-M4.fp -g -O0 -Otime --apcs=interwork -I .\adv7180\inc -I .\device\inc -I .\drivers\inc -I .\entry\inc -I .\gui\inc -I .\init\inc -I .\it\inc -I .\misc\inc -I .\tft\inc -I .\FatFs\src -I .\FatFs\src\drivers -I .\FatFs\src\option -I .\STM32_USB_Device_Library\Class\MSC\Inc -I .\STM32_USB_Device_Library\Core\Inc -I .\pnesx\inc -I .\misc\context\inc -I .\misc\depend\Arm\CortexM4\inc -I .\lwip-enc28j60-master\enc28j60driver -I .\lwip-1.4.1\src\include -I .\lwip-1.4.1\src\netif -I .\lwip-1.4.1\src\api -I .\lwip-1.4.1\src\core -I .\lwip-1.4.1\src\include\ipv4 -I .\tcp_app\inc -I .\analog\inc --cpp11 --exceptions-I.\RTE\_stm32f417iet6-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F417xx --C99-o .\objects\machm4_1.o --omf_browse .\objects\machm4_1.crf --depend .\objects\machm4_1.d)
-I (.\misc\depend\Arm\CortexM4\inc\machM4.h)(0x58D7E9EC)
+I (.\misc\depend\Arm\CortexM4\inc\machM4.h)(0x59B59271)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x588BC994)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f417xx.h)(0x582313BA)
 I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include\core_cm4.h)(0x58988FDA)
@@ -2599,38 +2628,37 @@ I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include\cmsis_armcc.h)(0x58988FDA)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include\system_stm32f4xx.h)(0x582313BA)
 F (.\misc\context\src\timer.cpp)(0x58C3384B)(--cpp -c --cpu Cortex-M4.fp -g -O0 -Otime --apcs=interwork -I .\adv7180\inc -I .\device\inc -I .\drivers\inc -I .\entry\inc -I .\gui\inc -I .\init\inc -I .\it\inc -I .\misc\inc -I .\tft\inc -I .\FatFs\src -I .\FatFs\src\drivers -I .\FatFs\src\option -I .\STM32_USB_Device_Library\Class\MSC\Inc -I .\STM32_USB_Device_Library\Core\Inc -I .\pnesx\inc -I .\misc\context\inc -I .\misc\depend\Arm\CortexM4\inc -I .\lwip-enc28j60-master\enc28j60driver -I .\lwip-1.4.1\src\include -I .\lwip-1.4.1\src\netif -I .\lwip-1.4.1\src\api -I .\lwip-1.4.1\src\core -I .\lwip-1.4.1\src\include\ipv4 -I .\tcp_app\inc -I .\analog\inc --cpp11 --exceptions-I.\RTE\_stm32f417iet6-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F417xx-o .\objects\timer.o --omf_browse .\objects\timer.crf --depend .\objects\timer.d)
 I (.\misc\context\inc\timer.h)(0x58CBB3D5)
-I (.\misc\depend\Arm\CortexM4\inc\machM4.h)(0x58D7E9EC)
+I (.\misc\depend\Arm\CortexM4\inc\machM4.h)(0x59B59271)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x588BC994)
 I (.\misc\context\inc\vm_conf.h)(0x59B2C688)
 I (.\misc\inc\iterable.h)(0x58C2BDC2)
 I (.\misc\inc\ArrayListStatic.h)(0x58E2A11F)
-F (.\misc\context\src\driver.cpp)(0x59B524D6)(--cpp -c --cpu Cortex-M4.fp -g -O0 -Otime --apcs=interwork -I .\adv7180\inc -I .\device\inc -I .\drivers\inc -I .\entry\inc -I .\gui\inc -I .\init\inc -I .\it\inc -I .\misc\inc -I .\tft\inc -I .\FatFs\src -I .\FatFs\src\drivers -I .\FatFs\src\option -I .\STM32_USB_Device_Library\Class\MSC\Inc -I .\STM32_USB_Device_Library\Core\Inc -I .\pnesx\inc -I .\misc\context\inc -I .\misc\depend\Arm\CortexM4\inc -I .\lwip-enc28j60-master\enc28j60driver -I .\lwip-1.4.1\src\include -I .\lwip-1.4.1\src\netif -I .\lwip-1.4.1\src\api -I .\lwip-1.4.1\src\core -I .\lwip-1.4.1\src\include\ipv4 -I .\tcp_app\inc -I .\analog\inc --cpp11 --exceptions-I.\RTE\_stm32f417iet6-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F417xx-o .\objects\driver.o --omf_browse .\objects\driver.crf --depend .\objects\driver.d)
-I (.\misc\context\inc\driver.h)(0x59B5290C)
+F (.\misc\context\src\driver.cpp)(0x59B6DB90)(--cpp -c --cpu Cortex-M4.fp -g -O0 -Otime --apcs=interwork -I .\adv7180\inc -I .\device\inc -I .\drivers\inc -I .\entry\inc -I .\gui\inc -I .\init\inc -I .\it\inc -I .\misc\inc -I .\tft\inc -I .\FatFs\src -I .\FatFs\src\drivers -I .\FatFs\src\option -I .\STM32_USB_Device_Library\Class\MSC\Inc -I .\STM32_USB_Device_Library\Core\Inc -I .\pnesx\inc -I .\misc\context\inc -I .\misc\depend\Arm\CortexM4\inc -I .\lwip-enc28j60-master\enc28j60driver -I .\lwip-1.4.1\src\include -I .\lwip-1.4.1\src\netif -I .\lwip-1.4.1\src\api -I .\lwip-1.4.1\src\core -I .\lwip-1.4.1\src\include\ipv4 -I .\tcp_app\inc -I .\analog\inc --cpp11 --exceptions-I.\RTE\_stm32f417iet6-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F417xx-o .\objects\driver.o --omf_browse .\objects\driver.crf --depend .\objects\driver.d)
+I (.\misc\context\inc\driver.h)(0x59B58FA0)
 I (.\misc\context\inc\vm_conf.h)(0x59B2C688)
-I (.\misc\depend\Arm\CortexM4\inc\machM4.h)(0x58D7E9EC)
+I (.\misc\depend\Arm\CortexM4\inc\machM4.h)(0x59B59271)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x588BC994)
 I (.\misc\inc\iterable.h)(0x58C2BDC2)
 I (.\misc\inc\ArrayListStatic.h)(0x58E2A11F)
 I (.\misc\context\inc\mach.h)(0x59B2C911)
 I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x588BC994)
-I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x588BC994)
 I (C:\Keil_v5\ARM\ARMCC\include\errno.h)(0x588BC994)
-F (.\device\src\startup_app.cpp)(0x58F0B044)(--cpp -c --cpu Cortex-M4.fp -g -O0 -Otime --apcs=interwork -I .\adv7180\inc -I .\device\inc -I .\drivers\inc -I .\entry\inc -I .\gui\inc -I .\init\inc -I .\it\inc -I .\misc\inc -I .\tft\inc -I .\FatFs\src -I .\FatFs\src\drivers -I .\FatFs\src\option -I .\STM32_USB_Device_Library\Class\MSC\Inc -I .\STM32_USB_Device_Library\Core\Inc -I .\pnesx\inc -I .\misc\context\inc -I .\misc\depend\Arm\CortexM4\inc -I .\lwip-enc28j60-master\enc28j60driver -I .\lwip-1.4.1\src\include -I .\lwip-1.4.1\src\netif -I .\lwip-1.4.1\src\api -I .\lwip-1.4.1\src\core -I .\lwip-1.4.1\src\include\ipv4 -I .\tcp_app\inc -I .\analog\inc --cpp11 --exceptions-I.\RTE\_stm32f417iet6-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F417xx-o .\objects\startup_app.o --omf_browse .\objects\startup_app.crf --depend .\objects\startup_app.d)
-I (.\entry\inc\startup_app.h)(0x58F0AF3D)
+F (.\device\src\startup_app.cpp)(0x59B6DF01)(--cpp -c --cpu Cortex-M4.fp -g -O0 -Otime --apcs=interwork -I .\adv7180\inc -I .\device\inc -I .\drivers\inc -I .\entry\inc -I .\gui\inc -I .\init\inc -I .\it\inc -I .\misc\inc -I .\tft\inc -I .\FatFs\src -I .\FatFs\src\drivers -I .\FatFs\src\option -I .\STM32_USB_Device_Library\Class\MSC\Inc -I .\STM32_USB_Device_Library\Core\Inc -I .\pnesx\inc -I .\misc\context\inc -I .\misc\depend\Arm\CortexM4\inc -I .\lwip-enc28j60-master\enc28j60driver -I .\lwip-1.4.1\src\include -I .\lwip-1.4.1\src\netif -I .\lwip-1.4.1\src\api -I .\lwip-1.4.1\src\core -I .\lwip-1.4.1\src\include\ipv4 -I .\tcp_app\inc -I .\analog\inc --cpp11 --exceptions-I.\RTE\_stm32f417iet6-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F417xx-o .\objects\startup_app.o --omf_browse .\objects\startup_app.crf --depend .\objects\startup_app.d)
+I (.\entry\inc\startup_app.h)(0x59B58B18)
 I (.\entry\inc\app_def.h)(0x58F09C35)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x588BC994)
-I (.\device\inc\device_conf.h)(0x58DF4EEB)
+I (.\device\inc\device_conf.h)(0x59B55744)
 I (.\device\inc\device_gui_conf.h)(0x58D2BAB0)
 I (.\misc\context\inc\vm.h)(0x59B5175B)
-I (.\misc\depend\Arm\CortexM4\inc\machM4.h)(0x58D7E9EC)
+I (.\misc\depend\Arm\CortexM4\inc\machM4.h)(0x59B59271)
 I (.\misc\context\inc\vm_conf.h)(0x59B2C688)
-I (.\misc\context\inc\vmapi.h)(0x59B52613)
+I (.\misc\context\inc\vmapi.h)(0x59B566BA)
 I (.\misc\depend\Arm\CortexM4\inc\thread.h)(0x58D7E5B2)
 I (.\misc\context\inc\mail.h)(0x58C66DB1)
-I (.\misc\context\inc\driver.h)(0x59B5290C)
+I (.\misc\context\inc\driver.h)(0x59B58FA0)
 I (.\misc\inc\iterable.h)(0x58C2BDC2)
 I (.\misc\inc\ArrayListStatic.h)(0x58E2A11F)
-I (.\misc\context\inc\vmapi_call.h)(0x59B52858)
+I (.\misc\context\inc\vmapi_call.h)(0x59B6DD56)
 I (.\device\inc\fgpu.h)(0x58E08CE7)
 I (.\device\inc\gui.h)(0x58D9083E)
 I (.\gui\inc\guiEngine.h)(0x58E9DBBA)
@@ -2652,7 +2680,7 @@ I (.\gui\inc\GLabel.h)(0x58E0A173)
 I (.\misc\inc\printer.h)(0x58EA4431)
 I (.\gui\inc\gComponent.h)(0x58EF3221)
 I (.\misc\inc\abstract.h)(0x58CB9BC6)
-I (.\device\inc\touch.h)(0x58E2552A)
+I (.\device\inc\touch.h)(0x59B61846)
 I (.\gui\inc\GSlide.h)(0x58DBE043)
 I (.\gui\inc\GKeypad.h)(0x58EA62CB)
 I (.\gui\inc\textField.h)(0x58DBE125)
@@ -2672,7 +2700,9 @@ I (.\FatFs\src\ffconf.h)(0x58DD8DB4)
 I (.\device\inc\tsc2046.h)(0x58D1629F)
 I (.\device\inc\tsc2046_conf.h)(0x58F0A3AF)
 I (.\tft\inc\TFTili9486.h)(0x58DB2EE7)
-I (.\device\inc\time.h)(0x56F3ED44)
+I (.\device\inc\sensor_drv.h)(0x59B6DEC8)
+I (.\device\inc\time.h)(0x59B6DCAA)
+I (.\device\inc\it_vect.h)(0x59B6DC55)
 I (.\drivers\inc\stm32f4xx_hal.h)(0x5730B7BE)
 I (.\entry\inc\stm32f4xx_hal_conf.h)(0x58C0E551)
 I (.\drivers\inc\stm32f4xx_hal_rcc.h)(0x5730B7C0)
@@ -2719,37 +2749,37 @@ F (.\entry\src\render_app.cpp)(0x58EB2D6C)(--cpp -c --cpu Cortex-M4.fp -g -O0 -O
 I (.\entry\inc\render_app.h)(0x58E930F1)
 I (.\entry\inc\app_def.h)(0x58F09C35)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x588BC994)
-I (.\device\inc\device_conf.h)(0x58DF4EEB)
+I (.\device\inc\device_conf.h)(0x59B55744)
 I (.\device\inc\device_gui_conf.h)(0x58D2BAB0)
 I (.\misc\context\inc\vm.h)(0x59B5175B)
-I (.\misc\depend\Arm\CortexM4\inc\machM4.h)(0x58D7E9EC)
+I (.\misc\depend\Arm\CortexM4\inc\machM4.h)(0x59B59271)
 I (.\misc\context\inc\vm_conf.h)(0x59B2C688)
-I (.\misc\context\inc\vmapi.h)(0x59B52613)
+I (.\misc\context\inc\vmapi.h)(0x59B566BA)
 I (.\misc\depend\Arm\CortexM4\inc\thread.h)(0x58D7E5B2)
 I (.\misc\context\inc\mail.h)(0x58C66DB1)
-I (.\misc\context\inc\driver.h)(0x59B5290C)
+I (.\misc\context\inc\driver.h)(0x59B58FA0)
 I (.\misc\inc\iterable.h)(0x58C2BDC2)
 I (.\misc\inc\ArrayListStatic.h)(0x58E2A11F)
-I (.\misc\context\inc\vmapi_call.h)(0x59B52858)
+I (.\misc\context\inc\vmapi_call.h)(0x59B6DD56)
 I (.\device\inc\fgpu.h)(0x58E08CE7)
 I (.\tft\inc\TFTili9486.h)(0x58DB2EE7)
-F (.\entry\src\main_app.cpp)(0x58F0A196)(--cpp -c --cpu Cortex-M4.fp -g -O0 -Otime --apcs=interwork -I .\adv7180\inc -I .\device\inc -I .\drivers\inc -I .\entry\inc -I .\gui\inc -I .\init\inc -I .\it\inc -I .\misc\inc -I .\tft\inc -I .\FatFs\src -I .\FatFs\src\drivers -I .\FatFs\src\option -I .\STM32_USB_Device_Library\Class\MSC\Inc -I .\STM32_USB_Device_Library\Core\Inc -I .\pnesx\inc -I .\misc\context\inc -I .\misc\depend\Arm\CortexM4\inc -I .\lwip-enc28j60-master\enc28j60driver -I .\lwip-1.4.1\src\include -I .\lwip-1.4.1\src\netif -I .\lwip-1.4.1\src\api -I .\lwip-1.4.1\src\core -I .\lwip-1.4.1\src\include\ipv4 -I .\tcp_app\inc -I .\analog\inc --cpp11 --exceptions-I.\RTE\_stm32f417iet6-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F417xx-o .\objects\main_app.o --omf_browse .\objects\main_app.crf --depend .\objects\main_app.d)
+F (.\entry\src\main_app.cpp)(0x59B6DA0A)(--cpp -c --cpu Cortex-M4.fp -g -O0 -Otime --apcs=interwork -I .\adv7180\inc -I .\device\inc -I .\drivers\inc -I .\entry\inc -I .\gui\inc -I .\init\inc -I .\it\inc -I .\misc\inc -I .\tft\inc -I .\FatFs\src -I .\FatFs\src\drivers -I .\FatFs\src\option -I .\STM32_USB_Device_Library\Class\MSC\Inc -I .\STM32_USB_Device_Library\Core\Inc -I .\pnesx\inc -I .\misc\context\inc -I .\misc\depend\Arm\CortexM4\inc -I .\lwip-enc28j60-master\enc28j60driver -I .\lwip-1.4.1\src\include -I .\lwip-1.4.1\src\netif -I .\lwip-1.4.1\src\api -I .\lwip-1.4.1\src\core -I .\lwip-1.4.1\src\include\ipv4 -I .\tcp_app\inc -I .\analog\inc --cpp11 --exceptions-I.\RTE\_stm32f417iet6-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F417xx-o .\objects\main_app.o --omf_browse .\objects\main_app.crf --depend .\objects\main_app.d)
 I (.\entry\inc\main_app.h)(0x58F09200)
 I (.\entry\inc\app_macro.h)(0x58EFCB12)
 I (.\entry\inc\app_def.h)(0x58F09C35)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x588BC994)
-I (.\device\inc\device_conf.h)(0x58DF4EEB)
+I (.\device\inc\device_conf.h)(0x59B55744)
 I (.\device\inc\device_gui_conf.h)(0x58D2BAB0)
 I (.\misc\context\inc\vm.h)(0x59B5175B)
-I (.\misc\depend\Arm\CortexM4\inc\machM4.h)(0x58D7E9EC)
+I (.\misc\depend\Arm\CortexM4\inc\machM4.h)(0x59B59271)
 I (.\misc\context\inc\vm_conf.h)(0x59B2C688)
-I (.\misc\context\inc\vmapi.h)(0x59B52613)
+I (.\misc\context\inc\vmapi.h)(0x59B566BA)
 I (.\misc\depend\Arm\CortexM4\inc\thread.h)(0x58D7E5B2)
 I (.\misc\context\inc\mail.h)(0x58C66DB1)
-I (.\misc\context\inc\driver.h)(0x59B5290C)
+I (.\misc\context\inc\driver.h)(0x59B58FA0)
 I (.\misc\inc\iterable.h)(0x58C2BDC2)
 I (.\misc\inc\ArrayListStatic.h)(0x58E2A11F)
-I (.\misc\context\inc\vmapi_call.h)(0x59B52858)
+I (.\misc\context\inc\vmapi_call.h)(0x59B6DD56)
 I (.\device\inc\gui.h)(0x58D9083E)
 I (.\gui\inc\guiEngine.h)(0x58E9DBBA)
 I (.\gui\inc\ContentPane.h)(0x58EF1907)
@@ -2770,7 +2800,7 @@ I (.\gui\inc\GLabel.h)(0x58E0A173)
 I (.\misc\inc\printer.h)(0x58EA4431)
 I (.\gui\inc\gComponent.h)(0x58EF3221)
 I (.\misc\inc\abstract.h)(0x58CB9BC6)
-I (.\device\inc\touch.h)(0x58E2552A)
+I (.\device\inc\touch.h)(0x59B61846)
 I (.\gui\inc\GSlide.h)(0x58DBE043)
 I (.\gui\inc\GKeypad.h)(0x58EA62CB)
 I (.\gui\inc\textField.h)(0x58DBE125)
@@ -2791,7 +2821,8 @@ I (.\adv7180\inc\adv7180.h)(0x58E20D8A)
 I (C:\Keil_v5\ARM\ARMCC\include\errno.h)(0x588BC994)
 I (.\device\inc\sprite.h)(0x58BB04C0)
 I (.\device\inc\bitmap.h)(0x58B9DF20)
-I (.\device\inc\time.h)(0x56F3ED44)
+I (.\device\inc\sensor_drv.h)(0x59B6DEC8)
+I (.\device\inc\time.h)(0x59B6DCAA)
 I (.\misc\inc\pp.h)(0x58EF5049)
 I (C:\Keil_v5\ARM\ARMCC\include\ctype.h)(0x588BC994)
 F (.\entry\src\explorer_app.cpp)(0x58EDEEB3)(--cpp -c --cpu Cortex-M4.fp -g -O0 -Otime --apcs=interwork -I .\adv7180\inc -I .\device\inc -I .\drivers\inc -I .\entry\inc -I .\gui\inc -I .\init\inc -I .\it\inc -I .\misc\inc -I .\tft\inc -I .\FatFs\src -I .\FatFs\src\drivers -I .\FatFs\src\option -I .\STM32_USB_Device_Library\Class\MSC\Inc -I .\STM32_USB_Device_Library\Core\Inc -I .\pnesx\inc -I .\misc\context\inc -I .\misc\depend\Arm\CortexM4\inc -I .\lwip-enc28j60-master\enc28j60driver -I .\lwip-1.4.1\src\include -I .\lwip-1.4.1\src\netif -I .\lwip-1.4.1\src\api -I .\lwip-1.4.1\src\core -I .\lwip-1.4.1\src\include\ipv4 -I .\tcp_app\inc -I .\analog\inc --cpp11 --exceptions-I.\RTE\_stm32f417iet6-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F417xx-o .\objects\explorer_app.o --omf_browse .\objects\explorer_app.crf --depend .\objects\explorer_app.d)
@@ -2799,18 +2830,18 @@ I (.\entry\inc\explorer_app.h)(0x58EDE93E)
 I (.\entry\inc\app_macro.h)(0x58EFCB12)
 I (.\entry\inc\app_def.h)(0x58F09C35)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x588BC994)
-I (.\device\inc\device_conf.h)(0x58DF4EEB)
+I (.\device\inc\device_conf.h)(0x59B55744)
 I (.\device\inc\device_gui_conf.h)(0x58D2BAB0)
 I (.\misc\context\inc\vm.h)(0x59B5175B)
-I (.\misc\depend\Arm\CortexM4\inc\machM4.h)(0x58D7E9EC)
+I (.\misc\depend\Arm\CortexM4\inc\machM4.h)(0x59B59271)
 I (.\misc\context\inc\vm_conf.h)(0x59B2C688)
-I (.\misc\context\inc\vmapi.h)(0x59B52613)
+I (.\misc\context\inc\vmapi.h)(0x59B566BA)
 I (.\misc\depend\Arm\CortexM4\inc\thread.h)(0x58D7E5B2)
 I (.\misc\context\inc\mail.h)(0x58C66DB1)
-I (.\misc\context\inc\driver.h)(0x59B5290C)
+I (.\misc\context\inc\driver.h)(0x59B58FA0)
 I (.\misc\inc\iterable.h)(0x58C2BDC2)
 I (.\misc\inc\ArrayListStatic.h)(0x58E2A11F)
-I (.\misc\context\inc\vmapi_call.h)(0x59B52858)
+I (.\misc\context\inc\vmapi_call.h)(0x59B6DD56)
 I (.\device\inc\gui.h)(0x58D9083E)
 I (.\gui\inc\guiEngine.h)(0x58E9DBBA)
 I (.\gui\inc\ContentPane.h)(0x58EF1907)
@@ -2831,7 +2862,7 @@ I (.\gui\inc\GLabel.h)(0x58E0A173)
 I (.\misc\inc\printer.h)(0x58EA4431)
 I (.\gui\inc\gComponent.h)(0x58EF3221)
 I (.\misc\inc\abstract.h)(0x58CB9BC6)
-I (.\device\inc\touch.h)(0x58E2552A)
+I (.\device\inc\touch.h)(0x59B61846)
 I (.\gui\inc\GSlide.h)(0x58DBE043)
 I (.\gui\inc\GKeypad.h)(0x58EA62CB)
 I (.\gui\inc\textField.h)(0x58DBE125)
@@ -2858,18 +2889,18 @@ I (.\entry\inc\info_app.h)(0x58E93D1A)
 I (.\entry\inc\app_macro.h)(0x58EFCB12)
 I (.\entry\inc\app_def.h)(0x58F09C35)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x588BC994)
-I (.\device\inc\device_conf.h)(0x58DF4EEB)
+I (.\device\inc\device_conf.h)(0x59B55744)
 I (.\device\inc\device_gui_conf.h)(0x58D2BAB0)
 I (.\misc\context\inc\vm.h)(0x59B5175B)
-I (.\misc\depend\Arm\CortexM4\inc\machM4.h)(0x58D7E9EC)
+I (.\misc\depend\Arm\CortexM4\inc\machM4.h)(0x59B59271)
 I (.\misc\context\inc\vm_conf.h)(0x59B2C688)
-I (.\misc\context\inc\vmapi.h)(0x59B52613)
+I (.\misc\context\inc\vmapi.h)(0x59B566BA)
 I (.\misc\depend\Arm\CortexM4\inc\thread.h)(0x58D7E5B2)
 I (.\misc\context\inc\mail.h)(0x58C66DB1)
-I (.\misc\context\inc\driver.h)(0x59B5290C)
+I (.\misc\context\inc\driver.h)(0x59B58FA0)
 I (.\misc\inc\iterable.h)(0x58C2BDC2)
 I (.\misc\inc\ArrayListStatic.h)(0x58E2A11F)
-I (.\misc\context\inc\vmapi_call.h)(0x59B52858)
+I (.\misc\context\inc\vmapi_call.h)(0x59B6DD56)
 I (.\device\inc\gui.h)(0x58D9083E)
 I (.\gui\inc\guiEngine.h)(0x58E9DBBA)
 I (.\gui\inc\ContentPane.h)(0x58EF1907)
@@ -2890,7 +2921,7 @@ I (.\gui\inc\GLabel.h)(0x58E0A173)
 I (.\misc\inc\printer.h)(0x58EA4431)
 I (.\gui\inc\gComponent.h)(0x58EF3221)
 I (.\misc\inc\abstract.h)(0x58CB9BC6)
-I (.\device\inc\touch.h)(0x58E2552A)
+I (.\device\inc\touch.h)(0x59B61846)
 I (.\gui\inc\GSlide.h)(0x58DBE043)
 I (.\gui\inc\GKeypad.h)(0x58EA62CB)
 I (.\gui\inc\textField.h)(0x58DBE125)
@@ -2907,18 +2938,18 @@ I (.\entry\inc\explorer_app.h)(0x58EDE93E)
 I (.\entry\inc\app_macro.h)(0x58EFCB12)
 I (.\entry\inc\app_def.h)(0x58F09C35)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x588BC994)
-I (.\device\inc\device_conf.h)(0x58DF4EEB)
+I (.\device\inc\device_conf.h)(0x59B55744)
 I (.\device\inc\device_gui_conf.h)(0x58D2BAB0)
 I (.\misc\context\inc\vm.h)(0x59B5175B)
-I (.\misc\depend\Arm\CortexM4\inc\machM4.h)(0x58D7E9EC)
+I (.\misc\depend\Arm\CortexM4\inc\machM4.h)(0x59B59271)
 I (.\misc\context\inc\vm_conf.h)(0x59B2C688)
-I (.\misc\context\inc\vmapi.h)(0x59B52613)
+I (.\misc\context\inc\vmapi.h)(0x59B566BA)
 I (.\misc\depend\Arm\CortexM4\inc\thread.h)(0x58D7E5B2)
 I (.\misc\context\inc\mail.h)(0x58C66DB1)
-I (.\misc\context\inc\driver.h)(0x59B5290C)
+I (.\misc\context\inc\driver.h)(0x59B58FA0)
 I (.\misc\inc\iterable.h)(0x58C2BDC2)
 I (.\misc\inc\ArrayListStatic.h)(0x58E2A11F)
-I (.\misc\context\inc\vmapi_call.h)(0x59B52858)
+I (.\misc\context\inc\vmapi_call.h)(0x59B6DD56)
 I (.\device\inc\gui.h)(0x58D9083E)
 I (.\gui\inc\guiEngine.h)(0x58E9DBBA)
 I (.\gui\inc\ContentPane.h)(0x58EF1907)
@@ -2939,7 +2970,7 @@ I (.\gui\inc\GLabel.h)(0x58E0A173)
 I (.\misc\inc\printer.h)(0x58EA4431)
 I (.\gui\inc\gComponent.h)(0x58EF3221)
 I (.\misc\inc\abstract.h)(0x58CB9BC6)
-I (.\device\inc\touch.h)(0x58E2552A)
+I (.\device\inc\touch.h)(0x59B61846)
 I (.\gui\inc\GSlide.h)(0x58DBE043)
 I (.\gui\inc\GKeypad.h)(0x58EA62CB)
 I (.\gui\inc\textField.h)(0x58DBE125)
@@ -2965,18 +2996,18 @@ I (.\entry\inc\exec_app.h)(0x58E93D5C)
 I (.\entry\inc\app_macro.h)(0x58EFCB12)
 I (.\entry\inc\app_def.h)(0x58F09C35)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x588BC994)
-I (.\device\inc\device_conf.h)(0x58DF4EEB)
+I (.\device\inc\device_conf.h)(0x59B55744)
 I (.\device\inc\device_gui_conf.h)(0x58D2BAB0)
 I (.\misc\context\inc\vm.h)(0x59B5175B)
-I (.\misc\depend\Arm\CortexM4\inc\machM4.h)(0x58D7E9EC)
+I (.\misc\depend\Arm\CortexM4\inc\machM4.h)(0x59B59271)
 I (.\misc\context\inc\vm_conf.h)(0x59B2C688)
-I (.\misc\context\inc\vmapi.h)(0x59B52613)
+I (.\misc\context\inc\vmapi.h)(0x59B566BA)
 I (.\misc\depend\Arm\CortexM4\inc\thread.h)(0x58D7E5B2)
 I (.\misc\context\inc\mail.h)(0x58C66DB1)
-I (.\misc\context\inc\driver.h)(0x59B5290C)
+I (.\misc\context\inc\driver.h)(0x59B58FA0)
 I (.\misc\inc\iterable.h)(0x58C2BDC2)
 I (.\misc\inc\ArrayListStatic.h)(0x58E2A11F)
-I (.\misc\context\inc\vmapi_call.h)(0x59B52858)
+I (.\misc\context\inc\vmapi_call.h)(0x59B6DD56)
 I (.\device\inc\gui.h)(0x58D9083E)
 I (.\gui\inc\guiEngine.h)(0x58E9DBBA)
 I (.\gui\inc\ContentPane.h)(0x58EF1907)
@@ -2997,7 +3028,7 @@ I (.\gui\inc\GLabel.h)(0x58E0A173)
 I (.\misc\inc\printer.h)(0x58EA4431)
 I (.\gui\inc\gComponent.h)(0x58EF3221)
 I (.\misc\inc\abstract.h)(0x58CB9BC6)
-I (.\device\inc\touch.h)(0x58E2552A)
+I (.\device\inc\touch.h)(0x59B61846)
 I (.\gui\inc\GSlide.h)(0x58DBE043)
 I (.\gui\inc\GKeypad.h)(0x58EA62CB)
 I (.\gui\inc\textField.h)(0x58DBE125)
@@ -3011,18 +3042,18 @@ I (.\gui\inc\font_array.h)(0x58D2BDA0)
 I (.\gui\inc\font_mono.h)(0x58D2DEE5)
 F (.\entry\src\execute.cpp)(0x58E93D96)(--cpp -c --cpu Cortex-M4.fp -g -O0 -Otime --apcs=interwork -I .\adv7180\inc -I .\device\inc -I .\drivers\inc -I .\entry\inc -I .\gui\inc -I .\init\inc -I .\it\inc -I .\misc\inc -I .\tft\inc -I .\FatFs\src -I .\FatFs\src\drivers -I .\FatFs\src\option -I .\STM32_USB_Device_Library\Class\MSC\Inc -I .\STM32_USB_Device_Library\Core\Inc -I .\pnesx\inc -I .\misc\context\inc -I .\misc\depend\Arm\CortexM4\inc -I .\lwip-enc28j60-master\enc28j60driver -I .\lwip-1.4.1\src\include -I .\lwip-1.4.1\src\netif -I .\lwip-1.4.1\src\api -I .\lwip-1.4.1\src\core -I .\lwip-1.4.1\src\include\ipv4 -I .\tcp_app\inc -I .\analog\inc --cpp11 --exceptions-I.\RTE\_stm32f417iet6-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F417xx-o .\objects\execute.o --omf_browse .\objects\execute.crf --depend .\objects\execute.d)
 I (.\misc\context\inc\VM.h)(0x59B5175B)
-I (.\misc\depend\Arm\CortexM4\inc\machM4.h)(0x58D7E9EC)
+I (.\misc\depend\Arm\CortexM4\inc\machM4.h)(0x59B59271)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x588BC994)
 I (.\misc\context\inc\vm_conf.h)(0x59B2C688)
-I (.\misc\context\inc\vmapi.h)(0x59B52613)
+I (.\misc\context\inc\vmapi.h)(0x59B566BA)
 I (.\misc\depend\Arm\CortexM4\inc\thread.h)(0x58D7E5B2)
 I (.\misc\context\inc\mail.h)(0x58C66DB1)
-I (.\misc\context\inc\driver.h)(0x59B5290C)
+I (.\misc\context\inc\driver.h)(0x59B58FA0)
 I (.\misc\inc\iterable.h)(0x58C2BDC2)
 I (.\misc\inc\ArrayListStatic.h)(0x58E2A11F)
-I (.\misc\context\inc\vmapi_call.h)(0x59B52858)
+I (.\misc\context\inc\vmapi_call.h)(0x59B6DD56)
 I (.\device\inc\fgpu.h)(0x58E08CE7)
-I (.\device\inc\device_conf.h)(0x58DF4EEB)
+I (.\device\inc\device_conf.h)(0x59B55744)
 I (.\device\inc\device_gui_conf.h)(0x58D2BAB0)
 I (.\device\inc\gui.h)(0x58D9083E)
 I (.\gui\inc\guiEngine.h)(0x58E9DBBA)
@@ -3044,7 +3075,7 @@ I (.\gui\inc\GLabel.h)(0x58E0A173)
 I (.\misc\inc\printer.h)(0x58EA4431)
 I (.\gui\inc\gComponent.h)(0x58EF3221)
 I (.\misc\inc\abstract.h)(0x58CB9BC6)
-I (.\device\inc\touch.h)(0x58E2552A)
+I (.\device\inc\touch.h)(0x59B61846)
 I (.\gui\inc\GSlide.h)(0x58DBE043)
 I (.\gui\inc\GKeypad.h)(0x58EA62CB)
 I (.\gui\inc\textField.h)(0x58DBE125)
@@ -3072,18 +3103,18 @@ I (.\entry\inc\cam_app.h)(0x58EFC663)
 F (.\entry\src\exec_interface.cpp)(0x58D548CA)(--cpp -c --cpu Cortex-M4.fp -g -O0 -Otime --apcs=interwork -I .\adv7180\inc -I .\device\inc -I .\drivers\inc -I .\entry\inc -I .\gui\inc -I .\init\inc -I .\it\inc -I .\misc\inc -I .\tft\inc -I .\FatFs\src -I .\FatFs\src\drivers -I .\FatFs\src\option -I .\STM32_USB_Device_Library\Class\MSC\Inc -I .\STM32_USB_Device_Library\Core\Inc -I .\pnesx\inc -I .\misc\context\inc -I .\misc\depend\Arm\CortexM4\inc -I .\lwip-enc28j60-master\enc28j60driver -I .\lwip-1.4.1\src\include -I .\lwip-1.4.1\src\netif -I .\lwip-1.4.1\src\api -I .\lwip-1.4.1\src\core -I .\lwip-1.4.1\src\include\ipv4 -I .\tcp_app\inc -I .\analog\inc --cpp11 --exceptions-I.\RTE\_stm32f417iet6-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F417xx-o .\objects\exec_interface.o --omf_browse .\objects\exec_interface.crf --depend .\objects\exec_interface.d)
 I (.\entry\inc\exec_interface.h)(0x58D548CA)
 I (.\misc\context\inc\VM.h)(0x59B5175B)
-I (.\misc\depend\Arm\CortexM4\inc\machM4.h)(0x58D7E9EC)
+I (.\misc\depend\Arm\CortexM4\inc\machM4.h)(0x59B59271)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x588BC994)
 I (.\misc\context\inc\vm_conf.h)(0x59B2C688)
-I (.\misc\context\inc\vmapi.h)(0x59B52613)
+I (.\misc\context\inc\vmapi.h)(0x59B566BA)
 I (.\misc\depend\Arm\CortexM4\inc\thread.h)(0x58D7E5B2)
 I (.\misc\context\inc\mail.h)(0x58C66DB1)
-I (.\misc\context\inc\driver.h)(0x59B5290C)
+I (.\misc\context\inc\driver.h)(0x59B58FA0)
 I (.\misc\inc\iterable.h)(0x58C2BDC2)
 I (.\misc\inc\ArrayListStatic.h)(0x58E2A11F)
-I (.\misc\context\inc\vmapi_call.h)(0x59B52858)
+I (.\misc\context\inc\vmapi_call.h)(0x59B6DD56)
 I (.\device\inc\fgpu.h)(0x58E08CE7)
-I (.\device\inc\device_conf.h)(0x58DF4EEB)
+I (.\device\inc\device_conf.h)(0x59B55744)
 I (.\device\inc\device_gui_conf.h)(0x58D2BAB0)
 I (.\device\inc\gui.h)(0x58D9083E)
 I (.\gui\inc\guiEngine.h)(0x58E9DBBA)
@@ -3105,7 +3136,7 @@ I (.\gui\inc\GLabel.h)(0x58E0A173)
 I (.\misc\inc\printer.h)(0x58EA4431)
 I (.\gui\inc\gComponent.h)(0x58EF3221)
 I (.\misc\inc\abstract.h)(0x58CB9BC6)
-I (.\device\inc\touch.h)(0x58E2552A)
+I (.\device\inc\touch.h)(0x59B61846)
 I (.\gui\inc\GSlide.h)(0x58DBE043)
 I (.\gui\inc\GKeypad.h)(0x58EA62CB)
 I (.\gui\inc\textField.h)(0x58DBE125)
@@ -3121,35 +3152,29 @@ I (.\entry\inc\app_def.h)(0x58F09C35)
 I (.\device\inc\camera.h)(0x58E24ED2)
 I (.\adv7180\inc\adv7180.h)(0x58E20D8A)
 I (C:\Keil_v5\ARM\ARMCC\include\errno.h)(0x588BC994)
-F (.\entry\src\touch_app.cpp)(0x58E93DB5)(--cpp -c --cpu Cortex-M4.fp -g -O0 -Otime --apcs=interwork -I .\adv7180\inc -I .\device\inc -I .\drivers\inc -I .\entry\inc -I .\gui\inc -I .\init\inc -I .\it\inc -I .\misc\inc -I .\tft\inc -I .\FatFs\src -I .\FatFs\src\drivers -I .\FatFs\src\option -I .\STM32_USB_Device_Library\Class\MSC\Inc -I .\STM32_USB_Device_Library\Core\Inc -I .\pnesx\inc -I .\misc\context\inc -I .\misc\depend\Arm\CortexM4\inc -I .\lwip-enc28j60-master\enc28j60driver -I .\lwip-1.4.1\src\include -I .\lwip-1.4.1\src\netif -I .\lwip-1.4.1\src\api -I .\lwip-1.4.1\src\core -I .\lwip-1.4.1\src\include\ipv4 -I .\tcp_app\inc -I .\analog\inc --cpp11 --exceptions-I.\RTE\_stm32f417iet6-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F417xx-o .\objects\touch_app.o --omf_browse .\objects\touch_app.crf --depend .\objects\touch_app.d)
-I (.\entry\inc\touch_app.h)(0x58E93DB0)
+F (.\entry\src\touch_app.cpp)(0x59B6DE0F)(--cpp -c --cpu Cortex-M4.fp -g -O0 -Otime --apcs=interwork -I .\adv7180\inc -I .\device\inc -I .\drivers\inc -I .\entry\inc -I .\gui\inc -I .\init\inc -I .\it\inc -I .\misc\inc -I .\tft\inc -I .\FatFs\src -I .\FatFs\src\drivers -I .\FatFs\src\option -I .\STM32_USB_Device_Library\Class\MSC\Inc -I .\STM32_USB_Device_Library\Core\Inc -I .\pnesx\inc -I .\misc\context\inc -I .\misc\depend\Arm\CortexM4\inc -I .\lwip-enc28j60-master\enc28j60driver -I .\lwip-1.4.1\src\include -I .\lwip-1.4.1\src\netif -I .\lwip-1.4.1\src\api -I .\lwip-1.4.1\src\core -I .\lwip-1.4.1\src\include\ipv4 -I .\tcp_app\inc -I .\analog\inc --cpp11 --exceptions-I.\RTE\_stm32f417iet6-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F417xx-o .\objects\touch_app.o --omf_browse .\objects\touch_app.crf --depend .\objects\touch_app.d)
+I (.\entry\inc\touch_app.h)(0x59B6DE47)
 I (.\entry\inc\app_def.h)(0x58F09C35)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x588BC994)
-I (.\device\inc\device_conf.h)(0x58DF4EEB)
+I (.\device\inc\device_conf.h)(0x59B55744)
 I (.\device\inc\device_gui_conf.h)(0x58D2BAB0)
 I (.\misc\context\inc\vm.h)(0x59B5175B)
-I (.\misc\depend\Arm\CortexM4\inc\machM4.h)(0x58D7E9EC)
+I (.\misc\depend\Arm\CortexM4\inc\machM4.h)(0x59B59271)
 I (.\misc\context\inc\vm_conf.h)(0x59B2C688)
-I (.\misc\context\inc\vmapi.h)(0x59B52613)
+I (.\misc\context\inc\vmapi.h)(0x59B566BA)
 I (.\misc\depend\Arm\CortexM4\inc\thread.h)(0x58D7E5B2)
 I (.\misc\context\inc\mail.h)(0x58C66DB1)
-I (.\misc\context\inc\driver.h)(0x59B5290C)
+I (.\misc\context\inc\driver.h)(0x59B58FA0)
 I (.\misc\inc\iterable.h)(0x58C2BDC2)
 I (.\misc\inc\ArrayListStatic.h)(0x58E2A11F)
-I (.\misc\context\inc\vmapi_call.h)(0x59B52858)
-I (.\device\inc\tsc2046.h)(0x58D1629F)
-I (.\device\inc\tsc2046_conf.h)(0x58F0A3AF)
-I (.\misc\inc\abstract.h)(0x58CB9BC6)
-I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x588BC994)
-I (.\device\inc\touch.h)(0x58E2552A)
-I (.\misc\inc\dimensions.h)(0x58E7DA51)
+I (.\misc\context\inc\vmapi_call.h)(0x59B6DD56)
 F (.\entry\src\battery.cpp)(0x58F095D3)(--cpp -c --cpu Cortex-M4.fp -g -O0 -Otime --apcs=interwork -I .\adv7180\inc -I .\device\inc -I .\drivers\inc -I .\entry\inc -I .\gui\inc -I .\init\inc -I .\it\inc -I .\misc\inc -I .\tft\inc -I .\FatFs\src -I .\FatFs\src\drivers -I .\FatFs\src\option -I .\STM32_USB_Device_Library\Class\MSC\Inc -I .\STM32_USB_Device_Library\Core\Inc -I .\pnesx\inc -I .\misc\context\inc -I .\misc\depend\Arm\CortexM4\inc -I .\lwip-enc28j60-master\enc28j60driver -I .\lwip-1.4.1\src\include -I .\lwip-1.4.1\src\netif -I .\lwip-1.4.1\src\api -I .\lwip-1.4.1\src\core -I .\lwip-1.4.1\src\include\ipv4 -I .\tcp_app\inc -I .\analog\inc --cpp11 --exceptions-I.\RTE\_stm32f417iet6-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F417xx-o .\objects\battery.o --omf_browse .\objects\battery.crf --depend .\objects\battery.d)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x588BC994)
 I (.\misc\context\inc\vm.h)(0x59B5175B)
-I (.\misc\depend\Arm\CortexM4\inc\machM4.h)(0x58D7E9EC)
+I (.\misc\depend\Arm\CortexM4\inc\machM4.h)(0x59B59271)
 I (.\misc\context\inc\vm_conf.h)(0x59B2C688)
 I (.\entry\inc\app_def.h)(0x58F09C35)
-I (.\device\inc\device_conf.h)(0x58DF4EEB)
+I (.\device\inc\device_conf.h)(0x59B55744)
 I (.\device\inc\device_gui_conf.h)(0x58D2BAB0)
 I (.\device\inc\gui.h)(0x58D9083E)
 I (.\gui\inc\guiEngine.h)(0x58E9DBBA)
@@ -3173,7 +3198,7 @@ I (.\gui\inc\GLabel.h)(0x58E0A173)
 I (.\misc\inc\printer.h)(0x58EA4431)
 I (.\gui\inc\gComponent.h)(0x58EF3221)
 I (.\misc\inc\abstract.h)(0x58CB9BC6)
-I (.\device\inc\touch.h)(0x58E2552A)
+I (.\device\inc\touch.h)(0x59B61846)
 I (.\gui\inc\GSlide.h)(0x58DBE043)
 I (.\gui\inc\GKeypad.h)(0x58EA62CB)
 I (.\gui\inc\textField.h)(0x58DBE125)
@@ -3191,18 +3216,18 @@ I (.\entry\inc\settings_app.h)(0x58EFC847)
 I (.\entry\inc\app_macro.h)(0x58EFCB12)
 I (.\entry\inc\app_def.h)(0x58F09C35)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x588BC994)
-I (.\device\inc\device_conf.h)(0x58DF4EEB)
+I (.\device\inc\device_conf.h)(0x59B55744)
 I (.\device\inc\device_gui_conf.h)(0x58D2BAB0)
 I (.\misc\context\inc\vm.h)(0x59B5175B)
-I (.\misc\depend\Arm\CortexM4\inc\machM4.h)(0x58D7E9EC)
+I (.\misc\depend\Arm\CortexM4\inc\machM4.h)(0x59B59271)
 I (.\misc\context\inc\vm_conf.h)(0x59B2C688)
-I (.\misc\context\inc\vmapi.h)(0x59B52613)
+I (.\misc\context\inc\vmapi.h)(0x59B566BA)
 I (.\misc\depend\Arm\CortexM4\inc\thread.h)(0x58D7E5B2)
 I (.\misc\context\inc\mail.h)(0x58C66DB1)
-I (.\misc\context\inc\driver.h)(0x59B5290C)
+I (.\misc\context\inc\driver.h)(0x59B58FA0)
 I (.\misc\inc\iterable.h)(0x58C2BDC2)
 I (.\misc\inc\ArrayListStatic.h)(0x58E2A11F)
-I (.\misc\context\inc\vmapi_call.h)(0x59B52858)
+I (.\misc\context\inc\vmapi_call.h)(0x59B6DD56)
 I (.\device\inc\gui.h)(0x58D9083E)
 I (.\gui\inc\guiEngine.h)(0x58E9DBBA)
 I (.\gui\inc\ContentPane.h)(0x58EF1907)
@@ -3223,7 +3248,7 @@ I (.\gui\inc\GLabel.h)(0x58E0A173)
 I (.\misc\inc\printer.h)(0x58EA4431)
 I (.\gui\inc\gComponent.h)(0x58EF3221)
 I (.\misc\inc\abstract.h)(0x58CB9BC6)
-I (.\device\inc\touch.h)(0x58E2552A)
+I (.\device\inc\touch.h)(0x59B61846)
 I (.\gui\inc\GSlide.h)(0x58DBE043)
 I (.\gui\inc\GKeypad.h)(0x58EA62CB)
 I (.\gui\inc\textField.h)(0x58DBE125)
@@ -3244,22 +3269,22 @@ I (.\FatFs\src\ffconf.h)(0x58DD8DB4)
 I (.\misc\inc\pp.h)(0x58EF5049)
 I (C:\Keil_v5\ARM\ARMCC\include\ctype.h)(0x588BC994)
 F (.\entry\src\snake_app.cpp)(0x58EDEFC7)(--cpp -c --cpu Cortex-M4.fp -g -O0 -Otime --apcs=interwork -I .\adv7180\inc -I .\device\inc -I .\drivers\inc -I .\entry\inc -I .\gui\inc -I .\init\inc -I .\it\inc -I .\misc\inc -I .\tft\inc -I .\FatFs\src -I .\FatFs\src\drivers -I .\FatFs\src\option -I .\STM32_USB_Device_Library\Class\MSC\Inc -I .\STM32_USB_Device_Library\Core\Inc -I .\pnesx\inc -I .\misc\context\inc -I .\misc\depend\Arm\CortexM4\inc -I .\lwip-enc28j60-master\enc28j60driver -I .\lwip-1.4.1\src\include -I .\lwip-1.4.1\src\netif -I .\lwip-1.4.1\src\api -I .\lwip-1.4.1\src\core -I .\lwip-1.4.1\src\include\ipv4 -I .\tcp_app\inc -I .\analog\inc --cpp11 --exceptions-I.\RTE\_stm32f417iet6-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F417xx-o .\objects\snake_app.o --omf_browse .\objects\snake_app.crf --depend .\objects\snake_app.d)
-I (.\entry\inc\snake_app.h)(0x58E940DF)
+I (.\entry\inc\snake_app.h)(0x59B6CEBD)
 I (.\entry\inc\app_macro.h)(0x58EFCB12)
 I (.\entry\inc\app_def.h)(0x58F09C35)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x588BC994)
-I (.\device\inc\device_conf.h)(0x58DF4EEB)
+I (.\device\inc\device_conf.h)(0x59B55744)
 I (.\device\inc\device_gui_conf.h)(0x58D2BAB0)
 I (.\misc\context\inc\vm.h)(0x59B5175B)
-I (.\misc\depend\Arm\CortexM4\inc\machM4.h)(0x58D7E9EC)
+I (.\misc\depend\Arm\CortexM4\inc\machM4.h)(0x59B59271)
 I (.\misc\context\inc\vm_conf.h)(0x59B2C688)
-I (.\misc\context\inc\vmapi.h)(0x59B52613)
+I (.\misc\context\inc\vmapi.h)(0x59B566BA)
 I (.\misc\depend\Arm\CortexM4\inc\thread.h)(0x58D7E5B2)
 I (.\misc\context\inc\mail.h)(0x58C66DB1)
-I (.\misc\context\inc\driver.h)(0x59B5290C)
+I (.\misc\context\inc\driver.h)(0x59B58FA0)
 I (.\misc\inc\iterable.h)(0x58C2BDC2)
 I (.\misc\inc\ArrayListStatic.h)(0x58E2A11F)
-I (.\misc\context\inc\vmapi_call.h)(0x59B52858)
+I (.\misc\context\inc\vmapi_call.h)(0x59B6DD56)
 I (.\device\inc\gui.h)(0x58D9083E)
 I (.\gui\inc\guiEngine.h)(0x58E9DBBA)
 I (.\gui\inc\ContentPane.h)(0x58EF1907)
@@ -3280,7 +3305,7 @@ I (.\gui\inc\GLabel.h)(0x58E0A173)
 I (.\misc\inc\printer.h)(0x58EA4431)
 I (.\gui\inc\gComponent.h)(0x58EF3221)
 I (.\misc\inc\abstract.h)(0x58CB9BC6)
-I (.\device\inc\touch.h)(0x58E2552A)
+I (.\device\inc\touch.h)(0x59B61846)
 I (.\gui\inc\GSlide.h)(0x58DBE043)
 I (.\gui\inc\GKeypad.h)(0x58EA62CB)
 I (.\gui\inc\textField.h)(0x58DBE125)
@@ -3297,22 +3322,22 @@ I (.\device\inc\bitmap.h)(0x58B9DF20)
 I (.\FatFs\src\ff.h)(0x5823300A)
 I (.\FatFs\src\integer.h)(0x5823300C)
 I (.\FatFs\src\ffconf.h)(0x58DD8DB4)
-I (.\device\inc\time.h)(0x56F3ED44)
+I (.\device\inc\time.h)(0x59B6DCAA)
 F (.\entry\src\analog_app.cpp)(0x58EFCB40)(--cpp -c --cpu Cortex-M4.fp -g -O0 -Otime --apcs=interwork -I .\adv7180\inc -I .\device\inc -I .\drivers\inc -I .\entry\inc -I .\gui\inc -I .\init\inc -I .\it\inc -I .\misc\inc -I .\tft\inc -I .\FatFs\src -I .\FatFs\src\drivers -I .\FatFs\src\option -I .\STM32_USB_Device_Library\Class\MSC\Inc -I .\STM32_USB_Device_Library\Core\Inc -I .\pnesx\inc -I .\misc\context\inc -I .\misc\depend\Arm\CortexM4\inc -I .\lwip-enc28j60-master\enc28j60driver -I .\lwip-1.4.1\src\include -I .\lwip-1.4.1\src\netif -I .\lwip-1.4.1\src\api -I .\lwip-1.4.1\src\core -I .\lwip-1.4.1\src\include\ipv4 -I .\tcp_app\inc -I .\analog\inc --cpp11 --exceptions-I.\RTE\_stm32f417iet6-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F417xx-o .\objects\analog_app.o --omf_browse .\objects\analog_app.crf --depend .\objects\analog_app.d)
 I (.\entry\inc\analog_app.h)(0x58EB8DA7)
 I (.\entry\inc\app_def.h)(0x58F09C35)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x588BC994)
 I (.\misc\context\inc\vm.h)(0x59B5175B)
-I (.\misc\depend\Arm\CortexM4\inc\machM4.h)(0x58D7E9EC)
+I (.\misc\depend\Arm\CortexM4\inc\machM4.h)(0x59B59271)
 I (.\misc\context\inc\vm_conf.h)(0x59B2C688)
-I (.\misc\context\inc\vmapi.h)(0x59B52613)
+I (.\misc\context\inc\vmapi.h)(0x59B566BA)
 I (.\misc\depend\Arm\CortexM4\inc\thread.h)(0x58D7E5B2)
 I (.\misc\context\inc\mail.h)(0x58C66DB1)
-I (.\misc\context\inc\driver.h)(0x59B5290C)
+I (.\misc\context\inc\driver.h)(0x59B58FA0)
 I (.\misc\inc\iterable.h)(0x58C2BDC2)
 I (.\misc\inc\ArrayListStatic.h)(0x58E2A11F)
-I (.\misc\context\inc\vmapi_call.h)(0x59B52858)
-I (.\device\inc\device_conf.h)(0x58DF4EEB)
+I (.\misc\context\inc\vmapi_call.h)(0x59B6DD56)
+I (.\device\inc\device_conf.h)(0x59B55744)
 I (.\device\inc\device_gui_conf.h)(0x58D2BAB0)
 I (.\entry\inc\app_macro.h)(0x58EFCB12)
 I (.\analog\inc\adc_core.h)(0x58EB1828)
@@ -3338,7 +3363,7 @@ I (.\gui\inc\GLabel.h)(0x58E0A173)
 I (.\misc\inc\printer.h)(0x58EA4431)
 I (.\gui\inc\gComponent.h)(0x58EF3221)
 I (.\misc\inc\abstract.h)(0x58CB9BC6)
-I (.\device\inc\touch.h)(0x58E2552A)
+I (.\device\inc\touch.h)(0x59B61846)
 I (.\gui\inc\GSlide.h)(0x58DBE043)
 I (.\gui\inc\GKeypad.h)(0x58EA62CB)
 I (.\gui\inc\textField.h)(0x58DBE125)
@@ -3371,16 +3396,16 @@ I (.\entry\inc\analog_app.h)(0x58EB8DA7)
 I (.\entry\inc\app_def.h)(0x58F09C35)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x588BC994)
 I (.\misc\context\inc\vm.h)(0x59B5175B)
-I (.\misc\depend\Arm\CortexM4\inc\machM4.h)(0x58D7E9EC)
+I (.\misc\depend\Arm\CortexM4\inc\machM4.h)(0x59B59271)
 I (.\misc\context\inc\vm_conf.h)(0x59B2C688)
-I (.\misc\context\inc\vmapi.h)(0x59B52613)
+I (.\misc\context\inc\vmapi.h)(0x59B566BA)
 I (.\misc\depend\Arm\CortexM4\inc\thread.h)(0x58D7E5B2)
 I (.\misc\context\inc\mail.h)(0x58C66DB1)
-I (.\misc\context\inc\driver.h)(0x59B5290C)
+I (.\misc\context\inc\driver.h)(0x59B58FA0)
 I (.\misc\inc\iterable.h)(0x58C2BDC2)
 I (.\misc\inc\ArrayListStatic.h)(0x58E2A11F)
-I (.\misc\context\inc\vmapi_call.h)(0x59B52858)
-I (.\device\inc\device_conf.h)(0x58DF4EEB)
+I (.\misc\context\inc\vmapi_call.h)(0x59B6DD56)
+I (.\device\inc\device_conf.h)(0x59B55744)
 I (.\device\inc\device_gui_conf.h)(0x58D2BAB0)
 I (.\entry\inc\app_macro.h)(0x58EFCB12)
 I (.\analog\inc\adc_core.h)(0x58EB1828)
@@ -3406,7 +3431,7 @@ I (.\gui\inc\GLabel.h)(0x58E0A173)
 I (.\misc\inc\printer.h)(0x58EA4431)
 I (.\gui\inc\gComponent.h)(0x58EF3221)
 I (.\misc\inc\abstract.h)(0x58CB9BC6)
-I (.\device\inc\touch.h)(0x58E2552A)
+I (.\device\inc\touch.h)(0x59B61846)
 I (.\gui\inc\GSlide.h)(0x58DBE043)
 I (.\gui\inc\GKeypad.h)(0x58EA62CB)
 I (.\gui\inc\textField.h)(0x58DBE125)
@@ -3421,10 +3446,10 @@ I (.\gui\inc\font_mono.h)(0x58D2DEE5)
 F (.\entry\src\clock.cpp)(0x58F091E0)(--cpp -c --cpu Cortex-M4.fp -g -O0 -Otime --apcs=interwork -I .\adv7180\inc -I .\device\inc -I .\drivers\inc -I .\entry\inc -I .\gui\inc -I .\init\inc -I .\it\inc -I .\misc\inc -I .\tft\inc -I .\FatFs\src -I .\FatFs\src\drivers -I .\FatFs\src\option -I .\STM32_USB_Device_Library\Class\MSC\Inc -I .\STM32_USB_Device_Library\Core\Inc -I .\pnesx\inc -I .\misc\context\inc -I .\misc\depend\Arm\CortexM4\inc -I .\lwip-enc28j60-master\enc28j60driver -I .\lwip-1.4.1\src\include -I .\lwip-1.4.1\src\netif -I .\lwip-1.4.1\src\api -I .\lwip-1.4.1\src\core -I .\lwip-1.4.1\src\include\ipv4 -I .\tcp_app\inc -I .\analog\inc --cpp11 --exceptions-I.\RTE\_stm32f417iet6-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F417xx-o .\objects\clock.o --omf_browse .\objects\clock.crf --depend .\objects\clock.d)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x588BC994)
 I (.\misc\context\inc\vm.h)(0x59B5175B)
-I (.\misc\depend\Arm\CortexM4\inc\machM4.h)(0x58D7E9EC)
+I (.\misc\depend\Arm\CortexM4\inc\machM4.h)(0x59B59271)
 I (.\misc\context\inc\vm_conf.h)(0x59B2C688)
 I (.\entry\inc\app_def.h)(0x58F09C35)
-I (.\device\inc\device_conf.h)(0x58DF4EEB)
+I (.\device\inc\device_conf.h)(0x59B55744)
 I (.\device\inc\device_gui_conf.h)(0x58D2BAB0)
 I (.\device\inc\gui.h)(0x58D9083E)
 I (.\gui\inc\guiEngine.h)(0x58E9DBBA)
@@ -3448,7 +3473,7 @@ I (.\gui\inc\GLabel.h)(0x58E0A173)
 I (.\misc\inc\printer.h)(0x58EA4431)
 I (.\gui\inc\gComponent.h)(0x58EF3221)
 I (.\misc\inc\abstract.h)(0x58CB9BC6)
-I (.\device\inc\touch.h)(0x58E2552A)
+I (.\device\inc\touch.h)(0x59B61846)
 I (.\gui\inc\GSlide.h)(0x58DBE043)
 I (.\gui\inc\GKeypad.h)(0x58EA62CB)
 I (.\gui\inc\textField.h)(0x58DBE125)
@@ -3469,7 +3494,7 @@ I (.\FatFs\src\ff.h)(0x5823300A)
 I (.\FatFs\src\integer.h)(0x5823300C)
 I (.\FatFs\src\ffconf.h)(0x58DD8DB4)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x588BC994)
-I (.\device\inc\device_conf.h)(0x58DF4EEB)
+I (.\device\inc\device_conf.h)(0x59B55744)
 I (.\device\inc\device_gui_conf.h)(0x58D2BAB0)
 I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x588BC994)
 F (.\device\src\wave_sample.cpp)(0x58DFE23E)(--cpp -c --cpu Cortex-M4.fp -g -O0 -Otime --apcs=interwork -I .\adv7180\inc -I .\device\inc -I .\drivers\inc -I .\entry\inc -I .\gui\inc -I .\init\inc -I .\it\inc -I .\misc\inc -I .\tft\inc -I .\FatFs\src -I .\FatFs\src\drivers -I .\FatFs\src\option -I .\STM32_USB_Device_Library\Class\MSC\Inc -I .\STM32_USB_Device_Library\Core\Inc -I .\pnesx\inc -I .\misc\context\inc -I .\misc\depend\Arm\CortexM4\inc -I .\lwip-enc28j60-master\enc28j60driver -I .\lwip-1.4.1\src\include -I .\lwip-1.4.1\src\netif -I .\lwip-1.4.1\src\api -I .\lwip-1.4.1\src\core -I .\lwip-1.4.1\src\include\ipv4 -I .\tcp_app\inc -I .\analog\inc --cpp11 --exceptions-I.\RTE\_stm32f417iet6-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F417xx-o .\objects\wave_sample.o --omf_browse .\objects\wave_sample.crf --depend .\objects\wave_sample.d)
@@ -3479,12 +3504,12 @@ I (.\FatFs\src\ff.h)(0x5823300A)
 I (.\FatFs\src\integer.h)(0x5823300C)
 I (.\FatFs\src\ffconf.h)(0x58DD8DB4)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x588BC994)
-I (.\device\inc\device_conf.h)(0x58DF4EEB)
+I (.\device\inc\device_conf.h)(0x59B55744)
 I (.\device\inc\device_gui_conf.h)(0x58D2BAB0)
 I (.\misc\inc\iterable.h)(0x58C2BDC2)
 I (.\misc\inc\ArrayListStatic.h)(0x58E2A11F)
 F (.\device\src\camera.cpp)(0x58E24ED2)(--cpp -c --cpu Cortex-M4.fp -g -O0 -Otime --apcs=interwork -I .\adv7180\inc -I .\device\inc -I .\drivers\inc -I .\entry\inc -I .\gui\inc -I .\init\inc -I .\it\inc -I .\misc\inc -I .\tft\inc -I .\FatFs\src -I .\FatFs\src\drivers -I .\FatFs\src\option -I .\STM32_USB_Device_Library\Class\MSC\Inc -I .\STM32_USB_Device_Library\Core\Inc -I .\pnesx\inc -I .\misc\context\inc -I .\misc\depend\Arm\CortexM4\inc -I .\lwip-enc28j60-master\enc28j60driver -I .\lwip-1.4.1\src\include -I .\lwip-1.4.1\src\netif -I .\lwip-1.4.1\src\api -I .\lwip-1.4.1\src\core -I .\lwip-1.4.1\src\include\ipv4 -I .\tcp_app\inc -I .\analog\inc --cpp11 --exceptions-I.\RTE\_stm32f417iet6-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F417xx-o .\objects\camera.o --omf_browse .\objects\camera.crf --depend .\objects\camera.d)
-I (.\entry\inc\main.h)(0x58D7B46C)
+I (.\entry\inc\main.h)(0x59B6DC55)
 I (.\STM32_USB_Device_Library\Core\Inc\usbd_core.h)(0x58233002)
 I (.\device\inc\usbd_conf.h)(0x589B3381)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x588BC994)
@@ -3557,18 +3582,18 @@ I (.\entry\inc\cam_app.h)(0x58EFC663)
 I (.\entry\inc\app_macro.h)(0x58EFCB12)
 I (.\entry\inc\app_def.h)(0x58F09C35)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x588BC994)
-I (.\device\inc\device_conf.h)(0x58DF4EEB)
+I (.\device\inc\device_conf.h)(0x59B55744)
 I (.\device\inc\device_gui_conf.h)(0x58D2BAB0)
 I (.\misc\context\inc\vm.h)(0x59B5175B)
-I (.\misc\depend\Arm\CortexM4\inc\machM4.h)(0x58D7E9EC)
+I (.\misc\depend\Arm\CortexM4\inc\machM4.h)(0x59B59271)
 I (.\misc\context\inc\vm_conf.h)(0x59B2C688)
-I (.\misc\context\inc\vmapi.h)(0x59B52613)
+I (.\misc\context\inc\vmapi.h)(0x59B566BA)
 I (.\misc\depend\Arm\CortexM4\inc\thread.h)(0x58D7E5B2)
 I (.\misc\context\inc\mail.h)(0x58C66DB1)
-I (.\misc\context\inc\driver.h)(0x59B5290C)
+I (.\misc\context\inc\driver.h)(0x59B58FA0)
 I (.\misc\inc\iterable.h)(0x58C2BDC2)
 I (.\misc\inc\ArrayListStatic.h)(0x58E2A11F)
-I (.\misc\context\inc\vmapi_call.h)(0x59B52858)
+I (.\misc\context\inc\vmapi_call.h)(0x59B6DD56)
 I (.\device\inc\gui.h)(0x58D9083E)
 I (.\gui\inc\guiEngine.h)(0x58E9DBBA)
 I (.\gui\inc\ContentPane.h)(0x58EF1907)
@@ -3589,7 +3614,7 @@ I (.\gui\inc\GLabel.h)(0x58E0A173)
 I (.\misc\inc\printer.h)(0x58EA4431)
 I (.\gui\inc\gComponent.h)(0x58EF3221)
 I (.\misc\inc\abstract.h)(0x58CB9BC6)
-I (.\device\inc\touch.h)(0x58E2552A)
+I (.\device\inc\touch.h)(0x59B61846)
 I (.\gui\inc\GSlide.h)(0x58DBE043)
 I (.\gui\inc\GKeypad.h)(0x58EA62CB)
 I (.\gui\inc\textField.h)(0x58DBE125)
@@ -3613,7 +3638,7 @@ I (.\device\inc\fgpu.h)(0x58E08CE7)
 I (.\device\inc\ccpu.h)(0x58D7B6BA)
 I (.\device\inc\camera.h)(0x58E24ED2)
 I (.\device\inc\adv7180_conf.h)(0x58DB3744)
-I (.\device\inc\time.h)(0x56F3ED44)
+I (.\device\inc\time.h)(0x59B6DCAA)
 F (.\tcp_app\src\mchdrv.c)(0x57840B6B)(-c --cpu Cortex-M4.fp -g -O0 -Otime --apcs=interwork -I .\adv7180\inc -I .\device\inc -I .\drivers\inc -I .\entry\inc -I .\gui\inc -I .\init\inc -I .\it\inc -I .\misc\inc -I .\tft\inc -I .\FatFs\src -I .\FatFs\src\drivers -I .\FatFs\src\option -I .\STM32_USB_Device_Library\Class\MSC\Inc -I .\STM32_USB_Device_Library\Core\Inc -I .\pnesx\inc -I .\misc\context\inc -I .\misc\depend\Arm\CortexM4\inc -I .\lwip-enc28j60-master\enc28j60driver -I .\lwip-1.4.1\src\include -I .\lwip-1.4.1\src\netif -I .\lwip-1.4.1\src\api -I .\lwip-1.4.1\src\core -I .\lwip-1.4.1\src\include\ipv4 -I .\tcp_app\inc -I .\analog\inc --cpp11 --exceptions-I.\RTE\_stm32f417iet6-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F417xx --C99-o .\objects\mchdrv.o --omf_browse .\objects\mchdrv.crf --depend .\objects\mchdrv.d)
 I (.\tcp_app\inc\mchdrv.h)(0x58D6AAA6)
 I (.\lwip-1.4.1\src\include\lwip/netif.h)(0x578409D3)
@@ -3633,23 +3658,23 @@ I (.\lwip-1.4.1\src\include\lwip/pbuf.h)(0x57840451)
 I (.\lwip-1.4.1\src\include\netif/etharp.h)(0x57840A1C)
 I (.\lwip-1.4.1\src\include\ipv4\lwip/ip.h)(0x57840A28)
 I (.\lwip-enc28j60-master\enc28j60driver\enc28j60.h)(0x58D621B6)
-I (.\device\inc\device_conf.h)(0x58DF4EEB)
+I (.\device\inc\device_conf.h)(0x59B55744)
 I (.\device\inc\device_gui_conf.h)(0x58D2BAB0)
 I (.\lwip-enc28j60-master\enc28j60driver\enc28j60-consts.h)(0x52A7E844)
 F (.\entry\src\tcp_app.cpp)(0x58D91838)(--cpp -c --cpu Cortex-M4.fp -g -O0 -Otime --apcs=interwork -I .\adv7180\inc -I .\device\inc -I .\drivers\inc -I .\entry\inc -I .\gui\inc -I .\init\inc -I .\it\inc -I .\misc\inc -I .\tft\inc -I .\FatFs\src -I .\FatFs\src\drivers -I .\FatFs\src\option -I .\STM32_USB_Device_Library\Class\MSC\Inc -I .\STM32_USB_Device_Library\Core\Inc -I .\pnesx\inc -I .\misc\context\inc -I .\misc\depend\Arm\CortexM4\inc -I .\lwip-enc28j60-master\enc28j60driver -I .\lwip-1.4.1\src\include -I .\lwip-1.4.1\src\netif -I .\lwip-1.4.1\src\api -I .\lwip-1.4.1\src\core -I .\lwip-1.4.1\src\include\ipv4 -I .\tcp_app\inc -I .\analog\inc --cpp11 --exceptions-I.\RTE\_stm32f417iet6-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F417xx-o .\objects\tcp_app.o --omf_browse .\objects\tcp_app.crf --depend .\objects\tcp_app.d)
 I (.\misc\context\inc\VM.h)(0x59B5175B)
-I (.\misc\depend\Arm\CortexM4\inc\machM4.h)(0x58D7E9EC)
+I (.\misc\depend\Arm\CortexM4\inc\machM4.h)(0x59B59271)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x588BC994)
 I (.\misc\context\inc\vm_conf.h)(0x59B2C688)
-I (.\misc\context\inc\vmapi.h)(0x59B52613)
+I (.\misc\context\inc\vmapi.h)(0x59B566BA)
 I (.\misc\depend\Arm\CortexM4\inc\thread.h)(0x58D7E5B2)
 I (.\misc\context\inc\mail.h)(0x58C66DB1)
-I (.\misc\context\inc\driver.h)(0x59B5290C)
+I (.\misc\context\inc\driver.h)(0x59B58FA0)
 I (.\misc\inc\iterable.h)(0x58C2BDC2)
 I (.\misc\inc\ArrayListStatic.h)(0x58E2A11F)
-I (.\misc\context\inc\vmapi_call.h)(0x59B52858)
+I (.\misc\context\inc\vmapi_call.h)(0x59B6DD56)
 I (.\device\inc\fgpu.h)(0x58E08CE7)
-I (.\device\inc\device_conf.h)(0x58DF4EEB)
+I (.\device\inc\device_conf.h)(0x59B55744)
 I (.\device\inc\device_gui_conf.h)(0x58D2BAB0)
 I (.\device\inc\gui.h)(0x58D9083E)
 I (.\gui\inc\guiEngine.h)(0x58E9DBBA)
@@ -3671,7 +3696,7 @@ I (.\gui\inc\GLabel.h)(0x58E0A173)
 I (.\misc\inc\printer.h)(0x58EA4431)
 I (.\gui\inc\gComponent.h)(0x58EF3221)
 I (.\misc\inc\abstract.h)(0x58CB9BC6)
-I (.\device\inc\touch.h)(0x58E2552A)
+I (.\device\inc\touch.h)(0x59B61846)
 I (.\gui\inc\GSlide.h)(0x58DBE043)
 I (.\gui\inc\GKeypad.h)(0x58EA62CB)
 I (.\gui\inc\textField.h)(0x58DBE125)
@@ -4188,7 +4213,7 @@ I (.\lwip-1.4.1\src\include\lwip/memp_std.h)(0x50CF41AE)
 I (.\lwip-1.4.1\src\include\ipv4\lwip/icmp.h)(0x50CF41AE)
 F (.\lwip-enc28j60-master\enc28j60driver\enc28j60.c)(0x57851665)(-c --cpu Cortex-M4.fp -g -O0 -Otime --apcs=interwork -I .\adv7180\inc -I .\device\inc -I .\drivers\inc -I .\entry\inc -I .\gui\inc -I .\init\inc -I .\it\inc -I .\misc\inc -I .\tft\inc -I .\FatFs\src -I .\FatFs\src\drivers -I .\FatFs\src\option -I .\STM32_USB_Device_Library\Class\MSC\Inc -I .\STM32_USB_Device_Library\Core\Inc -I .\pnesx\inc -I .\misc\context\inc -I .\misc\depend\Arm\CortexM4\inc -I .\lwip-enc28j60-master\enc28j60driver -I .\lwip-1.4.1\src\include -I .\lwip-1.4.1\src\netif -I .\lwip-1.4.1\src\api -I .\lwip-1.4.1\src\core -I .\lwip-1.4.1\src\include\ipv4 -I .\tcp_app\inc -I .\analog\inc --cpp11 --exceptions-I.\RTE\_stm32f417iet6-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F417xx --C99-o .\objects\enc28j60.o --omf_browse .\objects\enc28j60.crf --depend .\objects\enc28j60.d)
 I (lwip-enc28j60-master\enc28j60driver\enc28j60.h)(0x58D621B6)
-I (.\device\inc\device_conf.h)(0x58DF4EEB)
+I (.\device\inc\device_conf.h)(0x59B55744)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x588BC994)
 I (.\device\inc\device_gui_conf.h)(0x58D2BAB0)
 I (lwip-enc28j60-master\enc28j60driver\enc28j60-consts.h)(0x52A7E844)

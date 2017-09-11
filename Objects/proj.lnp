@@ -21,6 +21,7 @@
 ".\objects\fpga.o"
 ".\objects\fpgamch.o"
 ".\objects\pp.o"
+".\objects\sensor_drv.o"
 ".\objects\stm32f4xx_hal.o"
 ".\objects\stm32f4xx_hal_cortex.o"
 ".\objects\stm32f4xx_hal_dcmi.o"

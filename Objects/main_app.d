@@ -59,6 +59,7 @@
 .\objects\main_app.o: .\device\inc\sprite.h
 .\objects\main_app.o: .\device\inc\device_conf.h
 .\objects\main_app.o: .\device\inc\bitmap.h
+.\objects\main_app.o: .\device\inc\sensor_drv.h
 .\objects\main_app.o: .\device\inc\time.h
 .\objects\main_app.o: .\misc\inc\pp.h
 .\objects\main_app.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\ctype.h

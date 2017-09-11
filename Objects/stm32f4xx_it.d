@@ -56,5 +56,12 @@
 .\objects\stm32f4xx_it.o: .\drivers\inc\stm32f4xx_ll_usb.h
 .\objects\stm32f4xx_it.o: .\drivers\inc\stm32f4xx_hal_pcd_ex.h
 .\objects\stm32f4xx_it.o: .\drivers\inc\stm32f4xx_hal_hcd.h
+.\objects\stm32f4xx_it.o: .\device\inc\it_vect.h
 .\objects\stm32f4xx_it.o: .\it\inc\stm32f4xx_it.h
+.\objects\stm32f4xx_it.o: .\misc\context\inc\vm.h
+.\objects\stm32f4xx_it.o: .\misc\depend\Arm\CortexM4\inc\machM4.h
+.\objects\stm32f4xx_it.o: .\misc\context\inc\vm_conf.h
+.\objects\stm32f4xx_it.o: .\misc\context\inc\driver.h
+.\objects\stm32f4xx_it.o: .\misc\inc\iterable.h
+.\objects\stm32f4xx_it.o: .\misc\inc\ArrayListStatic.h
 .\objects\stm32f4xx_it.o: .\device\inc\camera.h

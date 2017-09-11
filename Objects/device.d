@@ -56,6 +56,7 @@
 .\objects\device.o: .\drivers\inc\stm32f4xx_ll_usb.h
 .\objects\device.o: .\drivers\inc\stm32f4xx_hal_pcd_ex.h
 .\objects\device.o: .\drivers\inc\stm32f4xx_hal_hcd.h
+.\objects\device.o: .\device\inc\it_vect.h
 .\objects\device.o: .\device\inc\gpio.h
 .\objects\device.o: .\device\inc\device.h
 .\objects\device.o: .\device\inc\device_conf.h

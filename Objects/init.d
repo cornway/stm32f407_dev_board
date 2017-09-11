@@ -59,3 +59,4 @@
 .\objects\init.o: .\init\inc\init.h
 .\objects\init.o: .\device\inc\gpio.h
 .\objects\init.o: .\device\inc\time.h
+.\objects\init.o: .\device\inc\it_vect.h

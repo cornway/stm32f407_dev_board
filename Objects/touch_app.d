@@ -14,10 +14,3 @@
 .\objects\touch_app.o: .\misc\inc\iterable.h
 .\objects\touch_app.o: .\misc\inc\ArrayListStatic.h
 .\objects\touch_app.o: .\misc\context\inc\vmapi_call.h
-.\objects\touch_app.o: .\device\inc\tsc2046.h
-.\objects\touch_app.o: .\device\inc\tsc2046_conf.h
-.\objects\touch_app.o: .\device\inc\device_conf.h
-.\objects\touch_app.o: .\misc\inc\abstract.h
-.\objects\touch_app.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
-.\objects\touch_app.o: .\device\inc\touch.h
-.\objects\touch_app.o: .\misc\inc\dimensions.h

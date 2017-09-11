@@ -7,5 +7,4 @@
 .\objects\driver.o: .\misc\inc\ArrayListStatic.h
 .\objects\driver.o: .\misc\context\inc\mach.h
 .\objects\driver.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
-.\objects\driver.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 .\objects\driver.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\errno.h

@@ -59,7 +59,9 @@
 .\objects\startup_app.o: .\device\inc\tsc2046_conf.h
 .\objects\startup_app.o: .\device\inc\device_conf.h
 .\objects\startup_app.o: .\tft\inc\TFTili9486.h
+.\objects\startup_app.o: .\device\inc\sensor_drv.h
 .\objects\startup_app.o: .\device\inc\time.h
+.\objects\startup_app.o: .\device\inc\it_vect.h
 .\objects\startup_app.o: .\drivers\inc\stm32f4xx_hal.h
 .\objects\startup_app.o: .\entry\inc\stm32f4xx_hal_conf.h
 .\objects\startup_app.o: .\drivers\inc\stm32f4xx_hal_rcc.h
