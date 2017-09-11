@@ -1,5 +1,7 @@
 #include "startup_app.h"
+#include "sensor_drv.h"
 #include "time.h"
+#include "it_vect.h"
 
 
 APPLICATION_CONTROL applicationControl;
@@ -8,9 +10,12 @@ uint32_t sleepTimeout = 0;
 
 FontArray fontArray;
 
-
+static int32_t sensor_dd = 0;
 
 extern void usbdStart (void);
+
+static TouchSensor mainAppTouchSensor;
+
 INT_T VM_SYS_THREAD (WORD_T size, void *arg)
 {
     time::delay_ms(200);
@@ -23,16 +28,14 @@ INT_T VM_SYS_THREAD (WORD_T size, void *arg)
         
     }
     */
-    int tsc2046_cal_res = TSC2046_CAL_FILE_NOT_FOUND;
-    tsc2046_cal_res = tsc2046.loadCalData("tsc2046.cal");
-    if (tsc2046_cal_res == TSC2046_CAL_FILE_NOT_FOUND) {
-        tsc2046_cal_res = tsc2046.calibration("tsc2046.cal");
-    }
-    if (tsc2046_cal_res != TSC2046_CAL_OK) {
-        for (;;) {}
+    if (sensor_hal_init(TFT_WIDTH, TFT_HEIGHT) < 0) {
+        for(;;) {}
     }
     
     init_adc_bat();
+    
+    sensor_dd = vm::drv_link(&sensor_drv, TSC_TIM_IRQn, 0).ERROR;
+    vm::drv_ctl(sensor_dd, SENSOR_CTL | SENSOR_ADD, (uint32_t)&mainAppTouchSensor);
     
     static THREAD_HANDLE th;
     th.Arg = 0;
@@ -47,7 +50,6 @@ INT_T VM_SYS_THREAD (WORD_T size, void *arg)
     th.Priority = 5;
     th.StackSize = 8196;
     ret = vm::create(&th);
-    th.Arg = &tsc2046;
     th.Callback = SENSOR_THREAD;
     th.Name = "sensor";
     th.Priority = 3;
@@ -60,10 +62,8 @@ INT_T VM_SYS_THREAD (WORD_T size, void *arg)
 
 static INT_T SENSOR_THREAD (WORD_T size, void *argv)
 {
-    tsc2046Drv *sensor = (tsc2046Drv *)argv;
-    sensor->addListener([](abstract::Event e) -> void {
-            static TouchPointTypeDef tp;
-            static int cause;
+    mainAppTouchSensor.addListener([](abstract::Event e) -> void {
+            TouchPointTypeDef tp;
             if (sleepTimeout >= applicationControl.sleepTimeout) {
                 if (e.getCause() == SENSOR_RELEASE) {
                     applicationControl.powerControl.powerConsumption = POWER_CONSUMPTION_FULL;
@@ -74,16 +74,6 @@ static INT_T SENSOR_THREAD (WORD_T size, void *argv)
                 return;
             }
             tp = *(TouchPointTypeDef *)e.getSource();
-            cause = e.getCause();
-            mainAppTouchSensor.setEvent(tp, cause);  
-            camAppTouchSensor.setEvent(tp, cause);   
-            explAppTouchSensor.setEvent(tp, cause);  
-            infoAppTouchSensor.setEvent(tp, cause); 
-            execAppTouchSensor.setEvent(tp, cause);
-            analogAppTouchSensor.setEvent(tp, cause);
-            settingsAppTouchSensor.setEvent(tp, cause);
-            pnesxAppTouchSensor.setEvent(tp, cause);
-            snakeAppTouchSensor.setEvent(tp, cause);
             if ((e.getCause() == SENSOR_CLICK)) {
                 if (applicationControl.audioControl.soundOn == SOUND_ON) {
                     if (clickWave != nullptr) {
@@ -96,6 +86,7 @@ static INT_T SENSOR_THREAD (WORD_T size, void *argv)
     });
     for (;;) {
         vm::sleep(1);
+        mainAppTouchSensor.invokeEvent();
         if (sleepTimeout < applicationControl.sleepTimeout) {
             sleepTimeout++;
             if (sleepTimeout > (applicationControl.sleepTimeout / 2)) {

@@ -1,5 +1,6 @@
 #include <stdint.h>
 #include "main.h"
+#include "it_vect.h"
 #include "gpio.h"
 #include "device.h"
 #include "device_conf.h"
@@ -116,9 +117,11 @@ void operator delete (void *p)
 extern gpio::gpio_dsc tsc_pen_pin_dsc;
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 {
+    /*
     if (GPIO_Pin == tsc_pen_pin_dsc.pin) {
         tsc2046.IT_Handle();
     }
+    */
 }
 
 #include "gui_defs.h"

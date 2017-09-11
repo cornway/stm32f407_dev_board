@@ -231,7 +231,7 @@ _VALUES_IN_REGS ARG_STRUCT_T DISPATCH_SVC (ARG_STRUCT_T arg)
         BYTE_T force = 0;
         static THREAD *tn = (THREAD *)NULL;
         THREAD_HANDLE *th = NULL;
-        WORD_T res = VM_OK;
+        int32_t res = VM_OK;
         drv_t *driver_handler;
         switch (reason) {
             case VMAPI_SLEEP :  CUR_THREAD->DELAY = call_struct.R1;
@@ -430,7 +430,7 @@ _VALUES_IN_REGS ARG_STRUCT_T DISPATCH_SVC (ARG_STRUCT_T arg)
                 break;
             case VMAPI_END_CRITICAL : preemtSwitchEnabled = 1;
                 break;                      
-            case VMAPI_DRV_ATTACH : res = drv_attach((drv_handle_t *)call_struct.R1, "system", call_struct.R2, call_struct.R3);
+            case VMAPI_DRV_ATTACH : res = drv_attach((drv_handle_t *)call_struct.R1, call_struct.R2, call_struct.R3);
                                     if (res < 0) {
                                         CPU_SET_REG(frame, arg.LINK, ERROR, VM_CREATE_ERR);
                                         break;
@@ -459,7 +459,7 @@ _VALUES_IN_REGS ARG_STRUCT_T DISPATCH_SVC (ARG_STRUCT_T arg)
                                         break;
                                     } 
                                     if (driver_handler->handle.io != NULL) {
-                                        res = driver_handler->handle.ctl(driver_handler, call_struct.R2, (void *)call_struct.R3);
+                                        res = driver_handler->handle.ioctl(driver_handler, call_struct.R2, (void *)call_struct.R3);
                                     }
                                     CPU_SET_REG(frame, arg.LINK, ERROR, res);
                 break;   

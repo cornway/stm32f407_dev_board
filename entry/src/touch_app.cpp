@@ -7,7 +7,7 @@ INT_T touch_app (WORD_T size, void *argv)
     vm::lock(FRAME_RENDER_LOCK_ID);
     vm::lock(SENSOR_LOCK_ID);
     
-    cal_res = tsc2046.calibration((char *)argv);
+    //cal_res = tsc2046.calibration((char *)argv);
     
     vm::unlock(SENSOR_LOCK_ID);
     vm::unlock(MEMORY_ALLOC_LOCK_ID);

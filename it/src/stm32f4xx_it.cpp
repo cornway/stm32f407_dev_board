@@ -39,8 +39,10 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include "it_vect.h"
 #include "stm32f4xx_it.h"
 #include "vm.h"
+#include "driver.h"
 
 
 /** @addtogroup STM32F4xx_HAL_Examples

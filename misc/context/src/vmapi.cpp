@@ -59,31 +59,31 @@ _VALUES_IN_REGS ARG_STRUCT_T vm::call (_CALLBACK callback, const char *name, WOR
     return upcall(__arg);
 }
 
-_VALUES_IN_REGS ARG_STRUCT_T drv_link (drv_handle_t *handler, uint32_t irq, uint32_t dma)
+_VALUES_IN_REGS ARG_STRUCT_T vm::drv_link (drv_handle_t *handler, uint32_t irq, uint32_t dma)
 {
     ARG_STRUCT_T arg = {VMAPI_DRV_ATTACH, (WORD_T)handler, irq, dma};
     return upcall(arg);
 }
 
-_VALUES_IN_REGS ARG_STRUCT_T drv_unlink (uint32_t id)
+_VALUES_IN_REGS ARG_STRUCT_T vm::drv_unlink (uint32_t id)
 {
     ARG_STRUCT_T arg = {VMAPI_DRV_DETTACH, id, 0, 0};
     return upcall(arg);
 }
 
-_VALUES_IN_REGS ARG_STRUCT_T drv_ctl (uint32_t id, uint32_t ctl0, uint32_t ctl1)
+_VALUES_IN_REGS ARG_STRUCT_T vm::drv_ctl (uint32_t id, uint32_t ctl0, uint32_t ctl1)
 {
     ARG_STRUCT_T arg = {VMAPI_DRV_CTL, id, ctl0, ctl1};
     return upcall(arg);
 }
 
-_VALUES_IN_REGS ARG_STRUCT_T drv_io (uint32_t id, drv_data_t *data)
+_VALUES_IN_REGS ARG_STRUCT_T vm::drv_io (uint32_t id, drv_data_t *data)
 {
     ARG_STRUCT_T arg = {VMAPI_DRV_IO, id, (WORD_T)data, 0};
     return upcall(arg);
 }
 
-_VALUES_IN_REGS ARG_STRUCT_T drv_probe (const char *name)
+_VALUES_IN_REGS ARG_STRUCT_T vm::drv_probe (const char *name)
 {
     ARG_STRUCT_T arg = {VMAPI_DRV_PROBE, (WORD_T)name, 0, 0};
     return upcall(arg);

@@ -7,6 +7,7 @@
 
 #ifdef NEXT 
 #undef NEXT
+#endif
 #define NEXT(x) ((x) - 1)
 
 enum {
@@ -35,6 +36,7 @@ typedef struct drv_handle_t {
     drv_sword_t (*probe) (uint32_t);
     drv_sword_t (*ioctl) (void *, uint32_t, void *);
     drv_sword_t (*io) (void *, uint32_t, void *);
+    const char *name;
 };
 
 typedef struct {
@@ -44,13 +46,12 @@ typedef struct {
     uint32_t ctl;
     uint32_t size;
     drv_handle_t handle;
-    char name[1];
 } drv_t;
 
 drv_t *drv_get (int32_t id);
-int32_t drv_attach (drv_handle_t *handle, char *name, int32_t irq, int32_t dma);
+int32_t drv_attach (drv_handle_t *handle, int32_t irq, int32_t dma);
 int32_t drv_detach (uint32_t id);
-int32_t drv_detach (char *name);
+int32_t drv_detach (const char *name);
 int32_t drv_irq (int32_t id);
 int32_t drv_dma (int32_t id);
 int32_t drv_get_id (const char *name);

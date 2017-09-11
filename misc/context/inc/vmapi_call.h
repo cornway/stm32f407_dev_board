@@ -7,6 +7,9 @@
         
 #define DEPREC_IDLE_CALL    (0x80U)
 
+#ifdef NEXT
+#undef NEXT
+#endif
 #define NEXT(a) (a + 1)
         
 enum {
@@ -35,10 +38,10 @@ enum {
     VMAPI_DRV_IO        = NEXT(VMAPI_DRV_DETTACH),
     VMAPI_DRV_CTL       = NEXT(VMAPI_DRV_IO),
     VMAPI_DRV_PROBE     = NEXT(VMAPI_DRV_CTL),
-    
-    VMAPI_EXIT          = NEXT(VMAPI_DRV_CTL),
-    VMAPI_FAULT         = NEXT(VMAPI_EXIT),
-    
+
+    VMAPI_FAULT         = NEXT(VMAPI_DRV_PROBE),
+    VMAPI_EXIT          = NEXT(VMAPI_FAULT),
+
     VMAPI_RESET         = 0x80000U,
 };    
         

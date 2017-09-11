@@ -2,6 +2,7 @@
 #include "init.h"
 #include "gpio.h"
 #include "time.h"
+#include "it_vect.h"
 
  
 gpio::gpio_dsc mco_pin_dsc = {GPIOA, GPIO_PIN_8};
@@ -84,11 +85,11 @@ void init::nvic ()
   HAL_NVIC_SetPriority(DMA2_Stream1_IRQn, 4, 0);
   HAL_NVIC_EnableIRQ(DMA2_Stream1_IRQn);  
     
-  HAL_NVIC_SetPriority(TSC_TIM_IRQn, 1, 3);
-  HAL_NVIC_EnableIRQ(TSC_TIM_IRQn);
+  HAL_NVIC_SetPriority((IRQn_Type)TSC_TIM_IRQn, 1, 3);
+  HAL_NVIC_EnableIRQ((IRQn_Type)TSC_TIM_IRQn);
     
-  HAL_NVIC_SetPriority(HAL_TIM_MILISn, 1, 0xf);
-  HAL_NVIC_EnableIRQ(HAL_TIM_MILISn);
+  HAL_NVIC_SetPriority((IRQn_Type)HAL_TIM_MILISn, 1, 0xf);
+  HAL_NVIC_EnableIRQ((IRQn_Type)HAL_TIM_MILISn);
     
   HAL_NVIC_SetPriority(DMA2_Stream2_IRQn, 3, 0);
   HAL_NVIC_EnableIRQ(DMA2_Stream2_IRQn); 

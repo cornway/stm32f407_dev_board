@@ -8,6 +8,7 @@
 #endif
 
 #define WORD_T      uint32_t
+#define SWORD_T     int32_t
 #define HWORD_T     uint16_t
 #define BYTE_T      uint8_t
 

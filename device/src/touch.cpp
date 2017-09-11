@@ -15,9 +15,9 @@ TouchSensor::~TouchSensor ()
     
 }
 
-void TouchSensor::setEvent (TouchPointTypeDef point, uint32_t event)
+void TouchSensor::setEvent (void *point, uint32_t event)
 {
-    this->point = point;
+    this->point = *(TouchPointTypeDef *)point;
     this->event = event;
     this->hasInvoke = true;
 }

@@ -3,6 +3,7 @@
 #include "wave_sample.h"
 #include "sprite.h"
 #include "bitmap.h"
+#include "sensor_drv.h"
 
 static SpriteRAM spriteRAM;
 static BitmapFactory bmp;
@@ -50,6 +51,9 @@ NonPalette<color_t, range_t, COLOR_WHITE> *clockPlotter;
 
 INT_T main_app (WORD_T size, void *argv)
 {
+    int32_t input0_dd = vm::drv_probe("input0").ERROR;
+    vm::drv_ctl(input0_dd, SENSOR_CTL | SENSOR_ADD, (uint32_t)&mainAppTouchSensor);
+
     mainAppTouchSensor.clearEvent();
     vm::lock(MEMORY_ALLOC_LOCK_ID);
     

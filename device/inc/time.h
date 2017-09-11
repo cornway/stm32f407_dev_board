@@ -7,8 +7,6 @@ namespace time {
 	void delay_us (uint32_t value);
 	void delay_ms (uint32_t value);
 	void delay_s (uint32_t value);
-	
-	
 };
 
 

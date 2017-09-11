@@ -14,23 +14,12 @@
 extern TFT_ILI9486 tft;
 extern FontArray fontArray;
 extern APPLICATION_CONTROL applicationControl;
-extern tsc2046Drv tsc2046;
 
 
 extern INT_T main_app (WORD_T size, void *argv);
 extern INT_T render_app (WORD_T size, void *argv);
 extern int update_ipv4 (char *token, uint8_t *ip);
 extern int update_mac (char *token, uint8_t *mac);
-
-extern TouchSensor mainAppTouchSensor;
-extern TouchSensor camAppTouchSensor;
-extern TouchSensor explAppTouchSensor;
-extern TouchSensor infoAppTouchSensor;
-extern TouchSensor execAppTouchSensor;
-extern TouchSensor analogAppTouchSensor;
-extern TouchSensor settingsAppTouchSensor;
-extern TouchSensor pnesxAppTouchSensor;
-extern TouchSensor snakeAppTouchSensor;
 
 INT_T tcp_app (WORD_T size, void *argv);
 

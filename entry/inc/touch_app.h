@@ -5,9 +5,8 @@
 #include "device_conf.h"
 #include "vm.h"
 #include "vmapi.h"
-#include "tsc2046.h"
-
-extern tsc2046Drv tsc2046;
+/*TODO Find another access point to Tsc2046_Handler*/
+//#include "tsc2046.h"
 
 INT_T touch_app (WORD_T size, void *argv);
 

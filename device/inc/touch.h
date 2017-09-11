@@ -1,7 +1,7 @@
 #ifndef TOUCH_H
 #define TOUCH_H
 
-#include "stdint.h"
+#include <stdint.h>
 #include "abstract.h"
 #include "dimensions.h"
 
@@ -45,7 +45,7 @@ class TouchSensor {
         TouchSensor ();
         ~TouchSensor ();
         
-        void setEvent (TouchPointTypeDef point, uint32_t Event);
+        void setEvent (void *point, uint32_t Event);
         void invokeEvent ();
         void clearEvent ();
     
