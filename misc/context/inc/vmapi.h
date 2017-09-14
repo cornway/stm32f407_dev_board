@@ -14,9 +14,20 @@ _EXTERN _VALUES_IN_REGS ARG_STRUCT_T VMINIT();
 
 _WEAK INT_T VMAPI_ErrorHandler (WORD_T from, _VALUES_IN_REGS ARG_STRUCT_T arg);
 
+extern "C"
+_VALUES_IN_REGS ARG_STRUCT_T VMSvc (ARG_STRUCT_T arg);
+
+#define dispatch_from_svc(name, ...) \
+ARG_STRUCT_T name = {__VA_ARGS__}; \
+do { \
+    name.IRQ = VM_CALL_FROM_IRQ; \
+    name = VMSvc(name); \
+} while (0)
+
 
 namespace vm {
 
+_VALUES_IN_REGS ARG_STRUCT_T reset ();
 _VALUES_IN_REGS ARG_STRUCT_T init ();
 _VALUES_IN_REGS ARG_STRUCT_T start (); 
 _VALUES_IN_REGS ARG_STRUCT_T restart (); 
@@ -48,8 +59,7 @@ _VALUES_IN_REGS ARG_STRUCT_T timer_remove (WORD_T id);
 _VALUES_IN_REGS ARG_STRUCT_T critical ();
 _VALUES_IN_REGS ARG_STRUCT_T end_critical ();
 _VALUES_IN_REGS ARG_STRUCT_T exit (UINT_T ret);   
-_VALUES_IN_REGS ARG_STRUCT_T fault (const char *cause); 
-void reset (); 
+_VALUES_IN_REGS ARG_STRUCT_T fault (const char *cause);
   
 };
 
@@ -58,7 +68,7 @@ void reset ();
 WORD_T ret; \
 do { \
     ARG_STRUCT_T callback##_ret = vm::call(callback, #callback, VM_DEF_THREAD_HEAP_SIZE, VM_THREAD_DEF_PRIORITY, size, arg); \
-    if (callback##_ret.ERROR != VM_OK) { \
+    if (callback##_ret.ERROR != 0) { \
         VMAPI_ErrorHandler(VMAPI_CALL, callback##_ret); \
     } else { \
         \
@@ -71,7 +81,20 @@ do { \
 WORD_T ret; \
 do { \
     ARG_STRUCT_T callback##_ret = vm::call(callback, #callback, stack, VM_THREAD_DEF_PRIORITY, size, arg); \
-    if (callback##_ret.ERROR != VM_OK) { \
+    if (callback##_ret.ERROR != 0) { \
+        VMAPI_ErrorHandler(VMAPI_CALL, callback##_ret); \
+    } else { \
+        \
+    } \
+    ret = callback##_ret.POINTER; \
+    _UNUSED(ret); \
+} while (0)
+
+#define __XCRE(ret, stack, callback, size, arg) \
+WORD_T ret; \
+do { \
+    ARG_STRUCT_T callback##_ret = vm::create(callback, #callback, stack, VM_THREAD_DEF_PRIORITY, size, arg); \
+    if (callback##_ret.ERROR != 0) { \
         VMAPI_ErrorHandler(VMAPI_CALL, callback##_ret); \
     } else { \
         \

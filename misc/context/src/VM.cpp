@@ -184,46 +184,54 @@ _STATIC _VALUES_IN_REGS ARG_STRUCT_T DISPATCH (ARG_STRUCT_T arg)
     return UPDATE(CUR_THREAD);
 }
 
+#define DISPATCH_RET(IRQ, ret) \
+if (IRQ == VM_CALL_FROM_IRQ) { \
+    return ret; \
+}
+
+#define DISPATCH_IS_IRQ(IRQ) \
+(IRQ == VM_CALL_FROM_IRQ)
+
 _VALUES_IN_REGS ARG_STRUCT_T DISPATCH_SVC (ARG_STRUCT_T arg)
 {
 
-    SET_STACK(CUR_THREAD, arg);
-    /*
-    call_struct.R0[7 : 0] - call reason, if == 0 -> restart (not reset !);
-    call_struct.R1 - pointer to handle struct;
-    call_struct.R2 - attribute 0;
-    call_struct.R2 - attribute 1;
-    */
     ARG_STRUCT_T call_struct = {0, 0, 0, 0};
     CPU_STACK_FRAME *frame = CUR_THREAD->CPU_FRAME;
-    
-    
-    CPU_GET_REG(frame, arg.LINK, POINTER, call_struct.R0);
-    CPU_GET_REG(frame, arg.LINK, OPTION_A, call_struct.R1);
-    CPU_GET_REG(frame, arg.LINK, OPTION_B, call_struct.R2);
-    CPU_GET_REG(frame, arg.LINK, ERROR, call_struct.R3);
-    
-    /*frame->cpuStack.R0 - pointer to resource*/
-    /*frame->cpuStack.R1 - attribute 1*/
-    /*frame->cpuStack.R2 - attribute 2*/
-    /*frame->cpuStack.R3 - error code*/
-    
+    if (arg.IRQ == VM_CALL_FROM_USER) {
+
+        SET_STACK(CUR_THREAD, arg);
+        /*
+        call_struct.R0[7 : 0] - call reason, if == 0 -> restart (not reset !);
+        call_struct.R1 - pointer to handle struct;
+        call_struct.R2 - attribute 0;
+        call_struct.R2 - attribute 1;
+        */
+        CPU_GET_REG(frame, arg.LINK, POINTER, call_struct.R0);
+        CPU_GET_REG(frame, arg.LINK, OPTION_A, call_struct.R1);
+        CPU_GET_REG(frame, arg.LINK, OPTION_B, call_struct.R2);
+        CPU_GET_REG(frame, arg.LINK, ERROR, call_struct.R3);
+        /*frame->cpuStack.R0 - pointer to resource*/
+        /*frame->cpuStack.R1 - attribute 1*/
+        /*frame->cpuStack.R2 - attribute 2*/
+        /*frame->cpuStack.R3 - error code*/
+
+    } else if (arg.IRQ == VM_CALL_FROM_IRQ){
+
+    }
     ARG_STRUCT_T ret;
     ret.POINTER = arg.POINTER;
     ret.LINK    = arg.LINK;
     ret.ERROR   = arg.ERROR;
     ret.CONTROL = CUR_THREAD->PRIVILEGE;
     if (call_struct.R0 == VMAPI_RESET) {
-        
-    }
-    if (call_struct.R0 == VMAPI_RESET) {
         SystemSoftReset();
         for (;;) {}
     } else {
         BYTE_T reason = call_struct.R0 & 0xFFU;
-        if (CUR_THREAD->ID == IDLE_THREAD_ID) {
-            if ((reason & DEPREC_IDLE_CALL) == DEPREC_IDLE_CALL) {
-                CPU_SET_REG(frame, arg.R2, ERROR, VM_DEPRECATED_CALL);
+        if ((reason & DEPREC_IDLE_CALL) == DEPREC_IDLE_CALL) {
+            if  (CUR_THREAD->ID == IDLE_THREAD_ID) {
+                DISPATCH_RET(arg.IRQ, ret);
+                CPU_SET_REG(frame, arg.LINK, ERROR, VM_DEPRECATED_CALL);
                 return ret;
             }
         }
@@ -233,6 +241,7 @@ _VALUES_IN_REGS ARG_STRUCT_T DISPATCH_SVC (ARG_STRUCT_T arg)
         THREAD_HANDLE *th = NULL;
         int32_t res = VM_OK;
         drv_t *driver_handler;
+        static BYTE_T reentrance = 0;
         switch (reason) {
             case VMAPI_SLEEP :  CUR_THREAD->DELAY = call_struct.R1;
                                 t_unlink_ready(CUR_THREAD);
@@ -459,8 +468,10 @@ _VALUES_IN_REGS ARG_STRUCT_T DISPATCH_SVC (ARG_STRUCT_T arg)
                                         break;
                                     } 
                                     if (driver_handler->handle.io != NULL) {
-                                        res = driver_handler->handle.ioctl(driver_handler, call_struct.R2, (void *)call_struct.R3);
+                                        res = driver_handler->handle.ioctl(driver_handler, (void *)call_struct.R2, (void *)call_struct.R3);
                                     }
+                                    
+                                    CPU_SET_REG(frame, arg.LINK, POINTER, res);
                                     CPU_SET_REG(frame, arg.LINK, ERROR, res);
                 break;   
             case VMAPI_DRV_PROBE:   res = drv_get_id((const char *)call_struct.R1);
@@ -491,21 +502,22 @@ _VALUES_IN_REGS ARG_STRUCT_T DISPATCH_SVC (ARG_STRUCT_T arg)
                         break;
                 //break;
         }
-        if (force) {
-            CUR_THREAD = PICK_READY();
+
+        if ((force || reentrance) && !DISPATCH_IS_IRQ(arg.IRQ)) {
             
+            CUR_THREAD = PICK_READY();
             CPU_SET_REG(frame, arg.LINK, ERROR, VM_OK);
             ret.LINK = SET_LINK(CUR_THREAD);
             ret.FRAME = CUR_THREAD->CPU_FRAME;
             ret.CONTROL = CUR_THREAD->PRIVILEGE;
-            
             return ret;
         }
+        reentrance = DISPATCH_IS_IRQ(arg.IRQ) ? force : 0;
         
         return ret;
     }
     
-    //return ret;
+    return ret;
 }
 
 

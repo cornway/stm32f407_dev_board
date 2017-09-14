@@ -83,7 +83,7 @@ int32_t drv_irq (int32_t id)
             if (drivers[i]->handle.ioctl == NULL) {
                 /*TODO error*/
             } else if (drivers[i]->irq == id) {
-                error |= drivers[i]->handle.ioctl(drivers[i], IOCTL_IRQ, drivers[i]);
+                error |= drivers[i]->handle.ioctl(drivers[i], (void *)IOCTL_IRQ, drivers[i]);
             }
         }
     }
@@ -96,7 +96,7 @@ int32_t drv_dma (int32_t id)
     for (uint8_t i = 0; i < VM_MAX_DRIVERS; i++) {
         if(drivers[i] != NULL) {
             if (drivers[i]->dma[0] == id) {
-                error |= drivers[i]->handle.ioctl(drivers[i], IOCTL_DMA, drivers[i]);
+                error |= drivers[i]->handle.ioctl(drivers[i], (void *)IOCTL_DMA, drivers[i]);
             } 
         }
     }

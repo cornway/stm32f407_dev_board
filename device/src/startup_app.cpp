@@ -28,12 +28,10 @@ INT_T VM_SYS_THREAD (WORD_T size, void *arg)
         
     }
     */
-    if (sensor_hal_init(TFT_WIDTH, TFT_HEIGHT) < 0) {
-        for(;;) {}
-    }
     
     init_adc_bat();
-    
+    sensor_drv.param[0] = TFT_WIDTH;
+    sensor_drv.param[1] = TFT_HEIGHT;
     sensor_dd = vm::drv_link(&sensor_drv, TSC_TIM_IRQn, 0).ERROR;
     vm::drv_ctl(sensor_dd, SENSOR_CTL | SENSOR_ADD, (uint32_t)&mainAppTouchSensor);
     
@@ -63,7 +61,6 @@ INT_T VM_SYS_THREAD (WORD_T size, void *arg)
 static INT_T SENSOR_THREAD (WORD_T size, void *argv)
 {
     mainAppTouchSensor.addListener([](abstract::Event e) -> void {
-            TouchPointTypeDef tp;
             if (sleepTimeout >= applicationControl.sleepTimeout) {
                 if (e.getCause() == SENSOR_RELEASE) {
                     applicationControl.powerControl.powerConsumption = POWER_CONSUMPTION_FULL;
@@ -73,7 +70,6 @@ static INT_T SENSOR_THREAD (WORD_T size, void *argv)
                 }
                 return;
             }
-            tp = *(TouchPointTypeDef *)e.getSource();
             if ((e.getCause() == SENSOR_CLICK)) {
                 if (applicationControl.audioControl.soundOn == SOUND_ON) {
                     if (clickWave != nullptr) {

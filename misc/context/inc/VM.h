@@ -22,7 +22,6 @@ enum {
         
 _VALUES_IN_REGS ARG_STRUCT_T VMINIT ();
 
-        
 #ifndef __cplusplus
     }
 #endif        

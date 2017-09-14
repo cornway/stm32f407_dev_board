@@ -47,6 +47,11 @@
 #pragma import VMInit
 #pragma import VMStart
 
+#define VM_FORCE_UPDATE 1
+
+#define VM_CALL_FROM_USER   0
+#define VM_CALL_FROM_IRQ    1
+
 #define CPU_PRIV_ACCESS 0
 #define CPU_UNPRIV_ACCESS 1
 
@@ -172,13 +177,18 @@ typedef _PACKED struct {
            WORD_T R0;
            WORD_T R1;
            WORD_T R2;
-           WORD_T R3; /*!*/
+           WORD_T R3;
         };
         _PACKED struct {
            WORD_T POINTER;
            WORD_T CONTROL;
            WORD_T LINK;
-           WORD_T ERROR; /*!*/
+           WORD_T ERROR;
+        };
+        _PACKED struct {
+           WORD_T PAD[3];
+           HWORD_T CTL;
+           HWORD_T IRQ;
         };
         _PACKED struct {
            CPU_STACK_FRAME *FRAME;

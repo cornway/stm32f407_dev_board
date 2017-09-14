@@ -34,8 +34,10 @@ typedef struct drv_handle_t {
     drv_sword_t (*load) (uint32_t, uint32_t);
     drv_sword_t (*unload) (uint32_t);
     drv_sword_t (*probe) (uint32_t);
-    drv_sword_t (*ioctl) (void *, uint32_t, void *);
+    drv_sword_t (*ioctl) (void *, void *, void *);
     drv_sword_t (*io) (void *, uint32_t, void *);
+    /*TODO: change to an array*/
+    uint32_t param[4];
     const char *name;
 };
 

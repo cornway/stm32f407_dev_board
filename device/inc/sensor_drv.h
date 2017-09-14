@@ -15,10 +15,9 @@ enum {
     SENSOR_ADD = NEXT(SENSOR_CTL),
     SENSOR_REM = NEXT(SENSOR_ADD),
     SENSOR_INV = NEXT(SENSOR_REM),
+    SENSOR_CAL = NEXT(SENSOR_INV),
 };
 
 _EXTERN drv_handle_t sensor_drv;
-
-int32_t sensor_hal_init (int32_t w, int32_t h);
 
 #endif /*SENSOR_DRV_H*/

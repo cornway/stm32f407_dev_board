@@ -2,6 +2,7 @@
 #include "tsc2046.h"
 #include "device_conf.h"
 #include "abstract.h"
+#include "vmapi.h"
 
 static tsc2046Drv tsc2046;
 
@@ -12,11 +13,18 @@ static int32_t get_match_listener(TouchSensor *);
 static drv_sword_t sensor_load (uint32_t, uint32_t);
 static drv_sword_t sensor_unload (uint32_t);
 static drv_sword_t sensor_probe (uint32_t);
-static drv_sword_t sensor_ioctl (void *, uint32_t, void *);
+static drv_sword_t sensor_ioctl (void *, void *, void *);
 static drv_sword_t sensor_io (void *, uint32_t, void *);
+
+static INT_T join_sensor_task (WORD_T size, void *argv);
+static INT_T sensor_task (WORD_T size, void *argv);
 
 static int32_t width = 0;
 static int32_t height = 0;
+
+typedef struct  {
+    WORD_T a, b;
+} pair_t;
 
 drv_handle_t sensor_drv = {
     sensor_load,
@@ -24,6 +32,7 @@ drv_handle_t sensor_drv = {
     sensor_probe,
     sensor_ioctl,
     sensor_io,
+    {0, 0, 0, 0},
     "input0",
 };
 
@@ -31,14 +40,8 @@ static TouchSensor *sensor_listeners[SENSOR_MAX_LISTENERS];
 
 static drv_sword_t sensor_load (uint32_t a0, uint32_t a1)
 {
-    tsc2046.init(false);
-    tsc2046.addListener([](abstract::Event e) -> void {
-        for (int i = 0; i < SENSOR_MAX_LISTENERS; i++) {
-            if (sensor_listeners[i] != NULL) {
-                sensor_listeners[i]->setEvent((void *)e.getSource(), e.getCause());
-            }
-        }
-    });
+    pair_t p = {sensor_drv.param[0], sensor_drv.param[1]};
+    join_sensor_task(0, &p);
 }
 
 static drv_sword_t sensor_unload (uint32_t a0)
@@ -51,16 +54,13 @@ static drv_sword_t sensor_probe (uint32_t a0)
     
 }
 
-static drv_sword_t sensor_ioctl (void *handler, uint32_t op, void *p)
+static drv_sword_t sensor_ioctl (void *handler, void *op, void *p)
 {
     int32_t listener_id = 0;
-    abstract::Event *e = (abstract::Event *)p;
-    TouchPointTypeDef *tp = (TouchPointTypeDef *)e->getSource();
-    int cause = e->getCause();
-    switch (op) {
+    pair_t pair = {(WORD_T)op, (WORD_T)p};
+    switch ((uint32_t)op) {
         case IOCTL_IRQ :
                 tsc2046.tim_it_handle();
-                tsc2046.invoke(tp, width, height);
             break;
         case IOCTL_DMA :
             break;
@@ -77,7 +77,10 @@ static drv_sword_t sensor_ioctl (void *handler, uint32_t op, void *p)
                         }
             break;
         case SENSOR_INV | SENSOR_CTL:
-                        
+                        return join_sensor_task(3, &pair);
+            break;
+        case SENSOR_CAL | SENSOR_CTL:
+                        return join_sensor_task(1, &pair);
             break;
         default : 
             break;
@@ -124,17 +127,54 @@ static int32_t get_match_listener(TouchSensor *ts)
     return -1;
 }
 
-int32_t sensor_hal_init (int32_t w, int32_t h)
+static INT_T sensor_task (WORD_T size, void *argv)
 {
+    pair_t *pair = (pair_t *)argv;
     int tsc2046_cal_res = TSC2046_CAL_FILE_NOT_FOUND;
-    tsc2046_cal_res = tsc2046.loadCalData((char *)"tsc2046.cal");
-    if (tsc2046_cal_res == TSC2046_CAL_FILE_NOT_FOUND) {
-        tsc2046_cal_res = tsc2046.calibration((char *)"tsc2046.cal");
+    TouchPointTypeDef tp;
+    switch (size) {
+        case 0:
+            tsc2046.init(false);
+
+            tsc2046_cal_res = tsc2046.loadCalData((char *)"tsc2046.cal");
+            if (tsc2046_cal_res == TSC2046_CAL_FILE_NOT_FOUND) {
+                tsc2046_cal_res = tsc2046.calibration((char *)"tsc2046.cal");
+            }
+            if (tsc2046_cal_res != TSC2046_CAL_OK) {
+                return -1;
+            }
+            width = pair->a;
+            height = pair->b;
+            tsc2046.addListener([](abstract::Event e) -> void {
+                for (int i = 0; i < SENSOR_MAX_LISTENERS; i++) {
+                    if (sensor_listeners[i] != NULL) {
+                        sensor_listeners[i]->setEvent((void *)e.getSource(), e.getCause());
+                    }
+                }
+            });
+            break;
+        case 1:
+            if (tsc2046.calibration((char *)"tsc2046.cal") != TSC2046_CAL_OK) {
+                return -1;
+            }
+            break;
+        case 3:
+            tsc2046.invoke(&tp, width, height);
+        break;
+
     }
-    if (tsc2046_cal_res != TSC2046_CAL_OK) {
-        return -1;
-    }
-    width = w;
-    height = h;
     return 0;
+}
+
+static INT_T join_sensor_task (WORD_T size, void *argv)
+{
+    THREAD_HANDLE th;
+    th.Callback = sensor_task;
+    th.Name = sensor_drv.name;
+    th.Priority = 5;
+    th.StackSize = VM_DEF_THREAD_HEAP_SIZE;
+    th.argSize = size;
+    th.Arg = argv;
+    dispatch_from_svc(ret, VMAPI_CALL, (WORD_T)&th);
+    return ret.ERROR;
 }
