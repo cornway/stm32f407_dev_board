@@ -40,13 +40,6 @@
 #define _UNUSED(a)
 #endif
 
-
-#pragma import VMTick   
-#pragma import StackSwitchPSV   
-#pragma import VMSvc
-#pragma import VMInit
-#pragma import VMStart
-
 #define VM_FORCE_UPDATE 1
 
 #define VM_CALL_FROM_USER   0

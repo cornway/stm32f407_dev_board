@@ -7,6 +7,12 @@
 #include "vmapi_call.h"
 #include "string.h"
 
+#pragma import VMTick
+#pragma import StackSwitchPSV
+#pragma import VMSvc
+#pragma import VMInit
+#pragma import VMStart
+
 _EXTERN "C" void *vmalloc (UINT_T size);
 _EXTERN "C" void vmfree (void *p);
 

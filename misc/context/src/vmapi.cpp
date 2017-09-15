@@ -1,39 +1,31 @@
 
 #include "vmapi.h"
 
-#define VM_UPCALL(...) \
+#define upc_(...) \
 do { \
     ARG_STRUCT_T arg = {__VA_ARGS__}; \
-    return upcall(arg); \
+    return upc(arg); \
 } while (0)
 
-_VALUES_IN_REGS ARG_STRUCT_T vm::init ()
-{
-    return VMINIT();
-}
-_VALUES_IN_REGS ARG_STRUCT_T vm::start ()
-{
-    return VMBOOT();
-}
 
 _VALUES_IN_REGS ARG_STRUCT_T vm::restart ()
 {
-    VM_UPCALL();
+    upc_();
 }
 
 _VALUES_IN_REGS ARG_STRUCT_T vm::sleep (UINT_T delay)
 {
-    VM_UPCALL(VMAPI_SLEEP, delay);
+    upc_(VMAPI_SLEEP, delay);
 }
 
 _VALUES_IN_REGS ARG_STRUCT_T vm::yield (void)
 {
-    VM_UPCALL(VMAPI_YIELD);
+    upc_(VMAPI_YIELD);
 }
 
 _VALUES_IN_REGS ARG_STRUCT_T vm::create (THREAD_HANDLE *th)
 {
-    VM_UPCALL(VMAPI_CREATE, (WORD_T)th);
+    upc_(VMAPI_CREATE, (WORD_T)th);
 }
 
 _VALUES_IN_REGS ARG_STRUCT_T vm::create (_CALLBACK callback, const char *name, WORD_T stack, WORD_T prio, WORD_T size, void *arg)
@@ -57,121 +49,121 @@ _VALUES_IN_REGS ARG_STRUCT_T vm::call (_CALLBACK callback, const char *name, WOR
     th.StackSize = stack;
     th.argSize = size;
     th.Arg = arg;
-    VM_UPCALL(VMAPI_CALL, (WORD_T)&th);
+    upc_(VMAPI_CALL, (WORD_T)&th);
 }
 
 _VALUES_IN_REGS ARG_STRUCT_T vm::drv_link (drv_handle_t *handler, uint32_t irq, uint32_t dma)
 {
-    VM_UPCALL(VMAPI_DRV_ATTACH, (WORD_T)handler, irq, dma);
+    upc_(VMAPI_DRV_ATTACH, (WORD_T)handler, irq, dma);
 }
 
 _VALUES_IN_REGS ARG_STRUCT_T vm::drv_unlink (uint32_t id)
 {
-    VM_UPCALL(VMAPI_DRV_DETTACH, id);
+    upc_(VMAPI_DRV_DETTACH, id);
 }
 
 _VALUES_IN_REGS ARG_STRUCT_T vm::drv_ctl (uint32_t id, uint32_t ctl0, uint32_t ctl1)
 {
-    VM_UPCALL(VMAPI_DRV_CTL, id, ctl0, ctl1);
+    upc_(VMAPI_DRV_CTL, id, ctl0, ctl1);
 }
 
 _VALUES_IN_REGS ARG_STRUCT_T vm::drv_io (uint32_t id, drv_data_t *data)
 {
-    VM_UPCALL(VMAPI_DRV_IO, id, (WORD_T)data);
+    upc_(VMAPI_DRV_IO, id, (WORD_T)data);
 }
 
 _VALUES_IN_REGS ARG_STRUCT_T vm::drv_probe (const char *name)
 {
-    VM_UPCALL(VMAPI_DRV_PROBE, (WORD_T)name);
+    upc_(VMAPI_DRV_PROBE, (WORD_T)name);
 }
 
 _VALUES_IN_REGS ARG_STRUCT_T vm::lock (UINT_T id)
 {
-    VM_UPCALL(VMAPI_LOCK, id);
+    upc_(VMAPI_LOCK, id);
 }    
 _VALUES_IN_REGS ARG_STRUCT_T vm::unlock (UINT_T id)
 {
-    VM_UPCALL(VMAPI_UNLOCK, id);
+    upc_(VMAPI_UNLOCK, id);
 }  
 
 _VALUES_IN_REGS ARG_STRUCT_T vm::notify (const char *name)
 {
-    VM_UPCALL(VMAPI_NOTIFY, (WORD_T)name);
+    upc_(VMAPI_NOTIFY, (WORD_T)name);
 }
 
 _VALUES_IN_REGS ARG_STRUCT_T vm::wait_notify ()
 {
-    VM_UPCALL(VMAPI_WAIT_NOTIFY, 0);
+    upc_(VMAPI_WAIT_NOTIFY, 0);
 }
 
 _VALUES_IN_REGS ARG_STRUCT_T vm::notify_wait (const char *name)
 {
-    VM_UPCALL(VMAPI_NOTIFY_WAIT, (WORD_T)name);
+    upc_(VMAPI_NOTIFY_WAIT, (WORD_T)name);
 }
 
 _VALUES_IN_REGS ARG_STRUCT_T vm::sync (const char *name)
 {
-    VM_UPCALL(VMAPI_SYNC, (WORD_T)name);
+    upc_(VMAPI_SYNC, (WORD_T)name);
 }
 
 _VALUES_IN_REGS ARG_STRUCT_T vm::wait (THREAD_COND_T cond)
 {
-    VM_UPCALL(VMAPI_WAIT, (WORD_T)cond);
+    upc_(VMAPI_WAIT, (WORD_T)cond);
 }
 
 _VALUES_IN_REGS ARG_STRUCT_T vm::wait_event (const char *event_name)
 {
-    VM_UPCALL(VMAPI_WAIT_EVENT, (WORD_T)event_name);
+    upc_(VMAPI_WAIT_EVENT, (WORD_T)event_name);
 }
 
 _VALUES_IN_REGS ARG_STRUCT_T vm::fire_event (const char *event_name)
 {
-    VM_UPCALL(VMAPI_FIRE_EVENT, (WORD_T)event_name);
+    upc_(VMAPI_FIRE_EVENT, (WORD_T)event_name);
 }
 
 _VALUES_IN_REGS ARG_STRUCT_T vm::mail (char *name, MAIL_HANDLE *mail)
 {
-    VM_UPCALL(VMAPI_MAIL, (WORD_T)name);
+    upc_(VMAPI_MAIL, (WORD_T)name);
 }
 
 _VALUES_IN_REGS ARG_STRUCT_T vm::wait_mail ()
 {
-    VM_UPCALL(VMAPI_WAIT_MAIL);
+    upc_(VMAPI_WAIT_MAIL);
 }
 
 _VALUES_IN_REGS ARG_STRUCT_T vm::timer (WORD_T *dest, WORD_T id)
 {
-    VM_UPCALL(VMAPI_TIMER_CREATE, WORD_T(dest), id);
+    upc_(VMAPI_TIMER_CREATE, WORD_T(dest), id);
 }
 
 _VALUES_IN_REGS ARG_STRUCT_T vm::timer_remove (WORD_T id)
 {
-    VM_UPCALL(VMAPI_TIMER_REMOVE, id);
+    upc_(VMAPI_TIMER_REMOVE, id);
 }
 
 _VALUES_IN_REGS ARG_STRUCT_T vm::critical ()
 {
-    VM_UPCALL(VMAPI_CRITICAL);
+    upc_(VMAPI_CRITICAL);
 }
 
 _VALUES_IN_REGS ARG_STRUCT_T vm::end_critical ()
 {
-    VM_UPCALL(VMAPI_END_CRITICAL);
+    upc_(VMAPI_END_CRITICAL);
 }
 
 _VALUES_IN_REGS ARG_STRUCT_T vm::exit (UINT_T ret)
 {
-    VM_UPCALL(VMAPI_EXIT, ret);
+    upc_(VMAPI_EXIT, ret);
 }
 
 _VALUES_IN_REGS ARG_STRUCT_T vm::fault (const char *cause)
 {
-    VM_UPCALL(VMAPI_FAULT, (WORD_T)cause);
+    upc_(VMAPI_FAULT, (WORD_T)cause);
 }
 
 _VALUES_IN_REGS ARG_STRUCT_T vm::reset ()
 {
-    VM_UPCALL(VMAPI_RESET);
+    upc_(VMAPI_RESET);
 }
 
 

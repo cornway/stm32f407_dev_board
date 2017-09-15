@@ -74,14 +74,14 @@ void Device::init ()
     FATFS_LinkDriver(&FLASHDISK_Driver, FLASHDISKPath);
     f_mount(&FLASHDISKFatFs, (TCHAR const*)FLASHDISKPath, 0);
     
-    vm::init();
+    VMINIT();
     HAL_InitTick (TICK_INT_PRIORITY);
 }
 
 
 void Device::run ()
 { 
-        vm::start();
+        VMBOOT();
         for (;;) {
         }
 }

@@ -2,15 +2,12 @@
 #define VMAPI_INTERFACE
 
 #include "machM4.h"
-#include "thread.h"
-#include "mail.h"
-#include "driver.h"
+#include "thread_types.h"
+#include "mail_types.h"
+#include "drv_types.h"
 #include "vmapi_call.h"
 
-
-_EXTERN "C" _VALUES_IN_REGS ARG_STRUCT_T upcall (ARG_STRUCT_T a);
-_EXTERN "C" _VALUES_IN_REGS ARG_STRUCT_T VMBOOT();
-_EXTERN _VALUES_IN_REGS ARG_STRUCT_T VMINIT();
+extern "C" _VALUES_IN_REGS ARG_STRUCT_T upc (ARG_STRUCT_T a);
 
 _WEAK INT_T VMAPI_ErrorHandler (WORD_T from, _VALUES_IN_REGS ARG_STRUCT_T arg);
 

@@ -7,6 +7,9 @@
 
 #include "machM4.h"
 #include "vm_conf.h"
+
+_EXTERN "C" _VALUES_IN_REGS ARG_STRUCT_T VMBOOT();
+_EXTERN "C" _VALUES_IN_REGS ARG_STRUCT_T VMINIT();
     
 INT_T VM_SYS_THREAD (WORD_T, void *);
         
