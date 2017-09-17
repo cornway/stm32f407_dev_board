@@ -31,7 +31,7 @@
 #define     IDLE_THREAD_ID  (0U)    
 
 typedef _PACKED struct {
-    _CALLBACK Callback;
+    void *Callback;
     WORD_T StackSize;
     BYTE_T Priority;
     const char *Name;

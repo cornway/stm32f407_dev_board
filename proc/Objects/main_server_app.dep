@@ -1,0 +1,27 @@
+Dependencies for Project 'main_server', Target 'app': (DO NOT MODIFY !)
+F (.\main.cpp)(0x59BC3132)(--cpp -c --cpu Cortex-M4.fp -g -O0 -Otime --apcs=interwork --split_sections -I ..\proc -I ..\misc\inc -I ..\misc\context\inc -I ..\misc\depend\Arm\CortexM4\inc --cpp11 --exceptions-I.\RTE\_app-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F407xx-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x588BC994)
+I (..\misc\context\inc\vmapi.h)(0x59BC3591)
+I (..\misc\depend\Arm\CortexM4\inc\machM4.h)(0x59BC2FBA)
+I (..\misc\context\inc\thread_types.h)(0x59BC28A2)
+I (..\misc\context\inc\mail_types.h)(0x59BC2835)
+I (..\misc\context\inc\drv_types.h)(0x59BC27FC)
+I (..\misc\context\inc\vmapi_call.h)(0x59B6DD56)
+F (..\misc\context\src\vmapi.cpp)(0x59BC2EEC)(--cpp -c --cpu Cortex-M4.fp -g -O0 -Otime --apcs=interwork --split_sections -I ..\proc -I ..\misc\inc -I ..\misc\context\inc -I ..\misc\depend\Arm\CortexM4\inc --cpp11 --exceptions-I.\RTE\_app-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F407xx-o .\objects\vmapi.o --omf_browse .\objects\vmapi.crf --depend .\objects\vmapi.d)
+I (..\misc\context\inc\vmapi.h)(0x59BC3591)
+I (..\misc\depend\Arm\CortexM4\inc\machM4.h)(0x59BC2FBA)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x588BC994)
+I (..\misc\context\inc\thread_types.h)(0x59BC28A2)
+I (..\misc\context\inc\mail_types.h)(0x59BC2835)
+I (..\misc\context\inc\drv_types.h)(0x59BC27FC)
+I (..\misc\context\inc\vmapi_call.h)(0x59B6DD56)
+F (..\misc\depend\Arm\CortexM4\src\arm_api.s)(0x59BC2EF6)(--cpu Cortex-M4.fp -g --apcs=interwork -I.\RTE\_app-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include--pd "__UVISION_VERSION SETA 524" --pd "_RTE_ SETA 1" --pd "STM32F407xx SETA 1"--list .\listings\arm_api.lst --xref -o .\objects\arm_api.o --depend .\objects\arm_api.d)
+F (RTE\Device\STM32F407VETx\startup_stm32f407xx.s)(0x59BC31EC)(--cpu Cortex-M4.fp -g --apcs=interwork -I.\RTE\_app-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include--pd "__UVISION_VERSION SETA 524" --pd "_RTE_ SETA 1" --pd "STM32F407xx SETA 1"--list .\listings\startup_stm32f407xx.lst --xref -o .\objects\startup_stm32f407xx.o --depend .\objects\startup_stm32f407xx.d)
+F (RTE\Device\STM32F407VETx\system_stm32f4xx.c)(0x582313A8)(--c99 -c --cpu Cortex-M4.fp -g -O0 -Otime --apcs=interwork --split_sections -I ..\proc -I ..\misc\inc -I ..\misc\context\inc -I ..\misc\depend\Arm\CortexM4\inc --cpp11 --exceptions-I.\RTE\_app-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F407xx-o .\objects\system_stm32f4xx.o --omf_browse .\objects\system_stm32f4xx.crf --depend .\objects\system_stm32f4xx.d)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h)(0x582313A8)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f407xx.h)(0x582313BA)
+I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include\core_cm4.h)(0x58988FDA)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x588BC994)
+I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include\cmsis_compiler.h)(0x58988FDA)
+I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include\cmsis_armcc.h)(0x58988FDA)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include\system_stm32f4xx.h)(0x582313BA)

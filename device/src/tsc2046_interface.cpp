@@ -28,20 +28,6 @@ void  tsc2046Drv::ll_sel (bool sel)
     gpio::pin_set(tsc_sel_pin_dsc, sel);
 }
 
-bool tsc2046Drv::ll_busy ()
-{
-    return gpio::pin_read(tsc_busy_pin_dsc);
-}
-
-uint8_t tsc2046Drv::ll_rw (uint8_t data)
-{
-    while ((SPI1->SR & SPI_FLAG_TXE) == 0){}
-			*(__IO uint8_t *)&SPI1->DR = data;
-	while ((SPI1->SR & SPI_FLAG_RXNE) == 0){}
-
-    return *(__IO uint8_t *)&SPI1->DR;
-}
-
 
 
 #include "fgpu.h"

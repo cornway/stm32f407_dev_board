@@ -1,7 +1,5 @@
 #include "flash_diskio.h"
 
-
-
 enum ATML_FLASH_CMD {
     READ_ARRAY          = 0x0b,
     READ_ARR_SLOW       = 0x03,
@@ -108,8 +106,10 @@ AT_STATIC AT_INLINE AT_BYTE at_read_status (void)
 
 AT_STATIC AT_INLINE void at_wait (void)
 {
-    at_read_status();
-    while (at_read_status() & BUSY) {}
+    AT_BYTE stat = at_read_status();
+    while (stat & BUSY || stat & STA_PROTECT) {
+        stat = at_read_status();
+    }
 }
 
 AT_STATIC AT_INLINE void at_write_status (AT_BYTE status)
@@ -383,12 +383,15 @@ DRESULT at_sleep (void)
 }
 DRESULT at_resume (void)
 {
-	at_cmd(RESUME);
+    at_cmd(RESUME);
     return RES_OK;
 }
 DSTATUS at_get_stat (void)
 {
     DSTATUS status = 0;
+    if (at_ll_is_busy()) {
+        TX_ABORT(STA_PROTECT);
+    }
     AT_BYTE reg;
     reg = at_read_status();
     if (

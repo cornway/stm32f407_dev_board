@@ -103,7 +103,6 @@ _STATIC void SET_STACK (THREAD *t, ARG_STRUCT_T arg)
         t->USE_FPU = THREAD_NO_FPU;
     }
     t->CPU_FRAME = arg.FRAME;
-    
 }
 
 _STATIC _VALUES_IN_REGS ARG_STRUCT_T UPDATE (THREAD *t)
@@ -202,10 +201,17 @@ _VALUES_IN_REGS ARG_STRUCT_T DISPATCH_SVC (ARG_STRUCT_T arg)
 {
 
     ARG_STRUCT_T call_struct = {0, 0, 0, 0};
-    CPU_STACK_FRAME *frame = CUR_THREAD->CPU_FRAME;
-    if (arg.IRQ == VM_CALL_FROM_USER) {
+    CPU_STACK_FRAME *frame = NULL;
 
+    ARG_STRUCT_T ret;
+    ret.POINTER = arg.POINTER;
+    ret.LINK    = arg.LINK;
+    ret.ERROR   = arg.ERROR;
+    ret.CONTROL = CUR_THREAD->PRIVILEGE;
+
+    if (arg.IRQ == VM_CALL_FROM_USER) {
         SET_STACK(CUR_THREAD, arg);
+        frame = CUR_THREAD->CPU_FRAME;
         /*
         call_struct.R0[7 : 0] - call reason, if == 0 -> restart (not reset !);
         call_struct.R1 - pointer to handle struct;
@@ -222,13 +228,14 @@ _VALUES_IN_REGS ARG_STRUCT_T DISPATCH_SVC (ARG_STRUCT_T arg)
         /*frame->cpuStack.R3 - error code*/
 
     } else if (arg.IRQ == VM_CALL_FROM_IRQ){
+        frame = CUR_THREAD->CPU_FRAME;
 
+        call_struct.R0 = arg.R0;
+        call_struct.R1 = arg.R1;
+        call_struct.R2 = arg.R2;
+        call_struct.R3 = arg.R3;
     }
-    ARG_STRUCT_T ret;
-    ret.POINTER = arg.POINTER;
-    ret.LINK    = arg.LINK;
-    ret.ERROR   = arg.ERROR;
-    ret.CONTROL = CUR_THREAD->PRIVILEGE;
+
     if (call_struct.R0 == VMAPI_RESET) {
         SystemSoftReset();
         for (;;) {}
@@ -241,6 +248,7 @@ _VALUES_IN_REGS ARG_STRUCT_T DISPATCH_SVC (ARG_STRUCT_T arg)
                 return ret;
             }
         }
+        reason = call_struct.R0;
         
         BYTE_T force = 0;
         static THREAD *tn = (THREAD *)NULL;
@@ -261,7 +269,7 @@ _VALUES_IN_REGS ARG_STRUCT_T DISPATCH_SVC (ARG_STRUCT_T arg)
             case VMAPI_CREATE : th = (THREAD_HANDLE *)call_struct.R1;
                                 res = t_init (
                                                         &tn, 
-                                                        th->Callback,
+                                                        (_CALLBACK)th->Callback,
                                                         th->Priority,
                                                         (WORD_T)th->Callback,
                                                         th->StackSize,
@@ -281,7 +289,7 @@ _VALUES_IN_REGS ARG_STRUCT_T DISPATCH_SVC (ARG_STRUCT_T arg)
             case VMAPI_CALL :   th = (THREAD_HANDLE *)call_struct.R1;
                                 res = t_init (
                                                         &tn, 
-                                                        th->Callback,
+                                                        (_CALLBACK)th->Callback,
                                                         th->Priority,
                                                         (WORD_T)th->Callback,
                                                         th->StackSize,
@@ -298,10 +306,13 @@ _VALUES_IN_REGS ARG_STRUCT_T DISPATCH_SVC (ARG_STRUCT_T arg)
                                 t_unlink_ready(CUR_THREAD);
                                 tn->caller = CUR_THREAD;
                                 
+                                force = 1;
+                                /*
                                 CUR_THREAD = tn;
                                 ret.LINK = SET_LINK(CUR_THREAD);
                                 ret.FRAME = CUR_THREAD->CPU_FRAME;
                                 ret.CONTROL = CUR_THREAD->PRIVILEGE;
+                                */
                                 break;
             //break;
             case VMAPI_LOCK :   WORD_T mutex_res = mutexFactory.lock(CUR_THREAD, call_struct.R1);
@@ -448,8 +459,9 @@ _VALUES_IN_REGS ARG_STRUCT_T DISPATCH_SVC (ARG_STRUCT_T arg)
             case VMAPI_DRV_ATTACH : res = drv_attach((drv_handle_t *)call_struct.R1, call_struct.R2, call_struct.R3);
                                     if (res < 0) {
                                         CPU_SET_REG(frame, arg.LINK, ERROR, VM_CREATE_ERR);
-                                        break;
-                                    } 
+                                    } else {
+                                        CPU_SET_REG(frame, arg.LINK, ERROR, res);
+                                    }
                 break;
             case VMAPI_DRV_DETTACH :res = drv_detach(call_struct.R1);
                                     if (res < 0) {
@@ -473,11 +485,9 @@ _VALUES_IN_REGS ARG_STRUCT_T DISPATCH_SVC (ARG_STRUCT_T arg)
                                         CPU_SET_REG(frame, arg.LINK, ERROR, VM_CREATE_ERR);
                                         break;
                                     } 
-                                    if (driver_handler->handle.io != NULL) {
+                                    if (driver_handler->handle.ioctl != NULL) {
                                         res = driver_handler->handle.ioctl(driver_handler, (void *)call_struct.R2, (void *)call_struct.R3);
                                     }
-                                    
-                                    CPU_SET_REG(frame, arg.LINK, POINTER, res);
                                     CPU_SET_REG(frame, arg.LINK, ERROR, res);
                 break;   
             case VMAPI_DRV_PROBE:   res = drv_get_id((const char *)call_struct.R1);
@@ -494,16 +504,11 @@ _VALUES_IN_REGS ARG_STRUCT_T DISPATCH_SVC (ARG_STRUCT_T arg)
                                 if (tn != (THREAD *)NULL) {
                                     t_link_ready(tn);
                                     THREAD_SET_REG(tn, POINTER, call_struct.R1);
-                                    CUR_THREAD = tn;
-                                    ret.LINK = SET_LINK(CUR_THREAD);
-                                    ret.FRAME = CUR_THREAD->CPU_FRAME;
-                                    ret.CONTROL = CUR_THREAD->PRIVILEGE;
-                                    break;
                                 }
                                 t_destroy(CUR_THREAD);
                                 force = 0x1U;                                  
                 break;
-            default :   
+            default :   /*TODO: Add case*/
                         CPU_SET_REG(frame, arg.LINK, ERROR, VM_UNKNOWN_CALL);
                         break;
                 //break;

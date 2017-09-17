@@ -6,6 +6,7 @@
 #include "mail_types.h"
 #include "drv_types.h"
 #include "vmapi_call.h"
+#include <stdlib.h>
 
 extern "C" _VALUES_IN_REGS ARG_STRUCT_T upc (ARG_STRUCT_T a);
 
@@ -58,6 +59,39 @@ _VALUES_IN_REGS ARG_STRUCT_T end_critical ();
 _VALUES_IN_REGS ARG_STRUCT_T exit (UINT_T ret);   
 _VALUES_IN_REGS ARG_STRUCT_T fault (const char *cause);
   
+class Mutex {
+    private :
+        uint32_t id;
+     public :
+        Mutex (uint32_t _id)
+        {
+            id = _id;
+            lock(id);
+        }
+        ~ Mutex ()
+        {
+            unlock(id);
+        }
+};
+
+class Cleanup {
+    private :
+        void *p;
+        uint16_t ref;
+    public :
+        Cleanup (void *_p)
+            {
+                p = _p;
+                ref = 1;
+            }
+       ~Cleanup ()
+        {
+            if (ref <= 1) {
+                free(p);
+            }
+        }
+};
+
 };
 
 

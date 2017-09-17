@@ -1,0 +1,382 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000         ;******************** (C) COPYRIGHT 2016 STMicroelectron
+                       ics ********************
+    2 00000000         ;* File Name          : startup_stm32f407xx.s
+    3 00000000         ;* Author             : MCD Application Team
+    4 00000000         ;* Version            : V2.6.0
+    5 00000000         ;* Date               : 04-November-2016
+    6 00000000         ;* Description        : STM32F407xx devices vector table
+                        for MDK-ARM toolchain. 
+    7 00000000         ;*                      This module performs:
+    8 00000000         ;*                      - Set the initial SP
+    9 00000000         ;*                      - Set the initial PC == Reset_Ha
+                       ndler
+   10 00000000         ;*                      - Set the vector table entries w
+                       ith the exceptions ISR address
+   11 00000000         ;*                      - Branches to __main in the C li
+                       brary (which eventually
+   12 00000000         ;*                        calls main()).
+   13 00000000         ;*                      After Reset the CortexM4 process
+                       or is in Thread mode,
+   14 00000000         ;*                      priority is Privileged, and the 
+                       Stack is set to Main.
+   15 00000000         ;* <<< Use Configuration Wizard in Context Menu >>>   
+   16 00000000         ;*******************************************************
+                       ************************
+   17 00000000         ; 
+   18 00000000         ;* Redistribution and use in source and binary forms, wi
+                       th or without modification,
+   19 00000000         ;* are permitted provided that the following conditions 
+                       are met:
+   20 00000000         ;*   1. Redistributions of source code must retain the a
+                       bove copyright notice,
+   21 00000000         ;*      this list of conditions and the following discla
+                       imer.
+   22 00000000         ;*   2. Redistributions in binary form must reproduce th
+                       e above copyright notice,
+   23 00000000         ;*      this list of conditions and the following discla
+                       imer in the documentation
+   24 00000000         ;*      and/or other materials provided with the distrib
+                       ution.
+   25 00000000         ;*   3. Neither the name of STMicroelectronics nor the n
+                       ames of its contributors
+   26 00000000         ;*      may be used to endorse or promote products deriv
+                       ed from this software
+   27 00000000         ;*      without specific prior written permission.
+   28 00000000         ;*
+   29 00000000         ;* THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AN
+                       D CONTRIBUTORS "AS IS"
+   30 00000000         ;* AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT
+                        NOT LIMITED TO, THE
+   31 00000000         ;* IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+                        A PARTICULAR PURPOSE ARE
+   32 00000000         ;* DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR
+                        CONTRIBUTORS BE LIABLE
+   33 00000000         ;* FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPL
+                       ARY, OR CONSEQUENTIAL
+   34 00000000         ;* DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT O
+                       F SUBSTITUTE GOODS OR
+   35 00000000         ;* SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS 
+                       INTERRUPTION) HOWEVER
+
+
+
+ARM Macro Assembler    Page 2 
+
+
+   36 00000000         ;* CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CON
+                       TRACT, STRICT LIABILITY,
+   37 00000000         ;* OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING I
+                       N ANY WAY OUT OF THE USE
+   38 00000000         ;* OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY 
+                       OF SUCH DAMAGE.
+   39 00000000         ; 
+   40 00000000         ;*******************************************************
+                       ************************
+   41 00000000         
+   42 00000000         ; Amount of memory (in bytes) allocated for Stack
+   43 00000000         ; Tailor this value to your application needs
+   44 00000000         ; <h> Stack Configuration
+   45 00000000         ;   <o> Stack Size (in Bytes) <0x0-0xFFFFFFFF:8>
+   46 00000000         ; </h>
+   47 00000000         
+   48 00000000 00000400 
+                       Stack_Size
+                               EQU              0x00000400
+   49 00000000         
+   50 00000000                 AREA             STACK, NOINIT, READWRITE, ALIGN
+=3
+   51 00000000         Stack_Mem
+                               SPACE            Stack_Size
+   52 00000400         __initial_sp
+   53 00000400         
+   54 00000400         
+   55 00000400         ; <h> Heap Configuration
+   56 00000400         ;   <o>  Heap Size (in Bytes) <0x0-0xFFFFFFFF:8>
+   57 00000400         ; </h>
+   58 00000400         
+   59 00000400 00000200 
+                       Heap_Size
+                               EQU              0x00000200
+   60 00000400         
+   61 00000400                 AREA             HEAP, NOINIT, READWRITE, ALIGN=
+3
+   62 00000000         __heap_base
+   63 00000000         Heap_Mem
+                               SPACE            Heap_Size
+   64 00000200         __heap_limit
+   65 00000200         
+   66 00000200                 PRESERVE8
+   67 00000200                 THUMB
+   68 00000200         
+   69 00000200         
+   70 00000200         ; Vector Table Mapped to Address 0 at Reset
+   71 00000200                 AREA             RESET, DATA, READONLY
+   72 00000000                 EXPORT           __Vectors
+   73 00000000                 EXPORT           __Vectors_End
+   74 00000000                 EXPORT           __Vectors_Size
+   75 00000000         
+   76 00000000 00000000 
+                       __Vectors
+                               DCD              __initial_sp ; Top of Stack
+   77 00000004 00000000        DCD              Reset_Handler ; Reset Handler  
+                                                                         
+   78 00000008         
+   79 00000008         __Vectors_End
+
+
+
+ARM Macro Assembler    Page 3 
+
+
+   80 00000008         
+   81 00000008 00000008 
+                       __Vectors_Size
+                               EQU              __Vectors_End - __Vectors
+   82 00000008         
+   83 00000008                 AREA             |.text|, CODE, READONLY
+   84 00000000         
+   85 00000000         ; Reset handler
+   86 00000000         Reset_Handler
+                               PROC
+   87 00000000                 EXPORT           Reset_Handler             [WEAK
+]
+   88 00000000                 IMPORT           __main
+   89 00000000         
+   90 00000000 4A03            LDR              R2, =__main
+   91 00000002 4710            BX               R2
+   92 00000004                 ENDP
+   93 00000004         
+   94 00000004                 ALIGN
+   95 00000004         
+   96 00000004         ;*******************************************************
+                       ************************
+   97 00000004         ; User Stack and Heap initialization
+   98 00000004         ;*******************************************************
+                       ************************
+   99 00000004         
+  100 00000004                 IMPORT           __use_two_region_memory
+  101 00000004                 EXPORT           __user_initial_stackheap
+  102 00000004         
+  103 00000004         __user_initial_stackheap
+  104 00000004         
+  105 00000004 4803            LDR              R0, =  Heap_Mem
+  106 00000006 4904            LDR              R1, =(Stack_Mem + Stack_Size)
+  107 00000008 4A04            LDR              R2, = (Heap_Mem +  Heap_Size)
+  108 0000000A 4B05            LDR              R3, = Stack_Mem
+  109 0000000C 4770            BX               LR
+  110 0000000E         
+  111 0000000E 00 00           ALIGN
+  112 00000010         
+  113 00000010                 END
+              00000000 
+              00000000 
+              00000400 
+              00000200 
+              00000000 
+Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M4.fp --apcs=int
+erwork --depend=.\objects\startup_stm32f407xx.d -o.\objects\startup_stm32f407xx
+.o -I.\RTE\_app -IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include -IC:\Keil_v
+5\ARM\PACK\Keil\STM32F4xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include 
+--predefine="__UVISION_VERSION SETA 524" --predefine="_RTE_ SETA 1" --predefine
+="STM32F407xx SETA 1" --list=.\listings\startup_stm32f407xx.lst RTE\Device\STM3
+2F407VETx\startup_stm32f407xx.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+STACK 00000000
+
+Symbol: STACK
+   Definitions
+      At line 50 in file RTE\Device\STM32F407VETx\startup_stm32f407xx.s
+   Uses
+      None
+Comment: STACK unused
+Stack_Mem 00000000
+
+Symbol: Stack_Mem
+   Definitions
+      At line 51 in file RTE\Device\STM32F407VETx\startup_stm32f407xx.s
+   Uses
+      At line 106 in file RTE\Device\STM32F407VETx\startup_stm32f407xx.s
+      At line 108 in file RTE\Device\STM32F407VETx\startup_stm32f407xx.s
+
+__initial_sp 00000400
+
+Symbol: __initial_sp
+   Definitions
+      At line 52 in file RTE\Device\STM32F407VETx\startup_stm32f407xx.s
+   Uses
+      At line 76 in file RTE\Device\STM32F407VETx\startup_stm32f407xx.s
+Comment: __initial_sp used once
+3 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+HEAP 00000000
+
+Symbol: HEAP
+   Definitions
+      At line 61 in file RTE\Device\STM32F407VETx\startup_stm32f407xx.s
+   Uses
+      None
+Comment: HEAP unused
+Heap_Mem 00000000
+
+Symbol: Heap_Mem
+   Definitions
+      At line 63 in file RTE\Device\STM32F407VETx\startup_stm32f407xx.s
+   Uses
+      At line 105 in file RTE\Device\STM32F407VETx\startup_stm32f407xx.s
+      At line 107 in file RTE\Device\STM32F407VETx\startup_stm32f407xx.s
+
+__heap_base 00000000
+
+Symbol: __heap_base
+   Definitions
+      At line 62 in file RTE\Device\STM32F407VETx\startup_stm32f407xx.s
+   Uses
+      None
+Comment: __heap_base unused
+__heap_limit 00000200
+
+Symbol: __heap_limit
+   Definitions
+      At line 64 in file RTE\Device\STM32F407VETx\startup_stm32f407xx.s
+   Uses
+      None
+Comment: __heap_limit unused
+4 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+RESET 00000000
+
+Symbol: RESET
+   Definitions
+      At line 71 in file RTE\Device\STM32F407VETx\startup_stm32f407xx.s
+   Uses
+      None
+Comment: RESET unused
+__Vectors 00000000
+
+Symbol: __Vectors
+   Definitions
+      At line 76 in file RTE\Device\STM32F407VETx\startup_stm32f407xx.s
+   Uses
+      At line 72 in file RTE\Device\STM32F407VETx\startup_stm32f407xx.s
+      At line 81 in file RTE\Device\STM32F407VETx\startup_stm32f407xx.s
+
+__Vectors_End 00000008
+
+Symbol: __Vectors_End
+   Definitions
+      At line 79 in file RTE\Device\STM32F407VETx\startup_stm32f407xx.s
+   Uses
+      At line 73 in file RTE\Device\STM32F407VETx\startup_stm32f407xx.s
+      At line 81 in file RTE\Device\STM32F407VETx\startup_stm32f407xx.s
+
+3 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+.text 00000000
+
+Symbol: .text
+   Definitions
+      At line 83 in file RTE\Device\STM32F407VETx\startup_stm32f407xx.s
+   Uses
+      None
+Comment: .text unused
+Reset_Handler 00000000
+
+Symbol: Reset_Handler
+   Definitions
+      At line 86 in file RTE\Device\STM32F407VETx\startup_stm32f407xx.s
+   Uses
+      At line 77 in file RTE\Device\STM32F407VETx\startup_stm32f407xx.s
+      At line 87 in file RTE\Device\STM32F407VETx\startup_stm32f407xx.s
+
+__user_initial_stackheap 00000004
+
+Symbol: __user_initial_stackheap
+   Definitions
+      At line 103 in file RTE\Device\STM32F407VETx\startup_stm32f407xx.s
+   Uses
+      At line 101 in file RTE\Device\STM32F407VETx\startup_stm32f407xx.s
+Comment: __user_initial_stackheap used once
+3 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Absolute symbols
+
+Heap_Size 00000200
+
+Symbol: Heap_Size
+   Definitions
+      At line 59 in file RTE\Device\STM32F407VETx\startup_stm32f407xx.s
+   Uses
+      At line 63 in file RTE\Device\STM32F407VETx\startup_stm32f407xx.s
+      At line 107 in file RTE\Device\STM32F407VETx\startup_stm32f407xx.s
+
+Stack_Size 00000400
+
+Symbol: Stack_Size
+   Definitions
+      At line 48 in file RTE\Device\STM32F407VETx\startup_stm32f407xx.s
+   Uses
+      At line 51 in file RTE\Device\STM32F407VETx\startup_stm32f407xx.s
+      At line 106 in file RTE\Device\STM32F407VETx\startup_stm32f407xx.s
+
+__Vectors_Size 00000008
+
+Symbol: __Vectors_Size
+   Definitions
+      At line 81 in file RTE\Device\STM32F407VETx\startup_stm32f407xx.s
+   Uses
+      At line 74 in file RTE\Device\STM32F407VETx\startup_stm32f407xx.s
+Comment: __Vectors_Size used once
+3 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+External symbols
+
+__main 00000000
+
+Symbol: __main
+   Definitions
+      At line 88 in file RTE\Device\STM32F407VETx\startup_stm32f407xx.s
+   Uses
+      At line 90 in file RTE\Device\STM32F407VETx\startup_stm32f407xx.s
+Comment: __main used once
+__use_two_region_memory 00000000
+
+Symbol: __use_two_region_memory
+   Definitions
+      At line 100 in file RTE\Device\STM32F407VETx\startup_stm32f407xx.s
+   Uses
+      None
+Comment: __use_two_region_memory unused
+2 symbols
+354 symbols in table

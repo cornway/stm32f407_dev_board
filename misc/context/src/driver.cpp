@@ -31,6 +31,7 @@ int32_t  drv_attach (drv_handle_t *handle, int32_t irq, int32_t dma)
     if (id < 0) {
         return -ENOMEM;
     }
+    drivers[id]->handle = *handle;
     if (drivers[id]->handle.probe == NULL || 
         drivers[id]->handle.load == NULL ) {
         drv_detach(id);
@@ -44,7 +45,6 @@ int32_t  drv_attach (drv_handle_t *handle, int32_t irq, int32_t dma)
         drv_detach(id);
         return -ENOMEM;
     }
-    drivers[id]->handle = *handle;
     return id;
 }
 
@@ -129,12 +129,13 @@ static int32_t drv_init (int32_t irq, int32_t dma)
     if (drv == NULL) {
         return -ENOMEM;
     }
-    memset(drv->dma, 0, size);
     drivers[id] = drv;
     drv->id = id;
     drv->size = size;
     drv->irq = irq;
     drv->dma[0] = dma;
+    drv->dma[1] = 0;
+    drv->dma[2] = 0;
     return id;
 }
 
@@ -142,7 +143,7 @@ int32_t drv_get_id (const char *name)
 {
     for (uint8_t i = 0; i < VM_MAX_DRIVERS; i++) {
         if(drivers[i] != NULL) {
-            if (strcmp(drivers[i]->handle.name, name)) {
+            if (!strcmp(drivers[i]->handle.name, name)) {
                 return i;
             } 
         }

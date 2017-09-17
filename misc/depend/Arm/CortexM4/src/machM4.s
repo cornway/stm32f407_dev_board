@@ -23,6 +23,7 @@ $label              WRAP $DEST
                 
                     CPSID   I
                     DMB
+                    LDR     R3, =0
                     TST     LR, #0x04
                     BNE     $label.STORE_PSP
                     MRS     R0, MSP 
@@ -34,7 +35,6 @@ $label.BRS          MOV     R2, LR
                     TST     LR, #0x10 ;check fpu
                     BNE     $label.FPU_SKIP
                     VSTMDB  R0!, {S16 - S31}
-                    LDR     R3, =0
 $label.FPU_SKIP     BL      $DEST
                     TST     R2, #0x10
                     BNE     $label.FPU_SKIP_

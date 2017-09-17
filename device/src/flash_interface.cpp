@@ -64,13 +64,3 @@ void at_ll_hold (AT_BYTE x)
 	
 }
 
-
-AT_BYTE at_ll_rw (AT_BYTE write_data)
-{    
-    while ((SPI1->SR & SPI_FLAG_TXE) == 0){}
-			*(__IO uint8_t *)&SPI1->DR = write_data;
-	while ((SPI1->SR & SPI_FLAG_RXNE) == 0){}
-
-    return *(__IO uint8_t *)&SPI1->DR;
-}
-

@@ -1,0 +1,48 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000                 PRESERVE8
+    2 00000000         
+    3 00000000                 EXPORT           upc
+    4 00000000         
+    5 00000000                 AREA             |.text|, CODE, READONLY
+    6 00000000         
+    7 00000000         upc     FUNCTION
+    8 00000000 DF02            SWI              0x02
+    9 00000002 4770            BX               LR
+   10 00000004                 ENDP
+   11 00000004         
+   12 00000004                 END
+Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M4.fp --apcs=int
+erwork --depend=.\objects\arm_api.d -o.\objects\arm_api.o -I.\RTE\_app -IC:\Kei
+l_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include -IC:\Keil_v5\ARM\PACK\Keil\STM32F4x
+x_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include --predefine="__UVISION_V
+ERSION SETA 524" --predefine="_RTE_ SETA 1" --predefine="STM32F407xx SETA 1" --
+list=.\listings\arm_api.lst ..\misc\depend\Arm\CortexM4\src\arm_api.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+.text 00000000
+
+Symbol: .text
+   Definitions
+      At line 5 in file ..\misc\depend\Arm\CortexM4\src\arm_api.s
+   Uses
+      None
+Comment: .text unused
+upc 00000000
+
+Symbol: upc
+   Definitions
+      At line 7 in file ..\misc\depend\Arm\CortexM4\src\arm_api.s
+   Uses
+      At line 3 in file ..\misc\depend\Arm\CortexM4\src\arm_api.s
+Comment: upc used once
+2 symbols
+336 symbols in table

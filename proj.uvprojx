@@ -505,6 +505,16 @@
               <FileType>5</FileType>
               <FilePath>.\device\inc\it_vect.h</FilePath>
             </File>
+            <File>
+              <FileName>adv_driver.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\device\inc\adv_driver.h</FilePath>
+            </File>
+            <File>
+              <FileName>adv_driver.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\device\src\adv_driver.cpp</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -879,6 +889,11 @@
               <FileName>driver.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\misc\context\src\driver.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>arm_api.s</FileName>
+              <FileType>2</FileType>
+              <FilePath>.\misc\depend\Arm\CortexM4\src\arm_api.s</FilePath>
             </File>
           </Files>
         </Group>

@@ -4,6 +4,7 @@
 #include "gpio.h"
 #include "device.h"
 #include "device_conf.h"
+#include "app_def.h"
 
 #include "VM.h"
 #include "vmapi.h"
@@ -68,7 +69,7 @@ void Device::init ()
     CCPU_WRITE_REG(CCPU_WRITE_RENDER_CTL_REGISTER, 0);
     CCPU_WRITE_REG(CCPU_WRITE_FILL_CTL, 0);
     CCPU_WRITE_REG(CCPU_WRITE_COPY_CTL, 0);
-	CCPU_WRITE_REG(CCPU_WRITE_COLOR_MODE, 0);	 
+    CCPU_WRITE_REG(CCPU_WRITE_COLOR_MODE, 0);
     
     FLASHDISK_Driver.disk_initialize(1);
     FATFS_LinkDriver(&FLASHDISK_Driver, FLASHDISKPath);
@@ -99,6 +100,8 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
                      sys_time_milis++;
 			         HAL_IncTick();           
 		break;
+            default:
+                  break;
 	}
 }
 
@@ -161,12 +164,90 @@ void WaveSample::ll_play (WAVE_DSC dsc, void *buffer)
     for (;;);
   }
 }
+extern uint32_t load_program (void *memory, const char *path)
+{
+    vm::Mutex __mem(MEMORY_ALLOC_LOCK_ID);
+    vm::Mutex __fs(FILE_SYSTEM_LOCK_ID);
+    FIL *file =  (FIL *)vmalloc(sizeof(FIL));
+    if (file == NULL) {
+        return 1;
+    }
+    vm::Cleanup __fs_cleanup(file);
+    uint32_t res = 0;
+    res = f_open(file, path, FA_READ);
+    if(res  != FR_OK ) {
+        return 1;
+    }
+    uint8_t buf[256];
+    uint32_t f_bytes_read = 0;
+    uint8_t *dest = (uint8_t *)memory;
+    do  {
+       res = f_read(file, buf, 256, &f_bytes_read);
+       memcpy(dest, buf, f_bytes_read);
+       dest += f_bytes_read;
+     } while ((res = FR_OK));
+    f_close(file);
+    return 0;
+}
+
+extern uint32_t join_program (void *mem, const char *name,  int c, char **v)
+{
+        THREAD_HANDLE th;
+        th.Arg = v;
+        th.argSize = c;
+        th.Callback = mem;
+        th.Name = name;
+        th.Priority = 2;
+        th.StackSize = 4096;
+        return vm::create(&th).ERROR;
+}
+
 
 #include "time.h"
 void WaveSample::ll_wait ()
 {
     time::delay_ms(200);
 }
+
+
+volatile static uint8_t spi1_lock = 0;
+AT_BYTE at_ll_is_busy (void)
+{
+    return spi1_lock;
+}
+
+AT_BYTE at_ll_rw (AT_BYTE write_data)
+{
+    if (spi1_lock) {
+        return 0;
+    }
+    spi1_lock = 1;
+    while ((SPI1->SR & SPI_FLAG_TXE) == 0){}
+			*(__IO uint8_t *)&SPI1->DR = write_data;
+	while ((SPI1->SR & SPI_FLAG_RXNE) == 0){}
+    spi1_lock = 0;
+    return *(__IO uint8_t *)&SPI1->DR;
+}
+
+extern gpio::gpio_dsc tsc_busy_pin_dsc;
+bool tsc2046Drv::ll_busy ()
+{
+    return gpio::pin_read(tsc_busy_pin_dsc) | spi1_lock;
+}
+
+uint8_t tsc2046Drv::ll_rw (uint8_t data)
+{
+    if (spi1_lock) {
+            return 0;
+    }
+    spi1_lock = 1;
+    while ((SPI1->SR & SPI_FLAG_TXE) == 0){}
+			*(__IO uint8_t *)&SPI1->DR = data;
+	while ((SPI1->SR & SPI_FLAG_RXNE) == 0){}
+    spi1_lock = 0;
+    return *(__IO uint8_t *)&SPI1->DR;
+}
+
 
 
 #include "usbd_core.h"

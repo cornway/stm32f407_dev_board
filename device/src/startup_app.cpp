@@ -1,5 +1,6 @@
 #include "startup_app.h"
 #include "sensor_drv.h"
+#include "device.h"
 #include "time.h"
 #include "it_vect.h"
 
@@ -35,7 +36,7 @@ INT_T VM_SYS_THREAD (WORD_T size, void *arg)
     sensor_dd = vm::drv_link(&sensor_drv, TSC_TIM_IRQn, 0).ERROR;
     vm::drv_ctl(sensor_dd, SENSOR_CTL | SENSOR_ADD, (uint32_t)&mainAppTouchSensor);
     
-    static THREAD_HANDLE th;
+    THREAD_HANDLE th;
     th.Arg = 0;
     th.argSize = 0;
     th.Callback = render_app;
@@ -53,6 +54,12 @@ INT_T VM_SYS_THREAD (WORD_T size, void *arg)
     th.Priority = 3;
     th.StackSize = 512;
     ret = vm::create(&th);
+    uint32_t err = 0;
+
+    //err = load_program(program_space_begin, "img.img");
+    if (err == 0) {
+        //err = join_program(program_space_begin, "background", 0, NULL);
+    }
     for (;;) {  
         vm::yield();     
     }   
@@ -82,6 +89,7 @@ static INT_T SENSOR_THREAD (WORD_T size, void *argv)
     });
     for (;;) {
         vm::sleep(1);
+        vm::drv_ctl(sensor_dd, SENSOR_CTL | SENSOR_INV, 0);
         mainAppTouchSensor.invokeEvent();
         if (sleepTimeout < applicationControl.sleepTimeout) {
             sleepTimeout++;

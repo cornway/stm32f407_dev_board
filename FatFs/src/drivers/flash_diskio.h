@@ -54,6 +54,7 @@ void at_ll_sel (AT_BYTE x);
 void at_ll_wp (AT_BYTE x);
 void at_ll_hold (AT_BYTE x);
 AT_BYTE at_ll_rw (AT_BYTE write_data);
+AT_BYTE at_ll_is_busy (void);
 
 #ifdef __cplusplus
     }
