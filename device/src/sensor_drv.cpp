@@ -69,6 +69,7 @@ static drv_sword_t sensor_ioctl (void *handler, void *op, void *p)
                         listener_id = get_avail_listener();
                         if (listener_id >= 0) {
                             sensor_listeners[listener_id] = (TouchSensor *)handler;
+                            sensor_listeners[listener_id]->clearEvent();
                         }
             break;
         case SENSOR_REM | SENSOR_CTL:
@@ -78,7 +79,8 @@ static drv_sword_t sensor_ioctl (void *handler, void *op, void *p)
                         }
             break;
         case SENSOR_INV | SENSOR_CTL:
-                        return join_sensor_task(3, NULL);
+                        if (tsc2046.hasEvent())
+                            return join_sensor_task(3, NULL);
             break;
         case SENSOR_CAL | SENSOR_CTL:
                         return join_sensor_task(1, NULL);
@@ -128,6 +130,15 @@ static int32_t get_match_listener(TouchSensor *ts)
     return -1;
 }
 
+static void tsc2046_evt_listener (abstract::Event e)
+{
+    for (int i = 0; i < SENSOR_MAX_LISTENERS; i++) {
+        if (sensor_listeners[i] != NULL) {
+            sensor_listeners[i]->setEvent((void *)e.getSource(), e.getCause());
+        }
+    }
+}
+
 static INT_T sensor_task (WORD_T size, void *argv)
 {
     pair_t *pair = (pair_t *)argv;
@@ -147,13 +158,7 @@ static INT_T sensor_task (WORD_T size, void *argv)
             width = pair->a;
             height = pair->b;
             tsc2046.removeAllListeners();
-            tsc2046.addListener([](abstract::Event e) -> void {
-                for (int i = 0; i < SENSOR_MAX_LISTENERS; i++) {
-                    if (sensor_listeners[i] != NULL) {
-                        sensor_listeners[i]->setEvent((void *)e.getSource(), e.getCause());
-                    }
-                }
-            });
+            tsc2046.addListener(tsc2046_evt_listener);
             break;
         case 1:
             if (tsc2046.calibration((char *)"tsc2046.cal") != TSC2046_CAL_OK) {

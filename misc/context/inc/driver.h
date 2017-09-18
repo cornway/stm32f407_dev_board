@@ -6,7 +6,7 @@
 #include "iterable.h"
 #include "drv_types.h"
 
-drv_t *drv_get (int32_t id);
+drv_t drv_get (int32_t id);
 int32_t drv_attach (drv_handle_t *handle, int32_t irq, int32_t dma);
 int32_t drv_detach (uint32_t id);
 int32_t drv_detach (const char *name);

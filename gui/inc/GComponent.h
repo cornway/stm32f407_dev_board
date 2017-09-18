@@ -9,7 +9,7 @@
 #include <string.h>
 
 
-#define EVENT_SIMPLE_SCHEME     (1U)
+#define EVENT_SIMPLE_SCHEME     (0U)
 
 enum {
     GANC_TOP_LEFT,
@@ -42,11 +42,11 @@ template <typename Color, typename Range, Color white>
 class GComponent : public Dimension<Range> {
     protected :
         
-        #if (EVENT_SIMPLE_SCHEME == 1U)
+#if (EVENT_SIMPLE_SCHEME == 1U)
             void (*eventListener) (abstract::Event);
-        #else
+#else
             abstract::EventBurner userActionEventBurner;
-        #endif
+#endif
 		_PACKED struct {
 			char name[GCOMPONENT_NAME_LEN];
             bool silent;

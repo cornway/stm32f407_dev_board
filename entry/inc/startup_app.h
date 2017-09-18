@@ -28,7 +28,6 @@ static void init_adc_bat ();
 static uint16_t measureBattery ();
 void updateAudio (WaveSample **s, char *path);
 static TouchPointTypeDef sp;
-static INT_T SENSOR_THREAD (WORD_T size, void *argv);
 WaveSample *clickWave;
 WaveSample *confirmWave;
 

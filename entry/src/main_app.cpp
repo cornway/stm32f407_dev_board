@@ -21,7 +21,7 @@ color_t clockTextColor = RGB24_TO_RGB16(255, 255, 255);
 color_t clockBackColor = RGB24_TO_RGB16(210,105,30);
 
 ACCESS_CONTROL globalAccessControl = {PRIVILEGE_USER, DEFAULT_ADMIN_PASSWORD}; /*global access control struct*/
-TouchSensor mainAppTouchSensor;
+static TouchSensor touch_sensor;
 
 double PI_CONST = 3.1400000;
 char adv_conf_file_name[24] = "";
@@ -51,10 +51,8 @@ NonPalette<color_t, range_t, COLOR_WHITE> *clockPlotter;
 
 INT_T main_app (WORD_T size, void *argv)
 {
-    int32_t input0_dd = vm::drv_probe("input0").ERROR;
-    vm::drv_ctl(input0_dd, SENSOR_CTL | SENSOR_ADD, (uint32_t)&mainAppTouchSensor);
-
-    mainAppTouchSensor.clearEvent();
+    touch_sensor.setId( vm::drv_probe("input0").ERROR );
+    vm::drv_ctl(touch_sensor.getId(), SENSOR_CTL | SENSOR_ADD, (uint32_t)&touch_sensor);
     vm::lock(MEMORY_ALLOC_LOCK_ID);
     
     vm::lock(FILE_SYSTEM_LOCK_ID);
@@ -152,7 +150,7 @@ INT_T main_app (WORD_T size, void *argv)
     
     
      
-    mainAppTouchSensor.addListener([](abstract::Event e) -> void {
+    touch_sensor.addListener([](abstract::Event e) -> void {
             pane->fireSensor(e.getSource(), e.getCause());        
     });
     
@@ -177,7 +175,7 @@ INT_T main_app (WORD_T size, void *argv)
             appOnActionHook();
             _XCALL(ret, expl_app, EXPLORER_APP_USE_FILTER, (void *)"NES");
             refreshGraphic(); 
-            mainAppTouchSensor.clearEvent();
+            touch_sensor.clearEvent();
         }
     });
     
@@ -186,7 +184,7 @@ INT_T main_app (WORD_T size, void *argv)
             appOnActionHook();
             _XCALL(ret, snake_app, 0, nullptr);
             refreshGraphic(); 
-            mainAppTouchSensor.clearEvent();
+            touch_sensor.clearEvent();
         }
     });
     
@@ -195,7 +193,7 @@ INT_T main_app (WORD_T size, void *argv)
             appOnActionHook();
             _XCALL(ret, exec_app, EXEC_APP_EXECUTE_REQUEST, nullptr);
             refreshGraphic(); 
-            mainAppTouchSensor.clearEvent();
+            touch_sensor.clearEvent();
         }
     });
     
@@ -204,7 +202,7 @@ INT_T main_app (WORD_T size, void *argv)
             appOnActionHook();
             _XCALL(ret, analog_app, 0, nullptr);
             refreshGraphic(); 
-            mainAppTouchSensor.clearEvent();
+            touch_sensor.clearEvent();
         }
     });
     
@@ -213,7 +211,7 @@ INT_T main_app (WORD_T size, void *argv)
             appOnActionHook();
             _XCALL(ret, cam_app, 0, nullptr);
             refreshGraphic();
-            mainAppTouchSensor.clearEvent();
+            touch_sensor.clearEvent();
         }
     });
     
@@ -223,7 +221,7 @@ INT_T main_app (WORD_T size, void *argv)
             appOnActionHook();
             _XCALL(ret, expl_app, EXPLORER_APP_NO_FILTER, (void *)filePath);
             refreshGraphic();
-            mainAppTouchSensor.clearEvent();
+            touch_sensor.clearEvent();
         }
     });
     
@@ -232,7 +230,7 @@ INT_T main_app (WORD_T size, void *argv)
             appOnActionHook();
             _XCALL(ret, settings_app, 0, nullptr);
             refreshGraphic();
-            mainAppTouchSensor.clearEvent();
+            touch_sensor.clearEvent();
         }
     });
     
@@ -241,7 +239,7 @@ INT_T main_app (WORD_T size, void *argv)
             appOnActionHook();
             _XCALL(ret, info_app, 0, nullptr);
             refreshGraphic();
-            mainAppTouchSensor.clearEvent();
+            touch_sensor.clearEvent();
         }
     });
     
@@ -254,7 +252,7 @@ INT_T main_app (WORD_T size, void *argv)
             appOnActionHook();
             _XCALL(ret, touch_app, 0, (void *)"tsc2046.cal");
             refreshGraphic();
-            mainAppTouchSensor.clearEvent();
+            touch_sensor.clearEvent();
         }
     });
     
@@ -305,7 +303,7 @@ INT_T main_app (WORD_T size, void *argv)
             vm::wait_event("wakeup");
         }
         clockTick([]() -> void { clockPlotter->wakeUp(); });
-        mainAppTouchSensor.invokeEvent();
+        touch_sensor.invokeEvent();
         repaint();
         vm::yield();
     }
@@ -328,6 +326,8 @@ static inline void update_descktop ()
     if (b != nullptr) {
         b->draw((void *)FRAME_MEMORY_BASE, 2, 0);
         bmp.close(b);
+    } else {
+        pane->fill(RGB24_TO_RGB16(200, 200, 30));
     }
     
     delete file;

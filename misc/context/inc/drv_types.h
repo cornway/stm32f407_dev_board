@@ -41,12 +41,12 @@ typedef struct drv_handle_t {
 };
 
 typedef struct {
+    uint32_t pad[4];
     uint32_t id;
     int32_t irq;
     int32_t dma[3];
     uint32_t ctl;
-    uint32_t size;
-    drv_handle_t handle;
+    drv_handle_t *handle;
 } drv_t;
 
 #endif /*DRV_TYPES_H*/

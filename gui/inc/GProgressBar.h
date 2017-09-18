@@ -88,7 +88,7 @@ class GProgressBar :    public GComponent<Color, Range, white>,
                 if (this->eventListener != nullptr)
                     (*this->eventListener) (abstract::Event(&this->touchPoint, cause));
             #else
-                userActionEventBurner.fireEvents(abstract::Event(&this->touchPoint, cause));
+                this->userActionEventBurner.fireEvents(abstract::Event(&this->touchPoint, cause));
             #endif
             return 1;
         }

@@ -228,8 +228,6 @@ _VALUES_IN_REGS ARG_STRUCT_T DISPATCH_SVC (ARG_STRUCT_T arg)
         /*frame->cpuStack.R3 - error code*/
 
     } else if (arg.IRQ == VM_CALL_FROM_IRQ){
-        frame = CUR_THREAD->CPU_FRAME;
-
         call_struct.R0 = arg.R0;
         call_struct.R1 = arg.R1;
         call_struct.R2 = arg.R2;
@@ -254,7 +252,7 @@ _VALUES_IN_REGS ARG_STRUCT_T DISPATCH_SVC (ARG_STRUCT_T arg)
         static THREAD *tn = (THREAD *)NULL;
         THREAD_HANDLE *th = NULL;
         int32_t res = VM_OK;
-        drv_t *driver_handler;
+        drv_t driver_handler;
         static BYTE_T reentrance = 0;
         switch (reason) {
             case VMAPI_SLEEP :  CUR_THREAD->DELAY = call_struct.R1;
@@ -471,22 +469,22 @@ _VALUES_IN_REGS ARG_STRUCT_T DISPATCH_SVC (ARG_STRUCT_T arg)
                                     }
                 break;              
             case VMAPI_DRV_IO :     driver_handler = drv_get(call_struct.R1);
-                                    if (driver_handler == NULL) {
+                                    if (driver_handler.id == 0) {
                                         CPU_SET_REG(frame, arg.LINK, ERROR, VM_CREATE_ERR);
                                         break;
                                     } 
-                                    if (driver_handler->handle.io != NULL) {
-                                        res = driver_handler->handle.io(driver_handler, call_struct.R2, (drv_data_t *)call_struct.R3);
+                                    if (driver_handler.handle->io != NULL) {
+                                        res = driver_handler.handle->io(NULL, call_struct.R2, (drv_data_t *)call_struct.R3);
                                     }
                                     CPU_SET_REG(frame, arg.LINK, ERROR, res);
                 break;
             case VMAPI_DRV_CTL :    driver_handler = drv_get(call_struct.R1);
-                                    if (driver_handler == NULL) {
+                                    if (driver_handler.id == 0) {
                                         CPU_SET_REG(frame, arg.LINK, ERROR, VM_CREATE_ERR);
                                         break;
                                     } 
-                                    if (driver_handler->handle.ioctl != NULL) {
-                                        res = driver_handler->handle.ioctl(driver_handler, (void *)call_struct.R2, (void *)call_struct.R3);
+                                    if (driver_handler.handle->ioctl != NULL) {
+                                        res = driver_handler.handle->ioctl((void *)call_struct.R3, (void *)call_struct.R2, NULL);
                                     }
                                     CPU_SET_REG(frame, arg.LINK, ERROR, res);
                 break;   
@@ -497,16 +495,15 @@ _VALUES_IN_REGS ARG_STRUCT_T DISPATCH_SVC (ARG_STRUCT_T arg)
             case VMAPI_FAULT :  CUR_THREAD->fault = 1;
                                 CUR_THREAD->faultMessage = (char *)call_struct.R1;
                                 t_unlink_ready(CUR_THREAD);
-                                force = 0x1U;                           
+                                force = 0x1;
                 break;
             case VMAPI_EXIT :   t_unlink_ready(CUR_THREAD);
                                 tn = (THREAD *)CUR_THREAD->caller;
                                 if (tn != (THREAD *)NULL) {
                                     t_link_ready(tn);
-                                    THREAD_SET_REG(tn, POINTER, call_struct.R1);
                                 }
                                 t_destroy(CUR_THREAD);
-                                force = 0x1U;                                  
+                                force = 0x1;
                 break;
             default :   /*TODO: Add case*/
                         CPU_SET_REG(frame, arg.LINK, ERROR, VM_UNKNOWN_CALL);
@@ -517,10 +514,10 @@ _VALUES_IN_REGS ARG_STRUCT_T DISPATCH_SVC (ARG_STRUCT_T arg)
         if ((force || reentrance) && !DISPATCH_IS_IRQ(arg.IRQ)) {
             
             CUR_THREAD = PICK_READY();
-            CPU_SET_REG(frame, arg.LINK, ERROR, VM_OK);
             ret.LINK = SET_LINK(CUR_THREAD);
             ret.FRAME = CUR_THREAD->CPU_FRAME;
             ret.CONTROL = CUR_THREAD->PRIVILEGE;
+            reentrance = 0;
             return ret;
         }
         reentrance = DISPATCH_IS_IRQ(arg.IRQ) ? force : 0;

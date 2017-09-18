@@ -5,17 +5,15 @@
 #include "it_vect.h"
 
 
+extern void usbdStart (void);
+
+
 APPLICATION_CONTROL applicationControl;
 uint16_t batteryValue;
 uint32_t sleepTimeout = 0;
 
 FontArray fontArray;
-
-static int32_t sensor_dd = 0;
-
-extern void usbdStart (void);
-
-static TouchSensor mainAppTouchSensor;
+static TouchSensor touch_sensor;
 
 INT_T VM_SYS_THREAD (WORD_T size, void *arg)
 {
@@ -33,8 +31,8 @@ INT_T VM_SYS_THREAD (WORD_T size, void *arg)
     init_adc_bat();
     sensor_drv.param[0] = TFT_WIDTH;
     sensor_drv.param[1] = TFT_HEIGHT;
-    sensor_dd = vm::drv_link(&sensor_drv, TSC_TIM_IRQn, 0).ERROR;
-    vm::drv_ctl(sensor_dd, SENSOR_CTL | SENSOR_ADD, (uint32_t)&mainAppTouchSensor);
+    touch_sensor.setId( vm::drv_link(&sensor_drv, TSC_TIM_IRQn, 0).ERROR);
+    vm::drv_ctl(touch_sensor.getId(), SENSOR_CTL | SENSOR_ADD, (uint32_t)&touch_sensor);
     
     THREAD_HANDLE th;
     th.Arg = 0;
@@ -49,25 +47,13 @@ INT_T VM_SYS_THREAD (WORD_T size, void *arg)
     th.Priority = 5;
     th.StackSize = 8196;
     ret = vm::create(&th);
-    th.Callback = SENSOR_THREAD;
-    th.Name = "sensor";
-    th.Priority = 3;
-    th.StackSize = 512;
-    ret = vm::create(&th);
     uint32_t err = 0;
 
     //err = load_program(program_space_begin, "img.img");
     if (err == 0) {
         //err = join_program(program_space_begin, "background", 0, NULL);
     }
-    for (;;) {  
-        vm::yield();     
-    }   
-}
-
-static INT_T SENSOR_THREAD (WORD_T size, void *argv)
-{
-    mainAppTouchSensor.addListener([](abstract::Event e) -> void {
+    touch_sensor.addListener([](abstract::Event e) -> void {
             if (sleepTimeout >= applicationControl.sleepTimeout) {
                 if (e.getCause() == SENSOR_RELEASE) {
                     applicationControl.powerControl.powerConsumption = POWER_CONSUMPTION_FULL;
@@ -88,9 +74,11 @@ static INT_T SENSOR_THREAD (WORD_T size, void *argv)
             
     });
     for (;;) {
-        vm::sleep(1);
-        vm::drv_ctl(sensor_dd, SENSOR_CTL | SENSOR_INV, 0);
-        mainAppTouchSensor.invokeEvent();
+        vm::yield();
+        vm::yield();
+        vm::yield();
+        vm::drv_ctl(touch_sensor.getId(), SENSOR_CTL | SENSOR_INV, 0);
+        touch_sensor.invokeEvent();
         if (sleepTimeout < applicationControl.sleepTimeout) {
             sleepTimeout++;
             if (sleepTimeout > (applicationControl.sleepTimeout / 2)) {
@@ -105,8 +93,7 @@ static INT_T SENSOR_THREAD (WORD_T size, void *argv)
             }
         }
         batteryValue = measureBattery();
-    }
-    //return 0;
+        }
 }
 
 static WaveSample *sample = nullptr;;

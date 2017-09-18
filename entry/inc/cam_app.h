@@ -9,6 +9,7 @@
 #include "gui.h"
 #include "adv7180.h"
 #include "ff.h"
+#include "sensor_drv.h"
 
 typedef struct {
     bool fpsReduced;

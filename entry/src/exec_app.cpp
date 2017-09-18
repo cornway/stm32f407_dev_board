@@ -2,7 +2,7 @@
 #include <string.h>
 
 
-TouchSensor execAppTouchSensor;
+static TouchSensor execAppTouchSensor;
 
 static GuiEngine<color_t, range_t, COLOR_WHITE> *engine;
 

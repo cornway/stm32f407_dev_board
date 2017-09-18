@@ -436,11 +436,15 @@ static void point_clr (TouchPointTypeDef *p)
     p->onPressTime = 0;
 }
 
+bool tsc2046Drv::hasEvent ()
+{
+    return this->invoke_flag;
+}
 
-static int16_t state_cd = 0;
-static int8_t state = TSC_IDLE;
 int32_t tsc2046Drv::invoke (TouchPointTypeDef *point, uint32_t width, uint32_t height)
 {
+    static int16_t state_cd = 0;
+    static int8_t state = TSC_IDLE;
     if (this->invoke_flag) {
         this->invoke_flag = false;
         state = tsc_state[state][this->isTouching() == true ? TSC_ON : TSC_OFF];

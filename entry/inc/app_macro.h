@@ -32,8 +32,9 @@ do { \
 #define     APP_CLEANUP(obj, sensor) \
 do { \
     vm::lock(MEMORY_ALLOC_LOCK_ID); \
-    delete obj; \
-    sensor.removeAllListeners(); \
+    if (obj != nullptr) \
+        delete obj; \
+    vm::drv_ctl(sensor.getId(), SENSOR_CTL | SENSOR_REM, (uint32_t)&sensor); \
     vm::unlock(MEMORY_ALLOC_LOCK_ID); \
 } while (0)
 

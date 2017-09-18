@@ -210,7 +210,7 @@ class GKeypad : public GComponent<Color, Range, white>  {
                             if (this->eventListener != nullptr)
                                 (*this->eventListener) (abstract::Event(&arg__, cause));
                         #else
-                            userActionEventBurner.fireEvents(abstract::Event(&arg__, cause));
+                            this->userActionEventBurner.fireEvents(abstract::Event(&arg__, cause));
                         #endif
                         return 1;
                     }

@@ -3,7 +3,7 @@
 
 
 #include <stdint.h>
-
+#include "sensor_drv.h"
 
 #ifndef _PACKED
 #define _PACKED __packed

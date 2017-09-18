@@ -210,19 +210,23 @@ typedef _PACKED struct {
 
 #define CPU_SET_REG(FRAME, TYPE, REG, VAL) \
         do { \
-                        if ((TYPE & EXC_RETURN_USE_FPU_BM) == 0) \
-                             FRAME->callControlFpu.REG = VAL; \
-                        else \
-                             FRAME->callControl.REG = VAL; \
-                    } while (0)
+                        if (FRAME != NULL) { \
+                            if ((TYPE & EXC_RETURN_USE_FPU_BM) == 0) \
+                                 FRAME->callControlFpu.REG = VAL; \
+                            else \
+                                 FRAME->callControl.REG = VAL; \
+                        } \
+         } while (0)
             
 #define CPU_GET_REG(FRAME, TYPE, REG, VAL) \
         do { \
+            if (FRAME != NULL) { \
                 if ((TYPE & EXC_RETURN_USE_FPU_BM) == 0) \
-                            VAL = FRAME->callControlFpu.REG; \
-                        else \
-                             VAL = FRAME->callControl.REG; \
-                    } while (0); \
+                        VAL = FRAME->callControlFpu.REG; \
+                    else \
+                        VAL = FRAME->callControl.REG; \
+            } else VAL = ~0; \
+        } while (0)
         
 typedef struct {
     WORD_T ACTLR;   /*Auxiliary Control Register                            */

@@ -164,7 +164,7 @@ void WaveSample::ll_play (WAVE_DSC dsc, void *buffer)
     for (;;);
   }
 }
-extern uint32_t load_program (void *memory, const char *path)
+uint32_t load_program (void *memory, const char *path)
 {
     vm::Mutex __mem(MEMORY_ALLOC_LOCK_ID);
     vm::Mutex __fs(FILE_SYSTEM_LOCK_ID);
@@ -190,7 +190,7 @@ extern uint32_t load_program (void *memory, const char *path)
     return 0;
 }
 
-extern uint32_t join_program (void *mem, const char *name,  int c, char **v)
+uint32_t join_program (void *mem, const char *name,  int c, char **v)
 {
         THREAD_HANDLE th;
         th.Arg = v;
@@ -276,9 +276,4 @@ void usbdStop (void)
 {
     USBD_Stop(&USBD_Device);
 }
-
-
-
-
-
 

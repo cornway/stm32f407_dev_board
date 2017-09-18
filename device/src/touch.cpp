@@ -43,3 +43,13 @@ void TouchSensor::clearEvent ()
     this->event = SENSOR_ANY;
 }
 
+void TouchSensor::setId (uint32_t id)
+{
+    this->id = id;
+}
+
+uint32_t TouchSensor::getId ()
+{
+    return this->id;
+}
+

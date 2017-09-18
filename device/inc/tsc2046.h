@@ -50,6 +50,7 @@ class tsc2046Drv {
         int calibration (char *path);
         int16_t getPositionX ();
         int16_t getPositionY ();
+        bool hasEvent ();
     
         template <typename L>
         void

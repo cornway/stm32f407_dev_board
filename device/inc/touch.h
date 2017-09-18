@@ -37,6 +37,7 @@ typedef struct {
 class TouchSensor {
     private :
         int32_t event;
+        uint32_t id;
         TouchPointTypeDef point;
         TouchPointTypeDef tpoint;
         bool hasInvoke;
@@ -48,6 +49,8 @@ class TouchSensor {
         void setEvent (void *point, uint32_t Event);
         void invokeEvent ();
         void clearEvent ();
+        void setId(uint32_t id);
+        uint32_t getId ();
     
         template <typename L>
         void
