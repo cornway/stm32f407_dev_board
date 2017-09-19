@@ -11,4 +11,6 @@
 *.sct
 *.Bak
 *.dep
+*.__i
+*._ia
 *.lnp
