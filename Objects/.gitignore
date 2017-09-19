@@ -1,0 +1,14 @@
+*.crf
+*.o
+*.d
+*._2i
+*.iex
+*.axf
+*.htm
+*.fed
+*.hex
+*.l2p
+*.sct
+*.Bak
+*.dep
+*.lnp
