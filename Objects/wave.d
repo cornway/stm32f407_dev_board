@@ -1,9 +1,0 @@
-.\objects\wave.o: device\src\wave.cpp
-.\objects\wave.o: .\device\inc\wave.h
-.\objects\wave.o: .\FatFs\src\ff.h
-.\objects\wave.o: .\FatFs\src\integer.h
-.\objects\wave.o: .\FatFs\src\ffconf.h
-.\objects\wave.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
-.\objects\wave.o: .\device\inc\device_conf.h
-.\objects\wave.o: .\device\inc\device_gui_conf.h
-.\objects\wave.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h

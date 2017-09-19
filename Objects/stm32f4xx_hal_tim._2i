@@ -1,6 +1,0 @@
--c --cpu Cortex-M4.fp -g -O1 -Otime --apcs=interwork -I .\adv7180\inc -I .\device\inc -I .\drivers\inc -I .\entry\inc -I .\gui\inc -I .\init\inc -I .\it\inc -I .\misc\inc -I .\tft\inc -I .\FatFs\src -I .\FatFs\src\drivers -I .\FatFs\src\option -I .\STM32_USB_Device_Library\Class\MSC\Inc -I .\STM32_USB_Device_Library\Core\Inc -I .\pnesx\inc -I .\misc\context\inc -I .\misc\depend\Arm\CortexM4\inc --cpp11 --exceptions
--ID:\v\video_1_035_keil\RTE\_stm32f417iet6
--ID:\keil\ARM\PACK\ARM\CMSIS\5.0.0\CMSIS\Include
--ID:\keil\ARM\PACK\Keil\STM32F4xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include
--D__UVISION_VERSION="522" -D_RTE_ -DSTM32F417xx --C99
--o .\objects\stm32f4xx_hal_tim.o --omf_browse .\objects\stm32f4xx_hal_tim.crf --depend .\objects\stm32f4xx_hal_tim.d --feedback ".\Objects\proj.fed" "drivers\src\stm32f4xx_hal_tim.c"

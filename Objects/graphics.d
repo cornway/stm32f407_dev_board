@@ -1,9 +1,0 @@
-.\objects\graphics.o: NES_DEV-master\Src\ARM\Graphics\graphics.cpp
-.\objects\graphics.o: NES_DEV-master\Src\ARM\Graphics\graphics.h
-.\objects\graphics.o: .\device\inc\device_conf.h
-.\objects\graphics.o: .\device\inc\device_gui_conf.h
-.\objects\graphics.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
-.\objects\graphics.o: NES_DEV-master\Src\ARM\Graphics\font.h
-.\objects\graphics.o: .\device\inc\device_conf.h
-.\objects\graphics.o: .\device\inc\device_conf.h
-.\objects\graphics.o: .\device\inc\fpga_Max10.h
