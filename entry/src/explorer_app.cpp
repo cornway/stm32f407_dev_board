@@ -243,7 +243,7 @@ static void rename ()
     strcpy(name, text);
     _XCALL(ret, exec_app, EXEC_APP_EDIT_REQUEST, name);
     
-    if (ret != 0) {
+    if (ret.R2 != 0) {
         pane->openAlert("INVALID VALUE !", nullptr);
         return;
     }
@@ -466,7 +466,7 @@ static void lOpenFile (abstract::Event e)
     if (e.getCause() == SENSOR_RELEASE) {
         fileName = tf_file_browser->getSelectedNode()->getText();
         _XCALL(xret, file_app, 0, (void *)fileName);
-        switch (xret) {
+        switch (xret.R2) {
             case UNSUPPORTED_FILE_TYPE : pane->openAlert("UNKNOWN\nFILE TYPE", nullptr);
                 break;
             case ADV_CONF_OK : pane->openAlert("ADV CONF OK", nullptr);

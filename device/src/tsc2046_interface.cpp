@@ -28,6 +28,11 @@ void  tsc2046Drv::ll_sel (bool sel)
     gpio::pin_set(tsc_sel_pin_dsc, sel);
 }
 
+bool tsc2046Drv::ll_get_sel ()
+{
+    return gpio::pin_read(tsc_sel_pin_dsc) ? false : true;
+}
+
 
 
 #include "fgpu.h"

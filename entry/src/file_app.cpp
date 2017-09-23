@@ -25,8 +25,8 @@ INT_T file_app (WORD_T size, void *argv)
         vm::unlock(FILE_SYSTEM_LOCK_ID);
         return ret;
     } else if (strcmp(fileExt, "NES") == 0) {
-        __XCALL(ret, 8192, pnesx_app, 0, (void *)fileName);
-        if ((int)ret < 0) {
+        __XCALL(_ret, 8192, pnesx_app, 0, (void *)fileName);
+        if ((int)_ret.R2 < 0) {
             return FILE_OPEN_ERROR;
         }
         return FILE_OPEN_OK;

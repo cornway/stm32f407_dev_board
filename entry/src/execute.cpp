@@ -95,7 +95,7 @@ char *execute (char *cmd)
         case 'F' :  if ((cmdBuffer[2] != '-') && (cmdBuffer[3] != '-')) {
                         path = cmdBuffer + 4;
                         _XCALL(_xret, file_app, 0, path);
-                        switch (_xret) {
+                        switch (_xret.R2) {
                             case UNSUPPORTED_FILE_TYPE :    return (char *)"UNKNOWN \nFILE\n TYPE";
                                 
                             case ADV_CONF_OK :              return (char *)"ADV CONF \nOK";

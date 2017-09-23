@@ -255,7 +255,7 @@ INT_T cam_app (WORD_T size, void *argv)
         if (e.getCause() == SENSOR_RELEASE) {
             pane->openDialog("LOAD ADV\nCONF. SCRIPT ?", [](abstract::Event e) -> void {
                 _XCALL(ret, expl_app, EXPLORER_APP_USE_FILTER, (void *)"ADV");
-                if (ret != 0) {
+                if (ret.R2 != 0) {
                     pane->openAlert("LOAD\nFAILED !", nullptr);
                 } else {
                     pane->openAlert("LOAD\nSUCCESSFUL !", nullptr);
@@ -331,7 +331,7 @@ INT_T cam_app (WORD_T size, void *argv)
     
     vm::unlock(MEMORY_ALLOC_LOCK_ID);
     
-    static uint32_t mills, frame_count;
+    uint32_t mills, frame_count;
     mills = sys_time_milis;
 	for (;;) { 
         vm::lock(FRAME_RENDER_LOCK_ID);
@@ -344,7 +344,7 @@ INT_T cam_app (WORD_T size, void *argv)
                 adv_info->clearText();
                 adv7180.printInfo(adv_info);
             }
-            static uint16_t video_cy = 0;
+            uint16_t video_cy = 0;
             video_cy = (video_cy + CCPU_READ_REG(CCPU_READ_AMPL_CY)) >> 1;
             adv_info->print("\nLUMINANCE : ");
             adv_info->printInt(video_cy >> 8);

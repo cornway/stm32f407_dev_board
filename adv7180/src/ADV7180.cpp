@@ -213,7 +213,6 @@ int ADV7180_VIDEO_DECODER::setConfFromfile (char *fileName)
         return -1;
     }
     char key_buf[12];
-    static uint8_t advReg = 0, advKey = 0;
     while(1) {
         buf = f_gets(key_buf, 12, file);
         if (buf != key_buf) {
@@ -233,7 +232,7 @@ int ADV7180_VIDEO_DECODER::parseReg (char *str)
     if (str[4] != '=') {
         return -1;
     }
-    static uint8_t advReg = 0, advKey = 0;
+    uint8_t advReg = 0, advKey = 0;
     if (parse_hex8(str, &advReg) != 0) {
         return -1;
     }

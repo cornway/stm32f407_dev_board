@@ -51,6 +51,8 @@ class tsc2046Drv {
         int16_t getPositionX ();
         int16_t getPositionY ();
         bool hasEvent ();
+
+        static bool ll_get_sel ();
     
         template <typename L>
         void

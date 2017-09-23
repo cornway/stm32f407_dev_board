@@ -198,7 +198,7 @@ int Bitmap::draw (void *dest, uint8_t all, bool raw)
         res = f_forward(&this->file, stream_pack[stream_select], BMP_MEDIA_SIZE, &dmy);
     }
 #else /*_USE_FORWARD != 1*/
-    static uint8_t f_buf[BMP_MEDIA_SIZE];
+    uint8_t f_buf[BMP_MEDIA_SIZE];
     while ((res == FR_OK) && (!f_eof(this->file))) {
         dmy = 0;
         res = f_read(this->file, f_buf, BMP_MEDIA_SIZE, &dmy);

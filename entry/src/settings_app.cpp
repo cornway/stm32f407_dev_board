@@ -389,7 +389,7 @@ static void edit (APPLICATION_CONTROL *ctl)
         return;
     }
     _XCALL(ret, exec_app, EXEC_APP_EDIT_REQUEST, editBuffer);
-    if (ret != 0) {
+    if (ret.R2 != 0) {
         pane->openAlert("INVALID VALUE !", nullptr);
         return;
     }

@@ -738,7 +738,7 @@ static void lStore (abstract::Event e)
             memset(path, 0, 24);
             strcpy(path, "SCO");
             _XCALL(ret, expl_app, EXPLORER_APP_GET_PATH | EXPLORER_APP_USE_FILTER, (void *)path);
-            if (ret == 1) {
+            if (ret.R2 == 1) {
                 store_cfg(path);
             }
             update_sprites();
@@ -753,7 +753,7 @@ static void lLoad (abstract::Event e)
             memset(path, 0, 24);
             strcpy(path, "SCO");
             _XCALL(ret, expl_app, EXPLORER_APP_GET_PATH | EXPLORER_APP_USE_FILTER, (void *)path);
-            if (ret == 1) {
+            if (ret.R2 == 1) {
                 if (load_cfg(path) == 0) {
                     update_settings(&adc_ctl);
                 }
@@ -941,7 +941,7 @@ static void plotter_listener (abstract::Event e)
 
 static void plotter_draw (NonPalette<color_t, range_t, COLOR_WHITE> *component)
 {
-    static int16_t offset_a = 0, offset_b = 0;
+    int16_t offset_a = 0, offset_b = 0;
     Point<range_t> maxMin_a, maxMin_b;
     
     Dimension<range_t> d(component->getDimension());

@@ -51,6 +51,7 @@ DRESULT at_resume (void);
 
 AT_BYTE at_ll_init (void);
 void at_ll_sel (AT_BYTE x);
+uint8_t at_ll_get_sel ();
 void at_ll_wp (AT_BYTE x);
 void at_ll_hold (AT_BYTE x);
 AT_BYTE at_ll_rw (AT_BYTE write_data);

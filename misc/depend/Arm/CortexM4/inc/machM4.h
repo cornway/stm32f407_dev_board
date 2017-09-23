@@ -191,6 +191,9 @@ typedef _PACKED struct {
 
 #define THREAD_SET_REG(THREAD, REG, VAL) \
         do { \
+            if (THREAD->CPU_FRAME == NULL || THREAD == NULL) { \
+                break; \
+            } \
             if (THREAD->USE_FPU == 0) { \
                 THREAD->CPU_FRAME->callControl.REG = VAL; \
             } else { \

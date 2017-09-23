@@ -70,6 +70,7 @@ static drv_sword_t sensor_ioctl (void *handler, void *op, void *p)
                         if (listener_id >= 0) {
                             sensor_listeners[listener_id] = (TouchSensor *)handler;
                             sensor_listeners[listener_id]->clearEvent();
+                             sensor_listeners[listener_id]->removeAllListeners();
                         }
             break;
         case SENSOR_REM | SENSOR_CTL:

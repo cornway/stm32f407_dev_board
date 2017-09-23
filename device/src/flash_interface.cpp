@@ -48,12 +48,17 @@ AT_BYTE at_ll_init (void)
   __HAL_SPI_ENABLE(&SpiHandle);
   return 0;
 }
-
 void at_ll_sel (AT_BYTE x)
 {
     GPIO_PinState state = x == 0 ? GPIO_PIN_RESET : GPIO_PIN_SET;
     HAL_GPIO_WritePin(GPIOG, GPIO_PIN_13, state);
 }
+
+uint8_t at_ll_get_sel ()
+{
+    return HAL_GPIO_ReadPin(GPIOG, GPIO_PIN_13) ? false : true;
+}
+
 
 void at_ll_wp (AT_BYTE x)
 {

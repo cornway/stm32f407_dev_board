@@ -71,9 +71,9 @@ _VALUES_IN_REGS ARG_STRUCT_T VMINIT ()
 _VALUES_IN_REGS ARG_STRUCT_T VMBREAK (UINT_T ret)
 {
     if (CUR_THREAD->ID == IDLE_THREAD_ID) {
-        for (;;) {}
+        for (;;) {}/*TODO: resolve this*/
     }
-    ARG_STRUCT_T arg = {VMAPI_EXIT, ret, 0, 0};
+    ARG_STRUCT_T arg = {VMAPI_EXIT, ret, ret, 0};
     return upcall(arg);
 }
 
@@ -227,7 +227,7 @@ _VALUES_IN_REGS ARG_STRUCT_T DISPATCH_SVC (ARG_STRUCT_T arg)
         /*frame->cpuStack.R2 - attribute 2*/
         /*frame->cpuStack.R3 - error code*/
 
-    } else if (arg.IRQ == VM_CALL_FROM_IRQ){
+    } else if (arg.IRQ == VM_CALL_FROM_IRQ) {
         call_struct.R0 = arg.R0;
         call_struct.R1 = arg.R1;
         call_struct.R2 = arg.R2;
@@ -495,15 +495,17 @@ _VALUES_IN_REGS ARG_STRUCT_T DISPATCH_SVC (ARG_STRUCT_T arg)
             case VMAPI_FAULT :  CUR_THREAD->fault = 1;
                                 CUR_THREAD->faultMessage = (char *)call_struct.R1;
                                 t_unlink_ready(CUR_THREAD);
-                                force = 0x1;
+                                force = 1;
                 break;
             case VMAPI_EXIT :   t_unlink_ready(CUR_THREAD);
                                 tn = (THREAD *)CUR_THREAD->caller;
                                 if (tn != (THREAD *)NULL) {
+                                    THREAD_SET_REG(tn, OPTION_B, call_struct.R1);
                                     t_link_ready(tn);
                                 }
                                 t_destroy(CUR_THREAD);
-                                force = 0x1;
+                                CUR_THREAD = tn;
+                                force = 1;
                 break;
             default :   /*TODO: Add case*/
                         CPU_SET_REG(frame, arg.LINK, ERROR, VM_UNKNOWN_CALL);

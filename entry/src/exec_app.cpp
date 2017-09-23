@@ -2,7 +2,7 @@
 #include <string.h>
 
 
-static TouchSensor execAppTouchSensor;
+static TouchSensor touch_sensor;
 
 static GuiEngine<color_t, range_t, COLOR_WHITE> *engine;
 
@@ -20,10 +20,10 @@ static GLabel<color_t, range_t, COLOR_WHITE>    *label_close;
 
 INT_T exec_app (WORD_T size, void *argv)
 {
-    static uint32_t usage_request, text_size;
-    usage_request = size;
+    static uint32_t usage_request = size, text_size;
     
-    execAppTouchSensor.clearEvent();
+    touch_sensor.setId( vm::drv_probe("input0").ERROR );
+    vm::drv_ctl(touch_sensor.getId(), SENSOR_CTL | SENSOR_ADD, (uint32_t)&touch_sensor);
     vm::lock(MEMORY_ALLOC_LOCK_ID); 
 
     engine = new GuiEngine<color_t, range_t, COLOR_WHITE>(fontArray.font_mono, (color_t *)FRAME_MEMORY_BASE, 0, 0, TFT_WIDTH, TFT_HEIGHT);
@@ -60,22 +60,20 @@ INT_T exec_app (WORD_T size, void *argv)
     textField->setForeground(0);
     textField->setCursorColor(RGB24_TO_RGB16(255, 0, 255));
     
-    
-    
     if (usage_request == EXEC_APP_PASSWORD_REQUEST) {
         pane->openAlert("REQUIRED PASSWORD TO USE THIS FEATURE", nullptr);
     } else if (usage_request == EXEC_APP_EDIT_REQUEST) {
         textField->setText((char *)argv);
     }
     
-    execAppTouchSensor.addListener([](abstract::Event e) -> void {
+    touch_sensor.addListener([](abstract::Event e) -> void {
             pane->fireSensor(e.getSource(), e.getCause());   
     });
     
     label_close->addListener([](abstract::Event e) -> void {
         if (e.getCause() == SENSOR_RELEASE) { 
             appOnActionHook();
-            APP_CLEANUP(engine, execAppTouchSensor);
+            APP_CLEANUP(engine, touch_sensor);
             vm::exit(0);
         }
     });
@@ -102,7 +100,7 @@ INT_T exec_app (WORD_T size, void *argv)
                                                 case EXEC_APP_PASSWORD_REQUEST :    if (check_password(textField->getText()) < 0) {
                                                                                         alert->alert("INVALID PASSWORD! TRY AGAIN.", nullptr);
                                                                                     } else {
-                                                                                        APP_CLEANUP(engine, execAppTouchSensor);
+                                                                                        APP_CLEANUP(engine, touch_sensor);
                                                                                         vm::exit(1);
                                                                                     }
                                                     break;
@@ -113,8 +111,8 @@ INT_T exec_app (WORD_T size, void *argv)
                                                 case EXEC_APP_EDIT_REQUEST :        text = textField->getText();
                                                                                     pane->openDialog("SAVE\nCHANGES ?", [](abstract::Event e) -> void {
                                                                                         strcpy((char *)dest, text);
-                                                                                        APP_CLEANUP(engine, execAppTouchSensor);
-                                                                                        vm::exit(0);
+                                                                                        APP_CLEANUP(engine, touch_sensor);
+                                                                                       vm::exit(0);
                                                                                     }, nullptr);
                                                                                     
                                                     break;
@@ -137,13 +135,13 @@ INT_T exec_app (WORD_T size, void *argv)
         if (applicationControl.tftControl.backlight == TFT_BACKLIGHT_OFF) {
             vm::wait_event("wakeup");
         }
-        execAppTouchSensor.invokeEvent();
+        touch_sensor.invokeEvent();
         vm::lock(FRAME_RENDER_LOCK_ID); 
         pane->wakeUp();
         pane->repaint(*engine->getViewPort());
         vm::unlock(FRAME_RENDER_LOCK_ID);
     }
-    
+    vm::exit(0);
 }
 
 

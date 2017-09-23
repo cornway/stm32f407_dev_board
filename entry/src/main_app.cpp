@@ -468,9 +468,9 @@ static int logon_once ()
     int res = ACCOUNT_ACCESS_GRANTED_ONCE;
     if (globalAccessControl.privilege != PRIVILEGE_ADMIN) { 
         _XCALL(xret, exec_app, EXEC_APP_PASSWORD_REQUEST, nullptr);
-        if (xret == 0) { /*invalid password or cancel*/
+        if (xret.R2 == 0) { /*invalid password or cancel*/
             res =  ACCOUNT_ACCESS_FAILURE;
-        } else if (xret == 1) { /*access granted once*/
+        } else if (xret.R2 == 1) { /*access granted once*/
             
         } else { /*unknown*/
             res = ACCOUNT_ACCESS_FAILURE;
@@ -778,11 +778,9 @@ static int parse_conf ()
         };
     }
     
-    if (collect_token(file, "SOUND", buf, 36, PASSWORD_MAX_SIZE) == 0) { 
+    if (collect_token(file, "SOUND", buf, 36, 24) == 0) {
         if (strcmp(buf, "ON") == 0) {
             applicationControl.audioControl.soundOn = SOUND_ON;
-        } else if (strcmp(buf, "OFF") == 0) {
-            applicationControl.audioControl.soundOn = SOUND_OFF;
         } else {
             applicationControl.audioControl.soundOn = SOUND_OFF;
         }

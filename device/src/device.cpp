@@ -210,41 +210,36 @@ void WaveSample::ll_wait ()
 }
 
 
-volatile static uint8_t spi1_lock = 0;
 AT_BYTE at_ll_is_busy (void)
 {
-    return spi1_lock;
+    return tsc2046Drv::ll_get_sel();
 }
 
 AT_BYTE at_ll_rw (AT_BYTE write_data)
 {
-    if (spi1_lock) {
+    if (tsc2046Drv::ll_get_sel()) {
         return 0;
     }
-    spi1_lock = 1;
     while ((SPI1->SR & SPI_FLAG_TXE) == 0){}
 			*(__IO uint8_t *)&SPI1->DR = write_data;
 	while ((SPI1->SR & SPI_FLAG_RXNE) == 0){}
-    spi1_lock = 0;
     return *(__IO uint8_t *)&SPI1->DR;
 }
 
 extern gpio::gpio_dsc tsc_busy_pin_dsc;
 bool tsc2046Drv::ll_busy ()
 {
-    return gpio::pin_read(tsc_busy_pin_dsc) | spi1_lock;
+    return gpio::pin_read(tsc_busy_pin_dsc) | at_ll_get_sel();
 }
 
 uint8_t tsc2046Drv::ll_rw (uint8_t data)
 {
-    if (spi1_lock) {
+    if (at_ll_get_sel()) {
             return 0;
     }
-    spi1_lock = 1;
     while ((SPI1->SR & SPI_FLAG_TXE) == 0){}
 			*(__IO uint8_t *)&SPI1->DR = data;
 	while ((SPI1->SR & SPI_FLAG_RXNE) == 0){}
-    spi1_lock = 0;
     return *(__IO uint8_t *)&SPI1->DR;
 }
 

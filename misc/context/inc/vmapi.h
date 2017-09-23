@@ -68,27 +68,63 @@ class Mutex {
             id = _id;
             lock(id);
         }
+        Mutex (void  *_id)
+        {
+            id = (uint32_t)_id;
+            lock(id);
+        }
         ~ Mutex ()
+        {
+            unlock(id);
+        }
+
+        bool unlock__ ()
         {
             unlock(id);
         }
 };
 
+class Monitor4 {
+    private :
+        uint32_t id[4];
+    public :
+        Monitor4 (uint32_t  a, uint32_t  b, uint32_t  c, uint32_t  d) {
+            id[0] = a;
+            id[1] = b;
+            id[2] = c;
+            id[3] = d;
+            if (a) lock(a);
+            if (b) lock(b);
+            if (c) lock(c);
+            if (d) lock(d);
+        }
+
+        ~Monitor4 ()
+        {
+            if (id[0]) unlock(id[0]);
+            if (id[1]) unlock(id[1]);
+            if (id[2]) unlock(id[2]);
+            if (id[3]) unlock(id[3]);
+        }
+};
+
+#define MON4(args ...) \
+ do { \
+    uint32_t args_[4] = {args}; \
+    Monitor4(args_[0], args_[1], args_[2], args_[3]); \
+} while (0)
+
 class Cleanup {
     private :
         void *p;
-        uint16_t ref;
     public :
         Cleanup (void *_p)
             {
                 p = _p;
-                ref = 1;
             }
        ~Cleanup ()
         {
-            if (ref <= 1) {
                 free(p);
-            }
         }
 };
 
@@ -96,42 +132,21 @@ class Cleanup {
 
 
 #define _XCALL(ret, callback, size, arg) \
-WORD_T ret; \
+ARG_STRUCT_T ret; \
 do { \
-    ARG_STRUCT_T callback##_ret = vm::call(callback, #callback, VM_DEF_THREAD_HEAP_SIZE, VM_THREAD_DEF_PRIORITY, size, arg); \
-    if (callback##_ret.ERROR != 0) { \
-        VMAPI_ErrorHandler(VMAPI_CALL, callback##_ret); \
-    } else { \
-        \
-    } \
-    ret = callback##_ret.POINTER; \
-    _UNUSED(ret); \
+    ret = vm::call(callback, #callback, VM_DEF_THREAD_HEAP_SIZE, VM_THREAD_DEF_PRIORITY, size, arg); \
 } while (0)
 
 #define __XCALL(ret, stack, callback, size, arg) \
-WORD_T ret; \
+ARG_STRUCT_T ret; \
 do { \
-    ARG_STRUCT_T callback##_ret = vm::call(callback, #callback, stack, VM_THREAD_DEF_PRIORITY, size, arg); \
-    if (callback##_ret.ERROR != 0) { \
-        VMAPI_ErrorHandler(VMAPI_CALL, callback##_ret); \
-    } else { \
-        \
-    } \
-    ret = callback##_ret.POINTER; \
-    _UNUSED(ret); \
+    ret = vm::call(callback, #callback, stack, VM_THREAD_DEF_PRIORITY, size, arg); \
 } while (0)
 
 #define __XCRE(ret, stack, callback, size, arg) \
-WORD_T ret; \
+ARG_STRUCT_T ret; \
 do { \
-    ARG_STRUCT_T callback##_ret = vm::create(callback, #callback, stack, VM_THREAD_DEF_PRIORITY, size, arg); \
-    if (callback##_ret.ERROR != 0) { \
-        VMAPI_ErrorHandler(VMAPI_CALL, callback##_ret); \
-    } else { \
-        \
-    } \
-    ret = callback##_ret.POINTER; \
-    _UNUSED(ret); \
+    ret = vm::create(callback, #callback, stack, VM_THREAD_DEF_PRIORITY, size, arg); \
 } while (0)
 
   
