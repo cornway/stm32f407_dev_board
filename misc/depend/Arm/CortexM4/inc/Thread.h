@@ -10,12 +10,12 @@
 #include "machM4.h"
 #include "thread_types.h"
 
-_VALUES_IN_REGS ARG_STRUCT_T VMBREAK (UINT_T ret);
+_VALUES_IN_REGS ARG_STRUCT_T VMBREAK (UINT32_T ret);
 
 void t_init_core (void);
 void t_destroy (THREAD *t);
 int t_init (THREAD **t, _CALLBACK callback, BYTE_T priority, WORD_T id, WORD_T heap_size, BYTE_T privilege, const char *name, WORD_T arg_size, void *arg);
-THREAD *t_ready (UINT_T priority);
+THREAD *t_ready (UINT32_T priority);
 THREAD *t_search (const char *name);
 void t_unlink_ready (THREAD *t);
 void t_link_chain (THREAD *t, THREAD *l);

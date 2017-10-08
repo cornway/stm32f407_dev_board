@@ -4,7 +4,7 @@
 #include "adv7180.h"
 
 
-INT_T file_app (WORD_T size, void *argv) 
+INT32_T file_app (WORD_T size, void *argv)
 {
     static char *fileName;
     static char fileExt[4];
@@ -15,7 +15,7 @@ INT_T file_app (WORD_T size, void *argv)
     if (strcmp(fileExt, "ADV") == 0) {
         vm::lock(MEMORY_ALLOC_LOCK_ID);
         vm::lock(FILE_SYSTEM_LOCK_ID);
-        INT_T ret = 0;
+        INT32_T ret = 0;
         if (adv7180.setConfFromfile(fileName) == 0) {
             ret = ADV_CONF_OK;
         } else {

@@ -26,7 +26,7 @@ extern int collect_color (FIL *file, char *name, color_t *color);
 extern int snapshot (char *name);
 extern int snapshot_4bpp (char *name);
 
-INT_T cam_app (WORD_T size, void *argv);
+INT32_T cam_app (WORD_T size, void *argv);
 
 static CAM_CFG parseArgs (int size, char *arg);
 static int camera_init ();

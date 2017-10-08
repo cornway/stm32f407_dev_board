@@ -4,6 +4,7 @@
 
 #include <stdint.h>
 #include "sensor_drv.h"
+#include "device_gui_conf.h"
 
 #ifndef _PACKED
 #define _PACKED __packed
@@ -105,8 +106,8 @@ typedef _PACKED struct {
 typedef _PACKED struct {
     unsigned backlightLock : 1;
     unsigned backlight : 1;
-    unsigned backlightValue : 7;
-    unsigned defaultBacklightValue : 7;
+    signed backlightValue : 8;
+    signed defaultBacklightValue : 8;
 } TFT_CONTROL;
 
 
@@ -143,6 +144,15 @@ extern int snapshot_1bpp (char *name);
 extern int snapshot_4bpp (char *name);
 
 int logon_once ();
+
+typedef struct {
+    uint16_t *batteryValue;
+    color_t *batteryFullColor;
+    color_t *batteryEmptycolor;
+    color_t *batteryMetalColor;
+    color_t *batteryTextColor;
+} batteryData;
+
 
 #endif /*APP_DEF_H*/
 

@@ -13,11 +13,13 @@
 #pragma import VMInit
 #pragma import VMStart
 
-_EXTERN "C" void *vmalloc (UINT_T size);
+_EXTERN "C" void *vmalloc (UINT32_T size);
 _EXTERN "C" void vmfree (void *p);
 
 _EXTERN "C" _VALUES_IN_REGS ARG_STRUCT_T upcall (ARG_STRUCT_T arg);
 _EXTERN "C" void SystemSoftReset (void);
+
+_EXTERN THREAD *thread_table[THREAD_MAX_COUNT];
 
 _STATIC _VALUES_IN_REGS ARG_STRUCT_T DISPATCH (ARG_STRUCT_T ARG);
 _STATIC _VALUES_IN_REGS ARG_STRUCT_T DISPATCH_SVC (ARG_STRUCT_T arg);
@@ -28,12 +30,13 @@ _STATIC void SET_STACK (THREAD *t, ARG_STRUCT_T arg);
 _STATIC THREAD *PICK_READY ();
 _STATIC _VALUES_IN_REGS ARG_STRUCT_T UPDATE (THREAD *t);
 
-
+_STATIC INT32_T PROFILE ();
 
 _STATIC THREAD *CUR_THREAD = (THREAD *)NULL;
 _STATIC THREAD *IDLE_THREAD = (THREAD *)NULL;
 
 unsigned long uWTick = 0;
+static UINT64_T uWtickPrev = 0;
 BYTE_T preemtSwitchEnabled = 1;
 
 _STATIC MUTEX_FACTORY mutexFactory;
@@ -68,7 +71,7 @@ _VALUES_IN_REGS ARG_STRUCT_T VMINIT ()
     return ret;
 }
 
-_VALUES_IN_REGS ARG_STRUCT_T VMBREAK (UINT_T ret)
+_VALUES_IN_REGS ARG_STRUCT_T VMBREAK (UINT32_T ret)
 {
     if (CUR_THREAD->ID == IDLE_THREAD_ID) {
         for (;;) {}/*TODO: resolve this*/
@@ -117,7 +120,7 @@ _STATIC _VALUES_IN_REGS ARG_STRUCT_T UPDATE (THREAD *t)
 _STATIC THREAD *GET_READY ()
 {
     THREAD *t = (THREAD *)NULL;
-    for (UINT_T i = 0; i < VM_THREAD_MAX_PRIORITY; i++) {
+    for (UINT32_T i = 0; i < VM_THREAD_MAX_PRIORITY; i++) {
         t = t_ready(i);
         if (t != (THREAD *)NULL) {
             break;
@@ -154,16 +157,50 @@ _STATIC _VALUES_IN_REGS ARG_STRUCT_T VMRUN ()
     return ret;
 }
 
+_STATIC INT32_T PROFILE ()
+{
+    static UINT32_T last_profile_time = 0;
+    UINT32_T profile_dur = uWTick - last_profile_time;
+    if (profile_dur < VM_PROFILE_TIME_MS) {
+        return 1;
+    }
+    last_profile_time = uWTick;
+    UINT32_T  wage;
+    THREAD *t = (THREAD *)NULL;
+    for (INT32_T i = 0; i < THREAD_MAX_COUNT; i++) {
+        t = thread_table[i];
+        if (t && (t != IDLE_THREAD)) {
+            wage = ((profile_dur << 3) / thread_table[i]->cpuUsage ) >> 3;
+            switch (
+                wage <= (VM_THREAD_MAX_PRIORITY / t->PRIORITY) + 1 ?
+                    (wage >= (VM_THREAD_MAX_PRIORITY / t->PRIORITY) - 1 ?
+                        (wage >= (VM_THREAD_MAX_PRIORITY / t->PRIORITY) ? 1 :  2 ) :
+                        0
+                    ) : 0
+            ) {
+                case 1:
+                    if (t->PRIORITY)
+                        t->PRIORITY--;
+                    break;
+                case 2: t->PRIORITY++;
+                    break;
+            }
+        }
+    }
+    last_profile_time = uWTick;
+    return 0;
+}
+
+
 _STATIC _VALUES_IN_REGS ARG_STRUCT_T DISPATCH (ARG_STRUCT_T arg)
 {
     uWTick++;
-    
     THREAD *t = CUR_THREAD;
     ARG_STRUCT_T ret = {0, 0, 0, 0};
     
     timerFactory.tick_ms();
     
-    if (((arg.LINK & EXC_RETURN_HANDLER_GM) == EXC_RETURN_HANDLER_VAL) || ((uWTick & 0x9U) == 0) || (preemtSwitchEnabled == 0)) { /*return, if another IRQ is pending*/
+    if (((arg.LINK & EXC_RETURN_HANDLER_GM) == EXC_RETURN_HANDLER_VAL) || ((uWTick % VM_PREEMT_SWITCH_TIME_MS) == 0) || (preemtSwitchEnabled == 0)) { /*return, if another IRQ is pending*/
         ret.POINTER = arg.POINTER;
         ret.LINK    = arg.LINK;
         ret.CONTROL = t->PRIVILEGE;
@@ -172,7 +209,8 @@ _STATIC _VALUES_IN_REGS ARG_STRUCT_T DISPATCH (ARG_STRUCT_T arg)
     
     SET_STACK(t, arg);
     t_unlink_ready(t);
-    
+    t->cpuUsage += uWTick - uWtickPrev;
+    uWtickPrev = uWTick;
     t->STATUS = THREAD_PEND;
     t->V_PRIORITY++;
     if (t->V_PRIORITY < VM_THREAD_MAX_PRIORITY) {
@@ -183,7 +221,7 @@ _STATIC _VALUES_IN_REGS ARG_STRUCT_T DISPATCH (ARG_STRUCT_T arg)
     
     t_check_cond( t_link_ready );
     t_tick( t_link_drop );
-    
+    PROFILE();
     CUR_THREAD = PICK_READY();
     
     return UPDATE(CUR_THREAD);
@@ -514,7 +552,7 @@ _VALUES_IN_REGS ARG_STRUCT_T DISPATCH_SVC (ARG_STRUCT_T arg)
         }
 
         if ((force || reentrance) && !DISPATCH_IS_IRQ(arg.IRQ)) {
-            
+            CUR_THREAD->cpuUsage += uWTick - uWtickPrev;
             CUR_THREAD = PICK_READY();
             ret.LINK = SET_LINK(CUR_THREAD);
             ret.FRAME = CUR_THREAD->CPU_FRAME;

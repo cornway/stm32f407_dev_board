@@ -43,7 +43,7 @@ static GProgressBar<color_t, range_t, COLOR_WHITE>  *pg_brightness,
 GTextField<color_t, range_t, COLOR_WHITE> *adv_info;
 
 
-INT_T cam_app (WORD_T size, void *argv)
+INT32_T cam_app (WORD_T size, void *argv)
 {
     if (camera_init() < 0) {
         return -1;

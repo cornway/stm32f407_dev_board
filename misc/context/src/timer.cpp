@@ -1,6 +1,6 @@
 #include "timer.h"
 
-_EXTERN "C" void *vmalloc (UINT_T size);
+_EXTERN "C" void *vmalloc (UINT32_T size);
 _EXTERN "C" void vmfree (void *p);
 
 TIMER_HANDLE::TIMER_HANDLE ()
@@ -49,7 +49,7 @@ void TIMER_FACTORY::tick_s ()
     }
 }
 
-INT_T TIMER_FACTORY::create (WORD_T *dest, WORD_T id)
+INT32_T TIMER_FACTORY::create (WORD_T *dest, WORD_T id)
 {
     if (dest == nullptr) {
         return -1;
@@ -68,7 +68,7 @@ INT_T TIMER_FACTORY::create (WORD_T *dest, WORD_T id)
     return 0;
 }
 
-INT_T TIMER_FACTORY::remove (WORD_T id)
+INT32_T TIMER_FACTORY::remove (WORD_T id)
 {
     vector::Vector<TIMER_HANDLE> *list;
     if ((id & TIMER_SECONDS_MASK) == TIMER_SECONDS_MASK) {

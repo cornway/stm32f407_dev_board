@@ -182,7 +182,7 @@ extern int snapshot (char *name);
 
 #define ADC_LOCK_ID     (0x800)
 
-INT_T analog_app (WORD_T size, void *argv);
+INT32_T analog_app (WORD_T size, void *argv);
 
 static int menu_init (GuiEngine<color_t, range_t, COLOR_WHITE> *engine);
 static int menu_deinit (GuiEngine<color_t, range_t, COLOR_WHITE> *engine);
@@ -215,7 +215,7 @@ static float setScale (int8_t scale);
 static float setTimeBase (int8_t timeBase);
 
 
-static INT_T adc_app (WORD_T size, void *argv);
+static INT32_T adc_app (WORD_T size, void *argv);
 
 
 #endif  /*ANALOG_APP_H*/

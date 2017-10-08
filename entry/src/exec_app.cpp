@@ -18,7 +18,7 @@ static GTextField<color_t, range_t, COLOR_WHITE> *textField;
 static GLabel<color_t, range_t, COLOR_WHITE>    *label_close;
 
 
-INT_T exec_app (WORD_T size, void *argv)
+INT32_T exec_app (WORD_T size, void *argv)
 {
     static uint32_t usage_request = size, text_size;
     

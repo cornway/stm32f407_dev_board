@@ -25,7 +25,7 @@ static GLabel<color_t, range_t, COLOR_WHITE>    *label_up,
 
 GBrowser<color_t, range_t, COLOR_WHITE> *tf_file_browser;
 
-INT_T expl_app (WORD_T size, void *argv)
+INT32_T expl_app (WORD_T size, void *argv)
 {
     explAppTouchSensor.clearEvent();
     vm::lock(MEMORY_ALLOC_LOCK_ID); 

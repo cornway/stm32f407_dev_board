@@ -13,7 +13,7 @@ _VALUES_IN_REGS ARG_STRUCT_T vm::restart ()
     upc_();
 }
 
-_VALUES_IN_REGS ARG_STRUCT_T vm::sleep (UINT_T delay)
+_VALUES_IN_REGS ARG_STRUCT_T vm::sleep (UINT32_T delay)
 {
     upc_(VMAPI_SLEEP, delay);
 }
@@ -31,7 +31,7 @@ _VALUES_IN_REGS ARG_STRUCT_T vm::create (THREAD_HANDLE *th)
 _VALUES_IN_REGS ARG_STRUCT_T vm::create (_CALLBACK callback, const char *name, WORD_T stack, WORD_T prio, WORD_T size, void *arg)
 {
     THREAD_HANDLE th;
-    th.Callback = callback;
+    th.Callback = (void *)callback;
     th.Name = name;
     th.Priority = prio;
     th.StackSize = stack;
@@ -43,7 +43,7 @@ _VALUES_IN_REGS ARG_STRUCT_T vm::create (_CALLBACK callback, const char *name, W
 _VALUES_IN_REGS ARG_STRUCT_T vm::call (_CALLBACK callback, const char *name, WORD_T stack, WORD_T prio, WORD_T size, void *arg)
 {
     THREAD_HANDLE th;
-    th.Callback = callback;
+    th.Callback = (void *)callback;
     th.Name = name;
     th.Priority = prio;
     th.StackSize = stack;
@@ -77,11 +77,11 @@ _VALUES_IN_REGS ARG_STRUCT_T vm::drv_probe (const char *name)
     upc_(VMAPI_DRV_PROBE, (WORD_T)name);
 }
 
-_VALUES_IN_REGS ARG_STRUCT_T vm::lock (UINT_T id)
+_VALUES_IN_REGS ARG_STRUCT_T vm::lock (UINT32_T id)
 {
     upc_(VMAPI_LOCK, id);
 }    
-_VALUES_IN_REGS ARG_STRUCT_T vm::unlock (UINT_T id)
+_VALUES_IN_REGS ARG_STRUCT_T vm::unlock (UINT32_T id)
 {
     upc_(VMAPI_UNLOCK, id);
 }  
@@ -151,7 +151,7 @@ _VALUES_IN_REGS ARG_STRUCT_T vm::end_critical ()
     upc_(VMAPI_END_CRITICAL);
 }
 
-_VALUES_IN_REGS ARG_STRUCT_T vm::exit (UINT_T ret)
+_VALUES_IN_REGS ARG_STRUCT_T vm::exit (UINT32_T ret)
 {
     upc_(VMAPI_EXIT, ret);
 }
@@ -167,7 +167,7 @@ _VALUES_IN_REGS ARG_STRUCT_T vm::reset ()
 }
 
 
-INT_T VMAPI_ErrorHandler (WORD_T from, _VALUES_IN_REGS ARG_STRUCT_T arg)
+INT32_T VMAPI_ErrorHandler (WORD_T from, _VALUES_IN_REGS ARG_STRUCT_T arg)
 {
     _UNUSED(from);
     _UNUSED(arg);

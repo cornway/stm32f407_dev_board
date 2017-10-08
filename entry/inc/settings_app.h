@@ -24,7 +24,7 @@ extern APPLICATION_CONTROL applicationControl;
 extern int update_ipv4 (char *token, uint8_t *ip);
 extern int update_mac (char *token, uint8_t *mac);
 
-INT_T settings_app (WORD_T size, void *argv);
+INT32_T settings_app (WORD_T size, void *argv);
 
 
 static void setChangesSaved (bool);

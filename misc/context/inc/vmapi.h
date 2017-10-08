@@ -10,7 +10,7 @@
 
 extern "C" _VALUES_IN_REGS ARG_STRUCT_T upc (ARG_STRUCT_T a);
 
-_WEAK INT_T VMAPI_ErrorHandler (WORD_T from, _VALUES_IN_REGS ARG_STRUCT_T arg);
+_WEAK INT32_T VMAPI_ErrorHandler (WORD_T from, _VALUES_IN_REGS ARG_STRUCT_T arg);
 
 extern "C"
 _VALUES_IN_REGS ARG_STRUCT_T VMSvc (ARG_STRUCT_T arg);
@@ -30,7 +30,7 @@ _VALUES_IN_REGS ARG_STRUCT_T init ();
 _VALUES_IN_REGS ARG_STRUCT_T start (); 
 _VALUES_IN_REGS ARG_STRUCT_T restart (); 
     
-_VALUES_IN_REGS ARG_STRUCT_T sleep (UINT_T delay);
+_VALUES_IN_REGS ARG_STRUCT_T sleep (UINT32_T delay);
 _VALUES_IN_REGS ARG_STRUCT_T yield (void);
 _VALUES_IN_REGS ARG_STRUCT_T create (THREAD_HANDLE *th);
 _VALUES_IN_REGS ARG_STRUCT_T create (_CALLBACK callback, const char *name, WORD_T stack, WORD_T prio, WORD_T size, void *arg);
@@ -40,8 +40,8 @@ _VALUES_IN_REGS ARG_STRUCT_T drv_unlink (uint32_t id);
 _VALUES_IN_REGS ARG_STRUCT_T drv_ctl (uint32_t id, uint32_t ctl0, uint32_t ctl1);
 _VALUES_IN_REGS ARG_STRUCT_T drv_io (uint32_t id, drv_data_t *data);
 _VALUES_IN_REGS ARG_STRUCT_T drv_probe (const char *name);
-_VALUES_IN_REGS ARG_STRUCT_T lock (UINT_T id);   
-_VALUES_IN_REGS ARG_STRUCT_T unlock (UINT_T id);      
+_VALUES_IN_REGS ARG_STRUCT_T lock (UINT32_T id);
+_VALUES_IN_REGS ARG_STRUCT_T unlock (UINT32_T id);
 _VALUES_IN_REGS ARG_STRUCT_T notify (const char *name);   
 _VALUES_IN_REGS ARG_STRUCT_T wait_notify ();  
 _VALUES_IN_REGS ARG_STRUCT_T notify_wait (const char *name);   
@@ -56,7 +56,7 @@ _VALUES_IN_REGS ARG_STRUCT_T timer_remove (WORD_T id);
 
 _VALUES_IN_REGS ARG_STRUCT_T critical ();
 _VALUES_IN_REGS ARG_STRUCT_T end_critical ();
-_VALUES_IN_REGS ARG_STRUCT_T exit (UINT_T ret);   
+_VALUES_IN_REGS ARG_STRUCT_T exit (UINT32_T ret);
 _VALUES_IN_REGS ARG_STRUCT_T fault (const char *cause);
   
 class Mutex {
@@ -81,6 +81,7 @@ class Mutex {
         bool unlock__ ()
         {
             unlock(id);
+            return true;
         }
 };
 
@@ -149,7 +150,10 @@ do { \
     ret = vm::create(callback, #callback, stack, VM_THREAD_DEF_PRIORITY, size, arg); \
 } while (0)
 
-  
+#define VM_SLEEP(n) \
+for (int i = 0; i < n; i++) { \
+    vm::yield(); \
+}
 
 #endif
 

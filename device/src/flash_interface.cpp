@@ -1,5 +1,11 @@
 #include "main.h"
 #include "flash_diskio.h"
+#include "gpio.h"
+#include "device.h"
+
+gpio::gpio_dsc at_ll_sel_gpio = {GPIOG, GPIO_PIN_13};
+
+
 
 SPI_HandleTypeDef             SpiHandle;
 AT_BYTE at_ll_init (void)
@@ -7,7 +13,6 @@ AT_BYTE at_ll_init (void)
     GPIO_InitTypeDef  GPIO_InitStruct;
     __GPIOB_CLK_ENABLE();
     __GPIOG_CLK_ENABLE();
-    
     
     
     GPIO_InitStruct.Pin = GPIO_PIN_13 | GPIO_PIN_7 | GPIO_PIN_8;
@@ -29,7 +34,7 @@ AT_BYTE at_ll_init (void)
   __SPI1_CLK_ENABLE();
     	
   SpiHandle.Instance               = SPI1;
-  SpiHandle.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_8;
+  SpiHandle.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_16;
   SpiHandle.Init.Direction         = SPI_DIRECTION_2LINES;
   SpiHandle.Init.CLKPhase          = SPI_PHASE_1EDGE;
   SpiHandle.Init.CLKPolarity       = SPI_POLARITY_LOW;
@@ -48,17 +53,32 @@ AT_BYTE at_ll_init (void)
   __HAL_SPI_ENABLE(&SpiHandle);
   return 0;
 }
+
+static inline void
+hal_spi_set_baud (void *__hspi, uint32_t baud)
+{
+    SPI_HandleTypeDef *hspi = (SPI_HandleTypeDef *)__hspi;
+    uint32_t reg = READ_REG(hspi->Instance->CR1) & ~SPI_BAUDRATEPRESCALER_256;
+    WRITE_REG( hspi->Instance->CR1, (reg | baud) );
+}
+
+
 void at_ll_sel (AT_BYTE x)
 {
-    GPIO_PinState state = x == 0 ? GPIO_PIN_RESET : GPIO_PIN_SET;
-    HAL_GPIO_WritePin(GPIOG, GPIO_PIN_13, state);
+    if (!x) {
+        hal_spi_set_baud(&SpiHandle, SPI_BAUDRATEPRESCALER_2);
+    } else {
+        hal_spi_set_baud(&SpiHandle, SPI_BAUDRATEPRESCALER_16);
+    }
+    gpio::pin_set(at_ll_sel_gpio, x);
 }
-
-uint8_t at_ll_get_sel ()
+AT_BYTE at_ll_rw (AT_BYTE data)
 {
-    return HAL_GPIO_ReadPin(GPIOG, GPIO_PIN_13) ? false : true;
+    while ((SPI1->SR & SPI_FLAG_TXE) == 0){}
+    *(__IO uint8_t *)&SPI1->DR = data;
+    while ((SPI1->SR & SPI_FLAG_RXNE) == 0){}
+    return *(__IO uint8_t *)&SPI1->DR;
 }
-
 
 void at_ll_wp (AT_BYTE x)
 {

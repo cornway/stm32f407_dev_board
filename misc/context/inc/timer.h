@@ -33,8 +33,8 @@ class TIMER_FACTORY {
         ~TIMER_FACTORY ();
     
         void tick_ms ();    
-        INT_T create (WORD_T *dest, WORD_T id);
-        INT_T remove (WORD_T id);
+        INT32_T create (WORD_T *dest, WORD_T id);
+        INT32_T remove (WORD_T id);
 };
 
 #endif /*VM_TIMER_H*/

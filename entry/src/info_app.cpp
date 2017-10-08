@@ -9,7 +9,7 @@ static GDialog<color_t, range_t, COLOR_WHITE> *dialog;
 
 GTextField<color_t, range_t, COLOR_WHITE> *tf_info;
 
-INT_T info_app (WORD_T size, void *argv)
+INT32_T info_app (WORD_T size, void *argv)
 {
     infoAppTouchSensor.clearEvent();
     vm::lock(MEMORY_ALLOC_LOCK_ID);

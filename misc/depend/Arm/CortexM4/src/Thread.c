@@ -9,7 +9,7 @@ _STATIC THREAD_LIST thread_notify_list;
 _STATIC THREAD_LIST thread_cond_list;
 _STATIC THREAD_LIST thread_event_wait_list;
 _STATIC THREAD_LIST thread_mail_wait_list;
-_STATIC THREAD *thread_table[THREAD_MAX_COUNT];
+THREAD *thread_table[THREAD_MAX_COUNT];
 _STATIC WORD_T thread_count;
 
 _STATIC void thread_register (THREAD *thread_link); 
@@ -18,14 +18,14 @@ _STATIC void thread_link (THREAD_LIST *list, THREAD *thread_link);     /*link fi
 _STATIC void thread_unlink (THREAD_LIST *list, THREAD *thread_link);   /*unlink from list*/
 _STATIC void thread_move_list (THREAD_LIST *dest, THREAD_LIST *src);
 _STATIC int test_thread (THREAD *t);
-_STATIC UINT_T threads_total;
+_STATIC UINT32_T threads_total;
 
-_EXTERN void *vmalloc (UINT_T size);
+_EXTERN void *vmalloc (UINT32_T size);
 _EXTERN void vmfree (void *p);   
 
 _STATIC void thread_register (THREAD *t)
 {
-    for (INT_T i = 0; i < THREAD_MAX_COUNT; i++) {
+    for (INT32_T i = 0; i < THREAD_MAX_COUNT; i++) {
         if ((WORD_T)thread_table[i] == (WORD_T)0) {
             thread_table[i] = t;
             thread_count++;
@@ -36,7 +36,7 @@ _STATIC void thread_register (THREAD *t)
 
 _STATIC void thread_unregister (THREAD *t)
 {
-    for (INT_T i = 0; i < THREAD_MAX_COUNT; i++) {
+    for (INT32_T i = 0; i < THREAD_MAX_COUNT; i++) {
         if ((WORD_T)thread_table[i] == (WORD_T)t) {
             thread_table[i] = (THREAD *)NULL;
             thread_count--;
@@ -48,7 +48,7 @@ _STATIC void thread_unregister (THREAD *t)
 void t_init_core ()
 {
     thread_count = 0;
-    for (INT_T i = 0; i < THREAD_MAX_COUNT; i++) {
+    for (INT32_T i = 0; i < THREAD_MAX_COUNT; i++) {
         thread_table[i] = (THREAD *)NULL;
     }
     
@@ -167,7 +167,7 @@ int t_init (
     (*t)->CPU_FRAME->cpuStack.R0 = arg_size;
     (*t)->CPU_FRAME->cpuStack.R1 = (WORD_T)arg;
     (*t)->CPU_FRAME->cpuStack.LR = (WORD_T)VMBREAK;
-    
+    (*t)->cpuUsage = 0;
     return T_OK;
 }
 
@@ -178,7 +178,7 @@ void t_destroy (THREAD *t)
 }
 
 
-THREAD *t_ready (UINT_T priority)
+THREAD *t_ready (UINT32_T priority)
 {
     THREAD *t;
     t = (THREAD *)thread_list[priority].firstLink;
@@ -384,7 +384,6 @@ THREAD *t_mail (const char *name)
     }
     return (THREAD *)NULL;
 }
-
 
 
 

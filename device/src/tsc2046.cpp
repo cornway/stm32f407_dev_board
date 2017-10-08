@@ -240,13 +240,14 @@ typedef struct {
   int16_t vy;
 } _TSC2046_Cal_Points;
 
-typedef struct {
+typedef __packed struct {
   double ax;
   double bx;
   double dx;
   double ay;
   double by;
   double dy;
+  uint16_t crc16;
 } _TSC2046_Cal_Matrix;
 
 volatile _TSC2046_Cal_Matrix _mcal = {1, 0, 0, 0, 1, 0};
@@ -274,6 +275,12 @@ int tsc2046Drv::loadCalData (char *path)
         delete file;
         return TSC2046_CAL_FILE_NOT_FOUND;
     }
+    if (crc16((char *)&_mcal, sizeof(_TSC2046_Cal_Matrix) - sizeof(_mcal.crc16)) != _mcal.crc16) {
+        f_close(file);
+        delete file;
+        return TSC2046_CAL_FILE_NOT_FOUND;
+
+    }
     f_close(file);
     delete file;
     return TSC2046_CAL_OK;
@@ -300,6 +307,7 @@ int tsc2046Drv::saveCalData(char *path)
         return TSC2046_CAL_WRITE_DENIED;
     }
     uint32_t f_write_bytes;
+   _mcal.crc16 = crc16((char *)&_mcal, sizeof(_TSC2046_Cal_Matrix) - sizeof(_mcal.crc16));
     res = f_write(file, (void *)&_mcal, sizeof(_TSC2046_Cal_Matrix), &f_write_bytes);
     if (res != FR_OK) {
         f_close(file);

@@ -26,7 +26,7 @@ ip_addr gw_addr         = {0x0100a8c0UL}, netmask = {0x000000ffUL}; /* 192.168.0
 static struct netif mchdrv_netif;
 static enc_device_t mchdrv_hw;
 
-INT_T tcp_app (void *argv)
+INT32_T tcp_app (void *argv)
 {
     enc28j60_ll_init();
     mch_net_init();

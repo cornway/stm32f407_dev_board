@@ -38,7 +38,7 @@ GBrowser<color_t, range_t, COLOR_WHITE> *item_browser;
 
 
 
-INT_T settings_app (WORD_T size, void *argv)
+INT32_T settings_app (WORD_T size, void *argv)
 {
     settingsAppTouchSensor.clearEvent();
     vm::lock(MEMORY_ALLOC_LOCK_ID);

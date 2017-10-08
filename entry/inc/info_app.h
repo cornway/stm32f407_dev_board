@@ -10,6 +10,6 @@
 
 extern FontArray fontArray;
 
-INT_T info_app (WORD_T size, void *argv);
+INT32_T info_app (WORD_T size, void *argv);
 
 #endif  /*INFO_APP_H*/

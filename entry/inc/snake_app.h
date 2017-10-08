@@ -372,7 +372,7 @@ class BonusEngine : public Dimension<range_t> {
 
 extern FontArray fontArray;
 
-INT_T snake_app (WORD_T size, void *argv);
+INT32_T snake_app (WORD_T size, void *argv);
 
 static void start ();
 static void draw_snake (NonPalette<color_t, range_t, COLOR_WHITE> *component);

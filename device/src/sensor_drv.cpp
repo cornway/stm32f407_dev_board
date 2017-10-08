@@ -3,6 +3,7 @@
 #include "device_conf.h"
 #include "abstract.h"
 #include "vmapi.h"
+#include "app_def.h"
 
 static tsc2046Drv tsc2046;
 
@@ -16,8 +17,8 @@ static drv_sword_t sensor_probe (uint32_t);
 static drv_sword_t sensor_ioctl (void *, void *, void *);
 static drv_sword_t sensor_io (void *, uint32_t, void *);
 
-static INT_T join_sensor_task (WORD_T size, void *argv);
-static INT_T sensor_task (WORD_T size, void *argv);
+static INT32_T join_sensor_task (WORD_T size, void *argv);
+static INT32_T sensor_task (WORD_T size, void *argv);
 
 static int32_t width = 0;
 static int32_t height = 0;
@@ -42,22 +43,23 @@ static drv_sword_t sensor_load (uint32_t a0, uint32_t a1)
 {
     pair_t p = {sensor_drv.param[0], sensor_drv.param[1]};
     join_sensor_task(0, &p);
+    return 0;
 }
 
 static drv_sword_t sensor_unload (uint32_t a0)
 {
-    
+    return 0;
 }
 
 static drv_sword_t sensor_probe (uint32_t a0)
 {
-    
+    return 0;
 }
 
 static drv_sword_t sensor_ioctl (void *handler, void *op, void *p)
 {
     int32_t listener_id = 0;
-    switch ((uint32_t)op) {
+    switch ((int32_t)op) {
         case IOCTL_IRQ :
                 tsc2046.tim_it_handle();
             break;
@@ -140,8 +142,11 @@ static void tsc2046_evt_listener (abstract::Event e)
     }
 }
 
-static INT_T sensor_task (WORD_T size, void *argv)
+static INT32_T sensor_task (WORD_T size, void *argv)
 {
+    vm::Mutex __frame(FRAME_RENDER_LOCK_ID);
+    vm::Mutex __sensor(SENSOR_LOCK_ID);
+    vm::Mutex __flash(FILE_SYSTEM_LOCK_ID);
     pair_t *pair = (pair_t *)argv;
     int tsc2046_cal_res = TSC2046_CAL_FILE_NOT_FOUND;
     TouchPointTypeDef tp;
@@ -174,10 +179,10 @@ static INT_T sensor_task (WORD_T size, void *argv)
     return 0;
 }
 
-static INT_T join_sensor_task (WORD_T size, void *argv)
+static INT32_T join_sensor_task (WORD_T size, void *argv)
 {
     THREAD_HANDLE th;
-    th.Callback = sensor_task;
+    th.Callback = (void *)sensor_task;
     th.Name = sensor_drv.name;
     th.Priority = 5;
     th.StackSize = VM_DEF_THREAD_HEAP_SIZE;

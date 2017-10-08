@@ -5,6 +5,7 @@
 #include <stdint.h>
 #include "abstract.h"
 #include "touch.h"
+#include "crc.h"
 
 #define TSC2046_CAL_OK              (0U)
 #define TSC2046_CAL_FILE_NOT_FOUND  (1U)
@@ -51,8 +52,6 @@ class tsc2046Drv {
         int16_t getPositionX ();
         int16_t getPositionY ();
         bool hasEvent ();
-
-        static bool ll_get_sel ();
     
         template <typename L>
         void

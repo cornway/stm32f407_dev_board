@@ -22,6 +22,15 @@ class DevGui {
         {
             
         }
+
+        static void fill_vpage(int page, void *color)
+        {
+            int d = TFT_WIDTH * TFT_HEIGHT + 1;
+            color_t *buf = (color_t *)FRAME_MEMORY_BASE;
+            for (int i = 0; i < d; i++) {
+                buf[i] = *(color_t *)color;
+            }
+        }
 };
 
 

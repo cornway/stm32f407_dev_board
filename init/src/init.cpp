@@ -177,8 +177,8 @@ gpio::gpio_dsc fsmc_pin_dsc[] = {
     {GPIOB, GPIO_PIN_7}, /*nadv*/
 };
 
-SRAM_HandleTypeDef                   hsram;
-FMC_NORSRAM_TimingTypeDef            SRAM_Timing;
+static SRAM_HandleTypeDef                   hsram;
+static FMC_NORSRAM_TimingTypeDef            SRAM_Timing;
 
 void init::fsmc ()
 {

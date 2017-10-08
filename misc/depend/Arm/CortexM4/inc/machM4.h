@@ -12,8 +12,11 @@
 #define HWORD_T     uint16_t
 #define BYTE_T      uint8_t
 
-#define UINT_T      uint32_t
-#define INT_T       int32_t
+#define UINT32_T      uint32_t
+#define INT32_T       int32_t
+#define INT64_T       int64_t
+#define UINT64_T       uint64_t
+
         
 #ifndef _PACKED
 #define _PACKED  __packed
@@ -77,7 +80,7 @@
 #define CPU_ACCESS_LEVEL_3 (CPU_USE_MSP | CPU_PRIV_ACCESS)
 
 
-typedef INT_T (*_CALLBACK) (WORD_T, void *);
+typedef INT32_T (*_CALLBACK) (WORD_T, void *);
 
 typedef _PACKED struct {
     WORD_T EXC_RET;

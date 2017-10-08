@@ -32,7 +32,7 @@ static GLabel<color_t, range_t, COLOR_WHITE>    *label_exp,
 
 static NonPalette<color_t, range_t, COLOR_WHITE> *plotter;
 
-INT_T snake_app (WORD_T size, void *argv)
+INT32_T snake_app (WORD_T size, void *argv)
 {
     snakeAppTouchSensor.clearEvent();
     vm::lock(MEMORY_ALLOC_LOCK_ID);

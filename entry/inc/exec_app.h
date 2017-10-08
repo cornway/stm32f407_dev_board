@@ -10,7 +10,7 @@
 
 extern FontArray fontArray;
 
-INT_T exec_app (WORD_T size, void *argv);
+INT32_T exec_app (WORD_T size, void *argv);
 
 static int check_password (char *password);
 

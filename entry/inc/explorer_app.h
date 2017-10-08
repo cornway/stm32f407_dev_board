@@ -12,7 +12,7 @@
 
 extern FontArray fontArray;
 
-INT_T expl_app (WORD_T size, void *argv);
+INT32_T expl_app (WORD_T size, void *argv);
 
 static void update_sprites ();
 static void clear_sprites ();
@@ -29,7 +29,7 @@ static void lDecline (abstract::Event e);
 
 
 
-INT_T file_app (WORD_T size, void *argv);
+INT32_T file_app (WORD_T size, void *argv);
 
 extern ADV7180_VIDEO_DECODER adv7180;
 extern void updateAudio (WaveSample **s, char *path);

@@ -12,13 +12,23 @@ static uint8_t bmp_alpha = 64;
 static color_t text_color = 0;
 static char clickWaveName[14];
 static char confirmWaveName[14];
+static bool usb_need_action = false;
 
 color_t batteryFullColor = RGB24_TO_RGB16(0, 128, 0);
 color_t batteryEmptycolor = RGB24_TO_RGB16(128, 0, 0);
 color_t batteryMetalColor = RGB24_TO_RGB16(128, 128, 128);
 color_t batteryTextColor = RGB24_TO_RGB16(255, 255, 255);
-color_t clockTextColor = RGB24_TO_RGB16(255, 255, 255);
-color_t clockBackColor = RGB24_TO_RGB16(210,105,30);
+static color_t clockTextColor = RGB24_TO_RGB16(255, 255, 255);
+static color_t clockBackColor = RGB24_TO_RGB16(210,105,30);
+extern uint16_t batteryValue;
+batteryData batteryDat =
+{
+    &batteryValue,
+    &batteryFullColor,
+    &batteryEmptycolor,
+    &batteryMetalColor,
+    &batteryTextColor,
+};
 
 ACCESS_CONTROL globalAccessControl = {PRIVILEGE_USER, DEFAULT_ADMIN_PASSWORD}; /*global access control struct*/
 static TouchSensor touch_sensor;
@@ -49,7 +59,7 @@ static GLabel<color_t, range_t, COLOR_WHITE>    *label_cam,
 NonPalette<color_t, range_t, COLOR_WHITE> *clockPlotter;
 
 
-INT_T main_app (WORD_T size, void *argv)
+INT32_T main_app (WORD_T size, void *argv)
 {
     touch_sensor.setId( vm::drv_probe("input0").ERROR );
     vm::drv_ctl(touch_sensor.getId(), SENSOR_CTL | SENSOR_ADD, (uint32_t)&touch_sensor);
@@ -136,6 +146,7 @@ INT_T main_app (WORD_T size, void *argv)
     
     
     auto NonPalette = pane->createNonPaletteComponent(400, 27, 80, 20, drawBattery);
+    NonPalette->setUserData(&batteryDat);
     pane->addNonPalette(NonPalette);
     
     clockPlotter = pane->createNonPaletteComponent(400, 5, 80, 20, drawClock);
@@ -161,11 +172,11 @@ INT_T main_app (WORD_T size, void *argv)
                 return;
             }
             refreshGraphic();
-            pane->openAlert("Usb Mass \nStorage Connected.\nDisconnect", lUsbDisconnect);
+            pane->openAlert("Usb Mass \nStorage connected.\nTouch Screen\ntemporary disabled", lUsbDisconnect);
             appOnActionHook();
             vm::lock(USB_LOCK_ID);
             vm::lock(FILE_SYSTEM_LOCK_ID);
-            usbdStart();
+            usb_need_action = true;
         }
     });
     
@@ -196,7 +207,6 @@ INT_T main_app (WORD_T size, void *argv)
             touch_sensor.clearEvent();
         }
     });
-    
     label_scope->addListener([](abstract::Event e) -> void {
         if (e.getCause() == SENSOR_RELEASE) {
             appOnActionHook();
@@ -305,6 +315,10 @@ INT_T main_app (WORD_T size, void *argv)
         clockTick([]() -> void { clockPlotter->wakeUp(); });
         touch_sensor.invokeEvent();
         repaint();
+        if (usb_need_action) {
+            usbdStart();
+        }
+        usb_need_action = false;
         vm::yield();
     }
     //APP_CLEANUP(engine);
@@ -709,8 +723,7 @@ static void close_log (char *name)
     delete log_file;
 }
 
-#define log_printf(str, args ...) if (log_opened == true) { f_printf(log_file, str, args); }
-#define log_prints(str) if (log_opened == true) { f_puts( str, log_file); }
+#define log_printf(args ...) if (log_opened == true) { f_printf(log_file, args); }
 
 static int parse_conf ()
 {
@@ -732,7 +745,7 @@ static int parse_conf ()
         if (parse_hex8(buf, &bmp_dithering) < 0) {
             bmp_dithering = 32;
         } else {
-            log_prints("Dither Get Ok!\n");
+            log_printf("dither..\n");
         }
     }
     
@@ -740,42 +753,32 @@ static int parse_conf ()
         if (parse_hex8(buf, &bmp_alpha) < 0) {
             bmp_alpha = 32;
         } else {
-            log_prints("Alpha Get Ok!\n");
+            log_printf("alpha..\n");
         }
 
     }
     
     if (collect_token(file, "PASSWORD", buf, 36, PASSWORD_MAX_SIZE) == 0) { 
         strcpy(globalAccessControl.password, buf);
-        log_prints("Password ok !\n");
+        log_printf("password..\n");
     }
     
     if (collect_token(file, "PI_CONST", buf, 36, PASSWORD_MAX_SIZE) == 0) { 
-        log_prints("Pi Const Found !\n");
         if (parse_double(buf, &PI_CONST) >= 0) {
-            log_prints("Pi Const Parsed !\n");
+            log_printf("const pi..\n");
         }
     }
     
     if (collect_token(file, "ADV_DEFAULT", buf, 36, PASSWORD_MAX_SIZE) == 0) { 
-        log_prints("ADV Conf Found !\n");
         if (adv7180.setConfFromfile(buf) >= 0) {
             strcpy(adv_conf_file_name, (const char *)buf);
-            log_prints("ADV Conf Ok !\n");
+            log_printf("adv_conf..\n");
         }
     }
     
     if (collect_token(file, "SNAPSHOT", buf, 36, PASSWORD_MAX_SIZE) == 0) { 
-        switch (buf[0]) {
-            case '1' :  applicationControl.snapshotBpp = 1;
-                        log_prints("Snapshot Bpp == 1\n");
-                break;
-            case '4' :  applicationControl.snapshotBpp = 4;
-                        log_prints("Snapshot Bpp == 4\n");
-                break;
-            default :  log_prints("Snapshot Bpp Unsupported !\n");
-                break;
-        };
+        log_printf("bmp.%dbit..\n", buf[0]);
+        applicationControl.snapshotBpp = buf[0];
     }
     
     if (collect_token(file, "SOUND", buf, 36, 24) == 0) {
@@ -798,37 +801,31 @@ static int parse_conf ()
     
     if (collect_token(file, "CONFIRM", buf, 36, 14) == 0) { 
         strcpy(confirmWaveName, buf);
-        log_prints("Confirm Wave Sound ok !\n");
+        log_printf("wave conf.. !\n");
     } else {
         strcpy(confirmWaveName, "confirm.wav");
     }
     
     if (collect_token(file, "CLICK", buf, 36, 14) == 0) { 
         strcpy(clickWaveName, buf);
-        log_prints("Click Wave Sound ok !\n");
+        log_printf("wave click..\n");
     } else {
         strcpy(clickWaveName, "click.wav");
     }
     
     if (collect_token(file, "IPV4", buf, 36, 24) == 0) { 
-        log_prints("IPV4 String Found !\n");
         int ret = update_ipv4(buf, applicationControl.networkControl.ipv4_ip);
         if (ret >= 0) {
             strcpy(applicationControl.networkControl.ipv4Str, buf);  
-            log_prints("IPV4 String Parsed !\n");
-        } else {
-            log_printf("IPV4 String Parse Error %d !\n", ret);
+            log_printf("ipv4..\n");
         }
     } 
     
     if (collect_token(file, "MAC", buf, 36, 24) == 0) { 
-        log_prints("MAC String Found !\n");
         int ret = update_mac(buf, applicationControl.networkControl.mac);
         if (ret >= 0) {
             strcpy(applicationControl.networkControl.macStr, buf);  
-            log_prints("MAC String Parsed !\n");            
-        }  else {
-            log_printf("MAC String Parse Error %d !\n", ret);
+            log_printf("mac..\n");
         }
     }
     

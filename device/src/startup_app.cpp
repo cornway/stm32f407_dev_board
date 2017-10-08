@@ -4,29 +4,33 @@
 #include "time.h"
 #include "it_vect.h"
 
+enum {
+    TFT_BSTATE_ON,
+    TFT_BSTATE_UP,
+    TFT_BSTATE_DOWN,
+    TFT_BSTATE_OFF,
+    TFT_BSTATE_IDLE
+};
 
-extern void usbdStart (void);
-
+extern uint8_t is_usb_storage_operation ();
 
 APPLICATION_CONTROL applicationControl;
-uint16_t batteryValue;
-uint32_t sleepTimeout = 0;
+uint16_t batteryValue = 0;
+static uint16_t sleepTimeout = 0;
+static int8_t tft_backlight_state = TFT_BSTATE_ON;
+
+static void tft_bl_event ();
+static void tft_bl_task ();
 
 FontArray fontArray;
 static TouchSensor touch_sensor;
 
-INT_T VM_SYS_THREAD (WORD_T size, void *arg)
+INT32_T VM_SYS_THREAD (WORD_T size, void *arg)
 {
     time::delay_ms(200);
     control_init ();
     tft.init();
     sleepTimeout = 0;
-    /*
-    usbdStart();
-    for (;;) {
-        
-    }
-    */
     
     init_adc_bat();
     sensor_drv.param[0] = TFT_WIDTH;
@@ -37,15 +41,15 @@ INT_T VM_SYS_THREAD (WORD_T size, void *arg)
     THREAD_HANDLE th;
     th.Arg = 0;
     th.argSize = 0;
-    th.Callback = render_app;
+    th.Callback = (void *)render_app;
     th.Name = "render";
-    th.Priority = 2;
+    th.Priority = 4;
     th.StackSize = 512;
     ARG_STRUCT_T ret = vm::create(&th);
-    th.Callback = main_app;
+    th.Callback = (void *)main_app;
     th.Name = "main";
     th.Priority = 5;
-    th.StackSize = 8196;
+    th.StackSize = 6144;
     ret = vm::create(&th);
     uint32_t err = 0;
 
@@ -54,46 +58,32 @@ INT_T VM_SYS_THREAD (WORD_T size, void *arg)
         //err = join_program(program_space_begin, "background", 0, NULL);
     }
     touch_sensor.addListener([](abstract::Event e) -> void {
-            if (sleepTimeout >= applicationControl.sleepTimeout) {
-                if (e.getCause() == SENSOR_RELEASE) {
-                    applicationControl.powerControl.powerConsumption = POWER_CONSUMPTION_FULL;
-                    applicationControl.tftControl.backlight = TFT_BACKLIGHT_ON;
-                    sleepTimeout = 0;
-                    vm::fire_event("wakeup");
-                }
-                return;
-            }
-            if ((e.getCause() == SENSOR_CLICK)) {
-                if (applicationControl.audioControl.soundOn == SOUND_ON) {
-                    if (clickWave != nullptr) {
-                        clickWave->play();   
+            if (e.getCause() == SENSOR_RELEASE) {
+                tft_bl_event();
+            } else {
+                if ((e.getCause() == SENSOR_CLICK)) {
+                    if (applicationControl.audioControl.soundOn == SOUND_ON) {
+                        if (clickWave != nullptr) {
+                            clickWave->play();
+                        }
                     }
                 }
             }
             sleepTimeout = 0;
-            
     });
     for (;;) {
-        vm::yield();
-        vm::yield();
-        vm::yield();
-        vm::drv_ctl(touch_sensor.getId(), SENSOR_CTL | SENSOR_INV, 0);
+        if (!is_usb_storage_operation()) {
+            vm::drv_ctl(touch_sensor.getId(), SENSOR_CTL | SENSOR_INV, 0);
+        }
         touch_sensor.invokeEvent();
-        if (sleepTimeout < applicationControl.sleepTimeout) {
-            sleepTimeout++;
-            if (sleepTimeout > (applicationControl.sleepTimeout / 2)) {
-                applicationControl.tftControl.backlightValue = BRIGHTNESS_LOW_LEVEL;
-            } else {
-                applicationControl.tftControl.backlightValue = applicationControl.tftControl.defaultBacklightValue;
-            }
-        } else {
+        tft_bl_task();
+        if (tft_backlight_state == TFT_BSTATE_OFF) {
             applicationControl.powerControl.powerConsumption = POWER_CONSUMPTION_SLEEP;
-            if (applicationControl.tftControl.backlightLock == 0) {
-                applicationControl.tftControl.backlight = TFT_BACKLIGHT_OFF;
-            }
+        } else {
+            batteryValue = measureBattery();
         }
-        batteryValue = measureBattery();
-        }
+        vm::yield();
+    }
 }
 
 static WaveSample *sample = nullptr;;
@@ -162,9 +152,9 @@ static void control_init ()
     applicationControl.powerControl.powerConsumption        = POWER_CONSUMPTION_FULL;
     applicationControl.tftControl.backlightLock             = 0;
     applicationControl.tftControl.backlight                 = TFT_BACKLIGHT_ON;
-    applicationControl.tftControl.backlightValue            = 0;
+    applicationControl.tftControl.backlightValue            = 100;
     applicationControl.tftControl.defaultBacklightValue     = BRIGHTNESS_MAX_LEVEL;
-    applicationControl.sleepTimeout                         = 10000;
+    applicationControl.sleepTimeout                         = 2000;
     applicationControl.snapshotBpp                          = 1;
     
     strcpy(applicationControl.networkControl.ipv4Str, "192.168.0.1");
@@ -231,3 +221,58 @@ static uint16_t measureBattery ()
   
   return value;
 }
+
+static void tft_bl_event ()
+{
+    switch (tft_backlight_state) {
+        case TFT_BSTATE_DOWN:
+        case TFT_BSTATE_OFF:
+        case TFT_BSTATE_IDLE:
+            tft_backlight_state = TFT_BSTATE_UP;
+            applicationControl.powerControl.powerConsumption = POWER_CONSUMPTION_FULL;
+            applicationControl.tftControl.backlight = TFT_BACKLIGHT_ON;
+            vm::fire_event("wakeup");
+            break;
+        default :
+            break;
+    }
+}
+
+static void tft_bl_task ()
+{
+    static uint16_t ticks = 0;
+    switch (tft_backlight_state) {
+        case TFT_BSTATE_ON:
+            if (++sleepTimeout >= applicationControl.sleepTimeout) {
+                tft_backlight_state = TFT_BSTATE_DOWN;
+            }
+            break;
+        case TFT_BSTATE_DOWN:
+            if (applicationControl.tftControl.backlightValue) {
+                if (++ticks  % 10 == 0)
+                    applicationControl.tftControl.backlightValue --;
+            } else {
+                tft_backlight_state = TFT_BSTATE_OFF;
+            }
+            break;
+        case TFT_BSTATE_UP:
+            if (applicationControl.tftControl.backlightValue <= 100) {
+                applicationControl.tftControl.backlightValue++;
+            } else {
+                tft_backlight_state = TFT_BSTATE_ON;
+            }
+            break;
+        case TFT_BSTATE_OFF:
+            if (applicationControl.tftControl.backlightLock == 0) {
+                applicationControl.tftControl.backlight = TFT_BACKLIGHT_OFF;
+            }
+            tft_backlight_state = TFT_BSTATE_IDLE;
+            break;
+        case TFT_BSTATE_IDLE:
+            break;
+        default:
+            break;
+    };
+
+}
+

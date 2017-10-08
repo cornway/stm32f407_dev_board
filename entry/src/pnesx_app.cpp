@@ -33,7 +33,7 @@ void nes_frame_update ()
 
 static void mute (bool _mute);
 
-INT_T pnesx_app (WORD_T size, void *argv)
+INT32_T pnesx_app (WORD_T size, void *argv)
 {
     time::delay_ms(50);
     pnesxAppTouchSensor.clearEvent();

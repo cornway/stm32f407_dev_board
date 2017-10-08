@@ -6,8 +6,10 @@
 #include "iterable.h"
 #include "abstract.h"
 #include "touch.h"
+#include <string.h>
 
 #define GDKey_BORDER_ALLIGN    (10U)
+#define GALERT_
 
 template <typename Color, typename Range, Color white>
 class GAlert : public Dimension<Range>,
@@ -38,13 +40,7 @@ class GAlert : public Dimension<Range>,
             this->dAccept.setBottomCenter(this->getBottomCenter());
             this->dAccept.moveUp();
             
-            int index = 0;
-            while ( (name[index] != '\0') && (index < GCOMPONENT_NAME_LEN - 1) ) {
-                this->name[index] = name[index];
-                index++;
-            }
-            this->name[index] = '\0';
-            
+            strncpy(this->name, name, GCOMPONENT_NAME_LEN);
             this->image_or = 0;
             this->enabled = false;
             this->glow = 0;

@@ -501,16 +501,6 @@
               <FilePath>.\device\src\sensor_drv.cpp</FilePath>
             </File>
             <File>
-              <FileName>it_vect.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\device\inc\it_vect.h</FilePath>
-            </File>
-            <File>
-              <FileName>adv_driver.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\device\inc\adv_driver.h</FilePath>
-            </File>
-            <File>
               <FileName>adv_driver.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\device\src\adv_driver.cpp</FilePath>
@@ -704,6 +694,11 @@
               <FileName>fft.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\misc\src\fft.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>crc.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\misc\src\crc.cpp</FilePath>
             </File>
           </Files>
         </Group>

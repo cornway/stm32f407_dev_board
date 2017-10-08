@@ -29,7 +29,7 @@ typedef struct {
     drv_hword_t length;
 } drv_data_t;    
 
-typedef struct drv_handle_t {
+typedef struct {
     drv_sword_t (*load) (uint32_t, uint32_t);
     drv_sword_t (*unload) (uint32_t);
     drv_sword_t (*probe) (uint32_t);
@@ -38,7 +38,7 @@ typedef struct drv_handle_t {
     /*TODO: change to an array*/
     uint32_t param[4];
     const char *name;
-};
+} drv_handle_t;
 
 typedef struct {
     uint32_t pad[4];

@@ -227,6 +227,6 @@ WORD_T MUTEX_FACTORY::getFreeMutexs ()
 }
 
 
-_EXTERN void *vmalloc (UINT_T size);
+_EXTERN void *vmalloc (UINT32_T size);
 _EXTERN void vmfree (void *p);
 

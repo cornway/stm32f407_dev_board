@@ -15,15 +15,15 @@ extern FontArray fontArray;
 
 extern ADV7180_VIDEO_DECODER adv7180;
 
-extern INT_T cam_app (WORD_T size, void *argv);
-extern INT_T expl_app (WORD_T size, void *argv);
-extern INT_T info_app (WORD_T size, void *argv);
-extern INT_T file_app (WORD_T size, void *argv);
-extern INT_T exec_app (WORD_T size, void *argv);
-extern INT_T touch_app (WORD_T size, void *argv);
-extern INT_T settings_app (WORD_T size, void *argv);
-extern INT_T snake_app (WORD_T size, void *argv);
-extern INT_T analog_app (WORD_T size, void *argv);
+extern INT32_T cam_app (WORD_T size, void *argv);
+extern INT32_T expl_app (WORD_T size, void *argv);
+extern INT32_T info_app (WORD_T size, void *argv);
+extern INT32_T file_app (WORD_T size, void *argv);
+extern INT32_T exec_app (WORD_T size, void *argv);
+extern INT32_T touch_app (WORD_T size, void *argv);
+extern INT32_T settings_app (WORD_T size, void *argv);
+extern INT32_T snake_app (WORD_T size, void *argv);
+extern INT32_T analog_app (WORD_T size, void *argv);
 
 extern void usbdStart (void);
 extern void usbdStop (void);
@@ -54,6 +54,6 @@ int collect_color (FIL *file, char *name, color_t *color);
 int update_ipv4 (char *token, uint8_t *ip);
 int update_mac (char *token, uint8_t *mac);
 
-INT_T main_app (WORD_T size, void *argv);
+INT32_T main_app (WORD_T size, void *argv);
 
 #endif  /*MAIN_APP_H*/

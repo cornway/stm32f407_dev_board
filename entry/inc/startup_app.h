@@ -16,12 +16,12 @@ extern FontArray fontArray;
 extern APPLICATION_CONTROL applicationControl;
 
 
-extern INT_T main_app (WORD_T size, void *argv);
-extern INT_T render_app (WORD_T size, void *argv);
+extern INT32_T main_app (WORD_T size, void *argv);
+extern INT32_T render_app (WORD_T size, void *argv);
 extern int update_ipv4 (char *token, uint8_t *ip);
 extern int update_mac (char *token, uint8_t *mac);
 
-INT_T tcp_app (WORD_T size, void *argv);
+INT32_T tcp_app (WORD_T size, void *argv);
 
 static void control_init ();
 static void init_adc_bat ();

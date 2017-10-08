@@ -1,6 +1,6 @@
 #include "touch_app.h"
 
-INT_T touch_app (WORD_T size, void *argv)
+INT32_T touch_app (WORD_T size, void *argv)
 {
     int cal_res = 0;
     vm::lock(MEMORY_ALLOC_LOCK_ID);

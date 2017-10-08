@@ -15,7 +15,7 @@ extern FontArray fontArray;
 extern int snapshot (char *name);
 extern int collect_token (FIL *file, char *name, char *buf, int size, int tsize);
 
-INT_T pnesx_app (WORD_T size, void *argv);
+INT32_T pnesx_app (WORD_T size, void *argv);
 
 static void dmaInit ();
 static void dmaDeInit ();

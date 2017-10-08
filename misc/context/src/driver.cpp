@@ -3,7 +3,7 @@
 #include <string.h>
 #include <errno.h>
 
-extern "C" void *vmalloc (UINT_T size);
+extern "C" void *vmalloc (UINT32_T size);
 extern "C" void vmfree (void *p);
 
 static drv_t drivers[VM_MAX_DRIVERS];

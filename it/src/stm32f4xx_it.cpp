@@ -164,6 +164,7 @@ void TIM3_IRQHandler(void)
 }
 
 extern TIM_HandleTypeDef             TimHandle_milis;
+extern uint8_t is_usb_storage_operation ();
 void TIM2_IRQHandler(void)
 {
   drv_irq(TSC_TIM_IRQn);

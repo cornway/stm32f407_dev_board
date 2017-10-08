@@ -9,7 +9,7 @@
 #include <string.h>
 
 
-#define EVENT_SIMPLE_SCHEME     (0U)
+#define EVENT_SIMPLE_SCHEME     (1U)
 
 enum {
     GANC_TOP_LEFT,
@@ -47,16 +47,16 @@ class GComponent : public Dimension<Range> {
 #else
             abstract::EventBurner userActionEventBurner;
 #endif
-		_PACKED struct {
-			char name[GCOMPONENT_NAME_LEN];
-            bool silent;
-            bool sleep;
+    _PACKED struct {
+            char name[GCOMPONENT_NAME_LEN];
+            void *userData;
             Color glow;
             Color maskColor;
-        
             Color background;
             Color foreground;
             bool visible;
+            bool silent;
+            bool sleep;
         
             Graphic<Color, Range, white> *graphic;
 		};
@@ -118,8 +118,16 @@ class GComponent : public Dimension<Range> {
                 userActionEventBurner.removeAll();
             #endif
         }
+
+        void setUserData (void *data)
+        {
+            this->userData = data;
+        }
         
-        
+        void *getUserData ()
+        {
+            return this->userData;
+        }
         template <typename L>
         void 
         addListener (L l)

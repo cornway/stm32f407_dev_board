@@ -10,7 +10,7 @@
 #include "vmapi.h"
 #include "vmem.h"
 
-extern "C" void *vmalloc (UINT_T size)
+extern "C" void *vmalloc (UINT32_T size)
 {
     return malloc(size);
 }
@@ -18,7 +18,6 @@ extern "C" void vmfree (void *p)
 {
     free(p);
 }
-
 
 #include "init.h"
 #include "fpga.h"
@@ -143,27 +142,6 @@ void gpu_wait (void)
     while (gpio::pin_read(FpgaMax10_gpu_wait_pin) == true) {}
 }
 
-
-#include "wave_sample.h"
-
-extern DAC_HandleTypeDef    dac1Handle;
-
-void WaveSample::ll_play (WAVE_DSC dsc, void *buffer)
-{
-  uint32_t allign = 0;
-  switch (dsc.bitRate) {
-      case 8 : allign = DAC_ALIGN_8B_R;
-          break;
-      case 16 : allign = DAC_ALIGN_12B_L;
-          break;
-      default : return;
-          //break;
-  }
-  if(HAL_DAC_Start_DMA(&dac1Handle, DAC_CHANNEL_1, (uint32_t*)buffer, dsc.dataSize, allign) != HAL_OK)
-  {
-    for (;;);
-  }
-}
 uint32_t load_program (void *memory, const char *path)
 {
     vm::Mutex __mem(MEMORY_ALLOC_LOCK_ID);
@@ -185,7 +163,7 @@ uint32_t load_program (void *memory, const char *path)
        res = f_read(file, buf, 256, &f_bytes_read);
        memcpy(dest, buf, f_bytes_read);
        dest += f_bytes_read;
-     } while ((res = FR_OK));
+     } while ((res == FR_OK));
     f_close(file);
     return 0;
 }
@@ -202,48 +180,32 @@ uint32_t join_program (void *mem, const char *name,  int c, char **v)
         return vm::create(&th).ERROR;
 }
 
+#include "wave_sample.h"
+
+extern DAC_HandleTypeDef    dac1Handle;
+void WaveSample::ll_play (WAVE_DSC dsc, void *buffer)
+{
+  uint32_t allign = 0;
+  switch (dsc.bitRate) {
+      case 8 : allign = DAC_ALIGN_8B_R;
+          break;
+      case 16 : allign = DAC_ALIGN_12B_L;
+          break;
+      default : return;
+          //break;
+  }
+  if(HAL_DAC_Start_DMA(&dac1Handle, DAC_CHANNEL_1, (uint32_t*)buffer, dsc.dataSize, allign) != HAL_OK)
+  {
+    for (;;);
+  }
+}
+
 
 #include "time.h"
 void WaveSample::ll_wait ()
 {
     time::delay_ms(200);
 }
-
-
-AT_BYTE at_ll_is_busy (void)
-{
-    return tsc2046Drv::ll_get_sel();
-}
-
-AT_BYTE at_ll_rw (AT_BYTE write_data)
-{
-    if (tsc2046Drv::ll_get_sel()) {
-        return 0;
-    }
-    while ((SPI1->SR & SPI_FLAG_TXE) == 0){}
-			*(__IO uint8_t *)&SPI1->DR = write_data;
-	while ((SPI1->SR & SPI_FLAG_RXNE) == 0){}
-    return *(__IO uint8_t *)&SPI1->DR;
-}
-
-extern gpio::gpio_dsc tsc_busy_pin_dsc;
-bool tsc2046Drv::ll_busy ()
-{
-    return gpio::pin_read(tsc_busy_pin_dsc) | at_ll_get_sel();
-}
-
-uint8_t tsc2046Drv::ll_rw (uint8_t data)
-{
-    if (at_ll_get_sel()) {
-            return 0;
-    }
-    while ((SPI1->SR & SPI_FLAG_TXE) == 0){}
-			*(__IO uint8_t *)&SPI1->DR = data;
-	while ((SPI1->SR & SPI_FLAG_RXNE) == 0){}
-    return *(__IO uint8_t *)&SPI1->DR;
-}
-
-
 
 #include "usbd_core.h"
 #include "usbd_desc.h"
@@ -270,5 +232,10 @@ void usbdStart (void)
 void usbdStop (void)
 {
     USBD_Stop(&USBD_Device);
+}
+
+uint8_t is_usb_storage_operation ()
+{
+    return USBD_Device.dev_state == USBD_STATE_CONFIGURED ? 1 : 0;
 }
 

@@ -389,9 +389,6 @@ DRESULT at_resume (void)
 DSTATUS at_get_stat (void)
 {
     DSTATUS status = 0;
-    if (at_ll_is_busy()) {
-        TX_ABORT(STA_PROTECT);
-    }
     AT_BYTE reg;
     reg = at_read_status();
     if (

@@ -8,7 +8,7 @@
 /*TODO Find another access point to Tsc2046_Handler*/
 //#include "tsc2046.h"
 
-INT_T touch_app (WORD_T size, void *argv);
+INT32_T touch_app (WORD_T size, void *argv);
 
 
 #endif  /*EXEC_APP_H*/

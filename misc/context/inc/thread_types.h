@@ -39,7 +39,7 @@ typedef _PACKED struct {
     void *Arg;
 } THREAD_HANDLE;
        
-typedef INT_T (*THREAD_COND_T) (WORD_T type, void *link);
+typedef INT32_T (*THREAD_COND_T) (WORD_T type, void *link);
         
 enum {
     THREAD_STOP = 0x0U,
@@ -71,38 +71,32 @@ typedef _PACKED struct {
 } THREAD_LIST;
 
 typedef _PACKED struct {
+    INT64_T cpuUsage;
     CPU_STACK_FRAME *CPU_FRAME;
     WORD_T DELAY;
-    
-    BYTE_T PRIVILEGE;
     WORD_T STACK;
     WORD_T STACK_SIZE;
-    INT_T  ID;
-    BYTE_T PRIORITY;
-    BYTE_T V_PRIORITY;
-    char name[VM_DEF_THREAD_NAME_LEN];
+    INT32_T  ID;
     void *nextLink;
     void *prevLink;
-    
-    unsigned STATUS : 3;
-    unsigned USE_FPU : 1;
-    unsigned mutex : 1;
-    unsigned monitor : 1;
-    
-    unsigned fault : 1;
     const char *faultMessage;
-    
-    unsigned waitNotify : 1;
     _PACKED union {
         void *link;
         THREAD_COND_T cond;
         const char *event;
     };
-    
     void *caller;
-    
-    
     THREAD_LIST chain;
+    BYTE_T PRIORITY;
+    BYTE_T V_PRIORITY;
+    BYTE_T PRIVILEGE;
+    char name[VM_DEF_THREAD_NAME_LEN];
+    unsigned STATUS : 3;
+    unsigned USE_FPU : 1;
+    unsigned mutex : 1;
+    unsigned monitor : 1;
+    unsigned fault : 1;
+    unsigned waitNotify : 1;
 } THREAD;
 
 

@@ -8,6 +8,6 @@
 
 extern APPLICATION_CONTROL applicationControl;
 
-INT_T render_app (WORD_T size, void *argv);
+INT32_T render_app (WORD_T size, void *argv);
 
 #endif  /*RENDER_APP_H*/

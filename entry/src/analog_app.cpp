@@ -40,7 +40,7 @@ GTextField<color_t, range_t, COLOR_WHITE> *help_info;
 
 static NonPalette<color_t, range_t, COLOR_WHITE> *plotter;
 
-INT_T analog_app (WORD_T size, void *argv)
+INT32_T analog_app (WORD_T size, void *argv)
 {
     analogAppTouchSensor.clearEvent();
     
@@ -1192,7 +1192,7 @@ static float setTimeBase (int8_t timeBase)
     return period;
 }
 
-static INT_T adc_app (WORD_T size, void *argv)
+static INT32_T adc_app (WORD_T size, void *argv)
 {
     /*adc init*/
     
